@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Name="page_Launcher"
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:snackAutoHide="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar"
+			 xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+			 xmlns:sroofingHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Header"
+			 xmlns:arrowBack="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Back"
+			 xmlns:sroofingFooter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer"
+			 xmlns:logo="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Logo"
+			 xmlns:grid="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Grid"
+			 x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Launcher.Page_Launcher"
+			 ios:Page.UseSafeArea="False"
+			 NavigationPage.HasNavigationBar="False"
+			 Visual="Material"
+             Loaded="page_Launcher_Loaded">
+
+	<grid:UCView_Grid_KeyboardView>
+
+		<StackLayout HorizontalOptions="FillAndExpand"
+					 VerticalOptions="FillAndExpand"
+					 BackgroundColor="#000000"
+					 Orientation="Vertical">
+
+			<sroofingHeader:SRoofing_PageHeader />
+
+			<Grid VerticalOptions="FillAndExpand"
+				  HorizontalOptions="FillAndExpand">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*" />
+					<RowDefinition Height="*" />
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+
+
+				<StackLayout HorizontalOptions="Center"
+							 VerticalOptions="Center"
+							 Orientation="Vertical"
+							 Grid.Row="1"
+							 Grid.Column="1">
+
+					<logo:UCView_Logo_TwoLines />
+
+
+
+				</StackLayout>
+
+				<ActivityIndicator WidthRequest="50"
+								   HeightRequest="50"
+								   HorizontalOptions="Center"
+								   VerticalOptions="Start"
+								   Margin="50"
+								   Grid.Row="2"
+								   Grid.Column="1"
+								   Color="#ff8000"
+								   IsRunning="true"
+								   FlowDirection="LeftToRight" />
+				<!--<Image   x:Name="img_Logo" 
+                Source="logo_circle_black.png"
+                 HorizontalOptions="Center" 
+           VerticalOptions="Center" 
+                    Grid.Row="1" Grid.Column="1"/>-->
+
+			</Grid>
+
+
+
+			<sroofingFooter:SRoofing_PageFooter />
+
+		</StackLayout>
+
+	</grid:UCView_Grid_KeyboardView>
+
+</ContentPage>

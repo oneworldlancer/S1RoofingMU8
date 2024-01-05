@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="vw_ChatRow_Image_Owner_View"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:swipeRight="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Swipe"
+             xmlns:ctl="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.ScreenChatShow"
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.ScreenChatShow.Row_ScreenChatShow_Message_Image_Owner_View">
+    <ContentView.Content>
+        <!--<SwipeView  BackgroundColor="{StaticResource iAppColor_SemiGray}">
+
+			<SwipeView.LeftItems>
+				<SwipeItems   Mode="Execute">
+					-->
+        <!--  Command="{Binding 
+											Source={x:Reference vw_ChatRowView},
+											Path=BindingContext.Command_Chat_ByUser}"	Source={x:Reference vw_ChatRowView},
+											-->
+        <!--
+					<SwipeItem BackgroundColor="{StaticResource iAppColor_SemiGray}"
+							   Command="{Binding Command_Chat_ByUser, Source={x:Reference vw_ChatRowView}}"	 							 
+							   CommandParameter="{Binding .}" />
+
+				</SwipeItems>
+			</SwipeView.LeftItems>-->
+        <StackLayout  HorizontalOptions="End"
+                      VerticalOptions="StartAndExpand"
+                      Orientation="Vertical"
+                      Spacing="0"
+                      Margin="0"
+                      Padding="0">
+            <ctl:Row_ScreenChatShow_Message_UserName_Owner_View iOwnerModel="{Binding iOwnerModel, Source={x:Reference vw_ChatRow_Image_Owner_View}}"
+                                                                iGroupModel="{Binding iGroupModel, Source={x:Reference vw_ChatRow_Image_Owner_View}}" />
+            <Frame HorizontalOptions="FillAndExpand"
+                   VerticalOptions="StartAndExpand"
+                   Padding="0"
+                   Margin="0"
+                   CornerRadius="5"
+                   HasShadow="False"
+                   BackgroundColor="{StaticResource iAppColor_Transparent}"
+                   BorderColor="{StaticResource iAppColor_Transparent}">
+                <Grid  HorizontalOptions="FillAndExpand"
+                       VerticalOptions="StartAndExpand"
+                       ColumnDefinitions="1*,9*"
+                       Padding="0"
+                       BackgroundColor="{StaticResource iAppColor_Transparent}"
+                       Margin="0">
+                    <Grid  HorizontalOptions="End"
+                           VerticalOptions="StartAndExpand"
+                           Padding="0"
+                           Margin="0"
+                           Grid.Column="1"
+                           BackgroundColor="{StaticResource iAppColor_Transparent}">
+                        <!--<ctl:Row_ScreenChatShow_Message_Time_Owner_View
+                     iOwnerModel="{Binding iOwnerModel, Source={x:Reference vw_ChatRow_Image_Owner_View}}"
+                                iGroupModel="{Binding iGroupModel, Source={x:Reference vw_ChatRow_Image_Owner_View}}"/>-->
+                        <StackLayout  HorizontalOptions="End"
+                                      VerticalOptions="StartAndExpand"
+                                      Orientation="Vertical"
+                                      Spacing="0"
+                                      Margin="0"
+                                      Padding="0">
+                            <ctl:Row_ScreenChatShow_Message_Image_Box_Owner_View iOwnerModel="{Binding iOwnerModel, Source={x:Reference vw_ChatRow_Image_Owner_View}}"
+                                                                                 iGroupModel="{Binding iGroupModel, Source={x:Reference vw_ChatRow_Image_Owner_View}}" />
+                            <!--<ctl:Row_ScreenChatShow_Message_Command_Share_Owner_View iOwnerModel="{Binding iOwnerModel, Source={x:Reference vw_ChatRow_Image_Owner_View}}"
+                                                                                     iGroupModel="{Binding iGroupModel, Source={x:Reference vw_ChatRow_Image_Owner_View}}" />-->
+                        </StackLayout>
+                        <ctl:Row_ScreenChatShow_Message_Avatar_Owner_View iOwnerModel="{Binding iOwnerModel, Source={x:Reference vw_ChatRow_Image_Owner_View}}"
+                                                                          iGroupModel="{Binding iGroupModel, Source={x:Reference vw_ChatRow_Image_Owner_View}}" />
+                        <!--<ImageButton  x:Name="imgBtn_GalleryX"
+                                      HorizontalOptions="Center"
+                                      VerticalOptions="Center"
+                                      Margin="0,0,50,0"
+                                      CornerRadius="5"
+                                      Source="img_menu_white.png"
+                                      WidthRequest="40"
+                                      HeightRequest="40"
+                                      BackgroundColor="{StaticResource iAppColor_Opacity_Black}"
+                                      Clicked="imgBtn_Gallery_Clicked" />-->
+                        <Grid x:Name="bx_MediaContent"
+                              HorizontalOptions="FillAndExpand"
+                              VerticalOptions="FillAndExpand"
+                              Margin="0,100,40,10"
+                              >
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="bx_MediaContent_Tapped" />
+                            </Grid.GestureRecognizers>
+                            <!--<ImageButton  x:Name="imgBtn_Gallery"
+                                          HorizontalOptions="EndAndExpand"
+                                          VerticalOptions="StartAndExpand"
+                                          Margin="0,0,10,0"
+                                          CornerRadius="5"
+                                          Source="img_menu_black.png"
+                                          WidthRequest="40"
+                                          HeightRequest="40"
+                                          BackgroundColor="{StaticResource iAppColor_Opacity_Black}"
+                                          Clicked="imgBtn_Gallery_Clicked"
+                                          IsVisible="true" />-->
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Frame>
+            <StackLayout  HorizontalOptions="End"
+                          VerticalOptions="Start"
+                          Orientation="Horizontal"
+                          Spacing="0"
+                          Margin="0,0,0,0"
+                          Padding="0">
+                <!--Clicked="imgBtn_Copy_Clicked"
+                                Clicked="imgBtn_Speak_Clicked"-->
+                <ImageButton    x:Name="imgBtn_Copy"
+                                WidthRequest="35"
+                                HeightRequest="35"
+                                Aspect="AspectFit"
+                                Margin="0,0,20,0"
+                                BackgroundColor="Transparent"
+                                Opacity="1"
+                                Source="img_copy_orange.png"
+                                IsVisible="false" />
+                <ImageButton  x:Name="imgBtn_Share"
+                              WidthRequest="50"
+                              HeightRequest="50"
+                              Aspect="AspectFit"
+                              Margin="0,0,55,0"
+                              BackgroundColor="Transparent"
+                              Source="img_theme_share_arrow.png"
+                              Opacity="1"
+                              Clicked="imgBtn_Share_Clicked" />
+            </StackLayout>
+            <!--<ctl:Row_ScreenChatShow_Message_Command_Share_Owner_View 
+                iOwnerModel="{Binding iOwnerModel, Source={x:Reference vw_ChatRow_Image_Owner_View}}"
+                                                                     iGroupModel="{Binding iGroupModel, Source={x:Reference vw_ChatRow_Image_Owner_View}}" />-->
+        </StackLayout>
+        <!--</SwipeView>-->
+    </ContentView.Content>
+</ContentView>

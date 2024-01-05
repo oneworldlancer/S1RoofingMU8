@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TemplatedView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar.SnackBar_Command_GalleryOption">
+    <TemplatedView.ControlTemplate>
+        <ControlTemplate>
+            <Grid >
+                <!--BackgroundColor="White"-->
+                <Frame HorizontalOptions="FillAndExpand"
+                       HasShadow="True"
+                       CornerRadius="5"
+                       Padding="0"
+                       Margin="10,0,10,0"
+                       BackgroundColor="WhiteSmoke">
+                    <!--<Frame.Background>
+                        <LinearGradientBrush
+                            StartPoint="0,0"
+                            EndPoint="1,0">
+                           <GradientStop
+                                Color="{StaticResource iAppColor_DarkOrange}"
+                                Offset="0.1" />  <GradientStop
+                                Color="{StaticResource iAppColor_LightOrange}"
+                                Offset="0.1" />
+                           <GradientStop
+                                Color="Orange"
+                                Offset="1.0" /> -->
+                    <!--<GradientStop
+                                Color="{StaticResource iAppColor_SemiOrange}"
+                                Offset="1.0" />-->
+                    <!-- 
+                        </LinearGradientBrush>
+                    </Frame.Background>-->
+                    <StackLayout HorizontalOptions="Fill"
+                                 Orientation="Vertical"
+                                 Padding="10">
+                      
+                        <StackLayout HorizontalOptions="FillAndExpand"
+                                     Orientation="Vertical"
+                                     Margin="0">
+                         
+                            <StackLayout   HorizontalOptions="FillAndExpand"
+                                     
+                                  
+                                              Orientation="Horizontal"
+                                           Margin="0,0,5,0">
+                               
+                                <StackLayout  
+                                               Orientation="Horizontal"   
+                                               WidthRequest="40">
+                                  
+                                    <ImageButton	 x:Name="img_Close"
+                                                     HorizontalOptions="Center"
+                                                     VerticalOptions="Center"
+                                                     WidthRequest="25"
+                                                     HeightRequest="25"
+                                                     Source="img_close_x.png"
+                                                     Margin="5,0,0,0"
+                                                     BackgroundColor="Transparent"
+                                                     Clicked="img_Close_Clicked" />
+                                    <!--<StackLayout.GestureRecognizers>
+										<TapGestureRecognizer Tapped="lbl_OpenScanner_Clicked" />
+									</StackLayout.GestureRecognizers>-->
+                                    <!--<Label  x:Name="lbl_Test"
+											Text="{TemplateBinding MyString}"
+											Margin="0"
+									LineBreakMode="WordWrap"
+									FontSize="Medium"
+									TextColor="Silver" />-->
+                                </StackLayout>
+                               
+                                <Label  x:Name="lbl_Title"
+                                        HorizontalOptions="FillAndExpand"
+                             
+                                        TextColor="Black"
+                                        FontSize="Medium"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="Center"
+                                        HorizontalTextAlignment="Start"
+                                        Text="{TemplateBinding TitleText}" />
+                                <!--		Text="{TemplateBinding MyString}"-->
+                            </StackLayout>
+                            <!--<Label
+								HorizontalOptions="End"	Text="إختيارات"
+                   
+                        Margin="0"
+                        LineBreakMode="WordWrap"
+                        FontSize="Large"
+						FontAttributes="Bold"	
+                        TextColor="Black" />-->
+                            <BoxView HorizontalOptions="FillAndExpand"
+                                     Color="{StaticResource iAppColor_Silver}"
+                                     Opacity="1"
+                                     HeightRequest="1" />
+                        </StackLayout>
+                        <Grid HorizontalOptions="FillAndExpand"
+                              VerticalOptions="FillAndExpand"
+                              ColumnDefinitions="10,*,10,*,10">
+                           
+                            <StackLayout 
+                                HorizontalOptions="FillAndExpand"
+                                         VerticalOptions="FillAndExpand"
+                                         
+                                         Orientation="Vertical"
+                                         Spacing="0"
+                                         Margin="0"
+                                         Padding="0"
+                                         Grid.Column="1">
+                              
+                                <StackLayout  x:Name="sl_PickImage"
+                                              HorizontalOptions="FillAndExpand"
+                                             Orientation="Horizontal"
+                                             Margin="0,20,0,0">
+                                     
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="sl_PickImage_Clicked" />
+                                    </StackLayout.GestureRecognizers>
+                                    <Image HorizontalOptions="Start"
+                                           VerticalOptions="Center"
+                                           WidthRequest="10"
+                                           HeightRequest="10"
+                                           Margin="5,0,0,0"
+                                           Source="img_circle_black.png" />
+                                    <Label  x:Name="lbl_PickImage"
+                                            Text="{TemplateBinding PickImageText}"
+                                            Margin="0"
+                                            LineBreakMode="WordWrap"
+                                             
+                                            TextColor="{TemplateBinding TextColor}" />
+                                </StackLayout>
+                               
+                            <!--IsEnabled="{TemplateBinding GalleryIsEnable}"-->    
+                                <StackLayout   x:Name="sl_CaptureImage"
+                                               HorizontalOptions="FillAndExpand"
+                                               Orientation="Horizontal"
+                                               Margin="0,20,0,20"
+                                             >
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="sl_CaptureImage_Clicked" />
+                                    </StackLayout.GestureRecognizers>
+                                    <!--BackgroundColor="WhiteSmoke"-->
+                                    <Image HorizontalOptions="Start"
+                                           VerticalOptions="Center"
+                                           WidthRequest="10"
+                                           HeightRequest="10"
+                                           Margin="5,0,0,0"
+                                           Source="img_circle_black.png" />
+                                    <Label  x:Name="lbl_CaptureImage"
+                                            Text="{TemplateBinding CaptureImageText}"
+                                            Margin="0"
+                                           HorizontalOptions="StartAndExpand"
+                                               LineBreakMode="WordWrap"
+                                             
+                                            TextColor="{TemplateBinding TextColor}" />
+                                    <!--      TextColor="{TemplateBinding GalleryColor}"TextColor="{TemplateBinding TextColor}"-->
+                             
+                                </StackLayout>
+                            </StackLayout>
+                         
+                            <StackLayout
+                                HorizontalOptions="StartAndExpand"
+                                         VerticalOptions="FillAndExpand"
+                                         
+                                         Orientation="Vertical"
+                                         Spacing="0"
+                                         Margin="0"
+                                         Padding="0"
+                                         Grid.Column="3">
+                              
+                                <StackLayout x:Name="sl_PickVideo"
+                                    HorizontalOptions="FillAndExpand"
+                                             Orientation="Horizontal"
+                                             Margin="0,20,0,0">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="sl_PickVideo_Clicked" />
+                                    </StackLayout.GestureRecognizers>
+                                    <Image HorizontalOptions="Start"
+                                           VerticalOptions="Center"
+                                           WidthRequest="10"
+                                           HeightRequest="10"
+                                           Margin="5,0,0,0"
+                                           Source="img_circle_black.png" />
+                                    <Label  x:Name="lbl_PickVideo"
+                                            Text="{TemplateBinding PickVideoText}"
+                                            Margin="0"
+                                            HorizontalOptions="StartAndExpand"
+                                            LineBreakMode="WordWrap"
+                                             
+                                            TextColor="{TemplateBinding TextColor}" />
+                              
+                                </StackLayout>
+                              
+                                     <!--IsEnabled="{TemplateBinding GalleryIsEnable}"--> 
+                                <StackLayout   x:Name="sl_CaptureVideo"
+                                               HorizontalOptions="FillAndExpand"
+                                               Orientation="Horizontal"
+                                               Margin="0,20,0,20"
+                                         >
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="sl_CaptureVideo_Clicked" />
+                                    </StackLayout.GestureRecognizers>
+                                    
+                                    <!--BackgroundColor="WhiteSmoke"-->
+                                    <Image HorizontalOptions="Start"
+                                           VerticalOptions="Center"
+                                           WidthRequest="10"
+                                           HeightRequest="10"
+                                           Margin="5,0,0,0"
+                                           Source="img_circle_black.png" />
+                                    <Label  x:Name="lbl_CaptureVideo"
+                                            Text="{TemplateBinding CaptureVideoText}"
+                                            Margin="0"
+                                            HorizontalOptions="StartAndExpand"
+                                            LineBreakMode="WordWrap"
+                                             
+                                            TextColor="{TemplateBinding TextColor}" />
+                                    <!--      TextColor="{TemplateBinding GalleryColor}" TextColor="{TemplateBinding TextColor}"-->
+                              
+                                    
+                                </StackLayout>
+                          
+                            </StackLayout>
+                        </Grid>
+                        <Label Text="{TemplateBinding Message}"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Margin="10"
+                               LineBreakMode="WordWrap"
+                               FontSize="Medium"
+                               TextColor="{TemplateBinding TextColor}"
+                               IsVisible="false" />
+                    </StackLayout>
+                </Frame>
+                <!--FontFamily="{TemplateBinding FontFamily}"-->
+                <!--<Label Text="{TemplateBinding Message}"
+                       VerticalOptions="Center" HorizontalOptions="Center"
+                       Margin="5, 5, 5, 5" LineBreakMode="NoWrap"
+                       FontSize="{TemplateBinding FontSize}"
+                       TextColor="{TemplateBinding TextColor}"
+                       FontFamily="{TemplateBinding FontFamily}"/>-->
+                <!--<Label Text="{TemplateBinding Message}"
+                       VerticalOptions="Center" HorizontalOptions="FillAndExpand"
+                       Margin="20, 5, 5, 5" LineBreakMode="WordWrap"
+                       FontSize="{TemplateBinding FontSize}"
+                       TextColor="{TemplateBinding TextColor}"
+                       FontFamily="{TemplateBinding FontFamily}"/>-->
+                <!--<Button Grid.Column="1" HorizontalOptions="End"
+                        Clicked="CloseButton_Clicked" Margin="2"
+                        FontFamily="{TemplateBinding FontFamily}"
+                        FontSize="{TemplateBinding FontSisze}"
+                        TextColor="{TemplateBinding ButtonTextColor}"
+                        BackgroundColor="{TemplateBinding CloseButtonBackGroundColor}"
+                        VerticalOptions="Center" Text="{TemplateBinding CloseButtonText}"
+                        IsVisible="false"/>-->
+            </Grid>
+        </ControlTemplate>
+    </TemplatedView.ControlTemplate>
+</TemplatedView>

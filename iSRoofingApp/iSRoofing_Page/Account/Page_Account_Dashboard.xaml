@@ -1,0 +1,553 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Name="page_AccountDashboard"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Account.Page_Account_Dashboard"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:sroofingHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Header"
+             xmlns:arrowBack="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Back"
+             xmlns:sroofingFooter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer"
+             xmlns:logo="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Logo"
+             xmlns:snackAutoHide="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar"
+             xmlns:vwAccount="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_Page.Account"
+             ios:Page.UseSafeArea="False"
+             NavigationPage.HasNavigationBar="False"
+             Loaded="page_AccountDashboard_Loaded"
+             Unloaded="page_AccountDashboard_Unloaded">
+  
+    <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          Margin="0"
+          Padding="0"
+          BackgroundColor="#000000">
+       
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     BackgroundColor="#000000"
+                     Spacing="0"
+                     Margin="0"
+                     Padding="0"
+                     Orientation="Vertical">
+            <sroofingHeader:SRoofing_PageHeader />
+            <ScrollView HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Orientation="Vertical"
+                        VerticalScrollBarVisibility="Never">
+                <Grid VerticalOptions="FillAndExpand"
+                      HorizontalOptions="FillAndExpand"
+                      BackgroundColor="#000000">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100" />
+                        <!--<RowDefinition
+                        Height="50" />-->
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="20" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <!--<ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>-->
+                    </Grid.ColumnDefinitions>
+                    <StackLayout HorizontalOptions="CenterAndExpand"
+                                 VerticalOptions="CenterAndExpand"
+                                 Orientation="Vertical"
+                                 Spacing="0"
+                                 Margin="0"
+                                 Padding="0"
+                                 Grid.Row="0"
+                                 Grid.Column="0">
+                        <Image HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               Source="logo_text.png"
+                               Margin="0"
+                               HeightRequest="50"
+                               WidthRequest="50" />
+                    </StackLayout>
+                    <!--<Label     HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                       TextColor="White"
+									  FontSize="Medium"
+									  FontAttributes="Bold"
+									  Margin="0,10,0,10"
+									  Text="Title"
+                              Grid.Row="1"/>-->
+                    <Grid HorizontalOptions="FillAndExpand"
+                          VerticalOptions="FillAndExpand"
+                          Margin="0"
+                          Padding="0"
+                          Grid.Column="0"
+                          Grid.Row="1">
+                        <vwAccount:Page_Account_List_View x:Name="vw_AccountList"
+                                                          HorizontalOptions="FillAndExpand"
+                                                          VerticalOptions="FillAndExpand"
+                                                          IsVisible="true" />
+                        <!--<vw:Page_Register_Step2 HorizontalOptions="FillAndExpand"
+							 VerticalOptions="FillAndExpand"
+									IsVisible="false"  />-->
+                    </Grid>
+                </Grid>
+            </ScrollView>
+            <sroofingFooter:SRoofing_PageFooter />
+        </StackLayout>
+      
+        <ImageButton  x:Name="imgBtn_Chat_Close"
+                      Source="img_circle_back_black.png"
+                      WidthRequest="50"
+                      HeightRequest="50"
+                      Margin="0,20,10,0"
+                      VerticalOptions="Start"
+                      BackgroundColor="Transparent"
+                      HorizontalOptions="End"
+                      Clicked="imgBtn_ContactList_Clicked" />
+      
+        <Frame x:Name="BottomToolbar"
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="FillAndExpand"
+               Margin="0"
+               CornerRadius="0"
+               HasShadow="False"
+               BackgroundColor="#000000"
+               BorderColor="#000000"
+               IsVisible="false">
+            <!-- Padding="0,50,0,0"-->
+            <Frame.Padding>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <OnPlatform.Platforms>
+                        <On Platform="iOS"
+                            Value="0,50,0,0" />
+                        <On Platform="Android"
+                            Value="0, 0, 0, 0" />
+                        <On Platform="UWP"
+                            Value="0, 0, 0, 0" />
+                    </OnPlatform.Platforms>
+                </OnPlatform>
+            </Frame.Padding>
+            <Frame.GestureRecognizers>
+                <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated" />
+            </Frame.GestureRecognizers>
+            <!--	 HasShadow="False"
+						   CornerRadius="0"
+									   BorderColor="#00000000"	   BackgroundColor="#00000000"  HeightRequest="420"  HeightRequest="800"Orientation="Vertical"-->
+            <Grid x:Name="BottomSheet"
+                  HorizontalOptions="FillAndExpand"
+                  VerticalOptions="FillAndExpand"
+                  Margin="0,0,0,0"
+                  Padding="0"
+                  BackgroundColor="#00000000"
+                  RowDefinitions="*,20">
+                <!--<AbsoluteLayout HorizontalOptions="FillAndExpand"
+										VerticalOptions="StartAndExpand"
+										Padding="0"
+										Margin="0"
+										BackgroundColor="{StaticResource iAppColor_Transparent }">-->
+                <StackLayout HorizontalOptions="FillAndExpand"
+                             VerticalOptions="FillAndExpand"
+                             Orientation="Vertical"
+                             Spacing="0"
+                             Padding="0"
+                             Margin="0,70,0,0"
+                             BackgroundColor="{StaticResource iAppColor_Transparent}"
+                             Grid.Row="0">
+                    <sroofingHeader:SRoofing_PageHeader />
+                    <ScrollView HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                BackgroundColor="#000000"
+                                VerticalScrollBarVisibility="Never">
+                        <StackLayout x:Name="sl_AccountContentOverlay"
+                                     HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="FillAndExpand"
+                                     Orientation="Vertical"
+                                     Spacing="0"
+                                     Padding="0"
+                                     Margin="0"
+                                     BackgroundColor="{StaticResource iAppColor_White}">
+                            <!--<vwAccount:Page_Account_Username  HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                              />-->
+                            <!--<ContentView x:Name="child_Delivery_List"
+                                         HorizontalOptions="FillAndExpand"
+                                         HeightRequest="100"
+                                         IsVisible="true">
+                                <ContentView.Content>
+                                    <remote:UCView_Profile_Remote_Ticket x:Name="vw_Delivery_List" />
+                                </ContentView.Content>
+                            </ContentView>-->
+                            <!--<Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="Shaymaa Hafez"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />
+                            <Label HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   Text="END END END"
+                                   FontSize="Large"
+                                   TextColor="{StaticResource iAppColor_LightOrange}" />-->
+                        </StackLayout>
+                    </ScrollView>
+                    <sroofingFooter:SRoofing_PageFooter />
+                </StackLayout>
+                <!--<ContentView x:Name="child_Marshal_List"
+										 HorizontalOptions="FillAndExpand"
+										 VerticalOptions="FillAndExpand"
+										 IsVisible="false">
+								<ContentView.Content>
+									<child:Page_Marshal_List_ByProject x:Name="vw_Marshal_List" />
+
+								</ContentView.Content>
+							</ContentView>
+
+
+
+
+							<ContentView x:Name="child_Delivery_List"
+										 HorizontalOptions="FillAndExpand"
+										 VerticalOptions="FillAndExpand"
+										 IsVisible="false">
+								<ContentView.Content>
+									<child:Page_Marshal_Delivery_List x:Name="vw_Delivery_List" />
+
+								</ContentView.Content>
+							</ContentView>
+
+
+
+
+							<ContentView x:Name="child_Delivery_Search_List"
+										 HorizontalOptions="FillAndExpand"
+										 VerticalOptions="FillAndExpand"
+										 IsVisible="false">
+								<ContentView.Content>
+									<child:Page_Marshal_Delivery_Search_List x:Name="vw_Search_List" />
+
+								</ContentView.Content>
+							</ContentView>
+
+
+
+
+							<ContentView x:Name="child_Route_List"
+										 HorizontalOptions="FillAndExpand"
+										 VerticalOptions="FillAndExpand"
+										 IsVisible="false">
+								<ContentView.Content>
+									<child:Page_Driver_Route_Journey_Start x:Name="vw_Route_List" />
+
+								</ContentView.Content>
+							</ContentView>
+
+
+
+
+							<ContentView x:Name="child_Route_Confirm"
+										 HorizontalOptions="FillAndExpand"
+										 VerticalOptions="FillAndExpand"
+										 IsVisible="false">
+								<ContentView.Content>
+									<child:Page_Driver_Route_Journey_Stop x:Name="vw_Route_Confirm" />
+
+								</ContentView.Content>
+							</ContentView>
+
+
+
+
+							<ContentView x:Name="child_Delivery_Preview"
+										 HorizontalOptions="FillAndExpand"
+										 VerticalOptions="FillAndExpand"
+										 IsVisible="false">
+								<ContentView.Content>
+									<child:Page_Driver_Delivery_Preview x:Name="vw_Delivery_Preview" />
+
+								</ContentView.Content>
+							</ContentView>
+
+
+
+
+							<ContentView x:Name="child_Delivery_Profile"
+										 HorizontalOptions="FillAndExpand"
+										 VerticalOptions="FillAndExpand"
+										 IsVisible="false">
+								<ContentView.Content>
+									<child:Page_Marshal_Delivery_Profile x:Name="vw_Delivery_Profile" />
+
+								</ContentView.Content>
+							</ContentView>
+
+
+
+
+							<ContentView x:Name="child_Route_Data"
+										 HorizontalOptions="FillAndExpand"
+										 VerticalOptions="FillAndExpand"
+										 IsVisible="false">
+								<ContentView.Content>
+									<child:Page_Marshal_Route_List x:Name="vw_Route_Data" />
+
+								</ContentView.Content>
+							</ContentView>
+
+
+
+
+
+							<ContentView x:Name="child_Menu_List"
+										 HorizontalOptions="FillAndExpand"
+										 VerticalOptions="FillAndExpand"
+										 IsVisible="false">
+								<ContentView.Content>
+									<child:Page_Application_Menu_List x:Name="vw_Menu_List" />
+
+								</ContentView.Content>
+							</ContentView>-->
+                <!--</AbsoluteLayout>-->
+                <ImageButton  x:Name="imgBtn_AccountOverlay_Close"
+                              Source="img_circle_close_black.png"
+                              WidthRequest="50"
+                              HeightRequest="50"
+                              Margin="10"
+                              VerticalOptions="Start"
+                              BackgroundColor="Transparent"
+                              HorizontalOptions="Start"
+                              Clicked="imgBtn_AccountOverlay_Close_Clicked" />
+            </Grid>
+        </Frame>
+       
+        <BoxView x:Name="ll_NetConnection"
+                 HorizontalOptions="FillAndExpand"
+                 VerticalOptions="StartAndExpand"
+                 Color="{StaticResource iAppColor_Transparent}"
+                 HeightRequest="5" />
+      
+        <snackAutoHide:SnackBar x:Name="iSnackBar"
+                                BackgroundColor="Transparent"
+                                TextColor="Black"
+                                IsOpen="False"
+                                VerticalOptions="End"
+                                Message="I'm a snack bar... I love showing my self."
+                                ButtonTextColor="Orange"
+                                CloseButtonText=""
+                                Margin="0,0,0,50" />
+        
+        <snackAutoHide:SnackBar_Command_ScanOption x:Name="iSnackBar_ScannerOtion"
+                                                   BackgroundColor="Transparent"
+                                                   TextColor="Black"
+                                                   IsOpen="False"
+                                                   VerticalOptions="End"
+                                                   Message="I'm a snack bar... I love showing my self."
+                                                   ButtonTextColor="Orange"
+                                                   CloseButtonText=""
+                                                   Margin="0,0,0,10"
+                                                   MyString="shaymaa 2023" />
+
+
+
+        <Grid x:Name="grd_Loading"
+            HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          Margin="0"
+          Padding="0"
+          BackgroundColor="#000000">
+
+            <ActivityIndicator x:Name="ll_ProgressBar_Account"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    IsRunning="true"
+                    IsVisible="true"
+                    Color="#FFFFFF" />
+        </Grid>
+
+    </Grid>
+</ContentPage>

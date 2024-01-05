@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:entry="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Entry"
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Login.Page_Forgot_View"
+            xmlns:snackAutoHide="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:sroofingHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Header"
+    xmlns:arrowBack="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Back"
+    xmlns:sroofingFooter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer"
+    xmlns:grid="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Grid"
+			 ios:Page.UseSafeArea="False"
+    NavigationPage.HasNavigationBar="False"
+  Visual="Material" 
+             BackgroundColor="Black">
+
+
+    <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          RowDefinitions="*,50,20,50" >
+
+        <StackLayout  HorizontalOptions="FillAndExpand"    VerticalOptions="FillAndExpand"
+           Spacing="0"
+            Margin="0"
+            Padding="0"
+                      Grid.Row="0">
+
+
+
+ 
+
+            <Frame
+                                HorizontalOptions="FillAndExpand"
+                                HeightRequest="50"
+                               CornerRadius="5"
+								HasShadow="True"
+								BorderColor="{StaticResource iAppColor_SemiOrange}"
+                                Padding="1"
+                                Margin="20, 0,20,0"
+                                BackgroundColor="{StaticResource iAppColor_SemiOrange}"
+                                Grid.Row="3"
+                                Grid.Column="0">
+
+
+                <StackLayout
+                                    Orientation="Horizontal"
+                                    BackgroundColor="{StaticResource iAppColor_White}"
+                                    Padding="10,0,10,0"
+										 Spacing="0"
+										 Margin="0">
+                    <Image
+                                        WidthRequest="25"
+                                        HeightRequest="25"
+                                        Source="img_dating_phone.png" />
+                    <!--BackgroundColor="{StaticResource iAppColor_Transparent}"
+
+                        IsEnabled="False"-->
+                    <entry:UCView_EntryView x:Name="txt_MobileNumber"
+                                        HorizontalOptions="FillAndExpand"
+                                        HeightRequest="50"
+                                        Placeholder="+ Mobile number"
+                                        FontSize="Medium"
+                                        TextColor="{StaticResource iAppColor_OpacityOrange}"
+                                        PlaceholderColor="{StaticResource iAppColor_OpacityOrange}"
+                                        BackgroundColor="Transparent"
+                                        HorizontalTextAlignment="Center"
+                                        Keyboard="Telephone"
+                                        ReturnType="Go"/>
+
+                    <Image
+                                        WidthRequest="25"
+                                        HeightRequest="25" />
+                </StackLayout>
+
+            </Frame>
+
+            <StackLayout   HorizontalOptions="FillAndExpand"  
+                Orientation="Horizontal"
+                Spacing="0"
+            Margin="20,20,20,0"
+            Padding="0">
+
+
+                <Frame    WidthRequest="50"    
+                          HeightRequest="40"
+                 
+								HasShadow="True"
+								BorderColor="{StaticResource iAppColor_SemiOrange}"
+                                Padding="0"
+                                Margin="0,0,10,0"
+                                BackgroundColor="{StaticResource iAppColor_Transparent}" >
+                    <Image HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                        Source="img_dating_password_register.png"  Margin="0"
+         Aspect="AspectFit"
+                       HeightRequest="25"
+                           WidthRequest="25"      />
+                </Frame>
+
+                <Grid HorizontalOptions="FillAndExpand">
+
+                    <Frame
+                                HorizontalOptions="FillAndExpand"
+                                HeightRequest="50"
+                               CornerRadius="5"
+								HasShadow="True"
+								BorderColor="{StaticResource iAppColor_SemiOrange}"
+                                Padding="1"
+                                Margin="0"
+                                BackgroundColor="{StaticResource iAppColor_White}"
+                                Grid.Column="0">
+
+
+                        <StackLayout
+                                    Orientation="Horizontal"
+                                    BackgroundColor="{StaticResource iAppColor_White}"
+                                    Padding="10,0,10,0"
+										 Spacing="0"
+										 Margin="0">
+
+                            <entry:UCView_EntryView x:Name="txt_MobileNumberasdsd"
+                                        HorizontalOptions="FillAndExpand"
+                                        HeightRequest="50"
+                                        Placeholder="Password"
+                                        FontSize="Medium"
+                                        TextColor="{StaticResource iAppColor_OpacityOrange}"
+                                        PlaceholderColor="{StaticResource iAppColor_OpacityOrange}"
+                                        BackgroundColor="Transparent"
+                                        HorizontalTextAlignment="Center"
+                                        Keyboard="Telephone"
+                                        ReturnType="Go"/>
+
+                        </StackLayout>
+
+                    </Frame>
+
+
+
+                </Grid>
+            </StackLayout>
+
+
+            <Grid  HorizontalOptions="FillAndExpand"    Margin="20,20,20,0"
+             ColumnDefinitions="*,10,*">
+             <!--Text="Forgot pass code"--> 
+                <Label VerticalTextAlignment="Center"
+                      HorizontalOptions="Center"
+                      VerticalOptions="Center"  TextDecorations="Underline" 
+                    TextColor="{StaticResource iAppColor_White}"    
+                     
+                      Grid.Column="0">
+                    <Label.FormattedText>
+                    <FormattedString>
+                            <Span Text="Forgot pass code" TextDecorations="Underline" />
+
+
+                        </FormattedString>
+                </Label.FormattedText>
+                </Label>   
+                
+         <Label VerticalTextAlignment="Center" VerticalOptions="Center"  TextDecorations="Underline" 
+                     HorizontalOptions="Center"   TextColor="{StaticResource iAppColor_White}"    
+                      Text="Change pass code"
+                      Grid.Column="2">
+                    <!--<Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="<u></u>">
+                           
+                        </Span>
+                    </FormattedString>
+                </Label.FormattedText>-->
+                </Label>   
+                
+            </Grid>
+          
+       
+
+        </StackLayout>
+
+        <!--Clicked="btn_PageDashboard_Clicked"-->
+ <Button x:Name="btn_Register_Step1"
+								HorizontalOptions="FillAndExpand"
+								HeightRequest="50"
+                      FontAttributes="Bold" 
+                Text="Sign In"
+								
+						TextColor="{StaticResource iAppColor_Black}"
+                    FontSize="Medium"
+                    Margin="20,0,20,0"
+                    CornerRadius="5"
+                    BackgroundColor="{StaticResource iAppColor_LightOrange}"
+                    Grid.Row="1" />
+      
+
+        <Button x:Name="btn_Register_New"
+								HorizontalOptions="FillAndExpand"
+								HeightRequest="50"
+                      FontAttributes="Bold" 
+                Text="Create new account"
+								
+						TextColor="{StaticResource iAppColor_Black}"
+                    FontSize="Medium"
+                    Margin="20,0,20,0"
+                    CornerRadius="5"
+                    BackgroundColor="{StaticResource iAppColor_LightOrange}"
+                    Grid.Row="3" /> 
+
+    </Grid>
+
+</ContentView>

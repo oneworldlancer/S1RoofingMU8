@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage  x:Name="Page_ContactDashboard"
+              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Contact.Page_Contact_List_Dashboard"
+              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+               xmlns:progressbar="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.ProgressBar"
+            xmlns:sroofingHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Header"
+              xmlns:sroofingFooter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer"
+              xmlns:logo="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Logo"
+              xmlns:snackAutoHide="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar"
+              ios:Page.UseSafeArea="False"
+              NavigationPage.HasNavigationBar="False"
+              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+              xmlns:arrowBack="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Back"
+              xmlns:rowContact="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Contact"
+              xmlns:rowHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Header"
+              xmlns:itmp="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowSelector.Contact.List"
+              xmlns:roAlphabet="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Alphabet"
+              xmlns:itmp_Alphabet="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowSelector.Alphabet"
+              xmlns:vwContactList="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_Page.Contact"
+               
+              xmlns:rowNone="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.None"
+              xmlns:progress="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.ProgressBar"
+              Visual="Material"
+              BackgroundColor="{StaticResource iAppColor_Black}"
+              Loaded="Page_ContactDashboard_Loaded">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="itmp_Template_None">
+                <rowNone:Row_None_View />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_InfoTutorial">
+                <!--<rowInfo:Row_Info_History_Contact_View />-->
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Header">
+                <rowHeader:Row_Header_Remote_View     NameLine="{Binding NameLine}"
+                                                      iGroupModel="{Binding .}" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Item">
+                <rowContact:Row_Contact_View     iGroupModel="{Binding .}"
+                                                   iOwnerModel="{Binding _iOwnerModel, Source={x:Reference Page_ContactDashboard}}" />
+            </DataTemplate>
+            <itmp:Contact_ListDataTemplateSelector x:Key="ContactDataTemplateSelector"
+                                                   Template_None="{StaticResource itmp_Template_None}"
+                                                   Template_InfoTutorial="{StaticResource itmp_Template_InfoTutorial}"
+                                                   Template_Header="{StaticResource itmp_Template_Header}"
+                                                   Template_Item="{StaticResource itmp_Template_Item}" />
+            <DataTemplate x:Key="itmp_Template_Alphabet_Disable_Item">
+                <roAlphabet:Row_Alphabet_Disable_View     iOwnerModel="{Binding _iOwnerModel, Source={x:Reference Page_ContactDashboard}}"
+                                                          iKeyValueModel="{Binding .}" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Alphabet_Active_Item">
+                <roAlphabet:Row_Alphabet_Active_View iKeyValueModel="{Binding .}"
+                                                     iOwnerModel="{Binding _iOwnerModel, Source={x:Reference Page_ContactDashboard}}"
+                                                     iParent="{Binding Page_ContactDashboard}" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Alphabet_Select_Item">
+                <roAlphabet:Row_Alphabet_Select_View iKeyValueModel="{Binding .}"
+                                                     iOwnerModel="{Binding _iOwnerModel, Source={x:Reference Page_ContactDashboard}}"
+                                                     iParent="{Binding Page_ContactDashboard}" />
+            </DataTemplate>
+            <itmp_Alphabet:Alphabet_ListDataTemplateSelector x:Key="AlphabetDataTemplateSelector"
+                                                             Template_Disable="{StaticResource itmp_Template_Alphabet_Disable_Item}"
+                                                             Template_Active="{StaticResource itmp_Template_Alphabet_Active_Item}"
+                                                             Template_Select="{StaticResource itmp_Template_Alphabet_Select_Item}" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <!--IsClippedToBounds="True"-->
+    <Grid  HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                    ColumnSpacing="0"
+     RowSpacing="0"
+     Padding="0"
+     Margin="0"
+
+             BackgroundColor="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}"  >
+
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Spacing="0"
+                     Margin="0"
+                     Padding="0"
+                                Orientation="Vertical">
+
+            <!--<sroofingHeader:SRoofing_PageHeader />-->
+
+            <!--<progress:UCView_ProgressBarView x:Name="pb_ProgressBar"
+                                             HorizontalOptions="FillAndExpand" />-->
+            <!--<arrowBack:UCView_Back HorizontalOptions="Start" />-->
+
+            <Grid VerticalOptions="FillAndExpand"
+                  HorizontalOptions="FillAndExpand"
+                  ColumnSpacing="0"
+                  RowSpacing="0"
+                  Padding="0"
+                  Margin="0"
+              IsClippedToBounds="True"
+             >
+
+                <Grid.RowDefinitions>
+                    <!--<RowDefinition Height="60" />-->
+                    <RowDefinition Height="*" />
+                    <!--<RowDefinition Height="10" />
+					<RowDefinition Height="50" />-->
+                    <!--<RowDefinition
+                        Height="10" /> 
+					<RowDefinition
+                        Height="50" />-->
+                    <!--<RowDefinition Height="10" />-->
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="1" />
+                    <ColumnDefinition Width="*"       />
+                    <!--<ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>-->
+                </Grid.ColumnDefinitions>
+
+
+                <StackLayout HorizontalOptions="FillAndExpand"
+                             VerticalOptions="FillAndExpand"
+                             Orientation="Vertical"
+                             Spacing="0"
+                             Margin="0"
+                             Padding="0"
+                             Grid.Row="0"
+                             Grid.Column="0"
+                       
+                            BackgroundColor="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}">
+
+                    <Grid  HorizontalOptions="FillAndExpand"
+                           VerticalOptions="FillAndExpand"
+                        >
+
+                        <CollectionView x:Name="cv_AlphabetList_Initialize"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="Start"
+                                        EmptyView=""
+                                        Margin="0"
+                                        ItemTemplate="{StaticResource  AlphabetDataTemplateSelector}"
+                                        IsVisible="true"></CollectionView>
+
+                        <ScrollView x:Name="scrl_AlphabetList"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    Orientation="Vertical"
+                                    VerticalScrollBarVisibility="Never">
+                            <StackLayout x:Name="sl_AlphabetList"
+                                         HorizontalOptions="FillAndExpand"
+                                         VerticalOptions="FillAndExpand"
+                                         Orientation="Vertical"
+                                         Spacing="0"
+                                         Margin="0"
+                                         Padding="0"></StackLayout>
+                        </ScrollView>
+
+                    </Grid>
+
+                </StackLayout>
+
+                <BoxView WidthRequest="1"
+                         Margin="0"
+                         Color="{StaticResource iAppColor_Silver}"
+                         Opacity=".5"
+                         Grid.Column="1" />
+                <!--Orientation="Vertical"-->
+                <Frame HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand"
+                       CornerRadius="0"
+                    BorderColor="Transparent"
+                       BackgroundColor="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}"
+                       HasShadow="False"
+                       Margin="0"
+                       Padding="0"
+                       Grid.Column="2">
+                    <!--	 Refreshing="refresh_ContactList_Refreshing"<vwContactList:Page_Contact_List x:Name="vw_ContactList"  />-->
+                    <RefreshView x:Name="refresh_ContactList"
+                                 HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="FillAndExpand"
+                                 RefreshColor="{StaticResource iAppColor_LightOrange}"
+                                 Command="{Binding RefreshCommand}">
+                        <!--		ItemsSource="{Binding arr_UserMarshalList}"	ItemsSource="{Binding Employees}"    SelectionChanged="OnCollectionViewSelectionChanged" 
+								  ItemTemplate="{StaticResource ContactDataTemplateSelector}"-->
+                        <StackLayout HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="StartAndExpand"
+                                     Orientation="Vertical"
+                                     Spacing="0"
+                         BackgroundColor="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}"      
+                                     Margin="0"
+                                     Padding="0">
+                            <!--<rowInfo:Row_Info_History_Contact_View />-->
+                            <!---->
+
+                            <CollectionView x:Name="cv_UserContactList"
+                                            SelectionMode="Single"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand"
+                                            EmptyView=""
+                                            Margin="0"
+                                          SelectionChanged="cv_UserContactList_SelectionChanged"  
+                                            ItemTemplate="{StaticResource ContactDataTemplateSelector}"></CollectionView>
+                        </StackLayout>
+                    </RefreshView>
+                </Frame>
+
+
+            </Grid>
+
+
+            <Button x:Name="btn_Close_Window"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="End"
+                    HeightRequest="50"
+                    FontAttributes="Bold"
+                    CornerRadius="0"
+                    Padding="0"
+                 
+                    BackgroundColor="{StaticResource iAppColor_Black}"
+                    TextColor="{StaticResource iAppColor_White}"
+                    Clicked="imgBtn_BackPage_Clicked"></Button>
+
+            <sroofingFooter:SRoofing_PageFooter />
+
+        </StackLayout>
+
+
+
+        <ActivityIndicator x:Name="pb_ProgressBar"
+            WidthRequest="50"
+                           HeightRequest="50"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Margin="50"
+                         Color="#ffffff"
+                           IsRunning="true"
+                           FlowDirection="LeftToRight"
+                           IsVisible="false"/>
+
+
+
+        <progressbar:UCView_ProgressBarView
+   x:Name="ll_ProgressBar"
+                   HorizontalOptions="FillAndExpand"
+   VerticalOptions="Start"
+                    
+HeightRequest="5" 
+            IsVisible="true"/>
+
+
+        <snackAutoHide:SnackBar x:Name="iSnackBar"
+                                BackgroundColor="Transparent"
+                                TextColor="Black"
+                                IsOpen="False"
+                                VerticalOptions="End"
+                                Message="I'm a snack bar... I love showing my self."
+                                ButtonTextColor="Orange"
+                                CloseButtonText=""
+                                Margin="0,0,0,50" />
+
+
+
+        <Grid x:Name="grd_Loading"
+            HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          Margin="0"
+          Padding="0"
+          BackgroundColor="#000000"
+          IsVisible="true">
+
+            <ActivityIndicator x:Name="ll_ProgressBar_Account"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    IsRunning="true"
+                    IsVisible="true"
+                    Color="#FFFFFF" />
+        </Grid>
+
+
+
+    </Grid>
+
+</ContentPage>

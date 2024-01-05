@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView  x:Name="cv_Chat_ChattersPickerList"
+            xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Picker.Chatter.View_Chat_Chatters_Picker_List"
+             xmlns:userfilter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Picker.ChatterFilter"
+             >
+
+
+    <StackLayout HorizontalOptions="FillAndExpand"
+               VerticalOptions="FillAndExpand"
+               Spacing="0"
+               Margin="0"
+       
+               Orientation="Vertical">
+
+        <!--<Label 
+       Text="Welcome to .NET MAUI!"
+     
+            TextColor="Red"/>-->
+        
+        <!--BackgroundColor="{StaticResource iAppColor_SemiGray}"-->   <Grid	HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand"
+              Margin="0"
+              Padding="0"
+           >
+
+          <RefreshView x:Name="refresh_ChatList"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand"
+                       RefreshColor="{StaticResource iAppColor_LightOrange}"
+                       Command="{Binding RefreshCommand}">
+
+              <StackLayout HorizontalOptions="FillAndExpand"
+                           VerticalOptions="StartAndExpand"
+                           Orientation="Vertical"
+                           Spacing="0"
+                           Margin="0"
+                           Padding="0">
+
+                  <!--<Frame  x:Name="frm_New_Chatter"
+                          BackgroundColor="{StaticResource iAppColor_Opacity_White}"
+                          CornerRadius="5"
+                          Padding="0"
+                                  BorderColor="Transparent"    Margin="20">
+
+                      <Grid HorizontalOptions="FillAndExpand"
+                            Margin="0"
+                            Padding="0">
+                          <Image x:Name="img_Register"
+                                 Source="img_circle_new_black.png"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Start"
+                                 WidthRequest="30"
+                                 HeightRequest="30"
+                                 Margin="20,0,0,0" />
+
+                             --><!--Clicked="btn_New_Chatter_Clicked"--><!--
+                          <Button x:Name="btn_New_Chatter"
+                                  HorizontalOptions="FillAndExpand"
+                                  VerticalOptions="FillAndExpand"
+                                  HeightRequest="65"
+                  
+                                  FontAttributes="Bold"
+                                  Padding="5"
+                                  Text="Create New Group"
+                                  BackgroundColor="{StaticResource iAppColor_Transparent}"
+                                  TextColor="{StaticResource iAppColor_Black}"
+                          >
+
+                          </Button>
+
+                      </Grid>
+                  </Frame>-->
+
+                  <ScrollView
+     HorizontalOptions="FillAndExpand"
+     VerticalOptions="StartAndExpand"
+     Margin="0"
+     Padding="0"
+     Orientation="Vertical"
+     VerticalScrollBarVisibility="Never">
+
+
+
+                      <CollectionView x:Name="cv_UserChatPickerList"
+                                  SelectionMode="None"
+                                  HorizontalOptions="FillAndExpand"
+                                  VerticalOptions="StartAndExpand"
+                                  EmptyView=""
+                                  Margin="0">
+
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <userfilter:Row_Chatter_Private_IsNewMessage_FALSE_View  HorizontalOptions="FillAndExpand"
+                                                                  VerticalOptions="FillAndExpand"
+                                                                  iOwnerModel="{Binding _iOwnerModel, Source={x:Reference cv_Chat_ChattersPickerList}}"
+                                                                  iGroupModel="{Binding .}" />
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+
+                  </ScrollView>
+
+
+
+              </StackLayout>
+
+          </RefreshView>
+
+          <ActivityIndicator x:Name="ll_ProgressBar"
+                             WidthRequest="50"
+                             HeightRequest="50"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center"
+                             IsRunning="true"
+                             IsVisible="false"
+                             Color="#FFFFFF" />
+          
+            <!--<snack:SnackBar_Command_ConfirmOption x:Name="iSnackBar_ConfirmOption"
+                                        BackgroundColor="Transparent"
+                                        TextColor="Black"
+                                        IsOpen="True"
+                                        VerticalOptions="EndAndExpand"
+                                        Message="I'm a snack bar... I love showing my self."
+                                        ButtonTextColor="Orange"
+                                        CloseButtonText=""
+                                        Margin="0,0,0,0" />-->
+        </Grid>
+
+     </StackLayout>
+
+
+
+    <!--<VerticalStackLayout>
+        <Label 
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+    </VerticalStackLayout>-->
+</ContentView>

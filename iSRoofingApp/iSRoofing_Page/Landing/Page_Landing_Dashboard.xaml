@@ -1,0 +1,356 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage  x:Name="page_LandingDashboard"
+          xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+               xmlns:progressbar="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.ProgressBar"
+           xmlns:sroofingHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Header"
+              xmlns:sroofingFooter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer"
+             xmlns:arrowBack="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Back"
+            xmlns:logo="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Logo"
+             xmlns:snackAutoHide="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar"
+             ios:Page.UseSafeArea="False"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing.Page_Landing_Dashboard"
+              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:listHistory="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing"
+              
+              
+             BackgroundColor="{StaticResource iAppColor_Black}"
+             Visual="Material"
+              Loaded="page_LandingDashboard_Loaded">
+    <!--BackgroundColor=""-->
+    <StackLayout HorizontalOptions="FillAndExpand"
+                 Spacing="0"
+                 Margin="0"
+                 Padding="0"
+                 VerticalOptions="FillAndExpand"
+                 BackgroundColor="{StaticResource iAppColor_Black}"
+                 Orientation="Vertical">
+        <sroofingHeader:SRoofing_PageHeader />
+        <Grid HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand"
+              BackgroundColor="{StaticResource iAppColor_SemiGray}"
+              IsVisible="true">
+            <!--BackgroundColor="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}"-->
+            <StackLayout HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                Spacing="0"
+                         Margin="0"
+                         Padding="0,0,0,0"
+                         Orientation="Vertical"
+                         BackgroundColor="{StaticResource iAppColor_Black}">
+                <Grid 
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Start"
+                      HeightRequest="100">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackLayout HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="CenterAndExpand"
+                                 Orientation="Horizontal"
+                                 Grid.Column="0">
+                        <Image Source="logo_circle.png"
+                               WidthRequest="30"
+                               HeightRequest="30"
+                               Margin="10,20,0,10"
+                               VerticalOptions="Center" />
+                        <Label Text="S1Roofing"
+                               FontAttributes="Bold"
+                               FontSize="Large"
+                               VerticalOptions="FillAndExpand"
+                               VerticalTextAlignment="Center"
+                               TextColor="{StaticResource iAppColor_System_Text_TitleColor_Primary}" />
+                    </StackLayout>
+                    <!--Padding="40"-->
+                    <StackLayout HorizontalOptions="End"
+                                 VerticalOptions="Center"
+                                 Margin="0"
+                                 Grid.Column="1">
+                        <Frame CornerRadius="25"
+                               HeightRequest="50"
+                               WidthRequest="50"
+                               HorizontalOptions="Center"
+                               Margin="0,20,10,0"
+                               Padding="0"
+                               IsClippedToBounds="True">
+                            <!--  BackgroundColor="{StaticResource iAppColor_System_Text_TitleColor_Primary}"
+						 -->
+                            <Frame x:Name="frm_Avatar"
+                                   CornerRadius="25"
+                                   HeightRequest="50"
+                                   WidthRequest="50"
+                                   HorizontalOptions="Center"
+                                   BorderColor="{StaticResource iAppColor_LightOrange}"
+                                   BackgroundColor="Black"
+                                   Padding="0"
+                                   IsClippedToBounds="True"
+                               >
+
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="frm_Avatar_Tapped"
+                                                          NumberOfTapsRequired="1" />
+                                </Frame.GestureRecognizers>
+
+
+                                <!--xct:TouchEffect.LongPressCommand="{Binding LongPressCommand}"
+       xct:TouchEffect.LongPressDuration="2000"-->
+                                <Grid>
+                                    <Image x:Name="img_Avatar"
+                                                HorizontalOptions="FillAndExpand"
+                                                VerticalOptions="FillAndExpand"       >
+                                        <!--<Image.Transformations>
+                                            <fftransformations:CircleTransformation />
+                                        </Image.Transformations>-->
+                                    </Image>
+                                    <Label  x:Name="lbl_Avatar"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                            HeightRequest="50"
+                                            TextColor="{StaticResource iAppColor_White}"
+                                            HorizontalTextAlignment="Center"
+                                            VerticalTextAlignment="Center"
+                                            BackgroundColor="{StaticResource iAppColor_Transparent}"
+                                            FontSize="Medium"
+                                            Margin="0"
+                                            WidthRequest="50"
+                                          />
+                                </Grid>
+                                <!--xct:TouchEffect.LongPressCommand="{Binding Source={x:Reference Page_LandingDashboard}, Path=BindingContext.cmd_OpenAccountDashboard}"
+                                            xct:TouchEffect.LongPressDuration="2000"-->
+                                <!--xct:TouchEffect.LongPressCommand="{Binding cmd_OpenAccountDashboard}"-->
+                                <!---->
+                                <!--<Label.GestureRecognizers>
+                                        
+                                        <TapGestureRecognizer Tapped="imgAvatar_ClickGestureRecognizer_Clicked"/>
+                                    </Label.GestureRecognizers>	-->
+                                <!--</Label>-->
+                                <!--<Image  x:Name="imgAvatar"  Source="me.jpg"
+								   HorizontalOptions="CenterAndExpand"
+								   VerticalOptions="CenterAndExpand"
+								   HeightRequest="50"
+								   BackgroundColor="{StaticResource iAppColor_Transparent}"
+							    Margin="0"
+								   WidthRequest="50" 
+                                     >
+                                    <Image.GestureRecognizers>
+                                        <xct:TouchEffect LongPressCommand="{Binding LongPressCommand}" LongPressDuration="2000"/>
+                                    </Image.GestureRecognizers>
+
+                                </Image>-->
+                            </Frame>
+                        </Frame>
+                    </StackLayout>
+                    <!--<Frame 
+					
+						HorizontalOptions="End"
+						VerticalOptions="Center"
+						HeightRequest="60"
+						WidthRequest="60"
+						CornerRadius="100"
+						IsClippedToBounds="True"
+						BackgroundColor="{StaticResource iAppColor_System_Text_TitleColor_Primary}">
+							-->
+                    <!--	logo_circle.png	Margin="10,0,10,0"   -->
+                    <!--
+					<Image Source="logo_circle.png"
+						     Aspect="AspectFit"
+						   HeightRequest="60"
+						   WidthRequest="60"
+						   VerticalOptions="CenterAndExpand"
+						 
+						   HorizontalOptions="CenterAndExpand" />
+				</Frame>-->
+                </Grid>
+
+                <StackLayout HorizontalOptions="FillAndExpand"
+                           VerticalOptions="Start"
+                             Orientation="Vertical"
+                             Spacing="0"
+                             Margin="0"
+                             Padding="0">
+                    <StackLayout HorizontalOptions="FillAndExpand"
+                                 Orientation="Vertical"
+                                 Spacing="0"
+                                 Margin="0"
+                                 Padding="0">
+                        <Grid  HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand"
+                               HeightRequest="60"
+                               ColumnDefinitions="*,1,*">
+                            <!--     Text="{Binding iLng_Chats}"-->
+                            <Label   x:Name="lbl_TabChat"
+                                     HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="FillAndExpand"
+                                     FontSize="Header"
+                                     TextColor="{StaticResource iAppColor_White}"
+                                     FontAttributes="Bold"
+                                     HorizontalTextAlignment="Center"
+                                     VerticalTextAlignment="Center"
+                                       Text="CHATS" 
+                                     Grid.Row="0"   Grid.Column="0">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer	Tapped="lbl_TabChat_Tapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <Label HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand"
+                                   FontSize="Header"
+                                   TextColor="{StaticResource iAppColor_White}"
+                                   FontAttributes="Bold"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"
+                                   Text="|"
+                                 Grid.Row="0"      Grid.Column="1"></Label>
+                            <Label  x:Name="lbl_TabCall"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    FontSize="Header"
+                                    TextColor="{StaticResource iAppColor_White}"
+                                    FontAttributes="Bold"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"
+                                    Text="CALLS"
+                                   Grid.Row="0"     Grid.Column="2">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer	Tapped="lbl_TabCall_Tapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout HorizontalOptions="FillAndExpand"
+                              VerticalOptions="StartAndExpand"
+                                 Orientation="Vertical"
+                                 HeightRequest="3"
+                                 Spacing="0"
+                                 Margin="0"
+                                 Padding="0" >
+
+                        <Grid  HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand"
+                               HeightRequest="3"
+                               ColumnDefinitions="*,1,*" >
+                            <!--     BackgroundColor="#ff0000" -->
+                            <BoxView   x:Name="ll_TabChat"
+                                       HorizontalOptions="FillAndExpand"
+                                       HeightRequest="3"
+                              Color="{StaticResource iAppColor_System_Text_TitleColor_Primary}"
+                                       Margin="0"
+                                       Grid.Row="0"    Grid.Column="0" 
+                                       IsVisible="true" />
+
+                            <BoxView     x:Name="ll_TabCall"
+                                         HorizontalOptions="FillAndExpand"
+                                       HeightRequest="3"
+                                 Color="{StaticResource iAppColor_System_Text_TitleColor_Primary}"
+                                         Margin="0"
+                                     Grid.Row="0"        Grid.Column="2"
+                                         IsVisible="false" />
+                        </Grid>
+                    </StackLayout>
+                </StackLayout>
+
+                <!-- <AbsoluteLayout	HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Margin="0"
+                                      Padding="0"
+                                BackgroundColor="{StaticResource iAppColor_SemiGray}">
+
+                  <ScrollView 	HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Margin="0"     
+                                    Padding="0"                                                                                         AbsoluteLayout.LayoutBounds="0,0,1,1"
+AbsoluteLayout.LayoutFlags="All"   
+                                        >-->
+
+                         <Grid HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                           ColumnSpacing="0"
+                            RowSpacing="0"  Margin="0"     
+                                    Padding="0"      
+                               BackgroundColor="{StaticResource iAppColor_SemiGray}" >
+
+                            <listHistory:Page_Landing_Chat_List x:Name="vw_ChatHistoryList"
+                                                        HorizontalOptions="FillAndExpand"
+                                                                                         AbsoluteLayout.LayoutBounds="0,0,1,1"
+AbsoluteLayout.LayoutFlags="All"   
+                                                        VerticalOptions="FillAndExpand"
+                                                  IsVisible="true" />
+                            <listHistory:Page_Landing_Call_List  x:Name="vw_CallHistoryList"
+                                                         HorizontalOptions="FillAndExpand"
+                                                         VerticalOptions="FillAndExpand"
+                                                       AbsoluteLayout.LayoutBounds="0,0,1,1"
+             AbsoluteLayout.LayoutFlags="All"    IsVisible="false" />
+                    
+                    </Grid>
+
+
+                   <!-- </ScrollView>
+
+                </AbsoluteLayout>-->
+
+            </StackLayout>
+
+            <StackLayout HorizontalOptions="End"
+                         VerticalOptions="End"
+                         Orientation="Vertical">
+                <ImageButton x:Name="imgBtn_CategoryList"
+                             Source="img_circle_category.png"
+                             WidthRequest="50"
+                             HeightRequest="50"
+                             Margin="0,0,10,20"
+                             VerticalOptions="Center"
+                             BackgroundColor="Transparent"
+                             IsVisible="false"
+                             Clicked="imgBtn_CategoryList_Clicked" />
+                <ImageButton  x:Name="imgBtn_ContactList"
+                              Source="img_circle_new_black.png"
+                              WidthRequest="50"
+                              HeightRequest="50"
+                              Margin="0,0,10,20"
+                              VerticalOptions="Center"
+                              BackgroundColor="Transparent"
+                              Clicked="imgBtn_ContactList_Clicked" />
+            </StackLayout>
+
+            <BoxView x:Name="ll_NetConnection"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="StartAndExpand"
+                     Color="{StaticResource iAppColor_Black}"
+                     HeightRequest="5" />
+
+            <progressbar:UCView_ProgressBarView
+   x:Name="ll_ProgressBar"
+                   HorizontalOptions="FillAndExpand"
+   VerticalOptions="Start"
+                    
+HeightRequest="5" 
+                 IsVisible="true"/>
+
+
+            <snackAutoHide:SnackBar x:Name="iSnackBar"
+                                    BackgroundColor="Transparent"
+                                    TextColor="Black"
+                                    IsOpen="False"
+                                    VerticalOptions="End"
+                                    Message="I'm a snack bar... I love showing my self."
+                                    ButtonTextColor="Orange"
+                                    CloseButtonText=""
+                                    Margin="0,0,0,50" />
+
+            <!--<ActivityIndicator x:Name="ll_ProgressBar"
+                               WidthRequest="50"
+                               HeightRequest="50"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               IsRunning="true"
+                               IsVisible="false"
+                               Color="White" />-->
+        </Grid>
+        <sroofingFooter:SRoofing_PageFooter />
+    </StackLayout>
+    <!--</ContentPage.Content>-->
+</ContentPage>

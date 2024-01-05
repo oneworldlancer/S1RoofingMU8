@@ -1,0 +1,662 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:entry="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Entry"
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Account.Page_Account_Chat"
+             xmlns:snackAutoHide="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:sroofingHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Header"
+             xmlns:arrowBack="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Back"
+             xmlns:sroofingFooter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer"
+             xmlns:grid="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Grid"
+             xmlns:gallery="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Gallery.ChatBackground"
+              
+             ios:Page.UseSafeArea="False"
+             NavigationPage.HasNavigationBar="False"
+             Visual="Material"
+             BackgroundColor="Black"
+             HorizontalOptions="FillAndExpand"
+             VerticalOptions="FillAndExpand">
+    <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand">
+
+        <Grid HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand"
+              RowDefinitions="*,50">
+            <StackLayout  HorizontalOptions="FillAndExpand"
+                          VerticalOptions="FillAndExpand"
+                          Spacing="0"
+                          Margin="0,0,0,50"
+                          Padding="0"
+                          Grid.Row="0">
+                <Label x:Name="lbl_Title"
+                       HorizontalOptions="Center"
+                       HeightRequest="50"
+                       VerticalOptions="Center"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"
+                       Text="lbl_Title"
+                       FontSize="Medium"
+                       BackgroundColor="Transparent"
+                       TextColor="{StaticResource iAppColor_Silver}" />
+                <Label x:Name="lbl_Title_Chat_SortBy"
+                       VerticalOptions="Center"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Start"
+                       Text="lbl_Title_Chat_SortBy"
+                       BackgroundColor="Transparent"
+                       Margin="20,20,20,10"
+                       TextColor="{StaticResource iAppColor_White}" />
+
+                <Frame          x:Name="frm_CountryNamexx"
+                                HorizontalOptions="FillAndExpand"
+                                                            CornerRadius="5"
+                                HasShadow="True"
+                                BorderColor="{StaticResource iAppColor_SemiOrange}"
+                                Padding="1"
+                                Margin="20,0,20,0"
+                                BackgroundColor="{StaticResource iAppColor_White}">
+
+                    <StackLayout  x:Name="sl_CountryNamesxs"
+                                  Orientation="Vertical"
+                                  BackgroundColor="{StaticResource iAppColor_White}"
+                                  Spacing="0"
+                                  Margin="0"
+                                  Padding="0,10,0,10">
+
+                        <StackLayout  x:Name="sl_Chat_SortByRecent"
+                                      Orientation="Horizontal"
+                                      BackgroundColor="{StaticResource iAppColor_White}"
+                                      HorizontalOptions="FillAndExpand"
+                                      Spacing="0"
+                                      Margin="0"
+                                      Padding="10,10,0,0">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="sl_Chat_SortByRecent_Tapped" />
+                            </StackLayout.GestureRecognizers>
+                            <Grid           HorizontalOptions="FillAndExpand"
+                                            ColumnDefinitions="*,50">
+                                <Label x:Name="lbl_SortByRecent"
+                                       HorizontalOptions="FillAndExpand"
+                                       HeightRequest="50"
+                                       VerticalOptions="Center"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalTextAlignment="Start"
+                                       Text="By recent"
+                                       FontSize="Medium"
+                                       BackgroundColor="Transparent"
+                                     Margin="10,0,0,0"    TextColor="{StaticResource iAppColor_SemiGray}"
+                                       Grid.Column="0">
+                                    <!--<Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                                Tapped="lblCountryList_Clicked" />
+                        </Label.GestureRecognizers>-->
+                                </Label>
+                                <RadioButton x:Name="rdio_ByRecent"
+                                             HorizontalOptions="End"
+                                             GroupName="SortBy"
+                                             IsChecked="True"
+                                             Grid.Column="1"
+                                             CheckedChanged="rdio_ByRecent_CheckedChanged" />
+                            </Grid>
+                        </StackLayout>
+
+                        <StackLayout  x:Name="sl_Chat_SortByName"
+                                      Orientation="Horizontal"
+                                      BackgroundColor="{StaticResource iAppColor_White}"
+                                      HorizontalOptions="FillAndExpand"
+                                      Spacing="0"
+                                      Margin="0"
+                                      Padding="10,10,0,10">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="sl_Chat_SortByName_Tapped" />
+                            </StackLayout.GestureRecognizers>
+                            <Grid           HorizontalOptions="FillAndExpand"
+                                            ColumnDefinitions="*,50">
+                                <Label x:Name="lbl_SortByName"
+                                       HorizontalOptions="FillAndExpand"
+                                       HeightRequest="50"
+                                       VerticalOptions="Center"
+                                     Margin="10,0,0,0"    VerticalTextAlignment="Center"
+                                       HorizontalTextAlignment="Start"
+                                       Text="By Name"
+                                       FontSize="Medium"
+                                       BackgroundColor="Transparent"
+                                       TextColor="{StaticResource iAppColor_SemiGray}"
+                                       Grid.Column="0">
+                                    <!--<Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                                Tapped="lblCountryList_Clicked" />
+                        </Label.GestureRecognizers>-->
+                                </Label>
+                                <RadioButton  x:Name="rdio_ByName"
+                                              HorizontalOptions="End"
+                                              GroupName="SortBy"
+                                              Grid.Column="1"
+                                              CheckedChanged="rdio_ByName_CheckedChanged" />
+                            </Grid>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <Label x:Name="lbl_Title_Chat_History"
+                       VerticalOptions="Center"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Start"
+                       Text="lbl_Title_Chat_History"
+                       BackgroundColor="Transparent"
+                       Margin="20,20,20,10"
+                       TextColor="{StaticResource iAppColor_White}" />
+                <Frame          x:Name="frm_ChatHsitory"
+                                HorizontalOptions="FillAndExpand"
+                                CornerRadius="5"
+                                HasShadow="True"
+                                BorderColor="{StaticResource iAppColor_SemiOrange}"
+                                Padding="1"
+                                Margin="20,0,20,0"
+                                BackgroundColor="{StaticResource iAppColor_White}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="frm_ChatHsitory_Tapped" />
+                    </Frame.GestureRecognizers>
+                    <StackLayout  x:Name="sl_CountryName"
+                                  Orientation="Horizontal"
+                                  BackgroundColor="{StaticResource iAppColor_White}"
+                                  HorizontalOptions="FillAndExpand"
+                                  Spacing="0"
+                                  Margin="0"
+                                  Padding="10,0,10,0">
+                        <Grid           HorizontalOptions="FillAndExpand"
+                                        ColumnDefinitions="*,60">
+                            <Label x:Name="lbl_Chat_SaveHistory"
+                                   HorizontalOptions="FillAndExpand"
+                                   HeightRequest="50"
+                                   VerticalOptions="Center"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Start"
+                                   Text="Save chat messages history"
+                                   FontSize="Medium"
+                                   BackgroundColor="Transparent"
+                                   TextColor="{StaticResource iAppColor_SemiGray}"
+                                   Grid.Column="0"        Padding="10,0,0,0">
+                                <!--<Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                                Tapped="lblCountryList_Clicked" />
+                        </Label.GestureRecognizers>-->
+                            </Label>
+                            <Switch  x:Name="swtch_SaveHistoryIsEnable"
+                                     WidthRequest="50"
+                                     HeightRequest="50"
+                                     Grid.Column="1"
+                                     Toggled="swtch_SaveHistoryIsEnable_Toggled" />
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+                <Label x:Name="lbl_Title_Chat_BackgroundImage"
+                       VerticalOptions="Center"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Start"
+                       Text="lbl_Title_Chat_BackgroundImage"
+                       BackgroundColor="Transparent"
+                       Margin="20,20,20,10"
+                       TextColor="{StaticResource iAppColor_White}" />
+                <Frame          x:Name="frm_CountryNameaa"
+                                HorizontalOptions="FillAndExpand"
+                                CornerRadius="5"
+                                HasShadow="True"
+                                BorderColor="{StaticResource iAppColor_SemiOrange}"
+                                Padding="1"
+                                Margin="20,0,20,0"
+                                BackgroundColor="{StaticResource iAppColor_White}"
+                                Grid.Row="1"
+                                Grid.Column="0">
+                    <StackLayout  x:Name="sl_CountryNamesfdfds"
+                                  Orientation="Vertical"
+                                  HorizontalOptions="FillAndExpand"
+                                  BackgroundColor="{StaticResource iAppColor_White}"
+                                  Spacing="0"
+                                  Margin="0"
+                                  Padding="0">
+                        <StackLayout  x:Name="sl_CountryNamess"
+                                      HorizontalOptions="FillAndExpand"
+                                      Orientation="Horizontal"
+                                      BackgroundColor="{StaticResource iAppColor_White}"
+                                      Spacing="0"
+                                      Margin="0"
+                                      Padding="10,0,10,0">
+                            <Image WidthRequest="25"
+                                   HeightRequest="25"
+                                   Margin="10,0,0,0"
+                                   Source="img_link_orange.png" />
+                            <Entry x:Name="txt_Chat_BackgroungImageURL"
+                                   HorizontalOptions="FillAndExpand"
+                                   Margin="10,0,0,0"
+                                   VerticalOptions="Start"
+                                   Placeholder="http://"
+                                   Keyboard="Url"
+                                   FontSize="Medium"
+                                   BackgroundColor="Transparent"
+                                   TextColor="{StaticResource iAppColor_SemiGray}">
+                                <!--Tapped="lblCountryList_Clicked"-->
+                                <!--<Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="lblCountryList_Clicked" />
+                        </Label.GestureRecognizers>-->
+                            </Entry>
+                            <!--<BoxView WidthRequest="1"
+                                    VerticalOptions="FillAndExpand" Color="Silver"
+                                     Margin="3"/>-->
+                            <ImageButton x:Name="imgBtn_Chat_BackgroundImageURL"
+                                     WidthRequest="45"
+                                     HeightRequest="45"
+                                     BackgroundColor="Transparent"
+                                     HorizontalOptions="End"
+                                     VerticalOptions="Start"
+                                     Margin="0"
+                                         Source="img_menu_orange.png"
+                                     Clicked="imgBtn_Chat_BackgroundImageURL_Clicked" />
+                        </StackLayout>
+
+                        <ImageButton x:Name="img_Thum"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    VerticalOptions="FillAndExpand"
+                                                    BackgroundColor="Transparent"
+                                                    HeightRequest="150"
+                                                    Aspect="AspectFill"    
+                                     Clicked="imgBtn_Chat_BackgroundImageURL_Clicked" ></ImageButton>
+                        <!--<Grid   HorizontalOptions="FillAndExpand"
+                            ColumnDefinitions="*,*"
+                           >
+                        <Frame HorizontalOptions="FillAndExpand"
+                               HeightRequest="50"
+                               BorderColor="{StaticResource iAppColor_WhiteSmoke}"
+                               Padding="1"
+                               Margin="0"
+                               BackgroundColor="{StaticResource iAppColor_WhiteSmoke}"
+                               Grid.Column="0">
+                            <StackLayout Orientation="Horizontal"
+                                         Padding="10,0,10,0">
+                                -->
+                        <!--Clicked="btnCountryList_Clicked"-->
+                        <!--
+                                <Label x:Name="btn_Popup_CANCEL"
+                                       HorizontalOptions="FillAndExpand"
+                                       HeightRequest="50"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"
+                                       Text="Remove"
+                                       FontAttributes="Bold"
+                                       FontSize="Medium"
+                                       BackgroundColor="Transparent"
+                                       TextColor="{StaticResource iAppColor_SemiGray}">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="btn_Popup_CANCEL_Tapped" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </StackLayout>
+                        </Frame>
+                        <Frame HorizontalOptions="FillAndExpand"
+                               HeightRequest="50"
+                               BorderColor="{StaticResource iAppColor_Black}"
+                               Padding="1"
+                               Margin="0"
+                               BackgroundColor="{StaticResource iAppColor_Black}"
+                               Grid.Column="1">
+                            <StackLayout Orientation="Horizontal"
+                                         Padding="10,0,10,0">
+                                <Label x:Name="btn_Popup_OK"
+                                       HorizontalOptions="FillAndExpand"
+                                       HeightRequest="50"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"
+                                       Text="SUBMIT"
+                                       FontAttributes="Bold"
+                                       FontSize="Medium"
+                                       BackgroundColor="Transparent"
+                                       TextColor="{StaticResource iAppColor_White}">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="btn_Popup_OK_Tapped" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>-->
+                    </StackLayout>
+                </Frame>
+                <Label x:Name="lbl_Title_Chat_Media"
+                       VerticalOptions="Center"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Start"
+                       Text="lbl_Title_Chat_Media"
+                       BackgroundColor="Transparent"
+                       Margin="20,20,20,10"
+                       TextColor="{StaticResource iAppColor_White}" />
+
+                <Frame          x:Name="frm_MediaImage"
+                                HorizontalOptions="FillAndExpand"
+                                CornerRadius="5"
+                                HasShadow="True"
+                                BorderColor="{StaticResource iAppColor_SemiOrange}"
+                                Padding="1"
+                                Margin="20,0,20,0"
+                                BackgroundColor="{StaticResource iAppColor_White}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="frm_MediaImage_Tapped" />
+                    </Frame.GestureRecognizers>
+
+                    <StackLayout  x:Name="sl_CountryName22"
+                                  Orientation="Horizontal"
+                                  BackgroundColor="{StaticResource iAppColor_White}"
+                                  HorizontalOptions="FillAndExpand"
+                                  Spacing="0"
+                                  Margin="0"
+                                  Padding="10,0,10,0">
+                        <Grid           HorizontalOptions="FillAndExpand"
+                                        ColumnDefinitions="*,60">
+                            <Label x:Name="lbl_Download_Image"
+                                   HorizontalOptions="FillAndExpand"
+                                   HeightRequest="50"
+                                   VerticalOptions="Center"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Start"
+                                   Text="Auto download photos"
+                                   FontSize="Medium"
+                                   BackgroundColor="Transparent"
+                                   TextColor="{StaticResource iAppColor_SemiGray}"
+                                   Grid.Column="0"   
+                                   Padding="10,0,0,0">
+                                <!--<Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                                Tapped="lblCountryList_Clicked" />
+                        </Label.GestureRecognizers>-->
+                            </Label>
+                            <Switch  x:Name="swtch_DownloadImage"
+                                     WidthRequest="50"
+                                     HeightRequest="50"
+                                     Grid.Column="1"
+                                     Toggled="swtch_DownloadImage_Toggled" />
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+                <Frame          x:Name="frm_MediaVideo"
+                                HorizontalOptions="FillAndExpand"
+                                CornerRadius="5"
+                                HasShadow="True"
+                                BorderColor="{StaticResource iAppColor_SemiOrange}"
+                                Padding="1"
+                                Margin="20,20,20,0"
+                                BackgroundColor="{StaticResource iAppColor_White}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="frm_MediaVideo_Tapped" />
+                    </Frame.GestureRecognizers>
+                    <StackLayout  x:Name="sl_CountryName33sds"
+                                  Orientation="Horizontal"
+                                  BackgroundColor="{StaticResource iAppColor_White}"
+                                  HorizontalOptions="FillAndExpand"
+                                  Spacing="0"
+                                  Margin="0"
+                                  Padding="10,0,10,0">
+                        <Grid           HorizontalOptions="FillAndExpand"
+                                        ColumnDefinitions="*,60">
+                            <Label x:Name="lbl_Download_Video"
+                                   HorizontalOptions="FillAndExpand"
+                                   HeightRequest="50"
+                                   VerticalOptions="Center"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Start"
+                                   Text="Auto download videos"
+                                   FontSize="Medium"
+                                   BackgroundColor="Transparent"
+                                   TextColor="{StaticResource iAppColor_SemiGray}"
+                                   Grid.Column="0"        Padding="10,0,0,0">
+                                <!--<Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                                Tapped="lblCountryList_Clicked" />
+                        </Label.GestureRecognizers>-->
+                            </Label>
+                            <Switch  x:Name="swtch_DownloadVideo"
+                                     WidthRequest="50"
+                                     HeightRequest="50"
+                                     Grid.Column="1"
+                                     Toggled="swtch_DownloadVideo_Toggled" />
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+                <Frame          x:Name="frm_MediaDocument"
+                                HorizontalOptions="FillAndExpand"
+                                CornerRadius="5"
+                                HasShadow="True"
+                                BorderColor="{StaticResource iAppColor_SemiOrange}"
+                                Padding="1"
+                                Margin="20,20,20,0"
+                                BackgroundColor="{StaticResource iAppColor_White}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="frm_MediaDocument_Tapped" />
+                    </Frame.GestureRecognizers>
+                    <StackLayout  x:Name="sl_CountryName33"
+                                  Orientation="Horizontal"
+                                  BackgroundColor="{StaticResource iAppColor_White}"
+                                  HorizontalOptions="FillAndExpand"
+                                  Spacing="0"
+                                  Margin="0"
+                                  Padding="10,0,10,0">
+                        <Grid           HorizontalOptions="FillAndExpand"
+                                        ColumnDefinitions="*,60">
+                            <Label x:Name="lbl_Download_Document"
+                                   HorizontalOptions="FillAndExpand"
+                                   HeightRequest="50"
+                                   VerticalOptions="Center"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Start"
+                                   Text="Auto download documents"
+                                   FontSize="Medium"
+                                   BackgroundColor="Transparent"
+                                   TextColor="{StaticResource iAppColor_SemiGray}"
+                                   Grid.Column="0"        Padding="10,0,0,0">
+                                <!--<Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                                Tapped="lblCountryList_Clicked" />
+                        </Label.GestureRecognizers>-->
+                            </Label>
+                            <Switch x:Name="swtch_DownloadDocument"
+                                    WidthRequest="50"
+                                    HeightRequest="50"
+                                    Grid.Column="1"
+                                    Toggled="swtch_DownloadDocument_Toggled" />
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <Button x:Name="btn_Submit"
+                    HorizontalOptions="FillAndExpand"
+                    HeightRequest="50"
+                    FontAttributes="Bold"
+                    Text="Continue"
+                     
+                    TextColor="{StaticResource iAppColor_White}"
+                    FontSize="Medium"
+                    Margin="20,0,20,0"
+                    CornerRadius="5"
+                    BackgroundColor="{StaticResource iAppColor_LightOrange}"
+                    Grid.Row="1"
+                    Clicked="btn_Submit_Clicked" />
+            <!---->
+        </Grid>
+
+
+        <Grid  x:Name="grd_PickerGallery"
+                HorizontalOptions="FillAndExpand"
+               VerticalOptions="FillAndExpand" 
+               ColumnSpacing="0"
+               RowSpacing="0"
+               Margin="0"
+               Padding="0"
+                                 BackgroundColor="Black"
+               IsVisible="false">
+
+            <VerticalStackLayout HorizontalOptions="FillAndExpand"
+               VerticalOptions="FillAndExpand" 
+                                 BackgroundColor="Black"
+                                 Margin="0"
+                                 Padding="0"
+                                 Spacing="0">
+
+                <HorizontalStackLayout HorizontalOptions="CenterAndExpand"
+               VerticalOptions="StartAndExpand" 
+                                 BackgroundColor="Black"
+                                 Margin="0"
+                                 Padding="0"
+                                 Spacing="0">
+                    <Button x:Name="btn_ImageLightList" 
+                            HorizontalOptions="StartAndExpand"
+                            Text="Light"
+                            TextColor="White"
+                            Clicked="btn_ImageLightList_Clicked"
+                            Margin="20"/>
+                    <Button  x:Name="btn_ImageDarkList" 
+                             HorizontalOptions="EndAndExpand"
+                             Text="Dark"  
+                             TextColor="White"
+                             Clicked="btn_ImageDarkList_Clicked"      Margin="20"/>
+                </HorizontalStackLayout>
+
+                <CollectionView x:Name="cv_ChatBackgroundImageList"
+                    SelectionMode="Single"
+                                SelectionChanged="cv_ChatBackgroundImageList_SelectionChanged"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    EmptyView=""
+                   Margin="0">
+                    <!--<VisualStateManager.VisualStateGroups>
+            <VisualStateGroup Name="CommonStates">
+                <VisualState Name="Selected">
+                    <VisualState.Setters>
+                        <Setter Property="BackgroundColor"
+                                Value="Transparent" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>-->
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <!--<gallery:Row_Gallery_Image_View iGroupModel="{Binding .}" />-->
+
+
+
+
+                            <Border 	x:Name="frm_RowContent"
+           HorizontalOptions="FillAndExpand"
+			   VerticalOptions="StartAndExpand"
+			   Padding="0"
+ 
+				 	   Margin="0"
+			 
+			   BackgroundColor="{StaticResource iAppColor_Transparent}"
+                  Stroke="{StaticResource iAppColor_Black}"
+                                        StrokeThickness="0" >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="0" />
+                                </Border.StrokeShape>
+
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup Name="CommonStates">
+                                        <VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor"
+										Value="Transparent" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                               
+                                 <!--BorderColor="Transparent"       
+                       CornerRadius="0"-->  
+                                
+                                <Border HorizontalOptions="FillAndExpand"
+                       VerticalOptions="StartAndExpand"
+                       Padding="0,20,0,0"
+ 
+                       Margin="0"    BackgroundColor="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}"
+                                        
+                                        Stroke="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}">
+                                  
+                                    <StackLayout HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="StartAndExpand"
+                                 Orientation="Vertical"
+                                 Spacing="0"
+                                 Margin="0"
+                                 Padding="0">
+                                        <StackLayout   HorizontalOptions="FillAndExpand"
+                                       VerticalOptions="StartAndExpand"
+                                       Orientation="Vertical"
+                                       Spacing="0"
+                                       Margin="0"
+                                       Padding="0">
+                                            <Grid   HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="StartAndExpand"
+                                    Margin="0"
+                                    Padding="0">
+
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto" />
+                                                    <!--<RowDefinition Height="auto" />
+                                                    <RowDefinition Height="50" />
+                                                  <RowDefinition Height="50" />-->
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <!--<ColumnDefinition Width="420" />
+                                    <ColumnDefinition Width="*" />-->
+                                                </Grid.ColumnDefinitions>
+
+                                                <Grid HorizontalOptions="FillAndExpand"
+                                      ColumnDefinitions="*,auto,*"
+                                      Grid.Row="0"  Grid.Column="0">
+  <!--CornerRadius="5"-->
+                                                    <Border x:Name="frm_Avatar"
+                                       HorizontalOptions="FillAndExpand"
+                                      StrokeShape="RoundRectangle 40,0,0,40"
+                                     
+                                       Padding="1"
+                                       Margin="10"
+                                        VerticalOptions="StartAndExpand"
+                                       BackgroundColor="{StaticResource iAppColor_Opacity_Black}"
+                                       Grid.Row="0"
+                                       Grid.Column="1">
+                                                        <!--          Source="{Binding ImageThumServerURL}"     Source="https://assets.codepen.io/32795/poster.png"Text="{Binding AvatarName}"
+										Text="{Binding AvatarName}"-->
+                                                        <!--Clicked="imgBtn_Thum_Tapped"-->
+
+                                                        <Image   x:Name="imgBtn_Thum"
+                                              HorizontalOptions="FillAndExpand"
+                                              VerticalOptions="FillAndExpand"
+                                              BackgroundColor="Transparent"
+                                              Aspect="AspectFill"
+                                WidthRequest="{Binding ItemWidth}"
+                                   HeightRequest="{Binding ItemHeight}"
+                                     Source="{Binding ItemValue}"         />
+                                                    </Border>
+                                                </Grid>
+
+                                            </Grid>
+                                            <!--<swipeRight:UCView_Swipe_Right />-->
+                                            <BoxView  HorizontalOptions="FillAndExpand"
+                              HeightRequest="1"
+                              Margin="5,5,10,5"
+                              Color="{StaticResource iAppColor_Transparent}"
+                              Opacity=".5" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Border>
+                            </Border>
+
+
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+
+            </VerticalStackLayout>
+
+        </Grid>
+
+    </Grid>
+</ContentView>

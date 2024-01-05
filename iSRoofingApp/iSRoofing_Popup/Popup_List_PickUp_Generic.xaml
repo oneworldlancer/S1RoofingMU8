@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<popup:BasePopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+				 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+				 xmlns:popup="clr-namespace:MauiPopup.Views;assembly=MauiPopup"
+				 xmlns:animations="http://rotorgames.com"
+				 x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Popup.Popup_List_PickUp_Generic"       
+                     ForegroundColor="Transparent"
+     BackgroundColor="Transparent"
+                     HorizontalOptions="FillAndExpand"
+           VerticalOptions="FillAndExpand">
+
+	<!--Default Animation-->
+	<!--<popup:BasePopupPage.Animation>
+		<animations:ScaleAnimation PositionIn="Center"
+								   PositionOut="Center"
+								   ScaleIn="1.2"
+								   ScaleOut="0.8"
+								   DurationIn="400"
+								   DurationOut="300"
+								   EasingIn="SinOut"
+								   EasingOut="SinIn"
+								   HasBackgroundAnimation="False" />
+	</popup:BasePopupPage.Animation>-->
+
+
+	<!--RowDefinitions="10*,80*,10*"-->
+  <!--RowDefinitions="20*,60*,20*"-->
+    <Grid   x:Name="grd_Container"
+       
+                HorizontalOptions="CenterAndExpand"
+       VerticalOptions="CenterAndExpand"
+          
+		  BackgroundColor="Transparent">
+
+		<BoxView HorizontalOptions="FillAndExpand"
+				 VerticalOptions="FillAndExpand"
+				     BackgroundColor="Transparent"		 Color="Transparent"
+				 Grid.Row="0">
+			<BoxView.GestureRecognizers>
+				<TapGestureRecognizer Tapped="btn_Popup_OK_Tapped" />
+			</BoxView.GestureRecognizers>
+		</BoxView>
+ <!--HorizontalOptions="Center"
+			   VerticalOptions="Start"-->
+        <Frame  HorizontalOptions="FillAndExpand"
+           VerticalOptions="CenterAndExpand"
+            
+            BackgroundColor="Silver"
+			  
+	BorderColor="Transparent"		   Margin="20,0,20,0"
+			   Padding="0"
+			   CornerRadius="5"
+			   HasShadow="True"
+			   Grid.Row="0">
+
+            <Grid HorizontalOptions="FillAndExpand"
+				  VerticalOptions="Center">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="auto"></RowDefinition>
+					<RowDefinition Height="50"></RowDefinition>
+				</Grid.RowDefinitions>
+
+
+
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"></ColumnDefinition>
+				</Grid.ColumnDefinitions>
+
+
+				<CollectionView x:Name="MyCollection"
+								HorizontalOptions="FillAndExpand"
+								VerticalOptions="Center"
+								EmptyView=""
+								SelectionMode="Single"
+								SelectionChanged="OnCollectionViewSelectionChanged"
+								Grid.Row="0"
+								Grid.Column="0">
+
+
+					<CollectionView.ItemTemplate>
+						<DataTemplate>
+
+
+                            <!--  Padding="5,10,5,10"  Padding="20,10,10,10"-->
+							  <!--HasShadow="False"
+								   CornerRadius="0" BorderColor="Transparent"--> 	
+                            <Border HorizontalOptions="FillAndExpand"
+								   BackgroundColor="{StaticResource iAppColor_Transparent}"
+							  Margin="0,0,0,0"
+								   Padding="5"
+								 >
+								<VisualStateManager.VisualStateGroups>
+									<VisualStateGroup Name="CommonStates">
+										<VisualState Name="Selected">
+											<VisualState.Setters>
+												<Setter Property="BackgroundColor"
+														Value="Transparent" />
+											</VisualState.Setters>
+										</VisualState>
+									</VisualStateGroup>
+								</VisualStateManager.VisualStateGroups>
+
+								<StackLayout 
+                                    HorizontalOptions="FillAndExpand"
+                            Spacing="0"
+                                    Margin="0"
+                                    Padding="0"
+                                    HeightRequest="50"
+											 Orientation="Vertical"
+											 BackgroundColor="Silver">
+
+
+									<Grid HorizontalOptions="FillAndExpand"
+										  VerticalOptions="Center">
+										<Grid.RowDefinitions>
+
+											<RowDefinition Height="49" />
+											<!--<RowDefinition Height="10"/>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="50"/>-->
+
+										</Grid.RowDefinitions>
+										<Grid.ColumnDefinitions>
+											<!--<ColumnDefinition Width="5" />
+											<ColumnDefinition Width="30" />-->
+											<ColumnDefinition Width="*" />
+											<!--<ColumnDefinition Width="30" />
+											<ColumnDefinition Width="10" />
+											<ColumnDefinition Width="60" />
+											<ColumnDefinition Width="5" />-->
+
+										</Grid.ColumnDefinitions>
+
+
+										<!--Source="eg.png"-->
+										<!--<Image x:Name="img_Flag"
+											   WidthRequest="25"
+											   HeightRequest="15"
+											   Source="{Binding CountryFlagSmall}"
+											   Grid.Row="0"
+											   Grid.Column="1"
+											   HorizontalOptions="Start"
+											   VerticalOptions="Center" />-->
+										<!--MaxLines="1"-->
+										<Label x:Name="lbl_CountryName"
+											   HorizontalOptions="StartAndExpand"
+											   VerticalOptions="Center"
+											   TextColor="{StaticResource iAppColor_White}"
+											   Text="{Binding ItemText}"
+											   FontSize="Medium"
+											   HorizontalTextAlignment="End"
+											   LineBreakMode="TailTruncation"
+											   VerticalTextAlignment="Center"
+											   Grid.Column="0"
+											   Padding="5,0,5,0" />
+
+										<!--<Label x:Name="lbl_CountryCode"
+											   TextColor="White"
+											   Text="{Binding CountryCode}"
+											   TextTransform="Uppercase"
+											   VerticalTextAlignment="Center"
+											   HorizontalOptions="Start"
+											   VerticalOptions="Center"
+											   Grid.Column="3" />
+
+										<BoxView WidthRequest="20"
+												 Grid.Column="4" />
+
+										<Label x:Name="lbl_MobileCode"
+											   TextColor="White"
+											   FontAttributes="Bold"
+											   Text="{Binding CountryMobileCode, StringFormat='+{0}'}"
+											   VerticalTextAlignment="Center"
+											   HorizontalOptions="Start"
+											   VerticalOptions="Center"
+											   Grid.Column="5" />-->
+
+
+
+									</Grid>
+
+
+
+									<!--<Grid HorizontalOptions="FillAndExpand"
+										  VerticalOptions="Center">
+										<Grid.RowDefinitions>
+
+											<RowDefinition Height="49" />
+											-->
+									<!--<RowDefinition Height="10"/>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="50"/>-->
+									<!--
+
+										</Grid.RowDefinitions>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="5" />
+											<ColumnDefinition Width="30" />
+											<ColumnDefinition Width="*" />
+											<ColumnDefinition Width="30" />
+											<ColumnDefinition Width="10" />
+											<ColumnDefinition Width="60" />
+											<ColumnDefinition Width="5" />
+
+										</Grid.ColumnDefinitions>
+
+
+										-->
+									<!--Source="eg.png"-->
+									<!--
+										<Image x:Name="img_Flag"
+											   WidthRequest="25"
+											   HeightRequest="15"
+											   Source="{Binding CountryFlagSmall}"
+											   Grid.Row="0"
+											   Grid.Column="1"
+											   HorizontalOptions="Start"
+											   VerticalOptions="Center" />
+
+										<Label x:Name="lbl_CountryName"
+											   HorizontalOptions="FillAndExpand"
+											   VerticalOptions="Center"
+											   TextColor="White"
+											   Text="{Binding CountryName}"
+											   FontSize="Medium"
+											   HorizontalTextAlignment="Start"
+											   MaxLines="1"
+											   LineBreakMode="TailTruncation"
+											   VerticalTextAlignment="Center"
+											   Grid.Column="2" />
+
+										<Label x:Name="lbl_CountryCode"
+											   TextColor="White"
+											   Text="{Binding CountryCode}"
+											   TextTransform="Uppercase"
+											   VerticalTextAlignment="Center"
+											   HorizontalOptions="Start"
+											   VerticalOptions="Center"
+											   Grid.Column="3" />
+
+										<BoxView WidthRequest="20"
+												 Grid.Column="4" />
+
+										<Label x:Name="lbl_MobileCode"
+											   TextColor="White"
+											   FontAttributes="Bold"
+											   Text="{Binding CountryMobileCode, StringFormat='+{0}'}"
+											   VerticalTextAlignment="Center"
+											   HorizontalOptions="Start"
+											   VerticalOptions="Center"
+											   Grid.Column="5" />
+
+
+
+									</Grid>-->
+
+
+
+
+
+									<BoxView HorizontalOptions="FillAndExpand"
+											 HeightRequest="1"
+											 Color="White"
+											 Opacity=".5" />
+
+								</StackLayout>
+
+
+
+
+							</Border>
+
+
+						</DataTemplate>
+					</CollectionView.ItemTemplate>
+				</CollectionView>
+				<!--BorderColor="{StaticResource iAppColor_LightOrange}"-->
+				<Frame HorizontalOptions="FillAndExpand"
+					   HeightRequest="50"
+					   BorderColor="{StaticResource iAppColor_LightOrange}"
+					   Padding="1"
+					   Margin="0"
+					   BackgroundColor="{StaticResource iAppColor_LightOrange}"
+					   Grid.Row="1"
+					   Grid.Column="0">
+
+					<StackLayout Orientation="Horizontal"
+								 Padding="10,0,10,0">
+
+						<!--Clicked="btnCountryList_Clicked"-->
+
+						<Label x:Name="btn_Popup_OK"
+							   HorizontalOptions="FillAndExpand"
+							   HeightRequest="50"
+							   HorizontalTextAlignment="Center"
+							   VerticalTextAlignment="Center"
+							   Text="CANCEL"
+							   FontAttributes="Bold"
+							   FontSize="Medium"
+							   BackgroundColor="Transparent"
+							   TextColor="{StaticResource iAppColor_White}">
+
+							<Label.GestureRecognizers>
+								<TapGestureRecognizer Tapped="btn_Popup_OK_Tapped" />
+							</Label.GestureRecognizers>
+						</Label>
+
+
+					</StackLayout>
+
+
+				</Frame>
+
+
+			</Grid>
+
+		</Frame>
+
+		<BoxView HorizontalOptions="FillAndExpand"
+			     BackgroundColor="Transparent"			 VerticalOptions="FillAndExpand"
+				 Color="Transparent"
+				 Grid.Row="2">
+			<BoxView.GestureRecognizers>
+				<TapGestureRecognizer Tapped="btn_Popup_OK_Tapped" />
+			</BoxView.GestureRecognizers>
+		</BoxView>
+
+	</Grid>
+
+</popup:BasePopupPage>

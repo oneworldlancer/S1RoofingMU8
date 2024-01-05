@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Name="page_SplashDashboard"
+            xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:sroofingHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Header"
+              xmlns:sroofingFooter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer"
+             xmlns:logo="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Logo"
+             xmlns:snackAutoHide="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar"
+             ios:Page.UseSafeArea="False"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Splash.Page_Splash_DashboardX1"
+              Visual="Material"
+        >
+         <!--Loaded="page_SplashDashboard_Loaded"-->
+    <ContentPage.Content>
+        <Label Text="GOD HELP" />
+        <!--<Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          BackgroundColor="#000000">
+      
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Spacing="0"
+                     Margin="0"
+                     BackgroundColor="#000000"
+                     Orientation="Vertical">
+            <sroofingHeader:SRoofing_PageHeader />
+       
+            
+            <Grid VerticalOptions="FillAndExpand"
+                  HorizontalOptions="FillAndExpand"
+                  BackgroundColor="#000000">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="10" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="10" />
+                    <RowDefinition Height="50" />
+                 
+                    
+                    <RowDefinition Height="20" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                  
+                    
+                </Grid.ColumnDefinitions>
+                <StackLayout HorizontalOptions="Center"
+                             VerticalOptions="Center"
+                             Spacing="0"
+                             Margin="0"
+                             Orientation="Vertical"
+                             Padding="50"
+                             Grid.Row="0"
+                             Grid.Column="0">
+                    <logo:UCView_Logo_TwoLines HorizontalOptions="Start" />
+                
+                    
+                </StackLayout>
+                <StackLayout HorizontalOptions="FillAndExpand"
+                             VerticalOptions="Start"
+                             Orientation="Vertical"
+                             Spacing="0"
+                             Margin="0"
+                             Grid.Row="1"
+                             Grid.Column="0"
+                             Padding="0,50,0,0">
+                    <StackLayout HorizontalOptions="CenterAndExpand"
+                                 VerticalOptions="Start"
+                                 Spacing="0"
+                                 Margin="0"
+                                 Orientation="Horizontal"
+                                 Padding="0,0,0,0">
+                        <Label  x:Name="lbl_WelcomeTo_LTR"
+                                Text="Welcome toqqq"
+                                VerticalOptions="Center"
+                                FontSize="Medium"
+                                HorizontalOptions="Center"
+                                TextColor="#FFFFFF"
+                                IsVisible="false" />
+                        <Label Text=" S1Roofing "
+                               VerticalOptions="Center"
+                               FontSize="Medium"
+                               HorizontalOptions="Center"
+                               TextColor="{StaticResource iAppColor_System_Primary}" />
+                        <Label  x:Name="lbl_WelcomeTo_RTL"
+                                Text="أهلآ بك فيxxx"
+                                VerticalOptions="Center"
+                                FontSize="Medium"
+                                HorizontalOptions="Center"
+                                TextColor="#FFFFFF"
+                                IsVisible="true" />
+                    </StackLayout>
+                    <BoxView HorizontalOptions="FillAndExpand"
+                             VerticalOptions="StartAndExpand"
+                             Color="{StaticResource iAppColor_Transparent}"
+                             HeightRequest="10" />
+                </StackLayout>
+             
+                
+                <Grid Padding="0"
+                      Margin="20,0,20,0"
+                      Grid.Row="2"
+                      Grid.Column="0">
+                  
+                    
+                    <Button x:Name="btn_Register"
+                            HorizontalOptions="FillAndExpand"
+                            HeightRequest="50"
+                            FontSize="Medium"
+                            FontAttributes="Bold"
+                            Text="Create account"
+                            Clicked="btn_Register_Clicked"
+                            TextColor="{StaticResource iAppColor_White}"
+                            CornerRadius="5"
+                            BackgroundColor="{StaticResource iAppColor_System_Primary}" />
+                    <Image x:Name="img_Register"
+                           HorizontalOptions="Start"
+                           Source="icon_register.png"
+                           VerticalOptions="Center"
+                           WidthRequest="30"
+                           HeightRequest="30"
+                           Margin="10,0,0,0" />
+                   
+                    
+                </Grid>
+             
+                
+                <Grid Padding="0"
+                      Margin="20,0,20,0"
+                      Grid.Row="4"
+                      Grid.Column="0">
+                   
+                    
+                    <Button x:Name="btn_Login"
+                            HorizontalOptions="FillAndExpand"
+                            HeightRequest="50"
+                            FontSize="Medium"
+                            FontAttributes="Bold"
+                            Text="Sign in"
+                            Clicked="btn_Login_Clicked"
+                            TextColor="{StaticResource iAppColor_White}"
+                            CornerRadius="5"
+                            BackgroundColor="{StaticResource iAppColor_System_Primary}" />
+                    <Image x:Name="img_Login"
+                           HorizontalOptions="Start"
+                           Source="icon_newlogin.png"
+                           VerticalOptions="Center"
+                           WidthRequest="30"
+                           HeightRequest="30"
+                           Margin="10,0,0,0" />
+                  
+                    
+                </Grid>
+                <Label HorizontalOptions="Center"
+                       TextColor="White"
+                       TextDecorations="Underline"
+                       Text="s1roofing.co.uk"
+                       Grid.Row="6" />
+            </Grid>
+            <sroofingFooter:SRoofing_PageFooter />
+        </StackLayout>
+        <BoxView x:Name="ll_NetConnection"
+                 HorizontalOptions="FillAndExpand"
+                 VerticalOptions="StartAndExpand"
+                 Color="{StaticResource iAppColor_Black}"
+                 HeightRequest="5" />
+        <snackAutoHide:SnackBar x:Name="iSnackBar"
+                                BackgroundColor="Transparent"
+                                TextColor="Black"
+                                IsOpen="False"
+                                VerticalOptions="End"
+                                Message="I'm a snack bar... I love showing my self."
+                                ButtonTextColor="Orange"
+                                CloseButtonText=""
+                                Margin="0,0,0,50" />
+        <snackAutoHide:SnackBar_Command_ScanOption x:Name="iSnackBar_ScannerOtion"
+                                                   BackgroundColor="Transparent"
+                                                   TextColor="Black"
+                                                   IsOpen="False"
+                                                   VerticalOptions="End"
+                                                   Message="I'm a snack bar... I love showing my self."
+                                                   ButtonTextColor="Orange"
+                                                   CloseButtonText=""
+                                                   Margin="0,0,0,10"
+                                                   MyString="shaymaa 2023" />
+    </Grid>-->
+    
+    </ContentPage.Content>
+</ContentPage>

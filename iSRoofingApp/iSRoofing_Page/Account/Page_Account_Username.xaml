@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:entry="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Entry"
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Account.Page_Account_Username"
+             xmlns:snackAutoHide="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:sroofingHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Header"
+             xmlns:arrowBack="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Back"
+             xmlns:sroofingFooter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer"
+             xmlns:grid="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Grid"
+             ios:Page.UseSafeArea="False"
+             NavigationPage.HasNavigationBar="False"
+             Visual="Material"
+             BackgroundColor="Black"
+             HorizontalOptions="FillAndExpand"
+             VerticalOptions="FillAndExpand">
+    <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          RowDefinitions="*,50">
+        <StackLayout  HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand"
+                      Spacing="0"
+                      Margin="0,0,0,50"
+                      Padding="0"
+                      Grid.Row="0">
+         
+            <Label x:Name="lbl_Title"
+                   HorizontalOptions="Center"
+                   HeightRequest="50"
+                   VerticalOptions="Center"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center"
+                   Text="lbl_Title"
+                   FontSize="Medium"
+                   BackgroundColor="Transparent"
+                   TextColor="{StaticResource iAppColor_Silver}" />
+          
+            <Label x:Name="lbl_Title_BirthDate"
+                   VerticalOptions="Center"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Start"
+                   Text="lbl_Title_BirthDate"
+                   BackgroundColor="Transparent"
+                   Margin="20,20,20,10"
+                   TextColor="{StaticResource iAppColor_White}" />
+          
+            <Frame       x:Name="frm_BirthDate"
+                         HorizontalOptions="FillAndExpand"
+                         HeightRequest="50"
+                         CornerRadius="5"
+                         HasShadow="True"
+                         BorderColor="{StaticResource iAppColor_SemiOrange}"
+                         Padding="1"
+                         Margin="20,0,20,0"
+                         BackgroundColor="{StaticResource iAppColor_White}"
+                         Grid.Row="1"
+                         Grid.Column="0">
+                <StackLayout x:Name="sl_BirthDate"
+                             Orientation="Horizontal"
+                             BackgroundColor="{StaticResource iAppColor_White}"
+                             Spacing="0"
+                             Margin="0"
+                             Padding="10,0,10,0">
+                    <Image WidthRequest="25"
+                           HeightRequest="25"
+                           Source="img_dating_cake.png"
+                           Margin="10,0,0,0"/>
+                    <Grid HorizontalOptions="FillAndExpand"
+                          HeightRequest="50">
+                        <Label x:Name="lbl_BirthDate"
+                               HorizontalOptions="FillAndExpand"
+                               HeightRequest="50"
+                               VerticalOptions="Center"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Center"
+                               Text="dd-mm-yyyy"
+                               FontSize="Medium"
+                               BackgroundColor="Transparent"
+                               TextColor="{StaticResource iAppColor_OpacityOrange}">
+                            <!--Tapped="lblCountryList_Clicked"
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                               />
+                        </Label.GestureRecognizers>-->
+                        </Label>
+                        <DatePicker x:Name="dt_BirthDate"
+                                    Visual="Material"
+                                    DateSelected="dt_BirthDate_DateSelected"
+                                    Opacity="0" />
+                    </Grid>
+                    <Image WidthRequest="25"
+                           HeightRequest="25"
+                           Source="arrow_down_orange.png"
+                           Margin="0,0,10,0"/>
+                </StackLayout>
+            </Frame>
+          
+            <Label x:Name="lbl_Title_FullName"
+                   VerticalOptions="Center"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Start"
+                   Text="lbl_Title_FullName"
+                   BackgroundColor="Transparent"
+                   Margin="20,20,20,10"
+                   TextColor="{StaticResource iAppColor_White}" />
+           
+            <StackLayout   HorizontalOptions="FillAndExpand"
+                           Orientation="Horizontal"
+                           Spacing="0"
+                           Margin="20,0,20,0"
+                           Padding="0">
+                <Frame    WidthRequest="50"
+                          HeightRequest="40"
+                          HasShadow="True"
+                          BorderColor="{StaticResource iAppColor_SemiOrange}"
+                          Padding="0"
+                          Margin="0,0,10,0"
+                          BackgroundColor="{StaticResource iAppColor_Transparent}">
+                    <Image HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Source="img_dating_name.png"
+                           Margin="0"
+                           Aspect="AspectFit"
+                           HeightRequest="25"
+                           WidthRequest="25" />
+                </Frame>
+                <Grid  HorizontalOptions="FillAndExpand"
+                       ColumnDefinitions="*,1,*">
+                    <Frame    x:Name="frm_FirstName"
+                              HorizontalOptions="FillAndExpand"
+                              HeightRequest="50"
+                              CornerRadius="5"
+                              HasShadow="True"
+                              BorderColor="{StaticResource iAppColor_SemiOrange}"
+                              Padding="1"
+                              Margin="0"
+                              BackgroundColor="{StaticResource iAppColor_SemiOrange}"
+                              Grid.Column="0">
+                        <StackLayout x:Name="sl_FirstName"
+                                     Orientation="Horizontal"
+                                     BackgroundColor="{StaticResource iAppColor_White}"
+                                     Padding="10,0,10,0"
+                                     Spacing="0"
+                                     Margin="0">
+                            <Entry x:Name="txt_FirstName"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    HeightRequest="50"
+                                                    Placeholder="First name"
+                                                    FontSize="Medium"
+                                                    TextColor="{StaticResource iAppColor_OpacityOrange}"
+                                                    PlaceholderColor="{StaticResource iAppColor_OpacityOrange}"
+                                                    BackgroundColor="Transparent"
+                                                    HorizontalTextAlignment="Center"
+                                                     
+                                                    Keyboard="Text"
+                                                    ReturnType="Next"
+                                                    Completed="txt_FirstName_Completed" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame     x:Name="frm_LastName"
+                               HorizontalOptions="FillAndExpand"
+                               HeightRequest="50"
+                               CornerRadius="5"
+                               HasShadow="True"
+                               BorderColor="{StaticResource iAppColor_SemiOrange}"
+                               Padding="1"
+                               Margin="0"
+                               BackgroundColor="{StaticResource iAppColor_SemiOrange}"
+                               Grid.Column="2">
+                        <StackLayout x:Name="sl_LastName"
+                                     Orientation="Horizontal"
+                                     BackgroundColor="{StaticResource iAppColor_White}"
+                                     Padding="10,0,10,0"
+                                     Spacing="0"
+                                     Margin="0">
+                            <Entry x:Name="txt_LastName"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    HeightRequest="50"
+                                                    Placeholder="Last name"
+                                                    TextColor="{StaticResource iAppColor_OpacityOrange}"
+                                                    PlaceholderColor="{StaticResource iAppColor_OpacityOrange}"
+                                                    BackgroundColor="Transparent"
+                                                      FontSize="Medium"  
+                                                    HorizontalTextAlignment="Center"
+                                                    Keyboard="Text"
+                                                    ReturnType="Next"
+                                                    Completed="txt_LastName_Completed" />
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </StackLayout>
+          
+            <Label x:Name="lbl_Title_Gender"
+                   VerticalOptions="Center"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Start"
+                   Text="lbl_Title_Gender"
+                   BackgroundColor="Transparent"
+                   Margin="20,20,20,10"
+                   TextColor="{StaticResource iAppColor_White}" />
+          
+            <Frame     x:Name="frm_Gender"
+                       HorizontalOptions="FillAndExpand"
+                       HeightRequest="50"
+                       CornerRadius="5"
+                       HasShadow="True"
+                       BorderColor="{StaticResource iAppColor_SemiOrange}"
+                       Padding="1"
+                       Margin="20,0,20,0"
+                       BackgroundColor="{StaticResource iAppColor_SemiOrange}"
+                       Grid.Row="3"
+                       Grid.Column="0">
+                <StackLayout Orientation="Horizontal"
+                             BackgroundColor="{StaticResource iAppColor_White}"
+                             Padding="10,0,10,0"
+                             Spacing="0"
+                             Margin="0">
+                    <Image HorizontalOptions="Start"
+                           WidthRequest="25"
+                           HeightRequest="25"
+                           Source="img_dating_gender.png" 
+                           Margin="10,0,0,0"/>
+                    <!--BackgroundColor="{StaticResource iAppColor_Transparent}"
+
+                        IsEnabled="False"-->
+                    <Grid HorizontalOptions="EndAndExpand"
+                          Padding="0"
+                          Margin="0"
+                          ColumnDefinitions="60,10,60">
+                        <ImageButton x:Name="img_Male"
+                                     HorizontalOptions="End"
+                                     WidthRequest="60"
+                                     Aspect="AspectFit"
+                                     Source="img_gender_male_select.png"
+                                     BackgroundColor="Transparent"
+                                     Margin="0"
+                                     Grid.Column="0"
+                                     Clicked="img_Male_Clicked" />
+                      
+                        <ImageButton  x:Name="img_Female"
+                                      HorizontalOptions="End"
+                                      WidthRequest="50"
+                                      Source="img_gender_female_normal_small.png"
+                                      Aspect="AspectFit"
+                                      BackgroundColor="Transparent"
+                                      Margin="0"
+                                      Grid.Column="2"
+                                      Clicked="img_Female_Clicked" />
+                    </Grid>
+                    <Image WidthRequest="25"
+                           HeightRequest="25" />
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+        <!--Clicked="btn_PageDashboard_Clicked"-->
+        <Button x:Name="btn_Submit"
+                HorizontalOptions="FillAndExpand"
+                HeightRequest="50"
+                FontAttributes="Bold"
+                Text="Continue"
+                 
+                TextColor="{StaticResource iAppColor_White}"
+                FontSize="Medium"
+                Margin="20,0,20,0"
+                CornerRadius="5"
+                BackgroundColor="{StaticResource iAppColor_LightOrange}"
+                Grid.Row="1"
+                Clicked="btn_Submit_Clicked" />
+    </Grid>
+</ContentView>

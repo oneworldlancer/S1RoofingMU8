@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+  <domain-config cleartextTrafficPermitted="true">
+    <domain includeSubdomains="true">oneworldlancer.ddns.net</domain>
+    <domain includeSubdomains="true">s1r.chat</domain>
+    <domain includeSubdomains="true">160.153.251.219</domain>
+    <!--<domain includeSubdomains="true">10.0.2.2</domain>-->
+
+
+    <trust-anchors>
+
+      <!--<certificates src="@raw/ca"/>-->
+      <certificates src="system" />
+      <certificates src="user" />
+
+
+      <!-- Trust preinstalled CAs -->
+      <!--<certificates src="system" />-->
+      <!-- Additionaly trusted user added CAs -->
+      <!--<certificates src="user"/>-->
+    </trust-anchors>
+
+
+  </domain-config>
+
+  <base-config>
+    <trust-anchors>
+
+      <!--<certificates src="@raw/ca"/>-->
+      <certificates src="system" />
+      <certificates src="user" />
+
+
+    </trust-anchors>
+  </base-config>
+
+</network-security-config>

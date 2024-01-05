@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView x:Name="page_SettingSound"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:entry="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Entry"
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Account.Page_Account_Sound"
+            xmlns:snackAutoHide="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:sroofingHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Header"
+    xmlns:arrowBack="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Back"
+    xmlns:sroofingFooter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer"
+    xmlns:grid="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Grid"
+			 ios:Page.UseSafeArea="False"
+    NavigationPage.HasNavigationBar="False"
+  Visual="Material"
+             BackgroundColor="Black"
+             HorizontalOptions="FillAndExpand"
+             VerticalOptions="FillAndExpand" 
+             Unloaded="page_SettingSound_Unloaded">
+ 
+    
+    <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          RowDefinitions="*,50"
+      >
+    
+        <StackLayout  HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand"
+                      Spacing="0"
+                      Margin="0,0,0,50"
+                      Padding="0"
+                      Grid.Row="0">
+           
+            <Label x:Name="lbl_Title"
+                   HorizontalOptions="Center"
+                   HeightRequest="50"
+                   VerticalOptions="Center"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center"
+                   Text="lbl_Title"
+                   FontSize="Medium"
+                   BackgroundColor="Transparent"
+                   TextColor="{StaticResource iAppColor_Silver}" />
+            <Frame          x:Name="frm_Sound"
+                            HorizontalOptions="FillAndExpand"
+                            HeightRequest="50"
+                            CornerRadius="5"
+                            HasShadow="True"
+                            BorderColor="{StaticResource iAppColor_SemiOrange}"
+                            Padding="1"
+                            Margin="20,20,20,0"
+                            BackgroundColor="{StaticResource iAppColor_White}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="frm_Sound_Tapped" />
+                </Frame.GestureRecognizers>
+                <StackLayout  x:Name="sl_CountryName"
+                              Orientation="Horizontal"
+                              BackgroundColor="{StaticResource iAppColor_White}"
+                              HorizontalOptions="FillAndExpand"
+                              Spacing="0"
+                              Margin="0"
+                              Padding="10,0,10,0">
+                    <Grid           HorizontalOptions="FillAndExpand"
+                                    ColumnDefinitions="*,60">
+                        <Label x:Name="lbl_Sound"
+                               HorizontalOptions="FillAndExpand"
+                               HeightRequest="50"
+                               VerticalOptions="Center"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Start"
+                               Text="Outgoing speech"
+                         
+                               FontSize="Medium"
+                               BackgroundColor="Transparent"
+                               TextColor="{StaticResource iAppColor_SemiGray}"
+                               Grid.Column="0"        Padding="10,0,0,0">
+                            <!--<Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                                Tapped="lblCountryList_Clicked" />
+                        </Label.GestureRecognizers>-->
+                        </Label>
+                        <Switch x:Name="swtch_SoundIsEnable"
+                            WidthRequest="50"
+                                HeightRequest="50"
+                                Grid.Column="1"
+                                Toggled="swtch_SoundIsEnable_Toggled"/>
+                    </Grid>
+                </StackLayout>
+            </Frame>
+          
+            <Label x:Name="lbl_Title_Sound_Chat"
+                   VerticalOptions="Center"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Start"
+                   Text="lbl_Title_Sound_Chat"
+                   BackgroundColor="Transparent"
+                   Margin="20,20,20,10"
+                   TextColor="{StaticResource iAppColor_White}" />
+          
+            <Frame          x:Name="frm_Chat_In"
+                            HorizontalOptions="FillAndExpand"
+                            HeightRequest="100"
+                            CornerRadius="5"
+                            HasShadow="True"
+                            BorderColor="{StaticResource iAppColor_SemiOrange}"
+                            Padding="1"
+                            Margin="20,0,20,0"
+                            BackgroundColor="{StaticResource iAppColor_White}"
+                            Grid.Row="1"
+                            Grid.Column="0">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="frm_Chat_In_Clicked" />
+                </Frame.GestureRecognizers>
+                <StackLayout  x:Name="sl_CountryNamess"
+                               HorizontalOptions="FillAndExpand"
+                            Orientation="Horizontal"
+                              BackgroundColor="{StaticResource iAppColor_White}"
+                              Spacing="0"
+                              Margin="0"
+                              Padding="10,0,10,0">
+                    <!--<Image WidthRequest="25"
+                           HeightRequest="25"
+                           Source="img_inbox.png" />-->
+                 
+                    <StackLayout     HorizontalOptions="FillAndExpand"
+                            Orientation="Vertical"
+                                  Spacing="0"
+                                  Margin="0"
+                                  Padding="0">
+                        <Label x:Name="lbl_Sound_Chat_Incoming"
+                           HorizontalOptions="FillAndExpand"
+                           HeightRequest="50"
+                           VerticalOptions="Center"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Start"
+                           Text="Incoming speech"
+                        
+                           FontSize="Medium"
+                           BackgroundColor="Transparent"
+                           TextColor="{StaticResource iAppColor_SemiGray}"        Padding="10,0,0,0">
+                        <!--Tapped="lblCountryList_Clicked"-->
+                        <!--<Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="lblCountryList_Clicked" />
+                        </Label.GestureRecognizers>-->
+                    </Label>
+                       
+                        <Label x:Name="lbl_Chat_Incoming"
+                               HorizontalOptions="FillAndExpand"
+                               HeightRequest="50"
+                               VerticalOptions="Center"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Start"
+                               Text="Incoming speech"
+                                    Padding="10,0,0,0"
+                               FontSize="Medium"
+                               BackgroundColor="Transparent"
+                               TextColor="{StaticResource iAppColor_SemiGray}" />
+                 
+                    </StackLayout>
+                  
+                    <ImageButton x:Name="img_Chat_Incoming"
+                           WidthRequest="45"
+                           HeightRequest="45"
+                                 BackgroundColor="Transparent"
+                                 HorizontalOptions="End"
+                                 Source="img_theme_call_speaker_on.png" 
+                                 Margin="0,0,10,0"
+                                  Clicked="img_Chat_Incoming_Clicked"/>
+                </StackLayout>
+            </Frame>
+        
+            <Frame          x:Name="frm_Chat_Out"
+                            HorizontalOptions="FillAndExpand"
+                            HeightRequest="100"
+                            CornerRadius="5"
+                            HasShadow="True"
+                            BorderColor="{StaticResource iAppColor_SemiOrange}"
+                            Padding="1"
+                            Margin="20,20,20,0"
+                            BackgroundColor="{StaticResource iAppColor_White}"
+                            Grid.Row="1"
+                            Grid.Column="0">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="frm_Chat_Out_Clicked" />
+                </Frame.GestureRecognizers>
+                <StackLayout  x:Name="sl_CountryNamesscc"
+                              Orientation="Horizontal"
+                              BackgroundColor="{StaticResource iAppColor_White}"
+                              HorizontalOptions="FillAndExpand"
+                              Spacing="0"
+                              Margin="0"
+                              Padding="10,0,10,0">
+                    <StackLayout  Orientation="Vertical"
+                                  Spacing="0"
+                                  HorizontalOptions="FillAndExpand"
+                                  Margin="0"
+                                  Padding="0">
+                        <Label x:Name="lbl_Sound_Chat_Outgoing"
+                           HorizontalOptions="FillAndExpand"
+                           HeightRequest="50"
+                           VerticalOptions="Center"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Start"
+                           Text="Outgoing speech"
+                              Padding="10,0,0,0"
+                           FontSize="Medium"
+                           BackgroundColor="Transparent"
+                           TextColor="{StaticResource iAppColor_SemiGray}">
+                        <!--Tapped="lblCountryList_Clicked"-->
+                        <!--<Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="lblCountryList_Clicked" />
+                        </Label.GestureRecognizers>-->
+                    </Label>
+                        <Label x:Name="lbl_Chat_Outgoing"
+                               HorizontalOptions="FillAndExpand"
+                               HeightRequest="50"
+                               VerticalOptions="Center"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Start"
+                               Text="Outgoing speech"
+                               Padding="10,0,0,0"
+                               FontSize="Medium"
+                               BackgroundColor="Transparent"
+                               TextColor="{StaticResource iAppColor_SemiGray}" />
+                    </StackLayout>
+                    <!--<Image WidthRequest="25"
+                           HeightRequest="25"
+                           Source="img_outbox.png" />-->
+                    <ImageButton x:Name="img_Chat_Outgoing"
+                                 WidthRequest="45"
+                                 HeightRequest="45"
+                                 HorizontalOptions="End"
+                                 BackgroundColor="Transparent"
+                                 Source="img_theme_call_speaker_on.png"
+                                Margin="0,0,10,0"
+                                   Clicked="img_Chat_Outgoing_Clicked"/>
+                </StackLayout>
+            </Frame>
+          
+            <Label x:Name="lbl_Title_Sound_Call"
+                   VerticalOptions="Center"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Start"
+                   Text="lbl_Title_Sound_Call"
+                   BackgroundColor="Transparent"
+                   Margin="20,20,20,10"
+                   TextColor="{StaticResource iAppColor_White}" />
+          
+            <Frame          x:Name="frm_Call_In"
+                            HorizontalOptions="FillAndExpand"
+                            HeightRequest="100"
+                            CornerRadius="5"
+                            HasShadow="True"
+                            BorderColor="{StaticResource iAppColor_SemiOrange}"
+                            Padding="1"
+                            Margin="20,0,20,0"
+                            BackgroundColor="{StaticResource iAppColor_White}"
+                            Grid.Row="1"
+                            Grid.Column="0">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="frm_Call_In_Clicked" />
+                </Frame.GestureRecognizers>
+                <StackLayout  x:Name="sl_CountryNamesooscc"
+                              Orientation="Horizontal"
+                              HorizontalOptions="FillAndExpand"
+                              BackgroundColor="{StaticResource iAppColor_White}"
+                              Spacing="0"
+                              Margin="0"
+                              Padding="10,0,10,0">
+                    <StackLayout  Orientation="Vertical"
+                                  Spacing="0"
+                                  HorizontalOptions="FillAndExpand"
+                                  Margin="0"
+                                  Padding="0">
+                        
+                                    <!--<Image WidthRequest="25"
+                           HeightRequest="25"
+                           Source="img_outbox.png" />-->
+                        <Label x:Name="lbl_Sound_Call_Incoming"
+                           HorizontalOptions="FillAndExpand"
+                           HeightRequest="50"
+                           VerticalOptions="Center"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Start"
+                           Text="Outgoing speech"
+                              Padding="10,0,0,0"
+                           FontSize="Medium"
+                           BackgroundColor="Transparent"
+                           TextColor="{StaticResource iAppColor_SemiGray}">
+                        <!--Tapped="lblCountryList_Clicked"-->
+                        <!--<Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="lblCountryList_Clicked" />
+                        </Label.GestureRecognizers>-->
+                    </Label>
+                        <Label x:Name="lbl_Call_Incoming"
+                               HorizontalOptions="FillAndExpand"
+                               HeightRequest="50"
+                               VerticalOptions="Center"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Start"
+                               Text="Outgoing speech"
+                                 Padding="10,0,0,0"
+                               FontSize="Medium"
+                               BackgroundColor="Transparent"
+                               TextColor="{StaticResource iAppColor_SemiGray}" />
+                    </StackLayout>
+                 
+                    <ImageButton x:Name="img_Call_Incoming"
+                                 WidthRequest="45"
+                                 HeightRequest="45"
+                                 HorizontalOptions="End"
+                                 BackgroundColor="Transparent"
+                                 Source="img_theme_call_speaker_on.png" 
+                                 Margin="0,0,10,0"
+                                  Clicked="img_Call_Incoming_Clicked"/>
+                </StackLayout>
+            </Frame>
+       
+        
+        
+            <Frame          x:Name="frm_Call_Out"
+                            HorizontalOptions="FillAndExpand"
+                            HeightRequest="100"
+                            CornerRadius="5"
+                            HasShadow="True"
+                            BorderColor="{StaticResource iAppColor_SemiOrange}"
+                            Padding="1"
+                            Margin="20,20,20,0"
+                            BackgroundColor="{StaticResource iAppColor_White}"
+                            Grid.Row="1"
+                            Grid.Column="0">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="frm_Call_Out_Clicked" />
+                </Frame.GestureRecognizers>
+                <StackLayout  x:Name="sl_CountryNamessckkc"
+                              Orientation="Horizontal"
+                              HorizontalOptions="FillAndExpand"
+                              BackgroundColor="{StaticResource iAppColor_White}"
+                              Spacing="0"
+                              Margin="0"
+                              Padding="10,0,10,0">
+                    <StackLayout  Orientation="Vertical"
+                                  Spacing="0"
+                                  HorizontalOptions="FillAndExpand"
+                                  Margin="0"
+                                  Padding="0">
+                        
+                                    <!--<Image WidthRequest="25"
+                           HeightRequest="25"
+                           Source="img_outbox.png" />-->
+                        <Label x:Name="lbl_Sound_Call_Outgoing"
+                           HorizontalOptions="FillAndExpand"
+                           HeightRequest="50"
+                           VerticalOptions="Center"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Start"
+                           Text="Outgoing speech"
+                                Padding="10,0,0,0"
+                           FontSize="Medium"
+                           BackgroundColor="Transparent"
+                           TextColor="{StaticResource iAppColor_SemiGray}">
+                        <!--Tapped="lblCountryList_Clicked"-->
+                        <!--<Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="lblCountryList_Clicked" />
+                        </Label.GestureRecognizers>-->
+                    </Label>
+                        <Label x:Name="lbl_Call_Outgoing"
+                               HorizontalOptions="FillAndExpand"
+                               HeightRequest="50"
+                               VerticalOptions="Center"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Start"
+                               Text="Outgoing speech"
+                                   Padding="10,0,0,0"
+                               FontSize="Medium"
+                               BackgroundColor="Transparent"
+                               TextColor="{StaticResource iAppColor_SemiGray}" />
+                    </StackLayout>
+                  
+                    <ImageButton x:Name="img_Call_Outgoing"
+                                 WidthRequest="45"
+                                 HeightRequest="45"
+                                 HorizontalOptions="End"
+                                 BackgroundColor="Transparent"
+                                 Source="img_theme_call_speaker_on.png"
+                                 Margin="0,0,10,0"
+                                 Clicked="img_Call_Outgoing_Clicked"/>
+                </StackLayout>
+            </Frame>
+       
+        
+        
+        
+        
+        
+        
+        </StackLayout>
+        <!--Clicked="btn_PageDashboard_Clicked"-->
+        <Button x:Name="btn_Submit"
+                HorizontalOptions="FillAndExpand"
+                HeightRequest="50"
+                FontAttributes="Bold"
+                Text="Continue"
+                 
+                TextColor="{StaticResource iAppColor_White}"
+                FontSize="Medium"
+                Margin="20,0,20,0"
+                CornerRadius="5"
+                BackgroundColor="{StaticResource iAppColor_LightOrange}"
+                Grid.Row="1"
+                Clicked="btn_Submit_Clicked"/>
+        
+    </Grid>
+</ContentView>

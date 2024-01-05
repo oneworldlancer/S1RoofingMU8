@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_UControl.ProgressBar.UCView_ProgressBarView"
+           xmlns:maui="clr-namespace:epj.ProgressBar.Maui;assembly=epj.ProgressBar.Maui"
+              >
+
+    <maui:ProgressBar
+   x:Name="ll_ProgressBar"
+           HorizontalOptions="FillAndExpand"
+   VerticalOptions="StartAndExpand"
+                    
+HeightRequest="5"
+  Margin="0"
+  
+  Progress="0.0"
+  UseGradient="True"
+            BackgroundColor="Transparent"
+            BaseColor="Transparent"
+  ProgressColor="#ff8000"
+  GradientColor="DarkOrange"
+     UseRange="True"    />
+    <!--Progress="0.5"-->
+    <!--<StackLayout HorizontalOptions="FillAndExpand"
+                 VerticalOptions="StartAndExpand"
+                 HeightRequest="10"
+                 Spacing="0"
+                 Margin="0"
+                 Padding="0"
+                 Orientation="Vertical">
+      
+        <Grid  x:Name="grd_ProgressBar"
+            ColumnDefinitions="*,*,*,*,*,*,*,*,*,*"
+              HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand"
+              ColumnSpacing="0"
+           RowSpacing="0"
+                        Margin="0"
+               Padding="0">
+             
+            <BoxView x:Name="box1"
+                HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                      Color="Yellow"
+                      Margin="0"
+              Grid.Column="0"/>
+            
+    
+        <BoxView x:Name="box2"
+                HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                      
+                 Color="Red"
+                      Margin="0"
+              Grid.Column="1"/>
+            
+    
+   
+        <BoxView x:Name="box3"
+                HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                      
+                 Color="Blue"
+                      Margin="0"
+              Grid.Column="2"/>
+            
+    
+   
+        <BoxView x:Name="box4"
+                HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                      
+                 Color="Green"
+                      Margin="0"
+              Grid.Column="3"/>
+            
+    
+   
+        <BoxView x:Name="box5"
+                HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                      
+                 Color="Black"
+                      Margin="0"
+              Grid.Column="4"/>
+            
+    
+   
+        <BoxView x:Name="box6"
+                HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                      
+                 Color="White"
+                      Margin="0"
+              Grid.Column="5"/>
+            
+    
+   
+        <BoxView x:Name="box7"
+                HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                      
+                 Color="Lime"
+                      Margin="0"
+              Grid.Column="6"/>
+            
+    
+   
+        <BoxView x:Name="box8"
+                HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                      
+                 Color="Purple"
+                      Margin="0"
+              Grid.Column="7"/>
+            
+    
+   
+        <BoxView x:Name="box9"
+                HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                      
+                 Color="Orange"
+                      Margin="0"
+              Grid.Column="8"/>
+            
+    
+   
+        <BoxView x:Name="box10"
+                HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                      
+                 Color="Brown"
+                      Margin="0"
+              Grid.Column="9"/>
+            
+    
+        
+        </Grid>
+   
+        --><!--<progressBar:ProgressBar VerticalOptions="CenterAndExpand"
+                                 HorizontalOptions="Center"
+                                 ProgressBarHeight="10"
+                                 ProgressBarWidth="250"
+                                 CornerRadius="5">
+            <progressBar:ProgressBar.BarList>
+                <progressBar:BarSegment BarWidth="10*"
+                                        BarColor="Green" />
+                <progressBar:BarSegment BarWidth="20*"
+                                        BarColor="Yellow" />
+                <progressBar:BarSegment BarWidth="30*"
+                                        BarColor="Blue" />
+                <progressBar:BarSegment BarWidth="30*"
+                                        BarColor="Gold" />
+                <progressBar:BarSegment BarWidth="10*"
+                                        BarColor="Red" />
+            </progressBar:ProgressBar.BarList>
+        </progressBar:ProgressBar>--><!--
+    </StackLayout>-->
+    <!--<ProgressBar x:Name="ll_ProgressBar"
+                 HorizontalOptions="FillAndExpand"
+        HeightRequest="10"  
+                                            BackgroundColor="Yellow"/>-->
+    <!--<ContentView.Content>
+      <StackLayout>
+          <Label Text="Hello Microsoft.Maui.Controls!" />
+      </StackLayout>
+  </ContentView.Content>-->
+</ContentView>

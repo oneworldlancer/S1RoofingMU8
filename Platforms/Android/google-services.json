@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "981272576261",
+    "project_id": "s1roofingmu1101",
+    "storage_bucket": "s1roofingmu1101.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:981272576261:android:d57ace7cbb35b970bd776c",
+        "android_client_info": {
+          "package_name": "mobile.app.s1roofing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "981272576261-mhudkp7g7tov041pchdqd2k7qs50nskb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUt5tXntkBPDv5pVXMmARPIkS7yxYXzUY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "981272576261-mhudkp7g7tov041pchdqd2k7qs50nskb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "981272576261-iut5ab1kn80lssltrn20uuc3gafbp8lo.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "mobile.app.s1roofing.ios"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:981272576261:android:41a7941882b1e266bd776c",
+        "android_client_info": {
+          "package_name": "mobile.app.s1roofing.and"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "981272576261-mhudkp7g7tov041pchdqd2k7qs50nskb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUt5tXntkBPDv5pVXMmARPIkS7yxYXzUY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "981272576261-mhudkp7g7tov041pchdqd2k7qs50nskb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "981272576261-iut5ab1kn80lssltrn20uuc3gafbp8lo.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "mobile.app.s1roofing.ios"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

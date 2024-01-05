@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="vw_ChatRowView"
+			 xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:swipeRight="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Swipe"  
+              
+             xmlns:ctl="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.ScreenChatShow"
+              
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.ScreenChatShow.Row_ScreenChatShow_Message_Location_Box_Remote_View">
+
+
+    <StackLayout  HorizontalOptions="StartAndExpand"
+					   VerticalOptions="StartAndExpand"
+					   
+        Spacing="0"
+        Padding="0"
+        Margin="0">
+
+        <Frame HorizontalOptions="StartAndExpand"
+					   VerticalOptions="StartAndExpand"
+					   Padding="10"
+               HasShadow="True"
+               Margin="0,10,0,0"
+               CornerRadius="5"
+					   BackgroundColor="{StaticResource iAppColor_LightOrange}"
+               BorderColor="Transparent">
+            <StackLayout HorizontalOptions="EndAndExpand"
+                         VerticalOptions="StartAndExpand"
+                         Orientation="Vertical"
+                         Spacing="0"
+                         Margin="0"
+                         Padding="0">
+                <Label x:Name="lbl_MessageText"
+                       TextColor="White"
+                       Text="Shared photo" />
+             
+                <Label x:Name="lbl_LocationText"
+                       TextColor="White"
+                       Text="Shared photo"
+                       Margin="0,5,0,0" />
+                <ctl:Row_ScreenChatShow_Message_Time_Remote_View   x:Name="lbl_MessageTime"
+                                                                   HorizontalOptions="Start"
+                                                                   VerticalOptions="Start" />
+            </StackLayout>
+        </Frame>
+
+        <Grid  x:Name="grd_Media" 
+            HorizontalOptions="FillAndExpand"
+								 VerticalOptions="FillAndExpand"
+               Margin="0,10,0,0">
+
+
+
+            <Frame HorizontalOptions="FillAndExpand"
+								 VerticalOptions="FillAndExpand"
+								 Padding="5"
+					   Margin="0"
+					   CornerRadius="5"
+                           HasShadow="True"
+					   BackgroundColor="{StaticResource iAppColor_Opacity_White}"
+                           BorderColor="{StaticResource iAppColor_LightSilver}">
+
+             <!--Source="{Binding iGroupModelProperty.ImageDefaultServerURL, Converter={StaticResource convert_SRoofingConverter_ImageSourceURL}}"-->
+                <Image x:Name="img_Thum"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand"
+                                            BackgroundColor="Transparent"
+                                            Aspect="AspectFill" />
+            </Frame>
+            <Image x:Name="img_Flag"
+                                        HorizontalOptions="End"
+                                        VerticalOptions="End"
+                                        BackgroundColor="Transparent"
+                                        WidthRequest="50"
+                                        HeightRequest="50"
+                                        Margin="5"
+                                        Source="img_theme_map_home_black.png"
+                                        Aspect="AspectFit">
+                <!--<Image.Transformations>
+                    <fftransformations:CircleTransformation />
+                </Image.Transformations>-->
+            </Image>
+            
+            <ImageButton HorizontalOptions="End"
+								 VerticalOptions="Start"
+					   Margin="10"
+                     CornerRadius="5"   
+                       Source="img_menu_white.png" 
+                                 WidthRequest="40"
+                                 HeightRequest="40"
+                                 BackgroundColor="{StaticResource iAppColor_Opacity_Black}"
+                         IsVisible="false"/>
+            <!--<Frame   HorizontalOptions="Start"
+                     VerticalOptions="Start"
+                     Margin="10"
+                     Padding="5"
+                     BackgroundColor="{StaticResource iAppColor_Opacity_Black}">
+                <Label x:Name="lbl_FileMetaData"
+                       TextColor="{StaticResource iAppColor_SemiOrange}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding MediaFile_Size}" />
+                            --><!--<Span Text=" | " />
+                            <Span Text="{Binding MediaFile_Duration}" />--><!--
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </Frame>-->
+        </Grid>
+
+
+    </StackLayout>
+
+</ContentView>

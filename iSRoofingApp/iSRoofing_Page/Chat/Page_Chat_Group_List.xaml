@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="cv_Chat_GroupList"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Chat.Page_Chat_Group_List"
+             xmlns:rowHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Header"
+             xmlns:rowChat="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.History.Chat"
+             xmlns:rowCall="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.History.Call"
+             xmlns:itmp="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowSelector.History.Chat"
+              xmlns:rowNone="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.None"
+             xmlns:sroofingHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Header"
+             xmlns:sroofingFooter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer"
+             BackgroundColor="{StaticResource iAppColor_Black}"
+             Loaded="cv_Chat_GroupList_Loaded">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="itmp_Template_None">
+                <rowNone:Row_None_View />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_InfoTutorial">
+                <!--<rowInfo:Row_Info_History_Chat_View />-->
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Header">
+                <rowHeader:Row_Header_Chat_View  NameLine="{Binding NameLine}"
+                                                 iGroupModel="{Binding .}" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Item_Private_IsNewMessage_FALSE">
+                <rowChat:Row_Chat_Private_IsNewMessage_FALSE_View      iGroupModel="{Binding .}"
+                                                                       iOwnerModel="{Binding _iOwnerModel, Source={x:Reference cv_Chat_GroupList}}"
+                                                                       iParentCode="chat_dashboard" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Item_Private_IsNewMessage_TRUE">
+                <rowChat:Row_Chat_Private_IsNewMessage_TRUE_View      iGroupModel="{Binding .}"
+                                                                      iOwnerModel="{Binding _iOwnerModel, Source={x:Reference cv_Chat_GroupList}}"
+                                                                      iParentCode="chat_dashboard" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Item_Group_IsNewMessage_FALSE">
+                <rowChat:Row_Chat_Group_IsNewMessage_FALSE_View      iGroupModel="{Binding .}"
+                                                                     iOwnerModel="{Binding _iOwnerModel, Source={x:Reference cv_Chat_GroupList}}"
+                                                                     iParentCode="chat_dashboard" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Item_Group_IsNewMessage_TRUE">
+                <rowChat:Row_Chat_Group_IsNewMessage_TRUE_View      iGroupModel="{Binding .}"
+                                                                    iOwnerModel="{Binding _iOwnerModel, Source={x:Reference cv_Chat_GroupList}}"
+                                                                    iParentCode="chat_dashboard" />
+            </DataTemplate>
+           <!--Template_Header="{StaticResource itmp_Template_Header}"
+                                                   Template_InfoTutorial="{StaticResource itmp_Template_InfoTutorial}"-->
+                                                    <itmp:History_ChatDataTemplateSelector x:Key="ChatDataTemplateSelector"
+                                                   Template_None="{StaticResource itmp_Template_None}"
+                                                   Template_Item_Private_IsNewMessage_FALSE="{StaticResource itmp_Template_Item_Private_IsNewMessage_FALSE}"
+                                                   Template_Item_Private_IsNewMessage_TRUE="{StaticResource itmp_Template_Item_Private_IsNewMessage_TRUE}"
+                                                   Template_Item_Group_IsNewMessage_FALSE="{StaticResource itmp_Template_Item_Group_IsNewMessage_FALSE}"
+                                                   Template_Item_Group_IsNewMessage_TRUE="{StaticResource itmp_Template_Item_Group_IsNewMessage_TRUE}" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <StackLayout HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand"
+                 Spacing="0"
+                 Margin="0"
+                 BackgroundColor="#000000"
+                 Orientation="Vertical">
+
+        <sroofingHeader:SRoofing_PageHeader />
+
+        <Grid	HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+         ColumnSpacing="0" 
+                RowSpacing="0"
+                Margin="0"
+                Padding="0"
+                BackgroundColor="{StaticResource iAppColor_SemiGray}"
+                RowDefinitions="*,50">
+            <!--<Frame 	  	HorizontalOptions="FillAndExpand"
+					VerticalOptions="FillAndExpand"
+					Margin="0"
+					Padding="0"	 
+					CornerRadius="0"
+					HasShadow="False"
+					BackgroundColor="{StaticResource iAppColor_SemiGray}">-->
+            <!--Refreshing="refresh_ChatList_Refreshing"-->
+
+
+            <RefreshView x:Name="refresh_ChatList"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         RefreshColor="{StaticResource iAppColor_LightOrange}"
+                         Command="{Binding RefreshCommand}"
+                               Grid.Row="0">
+                <!--ItemsSource="{Binding Employees}"    SelectionChanged="OnCollectionViewSelectionChanged" -->
+
+                <ScrollView
+       HorizontalOptions="FillAndExpand"
+       VerticalOptions="FillAndExpand"
+       Margin="0"
+       Padding="0"
+       Orientation="Vertical"
+       VerticalScrollBarVisibility="Never"
+                        BackgroundColor="Red">
+
+                    <StackLayout HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand"
+                            Orientation="Vertical"
+                            Spacing="0"
+                            Margin="0"
+                            Padding="0"
+                            BackgroundColor="Yellow">
+
+                        <Frame HorizontalOptions="FillAndExpand"
+                           VerticalOptions="Start"
+                           BackgroundColor="{StaticResource iAppColor_Opacity_White}"
+                        CornerRadius="5"
+                           Padding="0"
+                           Margin="20"
+                           BorderColor="Transparent">
+                            <!--Orientation="Horizontal"
+                                 Spacing="0"-->
+                            <Grid HorizontalOptions="FillAndExpand"
+                              Margin="0"
+                              Padding="0">
+                                <Image x:Name="img_Register"
+                                   Source="img_group_black.png"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Start"
+                                   WidthRequest="30"
+                                   HeightRequest="30"
+                                   Margin="20,0,0,0" />
+                                <!--  VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Center"
+                                  FontSize="Medium"    -->
+                                <Button x:Name="btn_New_Group"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    HeightRequest="65"
+                            
+                                    FontAttributes="Bold"
+                                    Padding="5"
+                                    Text="Create New Group"
+                                    BackgroundColor="{StaticResource iAppColor_Transparent}"
+                                    TextColor="{StaticResource iAppColor_Black}"
+                                    Clicked="btn_New_Group_Clicked">
+                                    <!--<Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="btn_New_Group_Clicked" />
+                            </Label.GestureRecognizers>-->
+                                </Button>
+                                <!--<BoxView WidthRequest="40"
+                                 HeightRequest="40"
+                                 Margin="0,0,10,0" />-->
+                            </Grid>
+
+                        </Frame>
+
+
+
+
+                        <!--IsVisible="false"-->
+                        <CollectionView x:Name="cv_UserChatHistoryList"
+                                    SelectionMode="Single"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                              EmptyView=""
+                                    ItemTemplate="{StaticResource ChatDataTemplateSelector}"
+                                    Margin="0"
+                                        BackgroundColor="Blue"
+                                      >
+
+
+                        </CollectionView>
+
+
+
+                    </StackLayout>
+
+                </ScrollView>
+
+            </RefreshView>
+
+
+            <Button x:Name="btn_Close_MenuLeft"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="EndAndExpand"
+                            HeightRequest="50"
+                            CornerRadius="0"
+                            FontAttributes="Bold"
+                            Padding="0"
+                            Text="Close"
+                            BackgroundColor="{StaticResource iAppColor_Black}"
+                            TextColor="{StaticResource iAppColor_White}"
+                            Clicked="btn_Close_MenuLeft_Clicked"
+                            Grid.Row="1"></Button>
+
+
+            <!--</Frame>-->
+
+            <ActivityIndicator x:Name="ll_ProgressBar"
+                               WidthRequest="50"
+                               HeightRequest="50"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               IsRunning="true"
+                               IsVisible="false"
+                               Color="#FFFFFF" />
+
+        </Grid>
+        <sroofingFooter:SRoofing_PageFooter />
+    </StackLayout>
+</ContentView>

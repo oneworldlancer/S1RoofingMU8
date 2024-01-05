@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Swipe.UCView_Swipe_Right">
+	<!--<ContentView.Content>-->
+	<!--<StackLayout Margin="0"
+				 Padding="0"
+				 BackgroundColor="Blue">-->
+		<Image   HorizontalOptions="Center"
+				 WidthRequest="50"
+				 HeightRequest="15"
+				 Source="img_swipe_right_orange"
+				 Aspect="AspectFill"
+				 Margin="5" />
+
+		<!--<BoxView  HorizontalOptions="FillAndExpand"
+				  HeightRequest="1"
+				  Margin="0"
+				  Color="{StaticResource iAppColor_Silver}"
+				  Opacity=".5" />
+
+	</StackLayout>-->
+
+	<!--</ContentView.Content>-->
+</ContentView>

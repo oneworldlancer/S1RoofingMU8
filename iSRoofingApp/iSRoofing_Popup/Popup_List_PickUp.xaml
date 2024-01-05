@@ -1,0 +1,421 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<popup:BasePopupPage
+    x:Name="page_Popup"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+				 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+				 xmlns:popup=
+                     "clr-namespace:MauiPopup.Views;assembly=MauiPopup"
+				 xmlns:animations="http://rotorgames.com"
+                 
+                 x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Popup.Popup_List_PickUp" 
+                     ForegroundColor="Transparent"
+     BackgroundColor="Transparent"
+    Loaded="page_Popup_Loaded">
+
+    <!--Default Animation-->
+    <!--<popup:BasePopupPage.Animation>
+		<animations:ScaleAnimation PositionIn="Center"
+								   PositionOut="Center"
+								   ScaleIn="1.2"
+								   ScaleOut="0.8"
+								   DurationIn="400"
+								   DurationOut="300"
+								   EasingIn="SinOut"
+								   EasingOut="SinIn"
+								   HasBackgroundAnimation="False" />
+	</popup:BasePopupPage.Animation>-->
+
+
+    <!--RowDefinitions="10*,80*,10*"-->
+    <!--VerticalOptions="FillAndExpand"-->
+    <!--RowDefinitions="20*,60*,20*"-->
+     <!--Margin="50,0,50,0"-->
+    <Frame    x:Name="grd_Container"   HorizontalOptions="CenterAndExpand"
+       VerticalOptions="CenterAndExpand"
+          
+               BorderColor="Transparent"
+            HasShadow="False"
+            BackgroundColor="Silver"
+          CornerRadius="5"
+         
+              Padding="1">
+
+        <Grid  
+           HorizontalOptions="FillAndExpand"
+	 VerticalOptions="FillAndExpand" 
+            BackgroundColor="Silver">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+            </Grid.RowDefinitions>
+
+
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+
+            <!--<ScrollView
+           	HorizontalOptions="FillAndExpand"
+			HeightRequest="500"
+	   			  Orientation="Vertical"  
+       >
+           <VerticalStackLayout
+            x:Name="vsl_ItemList"
+              	HorizontalOptions="FillAndExpand"
+			
+	   			 
+            >
+
+
+            </VerticalStackLayout>
+
+        </ScrollView>-->
+
+
+            <Grid VerticalOptions="FillAndExpand"
+           HorizontalOptions="FillAndExpand"
+                     HeightRequest="600"
+           ColumnSpacing="0"
+           RowSpacing="0"
+           Padding="0"
+           Margin="0"
+       IsClippedToBounds="True"
+              Grid.Row="0">
+
+                <Grid.RowDefinitions>
+                    <!--<RowDefinition Height="60" />-->
+                    <RowDefinition Height="*" />
+                    <!--<RowDefinition Height="10" />
+				<RowDefinition Height="50" />-->
+                    <!--<RowDefinition
+                 Height="10" /> 
+				<RowDefinition
+                 Height="50" />-->
+                    <!--<RowDefinition Height="10" />-->
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="1" />
+                    <ColumnDefinition Width="*"       />
+
+                </Grid.ColumnDefinitions>
+
+
+                <StackLayout HorizontalOptions="FillAndExpand"
+                      VerticalOptions="StartAndExpand"
+                             
+                      Orientation="Vertical"
+                            
+                      Spacing="0"
+                      Margin="0"
+                      Padding="0"
+                      Grid.Row="0"
+                      Grid.Column="0">
+
+                    <ScrollView  HorizontalOptions="FillAndExpand"
+                    VerticalOptions="StartAndExpand"
+                             Orientation="Vertical"
+                          >
+                        <!--ItemTemplate="{StaticResource  AlphabetDataTemplateSelector}"-->
+
+                        <CollectionView x:Name="cv_AlphabetList_Initialize"
+                  HorizontalOptions="StartAndExpand"
+                  VerticalOptions="Start"
+                  EmptyView=""
+                  Margin="0"
+                                    	SelectionChanged="cv_AlphabetList_Initialize_SelectionChanged"
+			SelectionMode="Single"	>
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+
+
+                                    <StackLayout   HorizontalOptions="FillAndExpand"
+					   VerticalOptions="FillAndExpand"
+					   Orientation="Vertical"
+					   WidthRequest="50"
+					   HeightRequest="50"
+					   Spacing="0"
+					   Margin="0"
+					   Padding="0"		  >
+
+
+
+                                        <!--Text="{Binding ItemText}"	TextColor="{StaticResource iAppColor_LightOrange}"-->
+                                        <Label  x:Name="lbl_AlphabetChar"
+				Text="{Binding ItemValue}"
+					WidthRequest="50"
+					HeightRequest="49"
+				TextColor="Silver"
+					FontAttributes="Bold"
+					Margin="0"
+					Padding="0"
+					FontSize="Large"
+					HorizontalTextAlignment="Center"
+					VerticalTextAlignment="Center"
+                       BackgroundColor="{StaticResource iAppColor_SemiGray}">
+                                            <!--<Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="lbl_AlphabetChar_Tapped" />
+                                        </Label.GestureRecognizers>-->
+                                        </Label>
+
+
+                                        <BoxView  HorizontalOptions="FillAndExpand"
+					  HeightRequest="1"
+					  Margin="0"
+					  Color="{StaticResource iAppColor_Silver}"
+					  Opacity=".5" />
+                                    </StackLayout>
+
+
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+
+                        <!--<ScrollView x:Name="scrl_AlphabetList"
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="FillAndExpand"
+                             Orientation="Vertical"
+                             VerticalScrollBarVisibility="Never">
+                        <StackLayout x:Name="sl_AlphabetList"
+                                  HorizontalOptions="FillAndExpand"
+                                  VerticalOptions="FillAndExpand"
+                                  Orientation="Vertical"
+                                  Spacing="0"
+                                  Margin="0"
+                                  Padding="0"></StackLayout>
+                    </ScrollView>-->
+                    </ScrollView>
+                </StackLayout>
+
+                <BoxView WidthRequest="1"
+                  Margin="0"
+                  Color="{StaticResource iAppColor_Silver}"
+                  Opacity=".5"
+                  Grid.Column="1" />
+                <!--Orientation="Vertical"-->
+
+                <Frame HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                CornerRadius="0"
+                BackgroundColor="{StaticResource iAppColor_Silver}"
+                HasShadow="False"
+                Margin="0"
+                Padding="0"
+                Grid.Column="2">
+
+
+                    <CollectionView x:Name="MyCollection"
+						HorizontalOptions="FillAndExpand"
+						VerticalOptions="StartAndExpand"
+						EmptyView=""
+						SelectionMode="Single"
+						SelectionChanged="OnCollectionViewSelectionChanged"
+						Grid.Row="0"
+						Grid.Column="0"    >
+
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+
+
+                                <!--Padding="20,10,10,10"-->
+                              <!--BorderColor="Transparent"   
+		   Padding="5"
+		   HasShadow="False"
+		   CornerRadius="0"--> 
+                                
+                                <Border  HorizontalOptions="FillAndExpand"
+		   BackgroundColor="{StaticResource iAppColor_Silver}"
+	Margin="0,0,0,0"	>
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup Name="CommonStates">
+                                            <VisualState Name="Selected">
+                                                <VisualState.Setters>
+                                                    <Setter Property="BackgroundColor"
+												Value="Transparent" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+
+                                    <StackLayout HeightRequest="50"
+									 Orientation="Vertical"
+									 BackgroundColor="Silver">
+
+
+                                        <Grid HorizontalOptions="FillAndExpand"
+								  VerticalOptions="Center">
+                                            <Grid.RowDefinitions>
+
+                                                <RowDefinition Height="49" />
+                                                <!--<RowDefinition Height="10"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>-->
+
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="5" />
+                                                <ColumnDefinition Width="30" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="30" />
+                                                <ColumnDefinition Width="10" />
+                                                <ColumnDefinition Width="60" />
+                                                <ColumnDefinition Width="5" />
+
+                                            </Grid.ColumnDefinitions>
+
+
+                                            <!--Source="eg.png"-->
+                                            <Image x:Name="img_Flag"
+									   WidthRequest="25"
+									   HeightRequest="15"
+									   Source="{Binding CountryFlagSmall}"
+									   Grid.Row="0"
+									   Grid.Column="1"
+									   HorizontalOptions="Start"
+									   VerticalOptions="Center" />
+
+                                            <Label x:Name="lbl_CountryName"
+									   HorizontalOptions="FillAndExpand"
+									   VerticalOptions="Center"
+									   TextColor="White"
+									   Text="{Binding CountryName}"
+									   FontSize="Medium"
+									   HorizontalTextAlignment="Start"
+									   MaxLines="1"
+									   LineBreakMode="TailTruncation"
+									   VerticalTextAlignment="Center"
+									   Grid.Column="2" />
+
+                                            <Label x:Name="lbl_CountryCode"
+									   TextColor="White"
+									   Text="{Binding CountryCode}"
+									   TextTransform="Uppercase"
+									   VerticalTextAlignment="Center"
+									   HorizontalOptions="Start"
+									   VerticalOptions="Center"
+									   Grid.Column="3" />
+
+                                            <BoxView WidthRequest="20"
+							Color="Transparent"	
+                                                     BackgroundColor="Transparent"
+                                                     Grid.Column="4" />
+
+                                            <Label x:Name="lbl_MobileCode"
+									   TextColor="White"
+									   FontAttributes="Bold"
+									   Text="{Binding CountryMobileCode, StringFormat='+{0}'}"
+									   VerticalTextAlignment="Center"
+									   HorizontalOptions="Start"
+									   VerticalOptions="Center"
+									   Grid.Column="5" />
+
+
+
+                                        </Grid>
+
+                                        <BoxView HorizontalOptions="FillAndExpand"
+									 HeightRequest="1"
+									 Color="White"
+									 Opacity=".5" />
+
+                                    </StackLayout>
+
+
+
+
+                                </Border>
+
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                </Frame>
+
+
+            </Grid>
+
+
+
+
+            <Frame 
+            x:Name="frm_Loading"
+            HorizontalOptions="FillAndExpand"
+		   VerticalOptions="FillAndExpand"
+		 
+		   BorderColor="{StaticResource iAppColor_Transparent}"
+		   Padding="0"
+		   Margin="0"
+		   BackgroundColor="{StaticResource iAppColor_Silver}"
+		   Grid.Row="0"
+		   Grid.Column="0"
+            IsVisible="true">
+                <ActivityIndicator WidthRequest="50"
+					   HeightRequest="50"
+					   HorizontalOptions="Center"
+					   VerticalOptions="Center"
+					   Margin="50"
+					 
+					   Grid.Column="1"
+					   Color="#ffffff"
+					   IsRunning="true"
+					   FlowDirection="LeftToRight" />
+
+            </Frame>
+            <!--BorderColor="{StaticResource iAppColor_LightOrange}"-->
+
+
+            <Frame HorizontalOptions="FillAndExpand"
+               VerticalOptions="EndAndExpand"
+			   HeightRequest="50"
+			   BorderColor="{StaticResource iAppColor_LightOrange}"
+			   Padding="1"
+			   Margin="0"
+			   BackgroundColor="{StaticResource iAppColor_LightOrange}"
+			   Grid.Row="1"
+			   Grid.Column="0">
+
+                <StackLayout HorizontalOptions="FillAndExpand"
+			VerticalOptions="EndAndExpand"  Orientation="Horizontal"
+						 Padding="10,0,10,0">
+
+                    <!--Clicked="btnCountryList_Clicked"-->
+
+                    <Label x:Name="btn_Popup_OK"
+					   HorizontalOptions="FillAndExpand"
+					  VerticalOptions="EndAndExpand"
+                       HeightRequest="50"
+					   HorizontalTextAlignment="Center"
+					   VerticalTextAlignment="Center"
+					   Text="CANCEL"
+					   FontAttributes="Bold"
+					   FontSize="Medium"
+					   BackgroundColor="Transparent"
+					   TextColor="{StaticResource iAppColor_White}">
+
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="btn_Popup_OK_Tapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+
+                </StackLayout>
+
+
+            </Frame>
+
+
+        </Grid>
+
+
+
+    </Frame>
+
+</popup:BasePopupPage>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Profile.Remote.UCView_Profile_Remote_Ticket">
+
+	<ContentView.Content>
+
+		<StackLayout Spacing="0"
+					 Padding="20,0,0,0"
+					 Margin="0"
+					 HeightRequest="100"
+					 Orientation="Vertical"
+					>
+			<!--   FontAttributes="Bold" BackgroundColor="Red"-->
+			<Label FontSize="Medium"
+				
+				   TextColor="{StaticResource iAppColor_SemiGray}"
+				   Text="Shaymaa Hafez" />
+			<Label TextColor="{StaticResource iAppColor_Gray}"
+				   Text="S1Roofing member" />
+
+			<BoxView HeightRequest="1"
+					 Margin="0,5,20,0"
+					 BackgroundColor="{StaticResource iAppColor_Silver}"
+					 Opacity=".5" />
+
+			<StackLayout Spacing="0"
+						 Margin="0,5,0,0"
+						 Orientation="Horizontal">
+				<Image WidthRequest="20"
+					   HeightRequest="20"
+					   Source="img_theme_call.png" />
+				<Label TextColor="{StaticResource iAppColor_LightOrange}"
+					   Text="+201221977230" />
+			</StackLayout>
+		</StackLayout>
+
+	</ContentView.Content>
+
+</ContentView>

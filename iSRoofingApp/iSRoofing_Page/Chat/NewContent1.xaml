@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Chat.NewContent1"
+                          xmlns:rowHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Header"
+             xmlns:rowChat="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.History.Chat"
+             xmlns:rowCall="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.History.Call"
+             xmlns:itmp="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowSelector.History.Chat"
+              xmlns:rowNone="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.None"
+             xmlns:sroofingHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Header"
+             xmlns:sroofingFooter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer"
+             BackgroundColor="{StaticResource iAppColor_Black}">
+   
+    <StackLayout HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand"
+                 Spacing="0"
+                 Margin="0"
+                 BackgroundColor="#000000"
+                 Orientation="Vertical">
+
+        <sroofingHeader:SRoofing_PageHeader />
+        <Grid	HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          Margin="0"
+          Padding="0"
+          BackgroundColor="{StaticResource iAppColor_SemiGray}">
+            <!--<Frame 	  	HorizontalOptions="FillAndExpand"
+		VerticalOptions="FillAndExpand"
+		Margin="0"
+		Padding="0"	 
+		CornerRadius="0"
+		HasShadow="False"
+		BackgroundColor="{StaticResource iAppColor_SemiGray}">-->
+            <!--Refreshing="refresh_ChatList_Refreshing"-->
+                 <!--Command="{Binding RefreshCommand}"--> 
+            
+            <RefreshView x:Name="refresh_ChatList"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand"
+                   RefreshColor="{StaticResource iAppColor_LightOrange}"
+             >
+                <!--ItemsSource="{Binding Employees}"    SelectionChanged="OnCollectionViewSelectionChanged" -->
+                <StackLayout HorizontalOptions="FillAndExpand"
+                       VerticalOptions="StartAndExpand"
+                       Orientation="Vertical"
+                       Spacing="0"
+                       Margin="0"
+                       Padding="0">
+                    <Frame BackgroundColor="{StaticResource iAppColor_Opacity_White}"
+                     CornerRadius="5"
+                     Padding="0"
+                     Margin="20">
+                        <!--Orientation="Horizontal"
+                           Spacing="0"-->
+                        <Grid HorizontalOptions="FillAndExpand"
+                        Margin="0"
+                        Padding="0">
+                            <Image x:Name="img_Register"
+                             Source="img_group_black.png"
+                             VerticalOptions="Center"
+                             HorizontalOptions="Start"
+                             WidthRequest="30"
+                             HeightRequest="30"
+                             Margin="20,0,0,0" />
+                            <!--  VerticalTextAlignment="Center"
+                         HorizontalTextAlignment="Center"
+                            FontSize="Medium"    -->
+                             <!--Clicked="btn_New_Group_Clicked"-->  
+                            
+                            <Button x:Name="btn_New_Group"
+                              HorizontalOptions="FillAndExpand"
+                              VerticalOptions="FillAndExpand"
+                              HeightRequest="65"
+                      
+                              FontAttributes="Bold"
+                              Padding="5"
+                              Text="Create New Group"
+                              BackgroundColor="{StaticResource iAppColor_Transparent}"
+                              TextColor="{StaticResource iAppColor_Black}"
+                          >
+                                <!--<Label.GestureRecognizers>
+                          <TapGestureRecognizer Tapped="btn_New_Group_Clicked" />
+                      </Label.GestureRecognizers>-->
+                            </Button>
+                            <!--<BoxView WidthRequest="40"
+                           HeightRequest="40"
+                           Margin="0,0,10,0" />-->
+                        </Grid>
+                    </Frame>
+                                    <!--ItemTemplate="{StaticResource ChatDataTemplateSelector}"--> 
+                    
+                    <!--<CollectionView x:Name="cv_UserChatHistoryList"
+                              SelectionMode="None"
+                              HorizontalOptions="FillAndExpand"
+                              VerticalOptions="Start"
+                              EmptyView=""
+            
+                              Margin="0">
+ 
+                    </CollectionView>-->
+     <!--Clicked="btn_Close_MenuLeft_Clicked"-->
+                    <Button x:Name="btn_Close_MenuLeft"
+                      HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand"
+                      HeightRequest="50"
+                      CornerRadius="0"
+                      FontAttributes="Bold"
+                      Padding="0"
+                      Text="Close"
+                      BackgroundColor="{StaticResource iAppColor_Black}"
+                      TextColor="{StaticResource iAppColor_White}"
+                 ></Button>
+                </StackLayout>
+            </RefreshView>
+            <!--</Frame>-->
+            <!--<ActivityIndicator x:Name="ll_ProgressBar"
+                         WidthRequest="50"
+                         HeightRequest="50"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center"
+                         IsRunning="true"
+                         IsVisible="false"
+                         Color="#FFFFFF" />-->
+        </Grid>
+        <sroofingFooter:SRoofing_PageFooter />
+
+    </StackLayout>
+    
+</ContentView>

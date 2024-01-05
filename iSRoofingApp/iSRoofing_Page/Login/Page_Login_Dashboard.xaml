@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage  x:Name="page_LoginDashboard"
+              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Login.Page_Login_Dashboard"
+              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+               xmlns:progressbar="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.ProgressBar"
+           xmlns:sroofingHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Header"
+              xmlns:arrowBack="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Back"
+              xmlns:sroofingFooter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer"
+              xmlns:logo="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Logo"
+              xmlns:snackAutoHide="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar"
+              xmlns:vw="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_Page.Login"
+              ios:Page.UseSafeArea="False"
+              NavigationPage.HasNavigationBar="False"
+              Visual="Material">
+    <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          Margin="0"
+          Padding="0"
+          BackgroundColor="#000000">
+      
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     BackgroundColor="#000000"
+                     Spacing="0"
+                     Margin="0"
+                     Padding="0"
+                     Orientation="Vertical">
+            <sroofingHeader:SRoofing_PageHeader />
+         
+            <ScrollView HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Orientation="Vertical"
+                        VerticalScrollBarVisibility="Never">
+              
+                <Grid VerticalOptions="FillAndExpand"
+                      HorizontalOptions="FillAndExpand"
+                      BackgroundColor="#000000">
+                  
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100" />
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="20" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <!--<ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>-->
+                    </Grid.ColumnDefinitions>
+                    <StackLayout HorizontalOptions="CenterAndExpand"
+                                 VerticalOptions="CenterAndExpand"
+                                 Orientation="Vertical"
+                                 Spacing="0"
+                                 Margin="0"
+                                 Padding="0"
+                                 Grid.Row="0"
+                                 Grid.Column="0">
+                        <Image x:Name="img_Logo"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               Source="logo_text.png"
+                               Margin="0"
+                               HeightRequest="50"
+                               WidthRequest="50">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
+                    <Label    x:Name="lbl_Title"
+                              HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               TextColor="White"
+                               FontSize="Medium"
+                               FontAttributes="Bold"
+                               Margin="0,10,0,10"
+                               Text="Sign in"
+                               Grid.Row="1" />
+                    <Grid HorizontalOptions="FillAndExpand"
+                          VerticalOptions="FillAndExpand"
+                          Margin="0"
+                          Padding="0"
+                          Grid.Column="0"
+                          Grid.Row="2">
+                      
+                        <vw:Page_Login_View x:Name="vw_LogIn_View"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand"
+                                            iParent="{Binding .}"
+                                            IsVisible="true" />
+                       
+                        <vw:Page_Password_View  x:Name="vw_Password_View"
+                            HorizontalOptions="FillAndExpand"
+                                             VerticalOptions="FillAndExpand"
+                                             iParent="{Binding .}"
+                                             IsVisible="false" />
+                    </Grid>
+                </Grid>
+            </ScrollView>
+            <Button x:Name="btn_Close_Window"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="End"
+                    HeightRequest="50"
+                    FontAttributes="Bold"
+                    CornerRadius="0"
+                    Padding="0"
+                    Text="Close"
+                    BackgroundColor="{StaticResource iAppColor_Black}"
+                    TextColor="{StaticResource iAppColor_White}"
+                    Clicked="btn_Close_Window_Clicked"></Button> 
+            
+            <sroofingFooter:SRoofing_PageFooter />
+        </StackLayout>
+      
+        <BoxView x:Name="ll_NetConnection"
+                 HorizontalOptions="FillAndExpand"
+                 VerticalOptions="StartAndExpand"
+                 Color="{StaticResource iAppColor_Black}"
+                 HeightRequest="5" />
+
+        <progressbar:UCView_ProgressBarView
+   x:Name="ll_ProgressBar"
+                   HorizontalOptions="FillAndExpand"
+   VerticalOptions="Start"
+                    
+HeightRequest="5"   />
+        <snackAutoHide:SnackBar x:Name="iSnackBar"
+                                BackgroundColor="Transparent"
+                                TextColor="Black"
+                                IsOpen="False"
+                                VerticalOptions="End"
+                                Message="I'm a snack bar... I love showing my self."
+                                ButtonTextColor="Orange"
+                                CloseButtonText=""
+                                Margin="0,0,0,50" />
+      
+
+    </Grid>
+</ContentPage>

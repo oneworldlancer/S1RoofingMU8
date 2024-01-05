@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TemplatedView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			   x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar.SnackBar_Command_ScanOption">
+	<TemplatedView.ControlTemplate>
+		<ControlTemplate>
+			<Grid>
+
+				<!--BackgroundColor="White"-->
+
+				<Frame HorizontalOptions="FillAndExpand"
+					   HasShadow="True"
+					   CornerRadius="5"
+					   Padding="0"
+					   Margin="10,0,10,0"
+					   BackgroundColor="White">
+
+					<!--<Frame.Background>
+                        <LinearGradientBrush
+                            StartPoint="0,0"
+                            EndPoint="1,0">
+                           <GradientStop
+                                Color="{StaticResource iAppColor_DarkOrange}"
+                                Offset="0.1" />  <GradientStop
+                                Color="{StaticResource iAppColor_LightOrange}"
+                                Offset="0.1" />
+                           <GradientStop
+                                Color="Orange"
+                                Offset="1.0" /> -->
+					<!--<GradientStop
+                                Color="{StaticResource iAppColor_SemiOrange}"
+                                Offset="1.0" />-->
+					<!-- 
+                        </LinearGradientBrush>
+                    </Frame.Background>-->
+
+
+					<StackLayout HorizontalOptions="Fill"
+								 Orientation="Vertical"
+								 Padding="10">
+
+						<StackLayout HorizontalOptions="FillAndExpand"
+									 Orientation="Vertical"
+									 Margin="0">
+
+							<StackLayout   HorizontalOptions="FillAndExpand"
+										   Orientation="Horizontal"
+										   Margin="0,0,5,0">
+
+								<StackLayout   HorizontalOptions="FillAndExpand"
+											   Orientation="Horizontal">
+									<ImageButton	 x:Name="img_Close"
+													 HorizontalOptions="Center"
+													 VerticalOptions="Center"
+													 WidthRequest="20"
+													 HeightRequest="20"
+													 Source="img_close_x.png"
+													 Margin="5,0,0,0"
+													 BackgroundColor="Transparent"
+													 Clicked="img_Close_Clicked" />
+
+									<!--<StackLayout.GestureRecognizers>
+										<TapGestureRecognizer Tapped="lbl_OpenScanner_Clicked" />
+									</StackLayout.GestureRecognizers>-->
+
+
+
+									<!--<Label  x:Name="lbl_Test"
+											Text="{TemplateBinding MyString}"
+											Margin="0"
+									LineBreakMode="WordWrap"
+									FontSize="Medium"
+									TextColor="Silver" />-->
+								</StackLayout>
+
+								<Label  x:Name="lbl_Title"
+										TextColor="Black"
+										FontSize="Large"
+										FontAttributes="Bold"
+										VerticalOptions="Center"
+										HorizontalTextAlignment="Start"
+										Text="إختيارات" />
+								<!--		Text="{TemplateBinding MyString}"-->
+
+							</StackLayout>
+
+
+							<!--<Label
+								HorizontalOptions="End"	Text="إختيارات"
+                   
+                        Margin="0"
+                        LineBreakMode="WordWrap"
+                        FontSize="Large"
+						FontAttributes="Bold"	
+                        TextColor="Black" />-->
+
+							<BoxView HorizontalOptions="FillAndExpand"
+									 Color="{StaticResource iAppColor_Silver}"
+									 Opacity="1"
+									 HeightRequest="1" />
+
+
+						</StackLayout>
+
+
+
+
+						<StackLayout HorizontalOptions="EndAndExpand"
+									 Orientation="Horizontal"
+									 Margin="0,20,0,0">
+
+
+							<Label  x:Name="lbl_OpenScanner"
+									Text="سكان بالكاميرا"
+									Margin="0"
+									LineBreakMode="WordWrap"
+									FontSize="Medium"
+									TextColor="{TemplateBinding TextColor}" />
+							<Image HorizontalOptions="Center"
+								   VerticalOptions="Center"
+								   WidthRequest="10"
+								   HeightRequest="10"
+								   Margin="5,0,0,0"
+								   Source="img_circle_black.png" />
+
+							<StackLayout.GestureRecognizers>
+								<TapGestureRecognizer Tapped="lbl_OpenScanner_Clicked" />
+							</StackLayout.GestureRecognizers>
+
+						</StackLayout>
+
+
+						<StackLayout   x:Name="sl_OpenGallery"
+									   HorizontalOptions="EndAndExpand"
+									   Orientation="Horizontal"
+									   Margin="0,20,0,20"
+									   IsEnabled="{TemplateBinding GalleryIsEnable}">
+							<!--BackgroundColor="WhiteSmoke"-->
+
+							<Label  x:Name="lbl_OpenGallery"
+									Text="تحميل صورة الطلب"
+									Margin="0"
+									LineBreakMode="WordWrap"
+									FontSize="Medium"
+									TextColor="{TemplateBinding GalleryColor}" />
+							<!--TextColor="{TemplateBinding TextColor}"-->
+
+							<Image HorizontalOptions="Center"
+								   VerticalOptions="Center"
+								   WidthRequest="10"
+								   HeightRequest="10"
+								   Margin="5,0,0,0"
+								   Source="{TemplateBinding GalleryIcon}" />
+
+							<StackLayout.GestureRecognizers>
+								<TapGestureRecognizer Tapped="lbl_OpenGallery_Clicked" />
+							</StackLayout.GestureRecognizers>
+
+						</StackLayout>
+
+
+
+
+						<Label Text="{TemplateBinding Message}"
+							   HorizontalTextAlignment="Center"
+							   VerticalTextAlignment="Center"
+							   VerticalOptions="Center"
+							   HorizontalOptions="Center"
+							   Margin="10"
+							   LineBreakMode="WordWrap"
+							   FontSize="Medium"
+							   TextColor="{TemplateBinding TextColor}"
+							   IsVisible="false" />
+
+					</StackLayout>
+
+
+
+				</Frame>
+
+
+				<!--FontFamily="{TemplateBinding FontFamily}"-->
+				<!--<Label Text="{TemplateBinding Message}"
+                       VerticalOptions="Center" HorizontalOptions="Center"
+                       Margin="5, 5, 5, 5" LineBreakMode="NoWrap"
+                       FontSize="{TemplateBinding FontSize}"
+                       TextColor="{TemplateBinding TextColor}"
+                       FontFamily="{TemplateBinding FontFamily}"/>-->
+
+				<!--<Label Text="{TemplateBinding Message}"
+                       VerticalOptions="Center" HorizontalOptions="FillAndExpand"
+                       Margin="20, 5, 5, 5" LineBreakMode="WordWrap"
+                       FontSize="{TemplateBinding FontSize}"
+                       TextColor="{TemplateBinding TextColor}"
+                       FontFamily="{TemplateBinding FontFamily}"/>-->
+
+				<!--<Button Grid.Column="1" HorizontalOptions="End"
+                        Clicked="CloseButton_Clicked" Margin="2"
+                        FontFamily="{TemplateBinding FontFamily}"
+                        FontSize="{TemplateBinding FontSisze}"
+                        TextColor="{TemplateBinding ButtonTextColor}"
+                        BackgroundColor="{TemplateBinding CloseButtonBackGroundColor}"
+                        VerticalOptions="Center" Text="{TemplateBinding CloseButtonText}"
+                        IsVisible="false"/>-->
+			</Grid>
+		</ControlTemplate>
+	</TemplatedView.ControlTemplate>
+</TemplatedView>

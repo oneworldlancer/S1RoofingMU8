@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="cv_Callist"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:rowCall="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.History.Call"
+             xmlns:rowHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Header"
+             xmlns:itmp="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowSelector.History.Call"
+              
+             xmlns:rowNone="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.None"
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing.Page_Landing_Call_List">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="itmp_Template_None">
+                <rowNone:Row_None_View />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_InfoTutorial">
+                <!--<rowInfo:Row_Info_History_Call_View />-->
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Header">
+                <rowHeader:Row_Header_Call_View    NameLine="{Binding NameLine}"
+                                                   iGroupModel="{Binding .}" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Item_IsNewMessage_FALSE_IN">
+                
+                <rowCall:Row_Call_IsNewMessage_FALSE_IN_View      iGroupModel="{Binding .}"
+                                                                  iOwnerModel="{Binding _iOwnerModel, Source={x:Reference cv_Callist}}" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Item_IsNewMessage_FALSE_OUT">
+                <rowCall:Row_Call_IsNewMessage_FALSE_OUT_View      iGroupModel="{Binding .}"
+                                                                   iOwnerModel="{Binding _iOwnerModel, Source={x:Reference cv_Callist}}" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Item_IsNewMessage_TRUE">
+                <rowCall:Row_Call_IsNewMessage_TRUE_View      iGroupModel="{Binding .}"
+                                                              iOwnerModel="{Binding _iOwnerModel, Source={x:Reference cv_Callist}}" />
+            </DataTemplate>
+            <itmp:History_CallDataTemplateSelector x:Key="CallDataTemplateSelector"
+                                                   Template_None="{StaticResource itmp_Template_None}"
+                                                   Template_Header="{StaticResource itmp_Template_Header}"
+                                                   Template_InfoTutorial="{StaticResource itmp_Template_InfoTutorial}"
+                                                   Template_Item_IsNewMessage_FALSE_IN="{StaticResource itmp_Template_Item_IsNewMessage_FALSE_IN}"
+                                                   Template_Item_IsNewMessage_FALSE_OUT="{StaticResource itmp_Template_Item_IsNewMessage_FALSE_OUT}"
+                                                   Template_Item_IsNewMessage_TRUE="{StaticResource itmp_Template_Item_IsNewMessage_TRUE}" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <Grid	HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            ColumnSpacing="0"
+            RowSpacing="0"
+            Margin="0"
+            Padding="0">
+        <RefreshView x:Name="refresh_CallList"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     RefreshColor="{StaticResource iAppColor_LightOrange}"
+                     Command="{Binding RefreshCommand}">
+            <!--ItemsSource="{Binding Employees}"    SelectionChanged="OnCollectionViewSelectionChanged" -->
+            <StackLayout HorizontalOptions="FillAndExpand"
+                         VerticalOptions="StartAndExpand"
+                         Orientation="Vertical"
+                         Spacing="0"
+                         Margin="0"
+                         Padding="0">
+                <Frame 
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Start"
+                    BackgroundColor="{StaticResource iAppColor_Opacity_White}"
+                       CornerRadius="5"
+                        BorderColor="Transparent"           Padding="0"
+                       Margin="20">
+                    <!--Orientation="Horizontal"
+                                 Spacing="0"-->
+                    <Grid HorizontalOptions="FillAndExpand"
+                          Margin="0"
+                          Padding="0">
+                        <Image x:Name="img_Register"
+                               Source="img_group_black.png"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Start"
+                               WidthRequest="30"
+                               HeightRequest="30"
+                               Margin="20,0,0,0" />
+                        <!--  VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Center"
+                                   Text="Create New Group"    HeightRequest="65"  -->
+                        <Button x:Name="btn_New_Group"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                               FontSize="Medium" 
+                              FontAttributes="Bold"
+                                Padding="10"
+                            
+                                BackgroundColor="{StaticResource iAppColor_Transparent}"
+                                TextColor="{StaticResource iAppColor_Black}"
+                                Clicked="btn_New_Group_Clicked">
+                            <!--<Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="btn_New_Group_Clicked" />
+                            </Label.GestureRecognizers>-->
+                        </Button>
+                        <!--<BoxView WidthRequest="40"
+                                 HeightRequest="40"
+                                 Margin="0,0,10,0" />-->
+                    </Grid>
+                </Frame>
+                <!--<rowInfo:Row_Info_History_Call_View/>-->
+
+                <ScrollView
+      HorizontalOptions="FillAndExpand"
+      VerticalOptions="FillAndExpand"
+      Margin="0"
+      Padding="0"
+      Orientation="Vertical"
+      VerticalScrollBarVisibility="Never">
+                 
+                    <CollectionView x:Name="cv_UserCallHistoryList"
+                                SelectionMode="Single"
+                                SelectionChanged="cv_UserCallHistoryList_SelectionChanged"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="Start"
+                                EmptyView=""
+                                ItemTemplate="{StaticResource CallDataTemplateSelector}"
+                                Margin="0">
+       
+                    
+                </CollectionView>
+
+                </ScrollView>
+
+            </StackLayout>
+        </RefreshView>
+        <ActivityIndicator x:Name="ll_ProgressBar_Call"
+                           WidthRequest="50"
+                           HeightRequest="50"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           IsRunning="true"
+                           IsVisible="true"
+                           Color="White" />
+    </Grid>
+</ContentView>

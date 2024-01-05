@@ -1,0 +1,640 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:entry="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Entry"
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Register.Page_Register_Step1"
+            xmlns:snackAutoHide="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:sroofingHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Header"
+    xmlns:arrowBack="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Back"
+    xmlns:sroofingFooter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer"
+    xmlns:grid="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Grid"
+			 ios:Page.UseSafeArea="False"
+    NavigationPage.HasNavigationBar="False"
+  Visual="Material" 
+             BackgroundColor="Black">
+
+    <!--RowDefinitions="*,50,10,50"-->
+    <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          RowDefinitions="*,50" >
+
+        <StackLayout  HorizontalOptions="FillAndExpand"    VerticalOptions="FillAndExpand"
+           Spacing="0"
+            Margin="0"
+            Padding="0"
+                      Grid.Row="0">
+          
+            <Frame          x:Name="frm_CountryName"
+                            HorizontalOptions="FillAndExpand"
+                                HeightRequest="50"
+								        CornerRadius="5"
+								HasShadow="True"
+BorderColor="{StaticResource iAppColor_SemiOrange}"
+                                Padding="1"
+                                Margin="20,0,20,0"
+                                BackgroundColor="{StaticResource iAppColor_White}"
+                                Grid.Row="1"
+                                Grid.Column="0">
+
+                <StackLayout  x:Name="sl_CountryName"
+                                HorizontalOptions="FillAndExpand"
+                              Orientation="Horizontal"
+                                    BackgroundColor="{StaticResource iAppColor_White}"
+                                    Spacing="0"
+									Margin="0"	
+									Padding="10,0,10,0"	>
+
+                    <Image
+                                        WidthRequest="25"
+                                        HeightRequest="25"
+                                        Source="img_dating_country.png" 
+                           Margin="10,0,0,0"/>
+
+
+                    <Label
+                                        x:Name="lbl_CountryList"
+                                        HorizontalOptions="FillAndExpand"
+                                        HeightRequest="50"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Your country"
+                                        FontSize="Medium"
+                                        BackgroundColor="Transparent"
+                                        TextColor="{StaticResource iAppColor_OpacityOrange}">
+                        <!--Tapped="lblCountryList_Clicked"-->
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                                Tapped="lblCountryList_Clicked" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <Image
+                                        WidthRequest="25"
+                                        HeightRequest="25"
+                                        Source="arrow_down_orange.png" 
+                           Margin="0,0,10,0"/>
+                </StackLayout>
+
+
+            </Frame>
+            <Frame         x:Name="frm_MobileNumber"
+                           HorizontalOptions="FillAndExpand"
+                                HeightRequest="50"
+                               CornerRadius="5"
+								HasShadow="True"
+								BorderColor="{StaticResource iAppColor_SemiOrange}"
+                                Padding="1"
+                                Margin="20,20,20,0"
+                                BackgroundColor="{StaticResource iAppColor_SemiOrange}"
+                                Grid.Row="3"
+                                Grid.Column="0">
+
+
+                <StackLayout  x:Name="sl_MobileNumber"
+                               HorizontalOptions="FillAndExpand"
+                              Orientation="Horizontal"
+                                    BackgroundColor="{StaticResource iAppColor_White}"
+                                    Padding="10,0,10,0"
+										 Spacing="0"
+										 Margin="0">
+                    <Image
+                                        WidthRequest="25"
+                                        HeightRequest="25"
+                                        Source="img_dating_phone.png" 
+                           Margin="10,0,0,0"/>
+                    <!--BackgroundColor="{StaticResource iAppColor_Transparent}"
+
+                        IsEnabled="False"-->
+                    <Entry x:Name="txt_MobileNumber"
+                                        HorizontalOptions="FillAndExpand"
+                                        HeightRequest="50"
+                                        Placeholder="Mobile number"
+                                        FontSize="Medium"
+                                        TextColor="{StaticResource iAppColor_OpacityOrange}"
+                                        PlaceholderColor="{StaticResource iAppColor_OpacityOrange}"
+                                        BackgroundColor="Transparent"
+                                        HorizontalTextAlignment="Center"
+                                      Keyboard="Telephone"
+                                     
+                                        ReturnType="Next"
+                                                     
+                                                 Focused="txt_MobileNumber_Focussed"
+                                   TextChanged="txt_MobileNumber_TextChanged"   
+                                            Completed="txt_MobileNumber_Completed"/>
+
+                    <Image
+                                        WidthRequest="25"
+                                        HeightRequest="25" 
+                           Margin="0,0,10,0"/>
+                </StackLayout>
+
+            </Frame>
+
+            <StackLayout   HorizontalOptions="FillAndExpand"  
+                Orientation="Horizontal"
+                Spacing="0"
+          Margin="20,20,20,0"
+            Padding="0">
+
+                <Frame    WidthRequest="50"    
+                          HeightRequest="40"
+                 
+								HasShadow="True"
+								BorderColor="{StaticResource iAppColor_SemiOrange}"
+                                Padding="0"
+                                Margin="0,0,10,0"
+                                BackgroundColor="{StaticResource iAppColor_Transparent}" >
+                    <Image HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                        Source="img_dating_name.png"  Margin="0"
+         Aspect="AspectFit"
+                       HeightRequest="25"
+                           WidthRequest="25"      />
+                </Frame>
+
+                <Grid  HorizontalOptions="FillAndExpand"
+                                ColumnDefinitions="*,5,*">
+                  
+                    <Frame    x:Name="frm_FirstName"
+                              HorizontalOptions="FillAndExpand"
+                                HeightRequest="50"
+                               CornerRadius="5"
+								HasShadow="True"
+								BorderColor="{StaticResource iAppColor_SemiOrange}"
+                                Padding="1"
+                                Margin="0"
+                                BackgroundColor="{StaticResource iAppColor_SemiOrange}"
+                                Grid.Column="0">
+
+
+                        <StackLayout x:Name="sl_FirstName"
+                                    Orientation="Horizontal"
+                                    BackgroundColor="{StaticResource iAppColor_White}"
+                                    Padding="10,0,10,0"
+										 Spacing="0"
+										 Margin="0">
+
+                            <Entry x:Name="txt_FirstName"
+                                        HorizontalOptions="FillAndExpand"
+                                        HeightRequest="50"
+                                        Placeholder="First name"
+                                        FontSize="Medium"
+                                        TextColor="{StaticResource iAppColor_OpacityOrange}"
+                                        PlaceholderColor="{StaticResource iAppColor_OpacityOrange}"
+                                        BackgroundColor="Transparent"
+                                        HorizontalTextAlignment="Center"
+                                           Keyboard="Text"
+                                        ReturnType="Next"
+                                                    Completed="txt_FirstName_Completed"/>
+
+
+                        </StackLayout>
+
+                    </Frame>
+                    <Frame     x:Name="frm_LastName"
+                               HorizontalOptions="FillAndExpand"
+                                HeightRequest="50"
+                               CornerRadius="5"
+								HasShadow="True"
+								BorderColor="{StaticResource iAppColor_SemiOrange}"
+                                Padding="1"
+                                Margin="0"
+                                BackgroundColor="{StaticResource iAppColor_SemiOrange}"
+                                Grid.Column="2">
+
+
+                        <StackLayout x:Name="sl_LastName"
+                                    Orientation="Horizontal"
+                                    BackgroundColor="{StaticResource iAppColor_White}"
+                                    Padding="10,0,10,0"
+										 Spacing="0"
+										 Margin="0">
+
+                            <Entry x:Name="txt_LastName"
+                                        HorizontalOptions="FillAndExpand"
+                                        HeightRequest="50"
+                                        Placeholder="Last name"
+                                        TextColor="{StaticResource iAppColor_OpacityOrange}"
+                                   FontSize="Medium"       PlaceholderColor="{StaticResource iAppColor_OpacityOrange}"
+                                        BackgroundColor="Transparent"
+                                           HorizontalTextAlignment="Center"
+                                        Keyboard="Text"
+                                        ReturnType="Next"
+                                                    Completed="txt_LastName_Completed"/>
+
+
+                        </StackLayout>
+
+                    </Frame>
+
+                </Grid>
+
+            </StackLayout>
+
+
+            <StackLayout   HorizontalOptions="FillAndExpand"  
+                Orientation="Horizontal"
+                Spacing="0"
+            Margin="20,20,20,0"
+            Padding="0">
+
+
+                <Frame    WidthRequest="50"    
+                          HeightRequest="40"
+                 
+								HasShadow="True"
+								BorderColor="{StaticResource iAppColor_SemiOrange}"
+                                Padding="0"
+                                Margin="0,0,10,0"
+                                BackgroundColor="{StaticResource iAppColor_Transparent}" >
+                    <Image HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                        Source="img_dating_password_register.png"  Margin="0"
+         Aspect="AspectFit"
+                       HeightRequest="25"
+                           WidthRequest="25"      />
+                </Frame>
+
+                <Grid HorizontalOptions="FillAndExpand"
+                      ColumnDefinitions="*,*,*,*,*">
+                    <Frame     x:Name="frm_Pswd1"
+                               HorizontalOptions="FillAndExpand"
+                                HeightRequest="50"
+                               CornerRadius="5"
+								HasShadow="True"
+								BorderColor="{StaticResource iAppColor_SemiOrange}"
+                                Padding="1"
+                                Margin="1"
+                                BackgroundColor="{StaticResource iAppColor_White}"
+                                Grid.Column="0">
+
+
+                        <StackLayout
+                                    Orientation="Horizontal"
+                                    BackgroundColor="{StaticResource iAppColor_White}"
+                                    Padding="0"
+										 Spacing="0"
+										 Margin="0">
+
+                            <Entry x:Name="txt_Pswd1"
+                                        HorizontalOptions="FillAndExpand"
+                                        HeightRequest="50"
+                                        Placeholder="*"
+                                        FontSize="Large"
+                                        MaxLength="1"
+                                        TextColor="{StaticResource iAppColor_OpacityOrange}"
+                                        PlaceholderColor="{StaticResource iAppColor_OpacityOrange}"
+                                        VerticalTextAlignment="Center"  
+                                        BackgroundColor="Transparent"
+                                        HorizontalTextAlignment="Center"
+                                         
+                                        IsPassword="true" 
+                                        ReturnType="Next"
+                                                     
+                                                    Focused="txt_Pswd1_Focussed"
+                                        TextChanged="txt_Pswd1_TextChanged" />
+
+                        </StackLayout>
+
+                    </Frame>
+                  
+                    <Frame     x:Name="frm_Pswd2"
+                               HorizontalOptions="FillAndExpand"
+                                HeightRequest="50"
+                               CornerRadius="5"
+								HasShadow="True"
+								BorderColor="{StaticResource iAppColor_SemiOrange}"
+                                    Padding="1"
+                                Margin="1"
+                                BackgroundColor="{StaticResource iAppColor_White}"
+                                Grid.Column="1">
+
+
+                        <StackLayout
+                                    Orientation="Horizontal"
+                                    BackgroundColor="{StaticResource iAppColor_White}"
+                                    Padding="0"
+										 Spacing="0"
+										 Margin="0">
+
+                            <Entry x:Name="txt_Pswd2"
+                                        HorizontalOptions="FillAndExpand"
+                                        HeightRequest="50"
+                                        Placeholder="*"
+                                        FontSize="Large"
+                                        MaxLength="1"
+                                        TextColor="{StaticResource iAppColor_OpacityOrange}"
+                                        PlaceholderColor="{StaticResource iAppColor_OpacityOrange}"
+                                        VerticalTextAlignment="Center"  
+                                        BackgroundColor="Transparent"
+                                        HorizontalTextAlignment="Center"
+                                         
+                                        IsPassword="true" 
+                                        ReturnType="Next"
+                                                     
+                                                    Focused="txt_Pswd2_Focussed"
+                                        TextChanged="txt_Pswd2_TextChanged"/>
+
+                        </StackLayout>
+
+                    </Frame>
+                  
+                 
+                    <Frame      x:Name="frm_Pswd3"
+                                HorizontalOptions="FillAndExpand"
+                                HeightRequest="50"
+                               CornerRadius="5"
+								HasShadow="True"
+								BorderColor="{StaticResource iAppColor_SemiOrange}"
+                                Padding="1"
+                                Margin="1"
+                                BackgroundColor="{StaticResource iAppColor_White}"
+                                Grid.Column="2">
+
+
+                        <StackLayout
+                                    Orientation="Horizontal"
+                                    BackgroundColor="{StaticResource iAppColor_White}"
+                                    Padding="0"
+										 Spacing="0"
+										 Margin="0">
+
+                            <Entry x:Name="txt_Pswd3"
+                                        HorizontalOptions="FillAndExpand"
+                                        HeightRequest="50"
+                                        Placeholder="*"
+                                       FontSize="Large"
+                                        MaxLength="1"
+                                         TextColor="{StaticResource iAppColor_OpacityOrange}"
+                                        PlaceholderColor="{StaticResource iAppColor_OpacityOrange}"
+                                        BackgroundColor="Transparent"
+                                  VerticalTextAlignment="Center"           HorizontalTextAlignment="Center"
+                                        
+                                        IsPassword="true" 
+                                       ReturnType="Next"
+                                              
+                                                    
+                                                       Focused="txt_Pswd3_Focussed"
+                                                    TextChanged="txt_Pswd3_TextChanged"/>
+
+                        </StackLayout>
+
+                    </Frame>
+                 
+                 
+                    <Frame      x:Name="frm_Pswd4"
+                                HorizontalOptions="FillAndExpand"
+                                HeightRequest="50"
+                               CornerRadius="5"
+								HasShadow="True"
+								BorderColor="{StaticResource iAppColor_SemiOrange}"
+                                Padding="1"
+                                Margin="1"
+                                BackgroundColor="{StaticResource iAppColor_White}"
+                                Grid.Column="3">
+
+
+                        <StackLayout
+                                    Orientation="Horizontal"
+                                    BackgroundColor="{StaticResource iAppColor_White}"
+                                    Padding="0"
+										 Spacing="0"
+										 Margin="0">
+
+                            <Entry x:Name="txt_Pswd4"
+                                        HorizontalOptions="FillAndExpand"
+                                        HeightRequest="50"
+                                        Placeholder="*"
+                                       FontSize="Large"
+                                        MaxLength="1"
+                                         TextColor="{StaticResource iAppColor_OpacityOrange}"
+                                        PlaceholderColor="{StaticResource iAppColor_OpacityOrange}"
+                                        BackgroundColor="Transparent"
+                                  VerticalTextAlignment="Center"         
+                                                    HorizontalTextAlignment="Center"
+                                        
+                                        IsPassword="true" 
+                                       ReturnType="Next"
+                                              
+                                                    
+                                                       Focused="txt_Pswd4_Focussed"
+                                                    TextChanged="txt_Pswd4_TextChanged"/>
+
+                        </StackLayout>
+
+                    </Frame>
+                 
+                  
+                    <!--<Frame    x:Name="frm_Pswd4"
+                              HorizontalOptions="FillAndExpand"
+                                HeightRequest="50"
+                               CornerRadius="5"
+								HasShadow="True"
+								BorderColor="{StaticResource iAppColor_SemiOrange}"
+                                Padding="1"
+                                Margin="0"
+                                BackgroundColor="{StaticResource iAppColor_White}"
+                                Grid.Column="3">
+
+
+                        <StackLayout
+                                    Orientation="Horizontal"
+                                    BackgroundColor="{StaticResource iAppColor_White}"
+                                    Padding="0"
+										 Spacing="0"
+										 Margin="0">
+
+                            <Entry x:Name="txt_Pswd4"
+                                        HorizontalOptions="FillAndExpand"
+                                        HeightRequest="50"
+                                        Placeholder="*"
+                                       FontSize="Large"
+                                        MaxLength="1"
+                                         TextColor="{StaticResource iAppColor_OpacityOrange}"
+                                        PlaceholderColor="{StaticResource iAppColor_OpacityOrange}"
+                                      
+                                     VerticalTextAlignment="Center"        HorizontalTextAlignment="Center"
+                                       
+                                        IsPassword="true" 
+                                     ReturnType="Next"
+                                              
+                                                       Focused="txt_Pswd4_Focussed"
+                                                    TextChanged="txt_Pswd4_TextChanged"/>
+
+                        </StackLayout>
+
+                    </Frame>-->
+                 
+                    <Frame     x:Name="frm_Pswd5"
+                               HorizontalOptions="FillAndExpand"
+                                HeightRequest="50"
+                               CornerRadius="5"
+								HasShadow="True"
+								BorderColor="{StaticResource iAppColor_SemiOrange}"
+                                Padding="1"
+                                Margin="1"
+                                BackgroundColor="{StaticResource iAppColor_White}"
+                                Grid.Column="4">
+
+
+                        <StackLayout
+                                    Orientation="Horizontal"
+                                    BackgroundColor="{StaticResource iAppColor_White}"
+                                    Padding="0"
+										 Spacing="0"
+										 Margin="0">
+
+                            <Entry x:Name="txt_Pswd5"
+                                        HorizontalOptions="FillAndExpand"
+                                        HeightRequest="50"
+                                        Placeholder="*"
+                                       FontSize="Large"
+                                        MaxLength="1"
+                                        TextColor="{StaticResource iAppColor_OpacityOrange}"
+                                        PlaceholderColor="{StaticResource iAppColor_OpacityOrange}"
+                                        BackgroundColor="Transparent"
+                                        VerticalTextAlignment="Center"
+                                                    HorizontalTextAlignment="Center"
+                                          
+                                       
+                                        IsPassword="true" 
+                                      ReturnType="Done"
+                                             
+                                                    TextChanged="txt_Pswd5_TextChanged"
+                                                       Focused="txt_Pswd5_Focussed"
+                                                    Completed="txt_Pswd5_Completed"/>
+
+                        </StackLayout>
+
+                    </Frame>
+
+
+
+                </Grid>
+
+                <Frame     WidthRequest="50"    
+                 HeightRequest="40"
+        
+					HasShadow="True"
+					BorderColor="{StaticResource iAppColor_SemiOrange}"
+                       Padding="0"
+                       Margin="10,0,0,0"
+                       BackgroundColor="{StaticResource iAppColor_Transparent}" >
+
+                    <Grid  HorizontalOptions="Center"
+                  VerticalOptions="Center"
+               
+               WidthRequest="50"    
+                 HeightRequest="40"
+        
+				   Padding="0"
+                       Margin="0,0,0,0"
+                       BackgroundColor="{StaticResource iAppColor_Transparent}" >
+
+                        <Image x:Name="img_Visible"
+               HorizontalOptions="Center"
+                  VerticalOptions="Center"
+               Source="img_dating_eye_close.png"  Margin="0"
+Aspect="AspectFit"
+              HeightRequest="35"
+                  WidthRequest="35" 
+                 >
+
+
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="img_Visible_Tapped"/>
+                            </Image.GestureRecognizers>
+
+                        </Image>
+                        <!--Clicked="img_Toggle_Clicked"-->
+                        <!--<ImageButton x:Name="img_Visible" 
+                          
+                              HorizontalOptions="Center"
+                  VerticalOptions="Center"
+               Source="img_dating_eye_close.png"  Margin="0"
+Aspect="AspectFit"
+              HeightRequest="35"
+                  WidthRequest="35"
+                      
+                            Clicked="img_Visible_Tapped"        />-->
+
+                        <!--<BoxView x:Name="img_Visiblex"
+               HorizontalOptions="Center"
+                  VerticalOptions="Center"
+             Color="Red"
+                HeightRequest="35"
+WidthRequest="35"      >
+
+                   <BoxView.GestureRecognizers>
+                       <TapGestureRecognizer Tapped="img_Visible_Tapped"/>
+                   </BoxView.GestureRecognizers>
+               </BoxView>-->
+
+
+
+                    </Grid>
+
+                </Frame>
+
+
+            </StackLayout>
+
+
+
+
+
+        </StackLayout>
+
+        <!--Clicked="btn_PageDashboard_Clicked"-->
+
+        <Button x:Name="btn_Register_Step1"
+								HorizontalOptions="FillAndExpand"
+								HeightRequest="50"
+                      FontAttributes="Bold" 
+                Text="Continue"
+					   			
+						TextColor="{StaticResource iAppColor_White}"
+                    FontSize="Medium"
+                    Margin="20,0,20,0"
+                    CornerRadius="5"
+                    BackgroundColor="{StaticResource iAppColor_LightOrange}"
+                    Grid.Row="1" 
+                Clicked="btn_Register_Step1_Clicked"/>
+     
+        <!--<Grid 
+              Padding="0"
+              Margin="20,0,20,0"
+              Grid.Row="3"
+              Grid.Column="0">
+               
+                  <Button x:Name="btn_LogIn"
+                HorizontalOptions="FillAndExpand"
+                HeightRequest="50"
+                FontAttributes="Bold"
+                Text="Sign In"
+                TextColor="{StaticResource iAppColor_White}"
+                FontSize="Medium"
+                 
+          
+                CornerRadius="5"
+                BackgroundColor="{StaticResource iAppColor_LightOrange}"
+           
+                Clicked="btn_LogIn_Clicked" />
+                 
+            <Image x:Name="img_Login"
+                   HorizontalOptions="Start"
+                   Source="icon_newlogin.png"
+                   VerticalOptions="Center"
+                   WidthRequest="30"
+                   HeightRequest="30"
+                   Margin="10,0,0,0"
+                   Grid.Row="0"
+                   Grid.Column="0" />
+        
+        </Grid>-->
+     
+    </Grid>
+
+</ContentView>

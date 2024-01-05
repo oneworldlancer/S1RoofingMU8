@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="S1RoofingMU.MainPage">
+
+
+    <ScrollView     HorizontalOptions="FillAndExpand"
+VerticalOptions="FillAndExpand"
+  
+      >
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="0"
+               HorizontalOptions="FillAndExpand"
+VerticalOptions="FillAndExpand"
+  
+      >
+
+            <Button
+                x:Name="CounterBtn"
+                Text="Click me"
+                SemanticProperties.Hint="Counts the number of times you click"
+                Clicked="OnCounterClicked"
+                HorizontalOptions="Center" />
+
+<!--Navigating="webViewCall_Navigating"-->
+            <WebView 
+                x:Name="webViewCall"
+         HorizontalOptions="FillAndExpand"
+    VerticalOptions="FillAndExpand"
+  Source="WebRTC/Source/Index.html"
+       />
+
+            <!--Source="https://oneworldlancer.ddns.net/S1Roofing/WowzaJS/Index.html"-->
+            <!--<hyber:HybridWebView  x:Name="theWebViewControl"
+         HorizontalOptions="FillAndExpand"
+    VerticalOptions="FillAndExpand"
+  HybridAssetRoot="wwwroot"
+       MainFile="Index.html"
+                                  RawMessageReceived="theWebViewControl_RawMessageReceived"/>-->
+
+            <!--<Image
+                Source="dotnet_bot.png"
+                SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                HeightRequest="200"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="Hello, World!"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="Welcome to .NET Multi-platform App UI"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
+                FontSize="18"
+                HorizontalOptions="Center" />
+
+            <Button
+                x:Name="CounterBtn"
+                Text="Click me"
+                SemanticProperties.Hint="Counts the number of times you click"
+                Clicked="OnCounterClicked"
+                HorizontalOptions="Center" />-->
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+
+
+</ContentPage>

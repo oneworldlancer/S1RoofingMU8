@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<popup:BasePopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:popup="clr-namespace:MauiPopup.Views;assembly=MauiPopup"
+                 xmlns:animations="http://rotorgames.com"
+               xmlns:entry="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Entry"
+                 x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Popup.Popup_Group_New"
+                       ForegroundColor="Transparent"
+                  BackgroundColor="Transparent" 
+                     HorizontalOptions="FillAndExpand"
+           VerticalOptions="FillAndExpand">
+    <!--Default Animation-->
+    <!--<popup:BasePopupPage.Animation>
+        <animations:ScaleAnimation PositionIn="Center"
+                                   PositionOut="Center"
+                                   ScaleIn="1.2"
+                                   ScaleOut="0.8"
+                                   DurationIn="400"
+                                   DurationOut="300"
+                                   EasingIn="SinOut"
+                                   EasingOut="SinIn"
+                                   HasBackgroundAnimation="False" />
+    </popup:BasePopupPage.Animation>-->
+    <!--RowDefinitions="10*,80*,10*"-->
+    <Grid x:Name="grd_Container"
+        HorizontalOptions="CenterAndExpand"
+           VerticalOptions="CenterAndExpand"
+           RowDefinitions="20*,60*,20*"
+           ColumnDefinitions="10*,80*,10*"
+           BackgroundColor="Transparent"
+                  >
+        <BoxView HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand"
+                 Color="Transparent"
+           BackgroundColor="Transparent"
+                       Grid.Row="0"
+                 Grid.Column="1">
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="btn_Popup_CANCEL_Tapped" />
+            </BoxView.GestureRecognizers>
+        </BoxView>
+    
+        <Frame	x:Name="frm_Content"
+                BackgroundColor="Silver"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+         Margin="20,0,20,0"
+                Padding="0"
+           BorderColor="Transparent"     CornerRadius="5"
+                HasShadow="True"
+                Grid.Row="1"
+                Grid.Column="1">
+            <Grid HorizontalOptions="FillAndExpand"
+                  VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <!--VerticalOptions="Center"-->
+                <StackLayout HorizontalOptions="FillAndExpand"
+                             VerticalOptions="FillAndExpand"
+                             Margin="0,20,0,20"
+                             Spacing="0"
+                             Padding="10"
+                             Grid.Row="0"
+                             Grid.Column="0">
+                    <Label x:Name="lbl_Title"
+                           HorizontalOptions="Center"
+                           HeightRequest="50"
+                           VerticalOptions="Center"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="lbl_Title"
+                           FontSize="Medium"
+                           BackgroundColor="Transparent"
+                           TextColor="{StaticResource iAppColor_Black}" />
+                    <Frame     HorizontalOptions="FillAndExpand"
+                               Margin="5"
+                               Padding="10,5,10,5"
+                               CornerRadius="5"
+                               BackgroundColor="{StaticResource iAppColor_SemiGray}">
+                        <Entry  x:Name="txt_MessageText"
+                                                 HorizontalOptions="FillAndExpand"
+                                                 HeightRequest="50"
+                                                 Keyboard="Chat"
+                                                 BackgroundColor="{StaticResource iAppColor_SemiGray}"
+                                                 Placeholder="Group title"
+                                                 PlaceholderColor="WhiteSmoke"
+                                                 TextColor="White"
+                                Completed="btn_Popup_OK_Tapped" />
+                    </Frame>
+                    <StackLayout HorizontalOptions="CenterAndExpand"
+                                 VerticalOptions="CenterAndExpand"
+                                 HeightRequest="50"
+                                 Margin="0"
+                                 Spacing="0"
+                                 Padding="0"
+                                 Orientation="Vertical">
+                        <Label x:Name="lbl_Error"
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="CenterAndExpand"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Center"
+                               Text="lbl_Title"
+                               FontSize="Small"
+                               BackgroundColor="Transparent"
+                               TextColor="{StaticResource iAppColor_Red}" 
+                               IsVisible="false"/>
+                    </StackLayout>
+                </StackLayout>
+                <Grid   HorizontalOptions="FillAndExpand"
+                        ColumnDefinitions="*,*"
+                        Grid.Row="1"
+                        Grid.Column="0">
+                    <Frame HorizontalOptions="FillAndExpand"
+                           HeightRequest="50"
+                           BorderColor="{StaticResource iAppColor_WhiteSmoke}"
+                           Padding="1"
+                           Margin="0"
+                           BackgroundColor="{StaticResource iAppColor_WhiteSmoke}"
+                           Grid.Column="0">
+                        <StackLayout Orientation="Horizontal"
+                                     Padding="10,0,10,0">
+                            <!--Clicked="btnCountryList_Clicked"-->
+                            <Label x:Name="btn_Popup_CANCEL"
+                                   HorizontalOptions="FillAndExpand"
+                                   HeightRequest="50"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"
+                                   Text="CANCEL"
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"
+                                   BackgroundColor="Transparent"
+                                   TextColor="{StaticResource iAppColor_SemiGray}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="btn_Popup_CANCEL_Tapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                    </Frame>
+                    <Frame HorizontalOptions="FillAndExpand"
+                           HeightRequest="50"
+                           BorderColor="{StaticResource iAppColor_LightOrange}"
+                           Padding="1"
+                           Margin="0"
+                           BackgroundColor="{StaticResource iAppColor_LightOrange}"
+                           Grid.Column="1">
+                        <StackLayout Orientation="Horizontal"
+                                     Padding="10,0,10,0">
+                            <Label x:Name="btn_Popup_OK"
+                                   HorizontalOptions="FillAndExpand"
+                                   HeightRequest="50"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"
+                                   Text="SUBMIT"
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"
+                                   BackgroundColor="Transparent"
+                                   TextColor="{StaticResource iAppColor_White}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="btn_Popup_OK_Tapped" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+                <ActivityIndicator x:Name="pb_ProgressBar"
+                                   WidthRequest="50"
+                                   HeightRequest="50"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   IsRunning="true"
+                                   IsVisible="false"
+                                   Color="White" />
+            </Grid>
+        </Frame>
+        <BoxView HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand"
+         BackgroundColor="Transparent"
+                         Color="Transparent"
+                 Grid.Row="2"
+                 Grid.Column="1">
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="btn_Popup_CANCEL_Tapped" />
+            </BoxView.GestureRecognizers>
+        </BoxView>
+    </Grid>
+</popup:BasePopupPage>

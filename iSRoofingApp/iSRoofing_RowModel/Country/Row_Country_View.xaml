@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Country.Row_Country_View">
+
+
+  
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup Name="CommonStates">
+                <VisualState Name="Selected">
+                    <VisualState.Setters>
+                        <Setter Property="BackgroundColor"
+										Value="Transparent" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+  <StackLayout	 HorizontalOptions="FillAndExpand"	 HeightRequest="50"
+						 Orientation="Vertical"
+								 BackgroundColor="Silver">
+
+
+
+
+
+
+        <Grid HorizontalOptions="FillAndExpand"
+							  VerticalOptions="Center">
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="49" />
+                <!--<RowDefinition Height="10"/>
+      <RowDefinition Height="50"/>
+      <RowDefinition Height="50"/>-->
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="30" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="30" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="5" />
+
+            </Grid.ColumnDefinitions>
+
+
+            <!--Source="eg.png"-->
+            <Image x:Name="img_Flag"
+								   WidthRequest="25"
+								   HeightRequest="15"
+								   Source="{Binding CountryFlagSmall}"
+								   Grid.Row="0"
+								   Grid.Column="1"
+								   HorizontalOptions="Start"
+								   VerticalOptions="Center" />
+
+            <Label x:Name="lbl_CountryName"
+								   HorizontalOptions="FillAndExpand"
+								   VerticalOptions="Center"
+								   TextColor="White"
+								   Text="{Binding CountryName}"
+								   FontSize="Medium"
+								   HorizontalTextAlignment="Start"
+								   MaxLines="1"
+								   LineBreakMode="TailTruncation"
+								   VerticalTextAlignment="Center"
+								   Grid.Column="2" />
+
+            <Label x:Name="lbl_CountryCode"
+								   TextColor="White"
+								   Text="{Binding CountryCode}"
+								   TextTransform="Uppercase"
+								   VerticalTextAlignment="Center"
+								   HorizontalOptions="Start"
+								   VerticalOptions="Center"
+								   Grid.Column="3" />
+
+            <BoxView WidthRequest="20"
+							      BackgroundColor="Transparent"		 Grid.Column="4" />
+
+            <Label x:Name="lbl_MobileCode"
+								   TextColor="White"
+								   FontAttributes="Bold"
+								   Text="{Binding CountryMobileCode, StringFormat='+{0}'}"
+								   VerticalTextAlignment="Center"
+								   HorizontalOptions="Start"
+								   VerticalOptions="Center"
+								   Grid.Column="5" />
+
+
+
+        </Grid>
+
+        <BoxView HorizontalOptions="FillAndExpand"
+								 HeightRequest="1"
+								 Color="White"
+								 Opacity=".5" />
+
+    </StackLayout>
+
+
+</ContentView>

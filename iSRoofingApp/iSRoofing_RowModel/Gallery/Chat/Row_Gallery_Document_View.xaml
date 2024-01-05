@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView  x:Name="vw_GalleryRowView"
+              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:swipeRight="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Swipe"
+               
+              x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Gallery.Chat.Row_Gallery_Document_View">
+
+   
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup Name="CommonStates">
+                <VisualState Name="Selected">
+                    <VisualState.Setters>
+                        <Setter Property="BackgroundColor"
+										Value="Transparent" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+ <Border 	x:Name="frm_RowContent"
+           HorizontalOptions="FillAndExpand"
+			   VerticalOptions="StartAndExpand"
+			   Padding="0"
+
+				 	   Margin="0"
+			 
+			   BackgroundColor="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}"
+                  Stroke="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}" StrokeThickness="0" >
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="0" />
+        </Border.StrokeShape>
+
+
+
+
+
+        <Frame HorizontalOptions="FillAndExpand"
+               VerticalOptions="StartAndExpand"
+               Padding="0"
+           BorderColor="Transparent"         Margin="0"
+               CornerRadius="0"
+               BackgroundColor="{StaticResource iAppColor_DarkGray}">
+            <StackLayout HorizontalOptions="FillAndExpand"
+                         VerticalOptions="StartAndExpand"
+                         Orientation="Vertical"
+                         Spacing="0"
+                         Margin="0"
+                         Padding="0">
+                <StackLayout   HorizontalOptions="FillAndExpand"
+                               VerticalOptions="StartAndExpand"
+                               Orientation="Vertical"
+                               Spacing="0"
+                               Margin="0"
+                               Padding="0">
+                    <Grid   HorizontalOptions="FillAndExpand"
+                            VerticalOptions="StartAndExpand"
+                            Margin="0"
+                            Padding="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <!--<RowDefinition Height="auto" />-->
+                            <RowDefinition Height="50" />
+                            <!--<RowDefinition Height="50" />-->
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <!--<ColumnDefinition Width="420" />
+                                    <ColumnDefinition Width="*" />-->
+                        </Grid.ColumnDefinitions>
+                     
+                        <Grid HorizontalOptions="FillAndExpand"
+                              ColumnDefinitions="*,auto,*"
+                              Grid.Row="0"
+                              Grid.Column="0">
+                          
+                            <Frame x:Name="frm_Avatar"
+                                   HorizontalOptions="FillAndExpand"
+                                   CornerRadius="5"
+                                   Padding="1"
+                                   Margin="10,20,10,0"
+                                   VerticalOptions="StartAndExpand"
+                                   BackgroundColor="{StaticResource iAppColor_Opacity_Black}"
+                                   Grid.Row="0"
+                                   Grid.Column="1">
+                               
+                                  <!--CornerRadius="5"
+                                       HasShadow="True"    BackgroundColor="{StaticResource iAppColor_Opacity_White}"       BorderColor="{StaticResource iAppColor_LightSilver}"--> 
+                                
+                                <Border HorizontalOptions="FillAndExpand"
+                                       VerticalOptions="FillAndExpand"
+                                       Padding="5"
+                                       Margin="0"
+                                       StrokeShape="RoundRectangle 40,0,0,40" 
+  
+                                   
+                                     
+                              >
+                                    <Grid  ColumnDefinitions="70,*">
+                                        <!--Source="img_document.png"    Source="{Binding MediaFile_Thum}"-->
+                                        <Image x:Name="img_Thum"
+                                                                    HorizontalOptions="FillAndExpand"
+                                                                    VerticalOptions="FillAndExpand"
+                                                                    WidthRequest="50"
+                                                                    HeightRequest="50"
+                                                                    BackgroundColor="Transparent"
+                                                                    Margin="5"
+                                                                    Aspect="AspectFit"
+                                                                    Grid.Column="0" />
+                                        <StackLayout  HorizontalOptions="StartAndExpand"
+                                                      VerticalOptions="StartAndExpand"
+                                                      Spacing="0"
+                                                      Margin="0"
+                                                      Orientation="Vertical"
+                                                      Padding="0"
+                                                      Grid.Column="1">
+                                            <Label x:Name="lbl_FileTitle"
+                                                   TextColor="{StaticResource iAppColor_Black}"
+                                                   FontAttributes="Bold"
+                                                   Margin="0,10,10,0"
+                                                   Text="Hello world.doc" />
+                                            <Label x:Name="lbl_FileSize"
+                                                   TextColor="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}"
+                                                   Margin="0,5,20,0"
+                                                   Text="MediaFile_Size" />
+                                        </StackLayout>
+                                    </Grid>
+                                </Border>
+                            </Frame>
+                        </Grid>
+                       
+                     
+                        <StackLayout    HorizontalOptions="FillAndExpand"
+                                        Padding="0"
+                                        Orientation="Horizontal"
+                                        Spacing="0"
+                                        Grid.Row="1"
+                                        Grid.Column="0">
+                            <!--Text="{Binding FullName}"-->
+                            <Grid	HorizontalOptions="FillAndExpand"
+               ColumnDefinitions="10,*,10,*,10"
+               Padding="0">
+                                <!--Text="{Binding GroupTitle}"-->
+                                <!--<StackLayout   x:Name="sl_Play"
+                          HorizontalOptions="Center"
+                          Padding="0"
+                          VerticalOptions="Center"
+                          Orientation="Horizontal"
+                          Spacing="0"
+                          Grid.Column="1">
+               <StackLayout.GestureRecognizers>
+                   <TapGestureRecognizer Tapped="sl_Play_Tapped" />
+               </StackLayout.GestureRecognizers>
+               <Image     x:Name="img_View"
+                                               WidthRequest="30"
+                                               VerticalOptions="Center"
+                                               HeightRequest="30"
+                                               Margin="10"
+                                               Source="img_circle_send_black.png" />
+               <Label  x:Name="lbl_Play"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="Center"
+                  
+                       TextColor="{StaticResource iAppColor_Silver}"
+                       Text="VIEW" />
+           </StackLayout>-->
+
+                                <StackLayout   x:Name="sl_Download"
+                          HorizontalOptions="Center"
+                          Padding="0"
+                          VerticalOptions="Center"
+                          Orientation="Horizontal"
+                          Spacing="0"
+                          Grid.Column="1">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="sl_Download_Tapped" />
+                                    </StackLayout.GestureRecognizers>
+                                    <Image     x:Name="img_Download"
+                                               WidthRequest="30"
+                                               VerticalOptions="Center"
+                                               HeightRequest="30"
+                                               Margin="10"
+                                               Source="img_circle_download_black.png" />
+                                    <Label  x:Name="lbl_Download"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="Center"
+                 FontSize="Medium" 
+                       TextColor="{StaticResource iAppColor_Silver}"
+                       Text="DOWNLOAD" />
+                                </StackLayout>
+                                <StackLayout    x:Name="sl_Share"
+                           HorizontalOptions="Center"
+                           Padding="0"
+                           Orientation="Horizontal"
+                           Spacing="0"
+                           Grid.Column="3">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="sl_Share_Tapped" />
+                                    </StackLayout.GestureRecognizers>
+                                    <Image   x:Name="img_Share"
+                        WidthRequest="30"
+                        HeightRequest="30"
+                        VerticalOptions="Center"
+                        Margin="10"
+                        Source="img_circle_share_black.png" />
+                                    <Label  x:Name="lbl_Share"
+                          FontSize="Medium" 
+                       VerticalOptions="Center"
+                       TextColor="{StaticResource iAppColor_Silver}"
+                       Text="SHARE" />
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+                        <!--<StackLayout   HorizontalOptions="EndAndExpand"
+										   VerticalOptions="Center"
+										   Spacing="0"
+										   Grid.Row="0"
+										   Grid.Column="2">
+
+								<Image   HorizontalOptions="End"
+										 WidthRequest="30"
+										 HeightRequest="30"
+										 Source="img_theme_call.png"
+										 Margin="10" 
+										 IsVisible="false"/>
+							</StackLayout>-->
+                    </Grid>
+                    <!--<swipeRight:UCView_Swipe_Right />-->
+                    <BoxView  HorizontalOptions="FillAndExpand"
+                              HeightRequest="1"
+                              Margin="5,5,10,5"
+                              Color="{StaticResource iAppColor_Silver}"
+                              Opacity=".5" />
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </Border>
+
+    
+</ContentView>

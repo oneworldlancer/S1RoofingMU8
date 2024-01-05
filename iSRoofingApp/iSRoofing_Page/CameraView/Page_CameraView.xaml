@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Name="page_CameraView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+         
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.CameraView.Page_CameraView"
+    xmlns:sroofingHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Header"
+   xmlns:arrowBack="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Back"
+   xmlns:sroofingFooter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer"
+   xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+   ios:Page.UseSafeArea="False"
+       NavigationPage.HasNavigationBar="False"
+              Loaded="page_CameraView_Loaded" 
+    Unloaded="page_CameraView_Unloaded">
+
+    <!--xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"-->
+
+
+    <Grid  HorizontalOptions="FillAndExpand"
+       ColumnSpacing="0"
+      RowSpacing="0"      VerticalOptions="FillAndExpand">
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+            Spacing="0"
+                     Margin="0"
+                     Padding="0"
+                     BackgroundColor="{StaticResource iAppColor_Black}"
+                     Orientation="Vertical">
+            <sroofingHeader:SRoofing_PageHeader />
+            <!--<arrowBack:UCView_Back HorizontalOptions="Start" />-->
+            <Grid HorizontalOptions="FillAndExpand"
+                   ColumnSpacing="0"
+      RowSpacing="0" VerticalOptions="FillAndExpand">
+
+                <!--<cv:CameraView  x:Name="cameraView"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand"
+                           
+               CamerasLoaded="cameraView_CamerasLoaded"  />-->
+
+
+
+                <!--  HasShadow="False"
+                    CornerRadius="10"xct:CornerRadiusEffect.CornerRadius="{Binding CornerRadius, Source={x:Reference ct_CameraView}}"-->
+                <Frame  BackgroundColor="{StaticResource iAppColor_Opacity_Black}"
+                        HorizontalOptions="Center"
+                        VerticalOptions="End"
+                        HasShadow="False"
+                        Margin="0"
+             BorderColor="Transparent"           Padding="0"
+                        CornerRadius="30"
+                        HeightRequest="60"
+                        WidthRequest="60"
+                        IsVisible="false">
+                    <!--<StackLayout HorizontalOptions="CenterAndExpand"
+                                 VerticalOptions="FillAndExpand"
+                        Orientation="Vertical"
+                                 Spacing="0"
+                                 Margin="0"
+                                 Padding="0">
+                      
+                        <Grid   HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="End"
+                            >-->
+                    <!--    ColumnDefinitions="*,60,5,60,5,60,*"Source="icon_chat_share_video.png"-->
+                    <!--<Button    BackgroundColor="Black"
+                                            x:Name="imgBtn_Video"
+                                    Text="Video"    CornerRadius="25"    WidthRequest="50"
+                                            HeightRequest="50"
+                                           Grid.Column="1"
+                                            Clicked="imgBtn_Video_Clicked"/>-->
+                    <!--   icon_chat_share_stop-->
+                    <!--Source="icon_chat_share_photo_file.png"-->
+                    <!--<Button   x:Name="imgBtn_Image"
+                                         
+                                           WidthRequest="50"
+                                           HeightRequest="50"
+                                           BackgroundColor="Transparent"
+                                   Text="Photo"        Grid.Column="5" 
+                                           Clicked="imgBtn_Image_Clicked"/>-->
+                    <!--</Grid>
+                       
+                        <Grid   HorizontalOptions="FillAndExpand"
+                                VerticalOptions="End"
+                                Margin="0,5,0,0"
+                                ColumnDefinitions="*,60,5,60,5,60,*"
+                                IsVisible="false">
+                            <BoxView  x:Name="bx_Image"
+                                      WidthRequest="20"
+                                 HorizontalOptions="Center"     HeightRequest="3"
+                                      BackgroundColor="#ff8000"
+                                      Grid.Column="1" 
+                                      IsVisible="False"/>
+                            <BoxView    x:Name="bx_Video"
+                                        WidthRequest="20"
+                                        HeightRequest="3"
+                                        BackgroundColor="#ff8000"
+                                        HorizontalOptions="Center"
+                                         Grid.Column="5" 
+                                        IsVisible="True"/>
+                        </Grid>
+                    </StackLayout>-->
+                </Frame>
+
+                <StackLayout    HorizontalOptions="CenterAndExpand"
+                                Margin="10"
+                      Spacing="0"
+                                Padding="0"
+                                VerticalOptions="End"
+                                IsVisible="true"
+                                Orientation="Vertical">
+
+
+                    <Grid   HorizontalOptions="CenterAndExpand"
+                            Margin="0"
+                            ColumnDefinitions="*,120,100,120,*">
+
+                        <Button   x:Name="imgBtn_Video"
+                                  BackgroundColor="Black"
+                                  Text="Video"
+                                  CornerRadius="25"
+                                  HorizontalOptions="Center"
+                                  VerticalOptions="Center"
+                                  WidthRequest="120"
+                                  TextColor="White"
+                                  HeightRequest="50"
+                                  Grid.Column="1"
+                                  Clicked="imgBtn_Video_Clicked" />
+
+                        <Frame  BackgroundColor="{StaticResource iAppColor_Opacity_Black}"
+                                 HasShadow="False"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                Margin="0"
+                        BorderColor="Transparent"        Padding="0"
+                                CornerRadius="30"
+                                HeightRequest="50"
+                                WidthRequest="50"
+                               IsVisible="false"  Grid.Column="2"  >
+
+                            <ImageButton   x:Name="imgBtn_Pick"
+                                           Source="icon_chat_share_video_take.png"
+                                           WidthRequest="50"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           HeightRequest="50"
+                                           BackgroundColor="Transparent"
+                                 
+                                           Clicked="imgBtn_Pick_Clicked" />
+                        </Frame>
+
+                        <Button   x:Name="imgBtn_Image"
+                                  WidthRequest="120"
+                                  HeightRequest="50"
+                                  HorizontalOptions="Center"
+                                  VerticalOptions="Center"
+                                  BackgroundColor="Red"
+                                  CornerRadius="25"
+                                  TextColor="White"
+                                  Text="Photo"
+                                  Grid.Column="3"
+                                  Clicked="imgBtn_Image_Clicked" />
+                    </Grid>
+
+
+
+                </StackLayout>
+                <ImageButton   x:Name="imgBtn_Back"
+                               Source="img_circle_back_black.png"
+                               HorizontalOptions="End"
+                               VerticalOptions="Start"
+                               Margin="10"
+                               BackgroundColor="Transparent"
+                               WidthRequest="50"
+                               HeightRequest="50"
+                               Clicked="imgBtn_BackPage_Clicked" />
+
+                <ImageButton    x:Name="imgBtn_CameraSwitch"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Start"
+                                Margin="10"
+                                BackgroundColor="Transparent"
+                                WidthRequest="50"
+                                HeightRequest="50"
+                                Source="img_camera_switch.png"
+                                Clicked="imgBtn_CameraSwitch_Clicked"      
+                                IsVisible="false"
+                                />
+                <!---->
+
+                <ImageButton    x:Name="imgBtn_Gallery"
+                                HorizontalOptions="End"
+                                VerticalOptions="Start"
+                                Margin="10,90,10,10"
+                                BackgroundColor="Transparent"
+                                WidthRequest="50"
+                                HeightRequest="50"
+                                Source="icon_chat_share_gallery.png"
+                          Clicked="imgBtn_Gallery_Clicked"  />
+         
+            
+            </Grid>
+            <sroofingFooter:SRoofing_PageFooter />
+        </StackLayout>
+
+
+        <Grid  x:Name="frm_Preview"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+           ColumnSpacing="0"
+               RowSpacing="0"
+               BackgroundColor="{StaticResource iAppColor_Black}"
+                IsVisible="false">
+
+             <Image  x:Name="img_Preview"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Aspect="AspectFill"
+                        BackgroundColor="Black" />
+
+                <toolkit:MediaElement  x:Name="vid_Preview"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand"
+                                   Aspect="AspectFill"
+                                   BackgroundColor="Black"
+                                   ShouldShowPlaybackControls="True"
+                                   IsVisible="false" />  
+            
+            <Grid  HorizontalOptions="FillAndExpand"
+                  ColumnSpacing="0"
+      RowSpacing="0"   VerticalOptions="FillAndExpand"
+                   RowDefinitions="*,50,10">
+
+             
+
+                <StackLayout HorizontalOptions="FillAndExpand"
+                             VerticalOptions="FillAndExpand"
+                     Spacing="0"
+     Margin="0"       Padding="0"          BackgroundColor="Transparent"
+                             Orientation="Horizontal"
+                             Grid.Row="1">
+                    <!--Clicked="imgBtn_Video_Clicked"-->
+                    <Grid   HorizontalOptions="FillAndExpand"
+                        ColumnSpacing="0"
+      RowSpacing="0"      Margin="0"
+                            ColumnDefinitions="*,120,100,120,*">
+
+                        <Button     x:Name="Btn_Cancel"
+                                  BackgroundColor="Red"
+                                   Text="Cancel"
+                                   HorizontalOptions="Center"
+                                   TextColor="White"
+                                   VerticalOptions="Center"
+                                   CornerRadius="25"
+                                   WidthRequest="120"
+                                   HeightRequest="50"
+                                   Grid.Column="1"
+                                   Clicked="imgBtn_BackPage_Clicked" />
+
+                        <Button    x:Name="Btn_Send"
+                                    BackgroundColor="Green"
+                                  Text="Send"
+                                   CornerRadius="25"
+                                   TextColor="White"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   WidthRequest="120"
+                                   HeightRequest="50"
+                                   Grid.Column="3" 
+                                   Clicked="Btn_Send_Clicked"/>
+                    </Grid>
+                </StackLayout>
+            </Grid>
+      
+        </Grid>
+
+        <!--<snackAutoHide:SnackBar x:Name="iSnackBar"
+                                BackgroundColor="Transparent"
+                                TextColor="Black"
+                                IsOpen="False"
+                                VerticalOptions="End"
+                                Message="I'm a snack bar... I love showing my self."
+                                ButtonTextColor="Orange"
+                                CloseButtonText=""
+                                Margin="0,0,0,50" />-->
+    </Grid>
+
+
+    <!--<ContentPage.Content>
+        <StackLayout        HorizontalOptions="FillAndExpand"
+                             VerticalOptions="FillAndExpand">
+
+            -->
+    <!--CaptureMode="Video"
+                             FlashMode="Off"  CameraOptions="Front"
+                             MediaCaptured="CameraView_MediaCaptured"
+                             OnAvailable="CameraView_OnAvailable"-->
+    <!--
+            <cv:CameraView  x:Name="cameraView"
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="FillAndExpand"
+                            
+                         CamerasLoaded="cameraView_CamerasLoaded"  />
+         
+            <Label x:Name="lbl_Result" TextColor="Red" />
+                  -->
+    <!--Clicked="btn_PickUp_Clicked"-->
+    <!-- 
+            <Button x:Name="btn_PickUp" Text="HELP"
+            />
+        </StackLayout>
+    </ContentPage.Content>-->
+</ContentPage>

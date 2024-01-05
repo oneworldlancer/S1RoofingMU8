@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:entry="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Entry"
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Account.Page_Account_Call"
+             xmlns:snackAutoHide="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:sroofingHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Header"
+             xmlns:arrowBack="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Back"
+             xmlns:sroofingFooter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer"
+             xmlns:grid="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Grid"
+             ios:Page.UseSafeArea="False"
+             NavigationPage.HasNavigationBar="False"
+             Visual="Material"
+             BackgroundColor="Black"
+             HorizontalOptions="FillAndExpand"
+             VerticalOptions="FillAndExpand">
+    <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          RowDefinitions="*,50">
+        <StackLayout  HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand"
+                      Spacing="0"
+                      Margin="0,0,0,50"
+                      Padding="0"
+                      Grid.Row="0">
+
+            <Label x:Name="lbl_Title"
+                   HorizontalOptions="Center"
+                   HeightRequest="50"
+                   VerticalOptions="Center"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center"
+                   Text="lbl_Title"
+                   FontSize="Medium"
+                   BackgroundColor="Transparent"
+                   TextColor="{StaticResource iAppColor_Silver}" />
+
+            <Label x:Name="lbl_Title_Call_SortBy"
+                   VerticalOptions="Center"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Start"
+                   Text="lbl_Title_Call_SortBy"
+                   BackgroundColor="Transparent"
+                   Margin="20,20,20,10"
+                   TextColor="{StaticResource iAppColor_White}" />
+
+
+            <Frame          x:Name="frm_CountryNamexx"
+                                HorizontalOptions="FillAndExpand"
+                                                            CornerRadius="5"
+                                HasShadow="True"
+                                BorderColor="{StaticResource iAppColor_SemiOrange}"
+                                Padding="1"
+                                Margin="20,0,20,0"
+                                BackgroundColor="{StaticResource iAppColor_White}">
+
+                <StackLayout  x:Name="sl_CountryNamesxs"
+                                  Orientation="Vertical"
+                                  BackgroundColor="{StaticResource iAppColor_White}"
+                                  Spacing="0"
+                                  Margin="0"
+                                  Padding="0,10,0,10">
+
+                    <StackLayout  x:Name="sl_Chat_SortByRecent"
+                                  Orientation="Horizontal"
+                                  BackgroundColor="{StaticResource iAppColor_White}"
+                                  HorizontalOptions="FillAndExpand"
+                                  Spacing="0"
+                                  Margin="0"
+                                  Padding="10,10,0,0">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="sl_Chat_SortByRecent_Tapped" />
+                        </StackLayout.GestureRecognizers>
+
+                        <Grid           HorizontalOptions="FillAndExpand"
+                                        ColumnDefinitions="*,50">
+                            <Label x:Name="lbl_SortByRecent"
+                                   HorizontalOptions="FillAndExpand"
+                                   HeightRequest="50"
+                                   VerticalOptions="Center"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Start"
+                                   Text="By recent"
+                                   FontSize="Medium"
+                                   BackgroundColor="Transparent"
+                                   TextColor="{StaticResource iAppColor_SemiGray}"
+                                   Grid.Column="0"        Padding="10,0,0,0">
+                                <!--<Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                                Tapped="lblCountryList_Clicked" />
+                        </Label.GestureRecognizers>-->
+                            </Label>
+                            <RadioButton  x:Name="rdio_ByRecent"
+                                          HorizontalOptions="End"
+                                          GroupName="SortBy"
+                                          IsChecked="True"
+                                          Grid.Column="1"
+                                          CheckedChanged="rdio_ByRecent_CheckedChanged" />
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout  x:Name="sl_Chat_SortByName"
+                                  Orientation="Horizontal"
+                                  BackgroundColor="{StaticResource iAppColor_White}"
+                                  HorizontalOptions="FillAndExpand"
+                                  Spacing="0"
+                                  Margin="0"
+                                  Padding="10,10,0,10">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="sl_Chat_SortByName_Tapped" />
+                        </StackLayout.GestureRecognizers>
+                        <Grid           HorizontalOptions="FillAndExpand"
+                                        ColumnDefinitions="*,50">
+                            <Label x:Name="lbl_SortByName"
+                                   HorizontalOptions="FillAndExpand"
+                                   HeightRequest="50"
+                                   VerticalOptions="Center"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Start"
+                                   Text="By Name"
+                                   FontSize="Medium"
+                                   BackgroundColor="Transparent"
+                                   TextColor="{StaticResource iAppColor_SemiGray}"
+                                   Grid.Column="0"        Padding="10,0,0,0">
+                                <!--<Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                                Tapped="lblCountryList_Clicked" />
+                        </Label.GestureRecognizers>-->
+                            </Label>
+                            <RadioButton x:Name="rdio_ByName"
+                                         HorizontalOptions="End"
+                                         GroupName="SortBy"
+                                         Grid.Column="1"
+                                         CheckedChanged="rdio_ByName_CheckedChanged" />
+                        </Grid>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+
+            <Frame          x:Name="frm_CountryName"
+                            HorizontalOptions="FillAndExpand"
+                         
+                            CornerRadius="5"
+                            HasShadow="True"
+                            BorderColor="{StaticResource iAppColor_SemiOrange}"
+                            Padding="1"
+                            Margin="20,30,20,0"
+                            BackgroundColor="{StaticResource iAppColor_White}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="frm_VoiceCommand_Tapped" />
+                </Frame.GestureRecognizers>
+                <StackLayout  x:Name="sl_CountryNamefdfd"
+                              Orientation="Horizontal"
+                              BackgroundColor="{StaticResource iAppColor_White}"
+                              HorizontalOptions="FillAndExpand"
+                              Spacing="0"
+                              Margin="0"
+                              Padding="10,0,10,0">
+                    <Grid           HorizontalOptions="FillAndExpand"
+                                    ColumnDefinitions="*,60">
+                        <Label x:Name="lbl_VoiceCommand_IsEnable"
+                               HorizontalOptions="FillAndExpand"
+                               HeightRequest="50"
+                               VerticalOptions="Center"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Start"
+                               Text="Enable voice command"
+                               FontSize="Medium"
+                               BackgroundColor="Transparent"
+                               TextColor="{StaticResource iAppColor_SemiGray}"
+                               Grid.Column="0"        Padding="10,0,0,0">
+                            <!--<Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                                Tapped="lblCountryList_Clicked" />
+                        </Label.GestureRecognizers>-->
+                        </Label>
+                        <Switch x:Name="swtch_VoiceCommandIsEnable"
+                                WidthRequest="50"
+                                HeightRequest="50"
+                                Grid.Column="1"
+                                Toggled="swtch_VoiceCommandIsEnable_Toggled" />
+                    </Grid>
+                </StackLayout>
+            </Frame>
+
+            <Frame          x:Name="frm_CallAnswer"
+                            HorizontalOptions="FillAndExpand"
+                         
+                            CornerRadius="5"
+                            HasShadow="True"
+                            BorderColor="{StaticResource iAppColor_SemiOrange}"
+                            Padding="1"
+                            Margin="20,20,20,0"
+                            BackgroundColor="{StaticResource iAppColor_White}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="frm_CallAnswer_Tapped" />
+                </Frame.GestureRecognizers>
+                <StackLayout  x:Name="sl_CountryName2h2"
+                              Orientation="Horizontal"
+                              BackgroundColor="{StaticResource iAppColor_White}"
+                              HorizontalOptions="FillAndExpand"
+                              Spacing="0"
+                              Margin="0"
+                              Padding="10,0,10,0">
+                    <Grid           HorizontalOptions="FillAndExpand"
+                                    ColumnDefinitions="*,60">
+                        <Label x:Name="lbl_Call_Answer"
+                               HorizontalOptions="FillAndExpand"
+                               HeightRequest="50"
+                               VerticalOptions="Center"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Start"
+                               Text="Answer calls automatically"
+                               FontSize="Medium"
+                               BackgroundColor="Transparent"
+                               TextColor="{StaticResource iAppColor_SemiGray}"
+                               Grid.Column="0"        Padding="10,0,0,0">
+                            <!--<Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                                Tapped="lblCountryList_Clicked" />
+                        </Label.GestureRecognizers>-->
+                        </Label>
+                        <Switch x:Name="swtch_AutoAnswerIsEnable"
+                                WidthRequest="50"
+                                HeightRequest="50"
+                                Grid.Column="1"
+                                Toggled="swtch_AutoAnswerIsEnable_Toggled" />
+                    </Grid>
+                </StackLayout>
+            </Frame>
+
+            <Frame          x:Name="frm_CallRedial"
+                            HorizontalOptions="FillAndExpand"
+                            CornerRadius="5"
+                            HasShadow="True"
+                            BorderColor="{StaticResource iAppColor_SemiOrange}"
+                            Padding="1"
+                            Margin="20,20,20,0"
+                            BackgroundColor="{StaticResource iAppColor_White}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="frm_CallRedial_Tapped" />
+                </Frame.GestureRecognizers>
+
+                <StackLayout  x:Name="sl_CountryName33"
+                              Orientation="Horizontal"
+                              BackgroundColor="{StaticResource iAppColor_White}"
+                              HorizontalOptions="FillAndExpand"
+                              Spacing="0"
+                              Margin="0"
+                              Padding="10,0,10,0">
+                    <Grid           HorizontalOptions="FillAndExpand"
+                                    ColumnDefinitions="*,60">
+                        <Label x:Name="lbl_Call_Redial"
+                               HorizontalOptions="FillAndExpand"
+                               HeightRequest="50"
+                               VerticalOptions="Center"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Start"
+                               Text="Auto redial when busy"
+                               FontSize="Medium"
+                               BackgroundColor="Transparent"
+                               TextColor="{StaticResource iAppColor_SemiGray}"
+                               Grid.Column="0"        Padding="10,0,0,0">
+                            <!--<Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                                Tapped="lblCountryList_Clicked" />
+                        </Label.GestureRecognizers>-->
+                        </Label>
+                        <Switch x:Name="swtch_AutoRedialIsEnable"
+                                WidthRequest="50"
+                                HeightRequest="50"
+                                Grid.Column="1"
+                                Toggled="swtch_AutoRedialIsEnable_Toggled" />
+                    </Grid>
+                </StackLayout>
+            </Frame>
+
+            <Label x:Name="lbl_Title_Call_AutoAnswer"
+                   VerticalOptions="Center"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Start"
+                   Text="lbl_Title_Call_AutoAnswer"
+                   BackgroundColor="Transparent"
+                   Margin="20,20,20,10"
+                   TextColor="{StaticResource iAppColor_White}" />
+
+            <Frame   x:Name="frm_AutoMessage"
+                            HorizontalOptions="FillAndExpand"
+                            CornerRadius="5"
+                            HasShadow="True"
+                            BorderColor="{StaticResource iAppColor_SemiOrange}"
+                            Padding="1"
+                            Margin="20,0,20,0"
+                            BackgroundColor="{StaticResource iAppColor_White}"   >
+
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="frm_AutoMessage_Tapped" />
+                </Frame.GestureRecognizers>
+
+                <StackLayout  x:Name="sl_CountryNamesdsds"
+                              Orientation="Vertical"
+                              BackgroundColor="{StaticResource iAppColor_White}"
+                           HorizontalOptions="FillAndExpand"    
+                              Spacing="0"
+                              Margin="0">
+
+                    <StackLayout  x:Name="sl_CountryName"
+                             HorizontalOptions="FillAndExpand" 
+                           HeightRequest="50"   Orientation="Horizontal"
+                              BackgroundColor="{StaticResource iAppColor_White}"
+                                  VerticalOptions="StartAndExpand"
+                              Spacing="0"
+                              Margin="0"
+                              Padding="10,0,10,0">
+                        <!--<Image WidthRequest="25"
+                           HeightRequest="25"
+                           Source="img_dating_country.png" />-->
+                        <Label x:Name="lbl_Call_PickAutoMessage"
+                           HorizontalOptions="FillAndExpand"
+                           HeightRequest="50"
+                           VerticalOptions="Center"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Start"
+                           Text="Your country"
+                           FontSize="Medium"
+                           BackgroundColor="Transparent"
+                           TextColor="{StaticResource iAppColor_SemiGray}"        Padding="10,0,0,0">
+
+                        </Label>
+                        <Image WidthRequest="25"
+                           HeightRequest="25"
+                           Source="arrow_down_orange.png" />
+                    </StackLayout>
+
+                    <Label x:Name="lbl_Call_AutoMessageText"
+                           HorizontalOptions="FillAndExpand"
+                           Padding="10,0,10,10"
+                           Margin="0"
+                           VerticalOptions="Center"
+                           FontSize="Medium"
+                           BackgroundColor="Transparent"
+                           TextColor="{StaticResource iAppColor_SemiGray}"  />
+
+                </StackLayout>
+            </Frame>
+
+
+
+        </StackLayout>
+        <!--Clicked="btn_PageDashboard_Clicked"-->
+        <Button x:Name="btn_Submit"
+                HorizontalOptions="FillAndExpand"
+                HeightRequest="50"
+                FontAttributes="Bold"
+                Text="Continue"
+                 
+                TextColor="{StaticResource iAppColor_White}"
+                FontSize="Medium"
+                Margin="20,0,20,0"
+                CornerRadius="5"
+                BackgroundColor="{StaticResource iAppColor_LightOrange}"
+                Grid.Row="1"
+                Clicked="btn_Submit_Clicked" />
+    </Grid>
+</ContentView>

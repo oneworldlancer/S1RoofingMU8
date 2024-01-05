@@ -1,0 +1,1068 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage  x:Name="page_Language"
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:snackAutoHide="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar"
+			 xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+			 xmlns:sroofingHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Header"
+			 xmlns:arrowBack="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Back"
+			 xmlns:sroofingFooter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer"
+			 xmlns:logo="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Logo"
+			 xmlns:grid="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Grid"
+             xmlns:progress="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.ProgressBar"
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Language.Page_Language"
+			 ios:Page.UseSafeArea="False"
+			 NavigationPage.HasNavigationBar="False"
+			 Visual="Material"
+              Loaded="page_Language_Loaded">
+    <!---->
+    <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          Margin="0"
+          Padding="0"
+          BackgroundColor="#000000">
+
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Spacing="0"
+                     Margin="0"
+                     Padding="0"
+                     BackgroundColor="#000000"
+                     Orientation="Vertical">
+
+            <sroofingHeader:SRoofing_PageHeader  />
+
+            <!--<arrowBack:UCView_Back
+                HorizontalOptions="Start" />-->
+
+            <Grid VerticalOptions="FillAndExpand"
+                  HorizontalOptions="FillAndExpand"
+                  BackgroundColor="#000000">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                    <!--<RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />-->
+                    <!-- <RowDefinition Height="50" />
+
+                    <RowDefinition
+                        Height="10" /> 
+					<RowDefinition
+                        Height="50" />
+                    <RowDefinition Height="20" />-->
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <!--<ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>-->
+                </Grid.ColumnDefinitions>
+
+
+                <StackLayout HorizontalOptions="Center"
+                             VerticalOptions="Center"
+                             Spacing="0"
+                             Margin="0"
+                             Orientation="Vertical"
+                             Padding="50"
+                             Grid.Row="0"
+                             Grid.Column="0">
+                    <logo:UCView_Logo_TwoLines HorizontalOptions="Start" />
+
+                </StackLayout>
+
+
+                <Grid HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand"
+          ColumnSpacing="0"
+           RowSpacing="0"
+           Margin="0" 
+              Padding="0"         Grid.Row="1"
+                             Grid.Column="0">
+
+
+
+
+
+                    <StackLayout x:Name="st_LanguageList"
+                    HorizontalOptions="FillAndExpand"
+                             VerticalOptions="Center"
+                             Orientation="Vertical"
+                             Spacing="0"
+                             Margin="0,0,0,200"
+                    
+                             Padding="0"
+                                      IsVisible="true">
+
+                        <StackLayout HorizontalOptions="CenterAndExpand"
+                                 VerticalOptions="Center"
+                                 Orientation="Vertical"
+                           Spacing="0"   
+                                 Margin="0"
+                                 Padding="0,0,0,0">
+                            <Image Source="img_globe.png"
+                               VerticalOptions="Center"
+                             WidthRequest="50" 
+                               HeightRequest="50"
+                               Margin="10"
+                               HorizontalOptions="Center"
+                               />
+                            <Label Text="Select your language"
+                               VerticalOptions="Center"
+                               FontSize="Medium"
+                               HorizontalOptions="Center"
+                               TextColor="#FFFFFF" />
+                            <!--<Label Text="S1Roofing"
+                               VerticalOptions="Center"
+                               FontSize="Medium"
+                               HorizontalOptions="Center"
+                               TextColor="{StaticResource iAppColor_System_Primary}" />-->
+                        </StackLayout>
+
+                        <ScrollView x:Name="vw_LanguageList"
+                        HorizontalOptions="FillAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                Orientation="Vertical"
+                          Margin="0,50,0,0" 
+                             Padding="0"
+                             VerticalScrollBarVisibility="Never">
+
+                            <StackLayout  HorizontalOptions="FillAndExpand"
+                                      VerticalOptions="FillAndExpand"
+                                     Orientation="Vertical"
+                                     Spacing="0"
+                                     Margin="0"
+                                     Padding="20,0,20,0">
+
+                                <!--HeightRequest="50"-->
+                                <Frame x:Name="frm_Lanhuage_AR"
+                             HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="Center"    
+                                BackgroundColor="{StaticResource iAppColor_SemiGray}"
+                                   Margin="0,0,0,0"
+                       
+                                                  Padding="5"
+                                   HasShadow="True"
+                                   CornerRadius="5">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="frm_Lanhuage_AR_Tapped" />
+                                    </Frame.GestureRecognizers>
+
+                                    <StackLayout      HorizontalOptions="FillAndExpand" 
+                                               VerticalOptions="Center" 
+                                               Orientation="Vertical"
+                               
+                                             Spacing="0"
+                                             Margin="0"
+                                             Padding="0"     >
+
+                                        <Grid HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="Center">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition />
+                                                <!--<RowDefinition Height="10"/>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="50"/>-->
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="20" />
+                                                <ColumnDefinition Width="50" />
+                                                <ColumnDefinition Width="*" />
+                                                <!--<ColumnDefinition Width="30" />
+                                            <ColumnDefinition Width="10" />
+                                            <ColumnDefinition Width="60" />-->
+                                                <ColumnDefinition Width="20" />
+                                            </Grid.ColumnDefinitions>
+                                            <!--Source="eg.png"-->
+                                            <Image x:Name="img_Flag"
+                                                                    WidthRequest="40"
+                                                                    HeightRequest="40"
+                                                                    Source="egypt.png"
+                                                                    Grid.Row="0"
+                                                                    Grid.Column="1"
+                                                                    HorizontalOptions="Start"
+                                                                    VerticalOptions="CenterAndExpand" 
+                                               Margin="0,5,0,5"/>
+
+                                            <Label x:Name="lbl_LanguageAR"
+                                               HorizontalOptions="StartAndExpand"
+                                               VerticalOptions="Center"
+                                               TextColor="White"
+                                               Text="العربيه"
+                                               FontSize="Medium"
+                                               HorizontalTextAlignment="End"
+                                               MaxLines="1"
+                                               LineBreakMode="TailTruncation"
+                                               VerticalTextAlignment="Center"
+                                               Grid.Column="2" />
+
+                                        </Grid>
+
+                                        <!--<BoxView HorizontalOptions="FillAndExpand"
+                                             HeightRequest="1"
+                                             Color="Silver"
+                                             Opacity=".5" />-->
+
+                                    </StackLayout>
+                                </Frame>
+
+                                <!--HeightRequest="50"-->
+                                <Frame  x:Name="frm_Lanhuage_EN"
+                                 HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center"   
+                                           BackgroundColor="{StaticResource iAppColor_SemiGray}"
+                                   Margin="0,20,0,0"
+                           
+                                                  Padding="5"
+                                   HasShadow="True"
+                                   CornerRadius="5">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="frm_Lanhuage_EN_Tapped" />
+                                    </Frame.GestureRecognizers>
+                                    <StackLayout Orientation="Vertical"
+                                    HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center"       Spacing="0"
+                                             Margin="0"
+                                             Padding="0"   >
+
+                                        <Grid HorizontalOptions="FillAndExpand"
+                                       VerticalOptions="Center">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition />
+                                                <!--<RowDefinition Height="10"/>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="50"/>-->
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="20" />
+                                                <ColumnDefinition Width="50" />
+                                                <ColumnDefinition Width="*" />
+                                                <!--<ColumnDefinition Width="30" />
+                                            <ColumnDefinition Width="10" />
+                                            <ColumnDefinition Width="60" />-->
+                                                <ColumnDefinition Width="20" />
+                                            </Grid.ColumnDefinitions>
+                                            <!--Source="eg.png"-->
+                                            <Image x:Name="img_Flagbb"
+                                                                    WidthRequest="40"
+                                                                    HeightRequest="40"
+                                                                    Source="unitedkingdom.png"
+                                                                    Grid.Row="0"
+                                                                    Grid.Column="1"
+                                                                    HorizontalOptions="Start"
+                                                                    VerticalOptions="Center" 
+                                                    Margin="0,5,0,5"/>
+
+                                            <Label x:Name=" lbl_LanguageEN"
+                                               HorizontalOptions="FillAndExpand"
+                                               VerticalOptions="Center"
+                                               TextColor="White"
+                                               Text="English"
+                                               FontSize="Medium"
+                                               HorizontalTextAlignment="Start"
+                                               MaxLines="1"
+                                               LineBreakMode="TailTruncation"
+                                               VerticalTextAlignment="Center"
+                                               Grid.Column="2" />
+
+                                        </Grid>
+
+                                        <!--<BoxView HorizontalOptions="FillAndExpand"
+                                             HeightRequest="1"
+                                             Color="Silver"
+                                             Opacity=".5" />-->
+
+                                    </StackLayout>
+                                </Frame>
+
+                                <!--HeightRequest="50"-->
+                                <Frame  x:Name="frm_Lanhuage_FR"
+                                  HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center"   
+                                           BackgroundColor="{StaticResource iAppColor_SemiGray}"
+                                   Margin="0,20,0,0"
+                            
+                                                  Padding="5"
+                                   HasShadow="True"
+                                   CornerRadius="5">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="frm_Lanhuage_FR_Tapped" />
+                                    </Frame.GestureRecognizers>
+
+                                    <StackLayout Orientation="Vertical"
+                                      HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center"     Spacing="0"
+                                             Margin="0"
+                                             Padding="0" >
+
+                                        <Grid HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="Center">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition />
+                                                <!--<RowDefinition Height="10"/>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="50"/>-->
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="20" />
+                                                <ColumnDefinition Width="50" />
+                                                <ColumnDefinition Width="*" />
+                                                <!--<ColumnDefinition Width="30" />
+                                            <ColumnDefinition Width="10" />
+                                            <ColumnDefinition Width="60" />-->
+                                                <ColumnDefinition Width="20" />
+                                            </Grid.ColumnDefinitions>
+                                            <!--Source="eg.png"-->
+                                            <Image x:Name="img_Flagjjh"
+                                                                    WidthRequest="40"
+                                                                    HeightRequest="40"
+                                                                    Source="france.png"
+                                                                    Grid.Row="0"
+                                                                    Grid.Column="1"
+                                                                    HorizontalOptions="Start"
+                                                                    VerticalOptions="Center" 
+                                                    Margin="0,5,0,5"/>
+
+                                            <Label x:Name=" lbl_LanguageFR"
+                                               HorizontalOptions="FillAndExpand"
+                                               VerticalOptions="Center"
+                                               TextColor="White"
+                                               Text="Française"
+                                               FontSize="Medium"
+                                               HorizontalTextAlignment="Start"
+                                               MaxLines="1"
+                                               LineBreakMode="TailTruncation"
+                                               VerticalTextAlignment="Center"
+                                               Grid.Column="2" />
+
+                                        </Grid>
+
+                                        <!--<BoxView HorizontalOptions="FillAndExpand"
+                                             HeightRequest="1"
+                                             Color="Silver"
+                                             Opacity=".5" />-->
+
+                                    </StackLayout>
+                                </Frame>
+
+
+                            </StackLayout>
+
+
+
+                        </ScrollView>
+
+                    </StackLayout>
+
+
+
+
+                    <StackLayout x:Name="st_PermissionList"
+                    HorizontalOptions="FillAndExpand"
+                             VerticalOptions="FillAndExpand"
+                             Orientation="Vertical"
+                             Spacing="0"
+                             Margin="0"
+                                                 Padding="0"
+                                 IsVisible="false">
+
+                        <Grid HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                         ColumnSpacing="0"
+                          RowSpacing="0"
+                          Margin="0" 
+                             Padding="0">
+                            <Grid.RowDefinitions >
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="20" />
+                            </Grid.RowDefinitions>
+
+
+
+                            <ScrollView x:Name="vw_PermissionList"
+                        HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Orientation="Vertical"
+                          Margin="0,50,0,0" 
+                             Padding="0"
+                             VerticalScrollBarVisibility="Never"
+                                        Grid.Row="0">
+
+                                <StackLayout  HorizontalOptions="FillAndExpand"
+                                      VerticalOptions="FillAndExpand"
+                                     Orientation="Vertical"
+                                     Spacing="0"
+                                     Margin="0"
+                                     Padding="20,0,20,0">
+
+                                    <!--HeightRequest="50"-->
+                                    <Frame x:Name="frm_Permission_Camera"
+                             HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="Center"    
+                                BackgroundColor="{StaticResource iAppColor_SemiGray}"
+                                   Margin="0,0,0,0"
+                       
+                                                  Padding="5"
+                                   HasShadow="True"
+                                   CornerRadius="5">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="frm_Permission_Camera_Tapped" />
+                                        </Frame.GestureRecognizers>
+
+                                        <StackLayout      HorizontalOptions="FillAndExpand" 
+                                               VerticalOptions="Center" 
+                                               Orientation="Vertical"
+                               
+                                             Spacing="0"
+                                             Margin="0"
+                                             Padding="0"     >
+
+                                            <Grid HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="Center">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition />
+                                                    <!--<RowDefinition Height="10"/>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="50"/>-->
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="20" />
+                                                    <ColumnDefinition Width="50" />
+                                                    <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="30" />
+                                              <!--  <ColumnDefinition Width="10" />
+                                            <ColumnDefinition Width="60" />-->
+                                                    <ColumnDefinition Width="20" />
+                                                </Grid.ColumnDefinitions>
+                                                <!--Source="eg.png"-->
+                                                <Image x:Name="img_Flagxxx"
+                                                                    WidthRequest="40"
+                                                                    HeightRequest="40"
+                                                                    Source="img_my_settings.png"
+                                                                    Grid.Row="0"
+                                                                    Grid.Column="1"
+                                                                    HorizontalOptions="Start"
+                                                                    VerticalOptions="CenterAndExpand" 
+                                               Margin="0,5,0,5"/>
+
+                                                <Label x:Name="lbl_Permission_Camera"
+                                               HorizontalOptions="StartAndExpand"
+                                               VerticalOptions="Center"
+                                               TextColor="White"
+                                               Text="العربيه"
+                                               FontSize="Medium"
+                                               HorizontalTextAlignment="End"
+                                               MaxLines="1"
+                                               LineBreakMode="TailTruncation"
+                                               VerticalTextAlignment="Center"
+                                               Grid.Column="2" />
+
+                                                <Image x:Name="img_Permission_Camera"
+                WidthRequest="30"
+                HeightRequest="30"
+                Source="img_check_normal_orange.png"
+                Grid.Row="0"
+           
+                HorizontalOptions="Start"
+                VerticalOptions="Center" 
+Margin="0"
+                                                  Grid.Column="3"/>
+
+                                            </Grid>
+
+                                            <!--<BoxView HorizontalOptions="FillAndExpand"
+                                             HeightRequest="1"
+                                             Color="Silver"
+                                             Opacity=".5" />-->
+
+                                        </StackLayout>
+                                    </Frame>
+
+                                    <!--HeightRequest="50"-->
+                                    <!--<Frame  x:Name="frm_Permission_Contact"
+                                 HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center"   
+                                           BackgroundColor="{StaticResource iAppColor_SemiGray}"
+                                   Margin="0,20,0,0"
+                           
+                                                  Padding="5"
+                                   HasShadow="True"
+                                   CornerRadius="5">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="frm_Permission_Contact_Tapped" />
+                                        </Frame.GestureRecognizers>
+                                        <StackLayout Orientation="Vertical"
+                                    HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center"       Spacing="0"
+                                             Margin="0"
+                                             Padding="0"   >
+
+                                            <Grid HorizontalOptions="FillAndExpand"
+                                       VerticalOptions="Center">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition />
+                                                    --><!--<RowDefinition Height="10"/>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="50"/>--><!--
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="20" />
+                                                    <ColumnDefinition Width="50" />
+                                                    <ColumnDefinition Width="*" />
+                                                  <ColumnDefinition Width="30" />
+                                            --><!--  <ColumnDefinition Width="10" />
+                                            <ColumnDefinition Width="60" />--><!--
+                                                    <ColumnDefinition Width="20" />
+                                                </Grid.ColumnDefinitions>
+                                                --><!--Source="eg.png"--><!--
+                                                <Image x:Name="img_Flagbcccb"
+                                                                    WidthRequest="40"
+                                                                    HeightRequest="40"
+                                                                    Source="img_my_settings.png"
+                                                                    Grid.Row="0"
+                                                                    Grid.Column="1"
+                                                                    HorizontalOptions="Start"
+                                                                    VerticalOptions="Center" 
+                                                    Margin="0,5,0,5"/>
+
+                                                <Label x:Name="lbl_Permission_Contact"
+                                               HorizontalOptions="FillAndExpand"
+                                               VerticalOptions="Center"
+                                               TextColor="White"
+                                               Text="English"
+                                               FontSize="Medium"
+                                               HorizontalTextAlignment="Start"
+                                               MaxLines="1"
+                                               LineBreakMode="TailTruncation"
+                                               VerticalTextAlignment="Center"
+                                               Grid.Column="2" />
+
+                                                <Image x:Name="img_Permission_Contact"
+                WidthRequest="30"
+                HeightRequest="30"
+                Source="img_check_normal_orange.png"
+                Grid.Row="0"
+           
+                HorizontalOptions="Start"
+                VerticalOptions="Center" 
+Margin="0"
+                                                  Grid.Column="3"/>
+                                            </Grid>
+
+                                            --><!--<BoxView HorizontalOptions="FillAndExpand"
+                                             HeightRequest="1"
+                                             Color="Silver"
+                                             Opacity=".5" />--><!--
+
+                                        </StackLayout>
+                                    </Frame>-->
+
+                                    <!--HeightRequest="50"-->
+                                    <Frame  x:Name="frm_Permission_Location"
+                                  HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center"   
+                                           BackgroundColor="{StaticResource iAppColor_SemiGray}"
+                                   Margin="0,20,0,0"
+                            
+                                                  Padding="5"
+                                   HasShadow="True"
+                                   CornerRadius="5">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="frm_Permission_Location_Tapped" />
+                                        </Frame.GestureRecognizers>
+
+                                        <StackLayout Orientation="Vertical"
+                                      HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center"     Spacing="0"
+                                             Margin="0"
+                                             Padding="0" >
+
+                                            <Grid HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="Center">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition />
+                                                    <!--<RowDefinition Height="10"/>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="50"/>-->
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="20" />
+                                                    <ColumnDefinition Width="50" />
+                                                    <ColumnDefinition Width="*" />
+                                                 <ColumnDefinition Width="30" />
+                                             <!--  <ColumnDefinition Width="10" />
+                                            <ColumnDefinition Width="60" />-->
+                                                    <ColumnDefinition Width="20" />
+                                                </Grid.ColumnDefinitions>
+                                                <!--Source="eg.png"-->
+                                                <Image x:Name="img_Flagjjhbbb"
+                                                                    WidthRequest="40"
+                                                                    HeightRequest="40"
+                                                                    Source="img_my_settings.png"
+                                                                    Grid.Row="0"
+                                                                    Grid.Column="1"
+                                                                    HorizontalOptions="Start"
+                                                                    VerticalOptions="Center" 
+                                                    Margin="0,5,0,5"/>
+
+                                                <Label x:Name="lbl_Permission_Location"
+                                               HorizontalOptions="FillAndExpand"
+                                               VerticalOptions="Center"
+                                               TextColor="White"
+                                               Text="Française"
+                                               FontSize="Medium"
+                                               HorizontalTextAlignment="Start"
+                                               MaxLines="1"
+                                               LineBreakMode="TailTruncation"
+                                               VerticalTextAlignment="Center"
+                                               Grid.Column="2" />
+
+                                                <Image x:Name="img_Permission_Location"
+                WidthRequest="30"
+                HeightRequest="30"
+                Source="img_check_normal_orange.png"
+                Grid.Row="0"
+           
+                HorizontalOptions="Start"
+                VerticalOptions="Center" 
+Margin="0"
+                                                  Grid.Column="3"/>
+                                            </Grid>
+
+                                            <!--<BoxView HorizontalOptions="FillAndExpand"
+                                             HeightRequest="1"
+                                             Color="Silver"
+                                             Opacity=".5" />-->
+
+                                        </StackLayout>
+                                    </Frame>
+
+                                    <Frame  x:Name="frm_Permission_Microphone"
+                                  HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center"   
+                                           BackgroundColor="{StaticResource iAppColor_SemiGray}"
+                                   Margin="0,20,0,0"
+                            
+                                                  Padding="5"
+                                   HasShadow="True"
+                                   CornerRadius="5">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="frm_Permission_Microphone_Tapped" />
+                                        </Frame.GestureRecognizers>
+
+                                        <StackLayout Orientation="Vertical"
+                                      HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center"     Spacing="0"
+                                             Margin="0"
+                                             Padding="0" >
+
+                                            <Grid HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="Center">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition />
+                                                    <!--<RowDefinition Height="10"/>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="50"/>-->
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="20" />
+                                                    <ColumnDefinition Width="50" />
+                                                    <ColumnDefinition Width="*" />
+                                                  <ColumnDefinition Width="30" />
+                                             <!-- <ColumnDefinition Width="10" />
+                                            <ColumnDefinition Width="60" />-->
+                                                    <ColumnDefinition Width="20" />
+                                                </Grid.ColumnDefinitions>
+                                                <!--Source="eg.png"-->
+                                                <Image x:Name="img_Flagjttjh"
+                                                                    WidthRequest="40"
+                                                                    HeightRequest="40"
+                                                                    Source="img_my_settings.png"
+                                                                    Grid.Row="0"
+                                                                    Grid.Column="1"
+                                                                    HorizontalOptions="Start"
+                                                                    VerticalOptions="Center" 
+                                                    Margin="0,5,0,5"/>
+
+                                                <Label x:Name="lbl_Permission_Microphone"
+                                               HorizontalOptions="FillAndExpand"
+                                               VerticalOptions="Center"
+                                               TextColor="White"
+                                               Text="Française"
+                                               FontSize="Medium"
+                                               HorizontalTextAlignment="Start"
+                                               MaxLines="1"
+                                               LineBreakMode="TailTruncation"
+                                               VerticalTextAlignment="Center"
+                                               Grid.Column="2" />
+
+                                                <Image x:Name="img_Permission_Microphone"
+                WidthRequest="30"
+                HeightRequest="30"
+                Source="img_check_normal_orange.png"
+                Grid.Row="0"
+           
+                HorizontalOptions="Start"
+                VerticalOptions="Center" 
+Margin="0"
+                                                  Grid.Column="3"/>
+                                            </Grid>
+
+                                            <!--<BoxView HorizontalOptions="FillAndExpand"
+                                             HeightRequest="1"
+                                             Color="Silver"
+                                             Opacity=".5" />-->
+
+                                        </StackLayout>
+                                    </Frame>
+
+                                    <Frame  x:Name="frm_Permission_Photo"
+                                  HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center"   
+                                           BackgroundColor="{StaticResource iAppColor_SemiGray}"
+                                   Margin="0,20,0,0"
+                            
+                                                  Padding="5"
+                                   HasShadow="True"
+                                   CornerRadius="5">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="frm_Permission_Photo_Tapped" />
+                                        </Frame.GestureRecognizers>
+
+                                        <StackLayout Orientation="Vertical"
+                                      HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center"     Spacing="0"
+                                             Margin="0"
+                                             Padding="0" >
+
+                                            <Grid HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="Center">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition />
+                                                    <!--<RowDefinition Height="10"/>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="50"/>-->
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="20" />
+                                                    <ColumnDefinition Width="50" />
+                                                    <ColumnDefinition Width="*" />
+                                                   <ColumnDefinition Width="30" />
+                                           <!--  <ColumnDefinition Width="10" />
+                                            <ColumnDefinition Width="60" />-->
+                                                    <ColumnDefinition Width="20" />
+                                                </Grid.ColumnDefinitions>
+                                                <!--Source="eg.png"-->
+                                                <Image x:Name="img_Flagjooojh"
+                                                                    WidthRequest="40"
+                                                                    HeightRequest="40"
+                                                                    Source="img_my_settings.png"
+                                                                    Grid.Row="0"
+                                                                    Grid.Column="1"
+                                                                    HorizontalOptions="Start"
+                                                                    VerticalOptions="Center" 
+                                                    Margin="0,5,0,5"/>
+
+                                                <Label x:Name="lbl_Permission_Photo"
+                                               HorizontalOptions="FillAndExpand"
+                                               VerticalOptions="Center"
+                                               TextColor="White"
+                                               Text="Française"
+                                               FontSize="Medium"
+                                               HorizontalTextAlignment="Start"
+                                               MaxLines="1"
+                                               LineBreakMode="TailTruncation"
+                                               VerticalTextAlignment="Center"
+                                               Grid.Column="2" />
+
+                                                <Image x:Name="img_Permission_Photo"
+                WidthRequest="30"
+                HeightRequest="30"
+                Source="img_check_normal_orange.png"
+                Grid.Row="0"
+           
+                HorizontalOptions="Start"
+                VerticalOptions="Center" 
+Margin="0"
+                                                  Grid.Column="3"/>
+                                            </Grid>
+
+                                            <!--<BoxView HorizontalOptions="FillAndExpand"
+                                             HeightRequest="1"
+                                             Color="Silver"
+                                             Opacity=".5" />-->
+
+                                        </StackLayout>
+                                    </Frame>
+
+                                    <!--<Frame  x:Name="frm_Permission_SMS"
+                                  HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center"   
+                                           BackgroundColor="{StaticResource iAppColor_SemiGray}"
+                                   Margin="0,20,0,0"
+                            
+                                                  Padding="5"
+                                   HasShadow="True"
+                                   CornerRadius="5">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="frm_Permission_SMS_Tapped" />
+                                        </Frame.GestureRecognizers>
+
+                                        <StackLayout Orientation="Vertical"
+                                      HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center"     Spacing="0"
+                                             Margin="0"
+                                             Padding="0" >
+
+                                            <Grid HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="Center">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition />
+                                                    --><!--<RowDefinition Height="10"/>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="50"/>--><!--
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="20" />
+                                                    <ColumnDefinition Width="50" />
+                                                    <ColumnDefinition Width="*" />
+                                                 <ColumnDefinition Width="30" />
+                                             --><!--  <ColumnDefinition Width="10" />
+                                            <ColumnDefinition Width="60" />--><!--
+                                                    <ColumnDefinition Width="20" />
+                                                </Grid.ColumnDefinitions>
+                                                --><!--Source="eg.png"--><!--
+                                                <Image x:Name="img_Flaghkjjh"
+                                                                    WidthRequest="40"
+                                                                    HeightRequest="40"
+                                                                    Source="img_my_settings.png"
+                                                                    Grid.Row="0"
+                                                                    Grid.Column="1"
+                                                                    HorizontalOptions="Start"
+                                                                    VerticalOptions="Center" 
+                                                    Margin="0,5,0,5"/>
+
+                                                <Label x:Name="lbl_Permission_SMS"
+                                               HorizontalOptions="FillAndExpand"
+                                               VerticalOptions="Center"
+                                               TextColor="White"
+                                               Text="Française"
+                                               FontSize="Medium"
+                                               HorizontalTextAlignment="Start"
+                                               MaxLines="1"
+                                               LineBreakMode="TailTruncation"
+                                               VerticalTextAlignment="Center"
+                                               Grid.Column="2" />
+
+                                                <Image x:Name="img_Permission_SMS"
+                WidthRequest="30"
+                HeightRequest="30"
+                Source="img_check_normal_orange.png"
+                Grid.Row="0"
+           
+                HorizontalOptions="Start"
+                VerticalOptions="Center" 
+Margin="0"
+                                                  Grid.Column="3"/>
+                                            </Grid>
+
+                                            --><!--<BoxView HorizontalOptions="FillAndExpand"
+                                             HeightRequest="1"
+                                             Color="Silver"
+                                             Opacity=".5" />--><!--
+
+                                        </StackLayout>
+                                    </Frame>-->
+
+                                    <Frame  x:Name="frm_Permission_Storage"
+                                  HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center"   
+                                           BackgroundColor="{StaticResource iAppColor_SemiGray}"
+                                   Margin="0,20,0,0"
+                            
+                                                  Padding="5"
+                                   HasShadow="True"
+                                   CornerRadius="5">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="frm_Permission_Storage_Tapped" />
+                                        </Frame.GestureRecognizers>
+
+                                        <StackLayout Orientation="Vertical"
+                                      HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center"     Spacing="0"
+                                             Margin="0"
+                                             Padding="0" >
+
+                                            <Grid HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="Center">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition />
+                                                    <!--<RowDefinition Height="10"/>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="50"/>-->
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="20" />
+                                                    <ColumnDefinition Width="50" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="30" />
+                                                    <!--  <ColumnDefinition Width="10" />
+                                            <ColumnDefinition Width="60" />-->
+                                                    <ColumnDefinition Width="20" />
+                                                </Grid.ColumnDefinitions>
+                                                <!--Source="eg.png"-->
+                                                <Image x:Name="img_Flag33jjjh"
+                                                                    WidthRequest="40"
+                                                                    HeightRequest="40"
+                                                                    Source="img_my_settings.png"
+                                                                    Grid.Row="0"
+                                                                    Grid.Column="1"
+                                                                    HorizontalOptions="Start"
+                                                                    VerticalOptions="Center" 
+                                                    Margin="0,5,0,5"/>
+
+                                                <Label x:Name="lbl_Permission_Storage"
+                                               HorizontalOptions="FillAndExpand"
+                                               VerticalOptions="Center"
+                                               TextColor="White"
+                                               Text="Française"
+                                               FontSize="Medium"
+                                               HorizontalTextAlignment="Start"
+                                               MaxLines="1"
+                                               LineBreakMode="TailTruncation"
+                                               VerticalTextAlignment="Center"
+                                               Grid.Column="2" />
+                                              
+                                                <Image x:Name="img_Permission_Stroage"
+                     WidthRequest="30"
+                     HeightRequest="30"
+                     Source="img_check_normal_orange.png"
+                     Grid.Row="0"
+                
+                     HorizontalOptions="Start"
+                     VerticalOptions="Center" 
+     Margin="0"
+                                                       Grid.Column="3"/>
+                                            </Grid>
+
+                                            <!--<BoxView HorizontalOptions="FillAndExpand"
+                                             HeightRequest="1"
+                                             Color="Silver"
+                                             Opacity=".5" />-->
+
+                                        </StackLayout>
+                                    </Frame>
+
+
+
+
+                                </StackLayout>
+
+
+
+                            </ScrollView>
+
+
+                            <Grid Padding="0"
+       Margin="20,0,20,0"
+       Grid.Row="2"
+       Grid.Column="0">
+
+
+                                <!--Clicked="btn_Login_Clicked"-->
+                                <Button x:Name="btn_SubmitPermission"
+             HorizontalOptions="FillAndExpand"
+             HeightRequest="50"
+             FontSize="Medium"
+             FontAttributes="Bold"
+             Text="Sign in"
+           
+             TextColor="{StaticResource iAppColor_White}"
+             CornerRadius="5"
+             BackgroundColor="{StaticResource iAppColor_System_Primary}"
+                                      Clicked="btn_SubmitPermission_Clicked"  />
+                                <!--<Image x:Name="img_Login"
+            HorizontalOptions="Start"
+            Source="icon_newlogin_white.png"
+            VerticalOptions="Center"
+            WidthRequest="30"
+            HeightRequest="30"
+            Margin="10,0,0,0" />-->
+
+
+                            </Grid>
+
+                        </Grid>
+
+
+
+                    </StackLayout>
+
+
+
+
+
+
+
+
+
+
+
+                </Grid>
+
+
+                <ActivityIndicator x:Name="ll_ProgressBar"
+                    WidthRequest="50"
+                                   HeightRequest="50"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   Margin="50"
+                                   Grid.Row="3"
+                                    Color="#ffffff"
+                                   IsRunning="False"
+                                   FlowDirection="LeftToRight" />
+
+
+            </Grid>
+
+            <sroofingFooter:SRoofing_PageFooter />
+
+        </StackLayout>
+
+
+        <!--<progress:UCView_ProgressBarView x:Name="pb_ProgressBar"
+                                         HorizontalOptions="FillAndExpand"
+                                         VerticalOptions="StartAndExpand"
+                                          Margin="0"
+                                         Padding="0" />-->
+
+        <BoxView x:Name="ll_NetConnection"
+                 HorizontalOptions="FillAndExpand"
+                 VerticalOptions="StartAndExpand"
+                 Color="{StaticResource iAppColor_Black}"
+                 HeightRequest="5" />
+
+
+
+        <snackAutoHide:SnackBar x:Name="iSnackBar"
+                                BackgroundColor="Transparent"
+                                TextColor="Black"
+                                IsOpen="False"
+                                VerticalOptions="End"
+                                Message="I'm a snack bar... I love showing my self."
+                                ButtonTextColor="Orange"
+                                CloseButtonText=""
+                                Margin="0,0,0,50" />
+        <snackAutoHide:SnackBar_Command_ScanOption x:Name="iSnackBar_ScannerOtion"
+                                                   BackgroundColor="Transparent"
+                                                   TextColor="Black"
+                                                   IsOpen="False"
+                                                   VerticalOptions="End"
+                                                   Message="I'm a snack bar... I love showing my self."
+                                                   ButtonTextColor="Orange"
+                                                   CloseButtonText=""
+                                                   Margin="0,0,0,10"
+                                                   MyString="shaymaa 2023" />
+    </Grid>
+</ContentPage>

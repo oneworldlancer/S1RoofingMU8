@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Logo.UCView_Logo_TwoLines">
+
+    <!--Orientation="Vertical"-->
+
+    <VerticalStackLayout
+            HorizontalOptions="Center" 
+                    VerticalOptions="Center"
+         
+          >
+
+
+
+        <!--<Grid  HorizontalOptions="Center" 
+          VerticalOptions="Center"
+         
+      >
+            
+           
+        <BoxView Grid.Column="0" BackgroundColor="Red" HeightRequest="2"/>
+        <BoxView Grid.Column="2" BackgroundColor="Blue" HeightRequest="2"/>
+        <BoxView Grid.Row="0" BackgroundColor="Green" WidthRequest="2"/>
+        <BoxView Grid.Row="2" BackgroundColor="Yellow" WidthRequest="2"/>
+        <Label Grid.Row="1" Grid.Column="1" Text=".NET MAUI"/>
+        </Grid>-->
+
+
+        <!--   HorizontalOptions="Fill"-->
+        <!--<Border x:Name="border" BackgroundColor="Black" HeightRequest="50"/>-->
+
+        <!--<BoxView 
+                WidthRequest="110"     
+                   HeightRequest="1"
+                   Color="{StaticResource iAppColor_System_Primary}"/>-->
+
+        <Border Stroke="{StaticResource iAppColor_System_Primary}"
+        StrokeThickness="1"
+        StrokeShape="RoundRectangle 40,0,0,40"
+        Background="#000000"
+        Padding="0"
+                Margin="0"
+               
+        HorizontalOptions="Center">
+
+            <Label x:Name="lbl_LogoText"
+            Text="S1Roofing" 
+                VerticalOptions="Center" 
+               
+             FontSize="Medium"     
+               HorizontalOptions="Center" 
+               Margin="0"
+               Padding="10"
+                           TextColor="{StaticResource iAppColor_System_Primary}"/>
+
+
+        </Border>
+        <!--WidthRequest="110"  HorizontalOptions="Fill"-->
+
+        <!--<BoxView 
+                      
+                    WidthRequest="110"      
+                    HeightRequest="1"
+                   Color="{StaticResource iAppColor_System_Primary}"/>-->
+
+    </VerticalStackLayout>
+
+
+</ContentView>

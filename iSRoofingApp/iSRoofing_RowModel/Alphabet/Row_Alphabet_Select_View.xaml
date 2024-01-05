@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="vw_CallRowView"
+			 xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:swipeRight="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Swipe"
+			 x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Alphabet.Row_Alphabet_Select_View">
+	<ContentView.Content>
+
+		<StackLayout   HorizontalOptions="FillAndExpand"
+					   VerticalOptions="FillAndExpand"
+					   Orientation="Vertical"
+					   WidthRequest="50"
+					   HeightRequest="50"
+					   Spacing="0"
+					   Margin="0"
+					   Padding="0"
+				>
+
+
+
+
+			<Label x:Name="lbl_AlphabetChar"
+				Text="{Binding ItemText}"
+				   WidthRequest="50"
+				   HeightRequest="49"
+				   TextColor="{StaticResource iAppColor_LightOrange}"
+				   FontAttributes="Bold"
+				   Margin="0"
+				   Padding="0"
+				   FontSize="Large"
+				   HorizontalTextAlignment="Center"
+				   VerticalTextAlignment="Center"
+				   BackgroundColor="{StaticResource iAppColor_Black}">
+				<!--<Label.GestureRecognizers>
+					<TapGestureRecognizer Tapped="lbl_AlphabetChar_Tapped" />
+				</Label.GestureRecognizers>-->
+			</Label>
+
+
+			<BoxView  HorizontalOptions="FillAndExpand"
+					  HeightRequest="1"
+					  Margin="0"
+					  Color="{StaticResource iAppColor_Silver}"
+					  Opacity=".5" />
+		</StackLayout>
+
+		<!--<SwipeView  BackgroundColor="{StaticResource iAppColor_SemiGray}">
+
+			<SwipeView.LeftItems>
+				<SwipeItems   Mode="Execute">
+					--><!--Command="{Binding 
+											Source={x:Reference cv_UserChatHistoryList},
+											Path=BindingContext.Command_Chat_ByUser}"
+							   CommandParameter="{Binding .}"--><!--
+					<SwipeItem BackgroundColor="{StaticResource iAppColor_SemiGray}"
+							   Command="{Binding Command_Call_ByUser, Source={x:Reference vw_CallRowView}}"
+							   CommandParameter="{Binding .}" />
+
+				</SwipeItems>
+			</SwipeView.LeftItems>
+			<Frame HorizontalOptions="FillAndExpand"
+				   VerticalOptions="StartAndExpand"
+				   Padding="0"
+				   Margin="0"
+				   CornerRadius="5"
+				   HasShadow="True"
+				   BackgroundColor="{StaticResource iAppColor_SemiGray}">
+
+				<Frame HorizontalOptions="FillAndExpand"
+					   VerticalOptions="StartAndExpand"
+					   Padding="0"
+					   Margin="0"
+					   CornerRadius="5"
+					   BackgroundColor="{StaticResource iAppColor_DarkGray}">
+
+
+					<StackLayout HorizontalOptions="FillAndExpand"
+								 VerticalOptions="StartAndExpand"
+								 Orientation="Vertical"
+								 Spacing="0"
+								 Margin="0"
+								 Padding="0">
+
+						<StackLayout   HorizontalOptions="FillAndExpand"
+									   VerticalOptions="StartAndExpand"
+									   Orientation="Vertical"
+									   Spacing="0"
+									   Margin="0"
+									   Padding="0">
+
+
+							<Grid   HorizontalOptions="FillAndExpand"
+									VerticalOptions="StartAndExpand"
+									Margin="0"
+									Padding="0">
+
+								<Grid.RowDefinitions>
+									<RowDefinition Height="*" />
+								</Grid.RowDefinitions>
+
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="80" />
+									<ColumnDefinition Width="*" />
+									<ColumnDefinition Width="50" />
+								</Grid.ColumnDefinitions>
+
+
+								<Frame HeightRequest="60"
+									   WidthRequest="60"
+									   CornerRadius="30"
+									   Padding="0"
+									   Margin="10,10,0,0"
+									   HorizontalOptions="Start"
+									   VerticalOptions="StartAndExpand"
+									   BackgroundColor="Black"
+									   Grid.Row="0"
+									   Grid.Column="0">
+									--><!--Text="{Binding AvatarName}"--><!--
+									<Label  x:Name="lbl_AvatarName"
+											HeightRequest="60"
+											WidthRequest="60"
+											FontSize="Large"
+											Text="{Binding AvatarName}"
+											TextColor="White"
+											HorizontalOptions="Center"
+											VerticalOptions="Center"
+											HorizontalTextAlignment="Center"
+											VerticalTextAlignment="Center" />
+								</Frame>
+
+								--><!--<Image HorizontalOptions="End"
+										   VerticalOptions="End"
+										   Source="img_theme_online.png"
+										   Margin="-10,0,-10,0"
+										   Grid.Row="0"
+										   Grid.Column="0" />--><!--
+
+
+								<StackLayout    HorizontalOptions="FillAndExpand"
+												Padding="0"
+												Orientation="Vertical"
+												Spacing="0"
+												Grid.Row="0"
+												Grid.Column="1">
+									--><!--Text="{Binding FullName}"--><!--
+
+									<Grid	HorizontalOptions="FillAndExpand"
+											ColumnDefinitions="auto,auto"
+											Padding="0">
+
+										<Label  x:Name="lbl_FullName"
+												HorizontalOptions="FillAndExpand"
+												Margin="0,10,0,0"
+												FontSize="Medium"
+												MaxLines="1"
+												LineBreakMode="TailTruncation"
+												TextColor="{StaticResource iAppColor_Black}"
+												Text="{Binding RemoteFullName}"
+												Grid.Column="0" />
+										--><!--Text="{Binding CategoryTitle}"--><!--
+										<Label  x:Name="lbl_CategoryTitle"
+												FontSize="Subtitle"
+												Margin="0,5,0,0"
+												MaxLines="1"
+												LineBreakMode="TailTruncation"
+												TextColor="{StaticResource iAppColor_Silver}"
+												Grid.Column="1">
+											<Label.FormattedText>
+												<FormattedString>
+													<Span Text="(" />
+													<Span Text="{Binding CategoryTitle}" />
+													<Span Text=")" />
+												</FormattedString>
+											</Label.FormattedText>
+										</Label>
+									</Grid>
+
+									--><!--FontSize="Default"Text="{Binding MobileNumberE164}"--><!--
+									<Label x:Name="lbl_MessageText"
+										   HorizontalOptions="FillAndExpand"
+										   MaxLines="1"
+										   LineBreakMode="TailTruncation"
+										   TextColor="{StaticResource iAppColor_White}"
+										   Text="{Binding MessageText}" />
+
+									<Label 	  x:Name="lbl_DateTime"
+											  HorizontalOptions="FillAndExpand"
+											  FontSize="Micro"
+											  MaxLines="1"
+											  LineBreakMode="TailTruncation"
+											  Margin="0,5,0,0"
+											  TextColor="{StaticResource iAppColor_White}"
+											  Text="{Binding DateTimeText}" />
+
+									--><!----><!--
+
+
+								</StackLayout>
+
+								<StackLayout   HorizontalOptions="EndAndExpand"
+											   VerticalOptions="Center"
+											   Spacing="0"
+											   Grid.Row="0"
+											   Grid.Column="2">
+
+									<Image   HorizontalOptions="End"
+											 WidthRequest="30"
+											 HeightRequest="30"
+											 Source="img_call_missed_red.png"
+											 Margin="10" />
+								</StackLayout>
+
+
+							</Grid>
+
+
+							<swipeRight:UCView_Swipe_Right />
+
+							<BoxView  HorizontalOptions="FillAndExpand"
+									  HeightRequest="1"
+									  Margin="80,5,10,5"
+									  Color="{StaticResource iAppColor_Silver}"
+									  Opacity=".5" />
+
+
+						</StackLayout>
+
+
+
+					</StackLayout>
+
+
+				</Frame>
+			</Frame>
+
+		</SwipeView>-->
+
+
+	</ContentView.Content>
+</ContentView>

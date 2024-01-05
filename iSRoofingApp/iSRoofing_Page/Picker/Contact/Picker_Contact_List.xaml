@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView  x:Name="Page_ContactPicker"
+              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Picker.Contact.Picker_Contact_List"
+              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+              xmlns:sroofingHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Header"
+              xmlns:sroofingFooter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer"
+              xmlns:logo="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Logo"
+              xmlns:snackAutoHide="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar"
+              ios:Page.UseSafeArea="False"
+              NavigationPage.HasNavigationBar="False"
+              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+              xmlns:arrowBack="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Back"
+              xmlns:rowContact="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Contact"
+              xmlns:rowHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Header"
+              xmlns:itmp="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowSelector.Contact.List"
+              xmlns:roAlphabet="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Alphabet"
+              xmlns:itmp_Alphabet="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowSelector.Alphabet"
+              xmlns:vwContactList="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_Page.Contact"
+             xmlns:rowNone="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.None"
+              xmlns:progress="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.ProgressBar"
+              xmlns:snack="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar"
+              xmlns:userfilter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Picker.ChatterFilter"
+              Visual="Material">
+
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <!--<DataTemplate x:Key="itmp_Template_None">
+                <rowNone:Row_None_View />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_InfoTutorial">
+                <rowInfo:Row_Info_History_Contact_View />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Header">
+                <rowHeader:Row_Header_Remote_View     NameLine="{Binding NameLine}"
+                                                      iGroupModel="{Binding .}" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Item">
+                <rowContact:Row_Contact_View     iGroupModel="{Binding .}"
+                                                   iOwnerModel="{Binding _iOwnerModel, Source={x:Reference Page_ContactPicker}}" />
+            </DataTemplate>
+          
+            <itmp:Contact_ListDataTemplateSelector x:Key="ContactDataTemplateSelector"
+                                                   Template_None="{StaticResource itmp_Template_None}"
+                                                   Template_InfoTutorial="{StaticResource itmp_Template_InfoTutorial}"
+                                                   Template_Header="{StaticResource itmp_Template_Header}"
+                                                   Template_Item="{StaticResource itmp_Template_Item}" />-->
+
+
+            <DataTemplate x:Key="itmp_Template_Alphabet_Disable_Item">
+                <roAlphabet:Row_Alphabet_Disable_View     iOwnerModel="{Binding _iOwnerModel, Source={x:Reference Page_ContactPicker}}"
+                                                          iKeyValueModel="{Binding .}" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Alphabet_Active_Item">
+                <roAlphabet:Row_Alphabet_Active_View iKeyValueModel="{Binding .}"
+                                                     iOwnerModel="{Binding _iOwnerModel, Source={x:Reference Page_ContactPicker}}"
+                                                     iParent="{Binding Page_ContactPicker}" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Alphabet_Select_Item">
+                <roAlphabet:Row_Alphabet_Select_View iKeyValueModel="{Binding .}"
+                                                     iOwnerModel="{Binding _iOwnerModel, Source={x:Reference Page_ContactPicker}}"
+                                                     iParent="{Binding Page_ContactPicker}" />
+            </DataTemplate>
+            <itmp_Alphabet:Alphabet_ListDataTemplateSelector x:Key="AlphabetDataTemplateSelector"
+                                                             Template_Disable="{StaticResource itmp_Template_Alphabet_Disable_Item}"
+                                                             Template_Active="{StaticResource itmp_Template_Alphabet_Active_Item}"
+                                                             Template_Select="{StaticResource itmp_Template_Alphabet_Select_Item}" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+
+    <Grid>
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Spacing="0"
+                     Margin="0"
+                     Padding="0"
+                     BackgroundColor="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}"
+                     Orientation="Vertical">
+            <RefreshView x:Name="refresh_ContactList"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         RefreshColor="{StaticResource iAppColor_LightOrange}"
+                         Command="{Binding RefreshCommand}">
+                <!--		ItemsSource="{Binding arr_UserMarshalList}"	ItemsSource="{Binding Employees}"    SelectionChanged="OnCollectionViewSelectionChanged" 
+								  ItemTemplate="{StaticResource ContactDataTemplateSelector}"-->
+                <StackLayout HorizontalOptions="FillAndExpand"
+                             VerticalOptions="StartAndExpand"
+                             Orientation="Vertical"
+                             Spacing="0"
+                             Margin="0"
+                             Padding="0">
+                    <!--   ItemTemplate="{StaticResource ContactDataTemplateSelector}"<rowInfo:Row_Info_History_Contact_View />-->
+                    <CollectionView x:Name="cv_UserContactList"
+                                    SelectionMode="Single"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    EmptyView=""
+                                    Margin="0">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <userfilter:Row_Chatter_Private_IsNewMessage_FALSE_View  HorizontalOptions="FillAndExpand"
+                                                                                         VerticalOptions="FillAndExpand"
+                                                                                         iOwnerModel="{Binding _iOwnerModel, Source={x:Reference Page_ContactPicker}}"
+                                                                                         iGroupModel="{Binding .}" />
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </RefreshView>
+        </StackLayout>
+        <ActivityIndicator x:Name="ll_ProgressBar"
+            WidthRequest="50"
+                           HeightRequest="50"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Margin="50"
+                         Color="#ffffff"
+                           IsRunning="true"
+                           FlowDirection="LeftToRight"
+                           IsVisible="true"/>
+
+
+        <snackAutoHide:SnackBar x:Name="iSnackBar"
+                                BackgroundColor="Transparent"
+                                TextColor="Black"
+                                IsOpen="False"
+                                VerticalOptions="End"
+                                Message="I'm a snack bar... I love showing my self."
+                                ButtonTextColor="Orange"
+                                CloseButtonText=""
+                                Margin="0,0,0,50" />
+
+        <snack:SnackBar_Command_ConfirmOption x:Name="iSnackBar_ConfirmOption"
+                                              BackgroundColor="Transparent"
+                                              TextColor="Black"
+                                              IsOpen="False"
+                                              VerticalOptions="End"
+                                              Message="I'm a snack bar... I love showing my self."
+                                              ButtonTextColor="Orange"
+                                              CloseButtonText=""
+                                              Margin="0,0,0,0" />
+    </Grid>
+</ContentView>

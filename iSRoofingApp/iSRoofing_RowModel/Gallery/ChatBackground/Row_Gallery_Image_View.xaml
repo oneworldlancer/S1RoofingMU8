@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView  x:Name="vw_GalleryRowView"
+              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:swipeRight="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Swipe"
+               
+              x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Gallery.ChatBackground.Row_Gallery_Image_View">
+
+    
+    <VisualStateManager.VisualStateGroups>
+        <VisualStateGroup Name="CommonStates">
+            <VisualState Name="Selected">
+                <VisualState.Setters>
+                    <Setter Property="BackgroundColor"
+										Value="Transparent" />
+                </VisualState.Setters>
+            </VisualState>
+        </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>
+
+    <Border 	x:Name="frm_RowContent"
+           HorizontalOptions="FillAndExpand"
+			   VerticalOptions="StartAndExpand"
+			   Padding="0"
+
+				 	   Margin="0"
+			 
+			   BackgroundColor="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}"
+                              Stroke="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}" StrokeThickness="0" >
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="0" />
+        </Border.StrokeShape>
+
+
+
+
+        <Frame HorizontalOptions="FillAndExpand"
+               VerticalOptions="StartAndExpand"
+               Padding="0"
+            BorderColor="Transparent"        Margin="0"
+                  CornerRadius="0"
+               BackgroundColor="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}">
+            <StackLayout HorizontalOptions="FillAndExpand"
+                         VerticalOptions="StartAndExpand"
+                         Orientation="Vertical"
+                         Spacing="0"
+                         Margin="0"
+                         Padding="0">
+                <StackLayout   HorizontalOptions="FillAndExpand"
+                               VerticalOptions="StartAndExpand"
+                               Orientation="Vertical"
+                               Spacing="0"
+                               Margin="0"
+                               Padding="0">
+                    <Grid   HorizontalOptions="FillAndExpand"
+                            VerticalOptions="StartAndExpand"
+                            Margin="0"
+                            Padding="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                             <!--<RowDefinition Height="auto" />
+                           <RowDefinition Height="50" />-->
+                            <!--<RowDefinition Height="50" />-->
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <!--<ColumnDefinition Width="420" />
+                                    <ColumnDefinition Width="*" />-->
+                        </Grid.ColumnDefinitions>
+                        <Grid HorizontalOptions="FillAndExpand"
+                              ColumnDefinitions="*,auto,*"
+                              Grid.Row="0"
+                              Grid.Column="0">
+                       
+                            <!---->
+                                 
+                            <Frame x:Name="frm_Avatar"
+                                   HorizontalOptions="FillAndExpand"
+                                  WidthRequest="{Binding ItemWidth}"
+                                   HeightRequest="{Binding ItemWidth}"
+                                   CornerRadius="5"
+                                   Padding="1"
+                                   Margin="10"
+                                   VerticalOptions="StartAndExpand"
+                                   BackgroundColor="{StaticResource iAppColor_Opacity_Black}"
+                                   Grid.Row="0"
+                                   Grid.Column="1">
+                                <!--          Source="{Binding ImageThumServerURL}"     Source="https://assets.codepen.io/32795/poster.png"Text="{Binding AvatarName}"
+										Text="{Binding AvatarName}"-->
+                                 <!--Clicked="imgBtn_Thum_Tapped"-->   
+                                
+                                <Image   x:Name="imgBtn_Thum"
+                                              HorizontalOptions="FillAndExpand"
+                                              VerticalOptions="FillAndExpand"
+                                              BackgroundColor="Transparent"
+                                              Aspect="AspectFill"
+                                 Source="{Binding ItemValue}"         />
+                            </Frame>
+                        </Grid>
+                     
+                    </Grid>
+                    <!--<swipeRight:UCView_Swipe_Right />-->
+                    <BoxView  HorizontalOptions="FillAndExpand"
+                              HeightRequest="1"
+                              Margin="5,5,10,5"
+                              Color="{StaticResource iAppColor_Transparent}"
+                              Opacity=".5" />
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </Border>
+    <!--</SwipeView>
+    </ContentView.Content>-->
+</ContentView>

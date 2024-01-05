@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:entry="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Entry"
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Account.Page_Account_Privacy"
+            xmlns:snackAutoHide="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:sroofingHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Header"
+    xmlns:arrowBack="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Back"
+    xmlns:sroofingFooter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer"
+    xmlns:grid="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Grid"
+			 ios:Page.UseSafeArea="False"
+    NavigationPage.HasNavigationBar="False"
+  Visual="Material"
+             BackgroundColor="Black"
+             HorizontalOptions="FillAndExpand"
+             VerticalOptions="FillAndExpand">
+
+
+    <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          RowDefinitions="*,50" >
+
+        <StackLayout  HorizontalOptions="FillAndExpand"    VerticalOptions="FillAndExpand"
+           Spacing="0"
+                      Margin="0,0,0,50"
+                      Padding="0"
+                      Grid.Row="0">
+            <Label x:Name="lbl_Title"
+                   HorizontalOptions="Center"
+                   HeightRequest="50"
+                   VerticalOptions="Center"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center"
+                   Text="lbl_Title"
+                   FontSize="Medium"
+                   BackgroundColor="Transparent"
+                   TextColor="{StaticResource iAppColor_Silver}" />
+            <Frame          x:Name="frm_OnlineStaus"
+                            HorizontalOptions="FillAndExpand"
+                                HeightRequest="50"
+								        CornerRadius="5"
+								HasShadow="True"
+BorderColor="{StaticResource iAppColor_SemiOrange}"
+                                Padding="1"
+                                Margin="20,20,20,0"
+                                BackgroundColor="{StaticResource iAppColor_White}"
+                               >
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="frm_OnlineStaus_Tapped" />
+                </Frame.GestureRecognizers>
+
+                <StackLayout  x:Name="sl_CountryName"
+                                    Orientation="Horizontal"
+                                    BackgroundColor="{StaticResource iAppColor_White}"
+                              HorizontalOptions="FillAndExpand"      Spacing="0"
+									Margin="0"	  Padding="10,0,10,0"	>
+                  
+                    <Grid           HorizontalOptions="FillAndExpand"
+                                    ColumnDefinitions="*,60">
+                                  
+                            
+                                    <Label
+                                        x:Name="lbl_OnlineStaus"
+                                        HorizontalOptions="FillAndExpand"
+                                        HeightRequest="50"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Start"
+                                        Text="Show my online status"
+                                        FontSize="Medium"
+                                        BackgroundColor="Transparent"
+                                        TextColor="{StaticResource iAppColor_SemiGray}"
+                                        Grid.Column="0"    Padding="10,0,0,0"> 
+                                        <!--<Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                                Tapped="lblCountryList_Clicked" />
+                        </Label.GestureRecognizers>-->
+                    </Label>
+                    
+                    <Switch      x:Name="swtch_VisibleStatus"
+                                        WidthRequest="50"
+                                        HeightRequest="50"
+                                   Grid.Column="1" 
+                                Toggled="swtch_VisibleStatus_Toggled"/>      
+    </Grid>
+									
+
+                </StackLayout>
+
+
+            </Frame>
+       
+         
+
+
+
+        </StackLayout>
+
+        <!--Clicked="btn_PageDashboard_Clicked"-->
+
+        <Button x:Name="btn_Submit"
+								HorizontalOptions="FillAndExpand"
+								HeightRequest="50"
+                      FontAttributes="Bold" 
+                Text="Continue"
+					   			
+						TextColor="{StaticResource iAppColor_White}"
+                    FontSize="Medium"
+                    Margin="20,0,20,0"
+                    CornerRadius="5"
+                    BackgroundColor="{StaticResource iAppColor_LightOrange}"
+                    Grid.Row="1"   
+                Clicked="btn_Submit_Clicked"/>
+
+
+    </Grid>
+
+</ContentView>

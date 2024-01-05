@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage   x:Name="Page_ContactPickerDashboard"
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Picker.Contact.Picker_Contact_Dashboard"
+           xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:sroofingHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Header"
+             xmlns:arrowBack="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Back"
+             xmlns:sroofingFooter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer"
+             xmlns:logo="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Logo"
+             xmlns:snackAutoHide="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar"
+             ios:Page.UseSafeArea="False"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:listHistory="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_Page.Picker.Contact"
+            BackgroundColor="{StaticResource iAppColor_Black}"
+             Visual="Material"
+             Loaded="Page_ContactPickerDashboard_Loaded">
+    <!--BackgroundColor=""-->
+
+    <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+       ColumnSpacing="0"
+          RowSpacing="0"
+          Margin="0"
+          Padding="0"
+          BackgroundColor="#000000">
+      
+        <StackLayout HorizontalOptions="FillAndExpand"
+                  VerticalOptions="FillAndExpand"
+                Spacing="0"
+                 Margin="0"
+                 Padding="0"
+                 BackgroundColor="{StaticResource iAppColor_SemiGray}"
+                 Orientation="Vertical">
+     
+        <sroofingHeader:SRoofing_PageHeader />
+    
+        <!--iAppColor_SemiGray-->
+        
+        <Grid HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand"
+                        ColumnSpacing="0"
+             RowSpacing="0"  Margin="0"     
+                     Padding="0" 
+              BackgroundColor="{StaticResource iAppColor_SemiGray}">
+          
+            
+            <!--BackgroundColor="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}"-->
+            
+            
+            <listHistory:Page_Chat_Chatters_List x:Name="vw_ChattersList"
+                                                HorizontalOptions="FillAndExpand"
+                                                VerticalOptions="FillAndExpand"
+                                                />
+            
+             <!--<listHistory:Picker_Contact_List x:Name="vw_PickerContactList"
+                                                HorizontalOptions="FillAndExpand"
+                                                VerticalOptions="FillAndExpand"
+                                                />-->
+            
+            
+          
+            <!--<StackLayout HorizontalOptions="End"
+                         VerticalOptions="End"
+                         Spacing="0"
+                         Margin="0"
+                         Padding="0"
+                         Orientation="Vertical">
+            
+                
+             
+                <ImageButton  x:Name="imgBtn_ContactList"
+                              Source="img_circle_back_black.png"
+                              WidthRequest="50"
+                              HeightRequest="50"
+                              Margin="0,0,10,20"
+                              VerticalOptions="Center"
+                              BackgroundColor="Transparent"
+                              Clicked="imgBtn_ContactList_Clicked" />
+            </StackLayout>-->
+          
+            <BoxView x:Name="ll_NetConnection"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="StartAndExpand"
+                     Color="{StaticResource iAppColor_Transparent}"
+                     HeightRequest="5" />
+        
+            <snackAutoHide:SnackBar x:Name="iSnackBar"
+                                    BackgroundColor="Transparent"
+                                    TextColor="Black"
+                                    IsOpen="False"
+                                    VerticalOptions="End"
+                                    Message="I'm a snack bar... I love showing my self."
+                                    ButtonTextColor="Orange"
+                                    CloseButtonText=""
+                                    Margin="0,0,0,50" />
+      
+             
+        </Grid>
+      
+        <Button x:Name="btn_Close_Window"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="EndAndExpand"
+                HeightRequest="50"
+                FontAttributes="Bold"
+                CornerRadius="0"
+                Padding="0"
+                Text="Close"
+                BackgroundColor="{StaticResource iAppColor_Black}"
+                TextColor="{StaticResource iAppColor_White}"
+                Clicked="imgBtn_ContactList_Clicked"></Button>
+     
+        <sroofingFooter:SRoofing_PageFooter />
+   
+    </StackLayout>
+
+
+
+
+    <Grid x:Name="grd_Loading"
+            HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          Margin="0"
+          Padding="0"
+          BackgroundColor="#000000"
+          IsVisible="true">
+
+        <ActivityIndicator x:Name="ll_ProgressBar_Account"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    IsRunning="true"
+                    IsVisible="true"
+                    Color="#FF8000" />
+    </Grid>
+    </Grid>
+    <!--</ContentPage.Content>-->
+</ContentPage>

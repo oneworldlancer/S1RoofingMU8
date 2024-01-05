@@ -1,0 +1,840 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage  x:Name="iPage_ChatDashboard"
+              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Chat.Page_ScreenChatShow_Dashboard"
+              xmlns:sroofingHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Header"
+              xmlns:arrowBack="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Back"
+              xmlns:sroofingFooter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer"
+              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+              ios:Page.UseSafeArea="False"
+              xmlns:grid="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Grid"
+              xmlns:entry="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Entry"  
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit" 
+    xmlns:itmp="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowSelector.History.Chat"
+                xmlns:rowChat="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.ScreenChatShow"
+              xmlns:snackAutoHide="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar"
+              xmlns:list="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_Page.Chat"
+              xmlns:account="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_Page.Account"
+               NavigationPage.HasNavigationBar="False"
+              BackgroundColor="WhiteSmoke"
+              Visual="Material"
+              Loaded="iPage_ChatDashboard_Loaded"
+              Unloaded="iPage_ChatDashboard_Unloaded">
+    <!--<ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="lbl_GroupTokenID" Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>-->
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="itmp_Template_None">
+                <rowChat:Row_ScreenChatShow_Message_None_View />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Item_Owner_Text_Only_Message">
+                <rowChat:Row_ScreenChatShow_Message_Text_Only_Owner_View iGroupModel="{Binding .}"
+                                                                         iOwnerModel="{Binding _iOwnerModel, Source={x:Reference iPage_ChatDashboard}}" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Item_Owner_WebLink_Message">
+                <rowChat:Row_ScreenChatShow_Message_WebLink_Owner_View iGroupModel="{Binding .}"
+                                                                       iOwnerModel="{Binding _iOwnerModel, Source={x:Reference iPage_ChatDashboard}}" />
+            </DataTemplate>
+            <!--Row_ScreenChatShow_Message_Text_Translate_Owner_View-->
+            <DataTemplate x:Key="itmp_Template_Item_Owner_Text_Translate_Message">
+                <rowChat:Row_ScreenChatShow_Message_Text_Only_Owner_View iGroupModel="{Binding .}"
+                                                                         iOwnerModel="{Binding _iOwnerModel, Source={x:Reference iPage_ChatDashboard}}" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Item_Owner_Share_Emotion">
+                <rowChat:Row_ScreenChatShow_Message_Emotion_Owner_View iGroupModel="{Binding .}"
+                                                                       iOwnerModel="{Binding _iOwnerModel, Source={x:Reference iPage_ChatDashboard}}" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Item_Owner_Video">
+                <rowChat:Row_ScreenChatShow_Message_Video_Owner_View iGroupModel="{Binding .}"
+                                                                     iOwnerModel="{Binding _iOwnerModel, Source={x:Reference iPage_ChatDashboard}}" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Item_Owner_Video_YouTube">
+                <rowChat:Row_ScreenChatShow_Message_YouTube_Owner_View iGroupModel="{Binding .}"
+                                                                       iOwnerModel="{Binding _iOwnerModel, Source={x:Reference iPage_ChatDashboard}}" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Item_Owner_Share_Image">
+                <rowChat:Row_ScreenChatShow_Message_Image_Owner_View iGroupModel="{Binding .}"
+                                                                     iOwnerModel="{Binding _iOwnerModel, Source={x:Reference iPage_ChatDashboard}}" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Item_Owner_Text_Map">
+                <rowChat:Row_ScreenChatShow_Message_Location_Owner_View iGroupModel="{Binding .}"
+                                                                        iOwnerModel="{Binding _iOwnerModel, Source={x:Reference iPage_ChatDashboard}}" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Item_Owner_Share_Document">
+                <rowChat:Row_ScreenChatShow_Message_Document_Owner_View iGroupModel="{Binding .}"
+                                                                        iOwnerModel="{Binding _iOwnerModel, Source={x:Reference iPage_ChatDashboard}}" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Item_Owner_Share_Audio">
+                <rowChat:Row_ScreenChatShow_Message_Audio_Owner_View iGroupModel="{Binding .}"
+                                                                     iOwnerModel="{Binding _iOwnerModel, Source={x:Reference iPage_ChatDashboard}}" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Item_Remote_Text_Only_Message">
+                <rowChat:Row_ScreenChatShow_Message_Text_Only_Remote_View iGroupModel="{Binding .}"
+                                                                          iOwnerModel="{Binding _iOwnerModel, Source={x:Reference iPage_ChatDashboard}}" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Item_Remote_WebLink_Message">
+                <rowChat:Row_ScreenChatShow_Message_WebLink_Remote_View iGroupModel="{Binding .}"
+                                                                        iOwnerModel="{Binding _iOwnerModel, Source={x:Reference iPage_ChatDashboard}}" />
+            </DataTemplate>
+            <!--Row_ScreenChatShow_Message_Text_Translate_Remote_View-->
+            <DataTemplate x:Key="itmp_Template_Item_Remote_Text_Translate_Message">
+                <rowChat:Row_ScreenChatShow_Message_Text_Only_Remote_View iGroupModel="{Binding .}"
+                                                                          iOwnerModel="{Binding _iOwnerModel, Source={x:Reference iPage_ChatDashboard}}" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Item_Remote_Share_Emotion">
+                <rowChat:Row_ScreenChatShow_Message_Emotion_Remote_View iGroupModel="{Binding .}"
+                                                                        iOwnerModel="{Binding _iOwnerModel, Source={x:Reference iPage_ChatDashboard}}" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Item_Remote_Video">
+                <rowChat:Row_ScreenChatShow_Message_Video_Remote_View iGroupModel="{Binding .}"
+                                                                      iOwnerModel="{Binding _iOwnerModel, Source={x:Reference iPage_ChatDashboard}}" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Item_Remote_Video_YouTube">
+                <rowChat:Row_ScreenChatShow_Message_YouTube_Remote_View iGroupModel="{Binding .}"
+                                                                        iOwnerModel="{Binding _iOwnerModel, Source={x:Reference iPage_ChatDashboard}}" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Item_Remote_Share_Image">
+                <rowChat:Row_ScreenChatShow_Message_Image_Remote_View iParent="{Binding this, Source={x:Reference iPage_ChatDashboard}}"
+                                                                      iGroupModel="{Binding .}"
+                                                                      iOwnerModel="{Binding _iOwnerModel, Source={x:Reference iPage_ChatDashboard}}" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Item_Remote_Text_Map">
+                <rowChat:Row_ScreenChatShow_Message_Location_Remote_View iGroupModel="{Binding .}"
+                                                                         iOwnerModel="{Binding _iOwnerModel, Source={x:Reference iPage_ChatDashboard}}" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Item_Remote_Share_Document">
+                <rowChat:Row_ScreenChatShow_Message_Document_Remote_View iGroupModel="{Binding .}"
+                                                                         iOwnerModel="{Binding _iOwnerModel, Source={x:Reference iPage_ChatDashboard}}" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Item_Remote_Share_Audio">
+                <rowChat:Row_ScreenChatShow_Message_Audio_Remote_View iGroupModel="{Binding .}"
+                                                                      iOwnerModel="{Binding _iOwnerModel, Source={x:Reference iPage_ChatDashboard}}" />
+            </DataTemplate>
+            <!--Template_Header="{StaticResource itmp_Template_Header}"-->
+            <itmp:Chat_ScreenChatShowDataTemplateSelector x:Key="Chat_MessageDataTemplateSelector"
+                                                          Template_None="{StaticResource itmp_Template_None }"
+                                                          Template_Item_Owner_Text_Only_Message="{StaticResource itmp_Template_Item_Owner_Text_Only_Message }"
+                                                          Template_Item_Owner_Text_WebLink_Message="{StaticResource itmp_Template_Item_Owner_WebLink_Message }"
+                                                          Template_Item_Owner_Text_Translate_Message="{StaticResource itmp_Template_Item_Owner_Text_Translate_Message }"
+                                                          Template_Item_Owner_Share_Emotion="{StaticResource itmp_Template_Item_Owner_Share_Emotion }"
+                                                          Template_Item_Owner_Share_Video="{StaticResource itmp_Template_Item_Owner_Video }"
+                                                          Template_Item_Owner_Share_Video_YouTube="{StaticResource itmp_Template_Item_Owner_Video_YouTube }"
+                                                          Template_Item_Owner_Share_Image="{StaticResource itmp_Template_Item_Owner_Share_Image }"
+                                                          Template_Item_Owner_Text_Map="{StaticResource itmp_Template_Item_Owner_Text_Map }"
+                                                          Template_Item_Owner_Share_Document="{StaticResource itmp_Template_Item_Owner_Share_Document }"
+                                                          Template_Item_Owner_Share_Audio="{StaticResource itmp_Template_Item_Owner_Share_Audio }"
+                                                          Template_Item_Remote_Text_Only_Message="{StaticResource itmp_Template_Item_Remote_Text_Only_Message }"
+                                                          Template_Item_Remote_Text_WebLink_Message="{StaticResource itmp_Template_Item_Remote_WebLink_Message }"
+                                                          Template_Item_Remote_Text_Translate_Message="{StaticResource itmp_Template_Item_Remote_Text_Translate_Message }"
+                                                          Template_Item_Remote_Share_Emotion="{StaticResource itmp_Template_Item_Remote_Share_Emotion }"
+                                                          Template_Item_Remote_Share_Video="{StaticResource itmp_Template_Item_Remote_Video }"
+                                                          Template_Item_Remote_Share_Video_YouTube="{StaticResource itmp_Template_Item_Remote_Video_YouTube }"
+                                                          Template_Item_Remote_Share_Image="{StaticResource itmp_Template_Item_Remote_Share_Image }"
+                                                          Template_Item_Remote_Text_Map="{StaticResource itmp_Template_Item_Remote_Text_Map }"
+                                                          Template_Item_Remote_Share_Document="{StaticResource itmp_Template_Item_Remote_Share_Document }"
+                                                          Template_Item_Remote_Share_Audio="{StaticResource itmp_Template_Item_Remote_Share_Audio }" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <!---->
+        <!--<xct:SideMenuView x:Name="sideMenuView"
+                          HorizontalOptions="FillAndExpand"
+                          VerticalOptions="FillAndExpand"
+                          State="MainViewShown"
+                          PropertyChanged="sideMenuView_PropertyChanged">
+            <Frame  x:Name="grd_LeftContent"
+                    xct:SideMenuView.ParallaxValue="75"
+                    xct:SideMenuView.Position="LeftMenu"
+                    Margin="0"
+                    Padding="0"
+                    HasShadow="False"
+                    CornerRadius="0">
+                <list:Page_Chat_Group_List  x:Name="vw_GroupList"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand"
+                                            Margin="0"
+                                            Padding="0" />
+                -->
+        <!--<Label x:Name="lbl_GroupTokenIDxxx"
+                       Text="Welcome to Xamarin.Forms!"
+                       VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand" />-->
+        <!--
+            </Frame>
+            <Frame   x:Name="grd_RightContent"
+                     xct:SideMenuView.ParallaxValue="75"
+                     xct:SideMenuView.Position="RightMenu"
+                     Margin="0"
+                     Padding="0"
+                     HasShadow="False"
+                     CornerRadius="0">
+                <list:Page_Chat_Chatters_List  x:Name="vw_ChattersList"
+                                               HorizontalOptions="FillAndExpand"
+                                               VerticalOptions="FillAndExpand"
+                                               Margin="0"
+                                               Padding="0" />
+                -->
+        <!--<Label x:Name="lbl_GroupTokenIDxxxxx"
+                       Text="Welcome to Xamarin.Forms!"
+                       VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand" />-->
+        <!--
+            </Frame>-->
+
+
+
+        <!--<SwipeView  x:Name="swipe_ChatDashboard" BackgroundColor="{StaticResource iAppColor_SemiGray}"
+              SwipeEnded="swipe_ChatDashboard_SwipeEnded" IsEnabled="False"     >
+
+            <SwipeView.LeftItems>
+                <SwipeItems  x:Name="swip_LeftView"  Mode="Reveal"  SwipeBehaviorOnInvoked="RemainOpen">
+
+                    -->
+        <!--Command="{Binding 
+											Source={x:Reference vw_ChatRow_Text_Only_Owner_View},
+											Path=BindingContext.Command_Chat_ByUser}"	Source={x:Reference vw_ChatRow_Text_Only_Owner_View},-->
+
+
+        <!--Command="{Binding Command_Chat_ByUser, Source={x:Reference vw_ChatRow_Text_Only_Owner_View}}"	 							 
+							   CommandParameter="{Binding .}"-->
+        <!--
+                    <SwipeItemView
+                          HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+                  >
+                        -->
+        <!--<Label x:Name="lbl_MessageText2" 
+               TextColor="Black"
+               
+               Text="Hello world... Left"/>-->
+        <!--
+
+                        <Frame  x:Name="grd_LeftContent"
+          Margin="0"
+          Padding="0"
+          HasShadow="False"
+          CornerRadius="0">
+
+                            <list:Page_Chat_Group_List  x:Name="vw_GroupList"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand"
+                               Margin="0"
+                               Padding="0" />
+
+
+                        </Frame>
+                    </SwipeItemView>
+
+
+
+                </SwipeItems>
+            </SwipeView.LeftItems>
+
+            <SwipeView.RightItems>
+                <SwipeItems   x:Name="swip_RightView"   Mode="Reveal"  SwipeBehaviorOnInvoked="RemainOpen">
+
+                    -->
+        <!--Command="{Binding 
+											Source={x:Reference vw_ChatRow_Text_Only_Owner_View},
+											Path=BindingContext.Command_Chat_ByUser}"	Source={x:Reference vw_ChatRow_Text_Only_Owner_View},-->
+
+
+
+
+        <!--Command="{Binding Command_Chat_ByUser, Source={x:Reference vw_ChatRow_Text_Only_Owner_View}}"	 							 
+							   CommandParameter="{Binding .}"-->
+        <!--
+
+                    <SwipeItemView>
+
+                        <Frame  x:Name="grd_RightContent"
+
+          Margin="0"
+          Padding="0"
+          HasShadow="False"
+          CornerRadius="0">
+
+                            -->
+        <!--<list:Page_Chat_Chatters_List  x:Name="vw_ChattersList"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                Margin="0"
+                                Padding="0" />-->
+        <!--
+
+                        </Frame>
+
+                        -->
+        <!--<Label x:Name="lbl_MessageText" 
+               TextColor="Black"
+               
+               Text="Hello world... Right"/>-->
+        <!--
+
+                    </SwipeItemView>
+
+                </SwipeItems>
+            </SwipeView.RightItems>-->
+
+
+
+        <!--<SwipeView  x:Name="swipe_ChatDashboard" SwipeEnded="swipe_ChatDashboard_SwipeEnded">
+            <SwipeView.LeftItems>
+                <SwipeItems  Mode="Reveal"  SwipeBehaviorOnInvoked="RemainOpen">
+                    <SwipeItemView   >
+                           <Grid x:Name="grd_LeftContent"
+                          HorizontalOptions="FillAndExpand"
+                  VerticalOptions="FillAndExpand"
+                          WidthRequest="300">
+
+                            <list:View_Chat_Group_List  x:Name="vw_GroupList"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand"
+                               Margin="0"
+                               Padding="0" />
+                        --><!--<Label Text="LEFT" />--><!--
+                    </Grid>  
+                    </SwipeItemView>
+               
+                    --><!--<SwipeItem Text="Favorite" IconImageSource="favorite.png" BackgroundColor="LightGreen" Invoked="OnFavoriteSwipeItemInvoked" />
+                    <SwipeItem Text="Delete" IconImageSource="delete.png" BackgroundColor="LightPink" Invoked="OnDeleteSwipeItemInvoked" />--><!--
+                </SwipeItems>
+            </SwipeView.LeftItems>
+            <SwipeView.RightItems>
+                <SwipeItems  Mode="Reveal"  SwipeBehaviorOnInvoked="RemainOpen">
+
+                    <SwipeItemView>
+                        <Grid x:Name="grd_RightContent"
+         HorizontalOptions="FillAndExpand"
+ VerticalOptions="FillAndExpand"
+         WidthRequest="300">
+
+                            <Label Text="RIGHT" />
+                        </Grid>
+                    </SwipeItemView>
+
+                    --><!--<SwipeItem Text="Share" IconImageSource="share.png" BackgroundColor="LightYellow" Invoked="OnShareSwipeItemInvoked" />--><!--
+                </SwipeItems>
+            </SwipeView.RightItems>-->
+             
+
+        <Grid HorizontalOptions="FillAndExpand"
+                  VerticalOptions="FillAndExpand">
+
+            <Image x:Name="img_Thum"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand"
+                                            BackgroundColor="Transparent"
+                                            Source="bg0.png"
+                                            Aspect="AspectFill" />
+            <Grid 
+                    x:Name="grd_ChatDashoard"
+                    HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand"
+                      ColumnSpacing="0"
+                      RowSpacing="0"
+                      Padding="0,0,0,0">
+                <Grid.RowDefinitions>
+                    <!--<RowDefinition Height="{OnPlatform iOS=170 , Android=120}" />-->
+                    <!--<RowDefinition Height="{OnPlatform iOS=130 , Android=80}" />-->
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                    <!--<RowDefinition Height="50" />-->
+                    <!--<RowDefinition Height="*" />-->
+                    <RowDefinition Height="auto" />
+                    <!--<RowDefinition Height=" auto 452" />-->
+                    <!--<RowDefinition Height="auto" />-->
+                </Grid.RowDefinitions>
+                <StackLayout x:Name="Header"
+                                 HorizontalOptions="FillAndExpand"
+                                 Orientation="Vertical"
+                                 BackgroundColor="Black"
+                                 Grid.Row="0">
+                    <sroofingHeader:SRoofing_PageHeader />
+                    <StackLayout HorizontalOptions="FillAndExpand"
+                                     Orientation="Vertical"
+                                     BackgroundColor="Black"
+                                     Spacing="0"
+                                     Margin="0"
+                                     Padding="0">
+                        <StackLayout HorizontalOptions="FillAndExpand"
+                                         VerticalOptions="FillAndExpand"
+                                         Orientation="Vertical"
+                                         Spacing="0"
+                                         Margin="0"
+                                         Padding="0">
+                            <Grid  HorizontalOptions="FillAndExpand"
+                                       ColumnDefinitions="50,50,*,50">
+                                <ImageButton HorizontalOptions="Center"
+                                                 VerticalOptions="Center"
+                                                 Source="img_voice_command_on.png"
+                                                 HeightRequest="30"
+                                                 WidthRequest="30"
+                                                 Aspect="AspectFit"
+                                                 BackgroundColor="{StaticResource iAppColor_Transparent}"
+                                                 Margin="10,30,0,0"
+                                                 Grid.Column="0" />
+                                <!--</Frame>-->
+                                <Frame CornerRadius="25"
+                                           HeightRequest="50"
+                                           WidthRequest="50"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           BackgroundColor="Black"
+                                           BorderColor="{StaticResource  iAppColor_LightOrange}"
+                                           Padding="1"
+                                           IsClippedToBounds="True"
+                                           Grid.Column="1">
+                                    <Label x:Name="lbl_Chat_AvatarName"
+                                               HorizontalOptions="CenterAndExpand"
+                                               VerticalOptions="CenterAndExpand"
+                                               TextColor="{StaticResource  iAppColor_LightOrange}"
+                                               FontSize="Medium" />
+                                    <!--<ImageButton Source="me.jpg"
+												 HorizontalOptions="CenterAndExpand"
+												 VerticalOptions="CenterAndExpand"
+												 HeightRequest="51"
+												 BackgroundColor="{StaticResource iAppColor_Transparent}"
+												 Margin="0"
+												 WidthRequest="51" />-->
+                                </Frame>
+                                <StackLayout HorizontalOptions="StartAndExpand"
+                                                 Orientation="Vertical"
+                                                 Spacing="0"
+                                                 Margin="0"
+                                                 Padding="10,20"
+                                                 Grid.Column="2">
+                                    <Label x:Name="lbl_Chat_UserName"
+                                               HorizontalOptions="Start"
+                                               VerticalOptions="Center"
+                                               TextColor="White"
+                                               FontSize="Medium" />
+                                    <Label  x:Name="lbl_Chat_MobileNumber"
+                                                HorizontalOptions="Start"
+                                                VerticalOptions="Center"
+                                                TextColor="White"
+                                                FontSize="Default" />
+                                </StackLayout>
+                                <ImageButton  x:Name="imgBtn_Chat_Close"
+                                                  Source="img_circle_back_black.png"
+                                                  WidthRequest="50"
+                                                  HeightRequest="50"
+                                                  Margin="0,0,10,0"
+                                                  VerticalOptions="Center"
+                                                  BackgroundColor="Transparent"
+                                                  Grid.Column="3"
+                                                  Clicked="imgBtn_Chat_Close_Clicked" />
+                                <!---->
+                            </Grid>
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="End"
+                                         Orientation="Horizontal"
+                                       WidthRequest="50"
+ HeightRequest="50"
+                                     Spacing="0"
+                                         Margin="0,0,0,5"
+                                         Padding="0">
+                              
+                            <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="img_Toggle_CallChatter_Tapped"
+                                                          NumberOfTapsRequired="1" />
+                                </StackLayout.GestureRecognizers> 
+                             
+                            <!--Aspect="AspectFit"
+                                                  Source="logo_notification_call_video_icon.png"-->
+                              <!--Clicked="img_Toggle_CallChatter_Clicked"-->   
+                              <!--WidthRequest="40"
+                                             HeightRequest="40"--> 
+                            <Image  x:Name="img_Toggle_CallChatter"
+                                             HorizontalOptions="End"
+                                             VerticalOptions="Center"
+                                          WidthRequest="20"
+ HeightRequest="20"
+                                             Margin="0"
+                                             BackgroundColor="Transparent"
+                                          Aspect="Center"
+                                                                                 >
+
+
+
+                            </Image>
+                            <!---->
+                           </StackLayout>
+
+
+                    </StackLayout>
+                </StackLayout>
+
+                <Grid    HorizontalOptions="FillAndExpand"
+                             VerticalOptions="FillAndExpand"
+                             Grid.Row="1">
+                    <!--<Label x:Name="lbl_GroupTokenID"
+                               Text="Welcome to Xamarin.Forms!"
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="CenterAndExpand"
+                               IsVisible="false" />-->
+                    <!--<StackLayout   x:Name="gg"
+                         HorizontalOptions="FillAndExpand"
+                        BackgroundColor="{StaticResource iAppColor_SemiGray}"
+                         Padding="0"
+                         Margin="0"
+                         Spacing="0"
+                                   Orientation="Vertical">-->
+
+                    <!--<StackLayout.GestureRecognizers>
+                            <SwipeGestureRecognizer Direction="Left" Swiped="SwipeGestureRecognizer_SwipedLeft"/>
+                            <SwipeGestureRecognizer Direction="Right" Swiped="SwipeGestureRecognizer_SwipedRight"/>
+                        </StackLayout.GestureRecognizers>-->
+
+                    <RefreshView x:Name="refresh_MessgeList"
+                                     HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="FillAndExpand"
+                                     RefreshColor="{StaticResource iAppColor_LightOrange}">
+                        <!--BackgroundColor="Transparent"-->
+
+                        <!--<ScrollView    HorizontalOptions="FillAndExpand"
+   VerticalOptions="FillAndExpand"
+                                   
+                                       Orientation="Vertical"
+                                       VerticalScrollBarVisibility="Never">-->
+
+                        <CollectionView x:Name="cv_MessgeList"
+                                            SelectionMode="None"
+                                            HorizontalOptions="FillAndExpand"
+                                     BackgroundColor="Transparent"   
+                                            VerticalOptions="FillAndExpand"
+                                            EmptyView=""
+                                            Margin="0,0,0,20"
+                                        
+                                            ItemTemplate="{StaticResource Chat_MessageDataTemplateSelector}">
+
+
+
+                        </CollectionView>
+                        <!--</ScrollView>-->
+
+                    </RefreshView>
+
+
+                    <!--</StackLayout>-->
+                </Grid>
+                <!--BackgroundColor="{StaticResource iAppColor_WhiteSmoke}"-->
+                <Frame x:Name="Footer"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="FillAndExpand"
+                           HasShadow="False"
+                           Padding="0"
+                           Margin="0"
+                      BorderColor="Transparent"     CornerRadius="0"
+                           BackgroundColor="Transparent"
+                           Grid.Row="2">
+
+                    <Grid HorizontalOptions="FillAndExpand"
+                              VerticalOptions="FillAndExpand"
+                 
+                              BackgroundColor="Transparent">
+                        <Grid.RowDefinitions>
+                            <!--<RowDefinition    Height="20" />-->
+                            <RowDefinition    Height="*" />
+                        </Grid.RowDefinitions>
+
+
+                        <!--<StackLayout   x:Name="xx"
+                     HorizontalOptions="FillAndExpand"
+                     Orientation="Horizontal"
+                   BackgroundColor="Transparent"
+                     Padding="0"
+                     Margin="0"
+                     Spacing="0" 
+                                       Grid.Row="0" >
+
+
+                            <Image  x:Name="img_SwipeRight"
+                                    Margin="10,0,0,0"
+                                    HorizontalOptions="Start"
+                                    HeightRequest="20"
+                                    Source="img_arrow_right_lightxx.png"
+                                    WidthRequest="50"
+                                    Aspect="AspectFit"
+                                    BackgroundColor="Transparent" />
+                                 
+                            <Image  x:Name="img_SwipeLeft"
+                                    HorizontalOptions="End"
+                                    Source="img_arrow_left_lightxx.png"
+                                    WidthRequest="50"
+                                    Margin="0,0,10,0"
+                                    HeightRequest="20"
+                                    Aspect="AspectFit"
+                                    BackgroundColor="Transparent"
+                                  />
+
+                        </StackLayout>-->
+                        <!--VerticalOptions="FillAndExpand"-->
+                        <StackLayout   x:Name="frm_WidgetContent"
+                                           HorizontalOptions="FillAndExpand"
+                                           Orientation="Vertical"
+                                           BackgroundColor="{StaticResource iAppColor_SemiGray}"
+                                           Padding="0"
+                                           Margin="0,5,0,0"
+                                           Spacing="0"
+                                           Grid.Row="0">
+
+                            <BoxView HeightRequest="1"
+        
+            Color="{StaticResource iAppColor_Opacity_Black}"
+            Margin="0" />
+
+                            <Frame  HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="EndAndExpand"
+                                        BackgroundColor="{StaticResource iAppColor_SemiGray}"
+                                        BorderColor="Transparent"
+                                        CornerRadius="0"
+                                        Margin="0"
+                                        HasShadow="False"
+                                        Padding="0,5,0,0">
+                                <StackLayout HorizontalOptions="FillAndExpand"
+                                                 VerticalOptions="CenterAndExpand"
+                                                 Spacing="0"
+                                                 Margin="0"
+                                                 Padding="0"
+                                                 Orientation="Horizontal">
+                                    <!--<Grid   HorizontalOptions="FillAndExpand"
+                                                VerticalOptions="FillAndExpand"
+                                                ColumnDefinitions="55,* ,60">-->
+                                    <Grid   HorizontalOptions="FillAndExpand"
+                                                VerticalOptions="FillAndExpand"
+                                                ColumnDefinitions="55,* ,50">
+                                        <!--   BackgroundColor="Transparent"-->
+                                        <Image  x:Name="img_Widget_Thums"
+                                                    HorizontalOptions="End"
+                                                    VerticalOptions="Center"
+                                                    Source="img_theme_chat_thums.png"
+                                                    WidthRequest="40"
+                                                    HeightRequest="40"
+                                                    Margin="0,0,5,0"
+                                                    Aspect="AspectFit"
+                                                    BackgroundColor="Transparent"
+                                                    Grid.Column="0"></Image>
+                                        <Image   x:Name="img_NewNessage"
+                                                     HorizontalOptions="End"
+                                                     VerticalOptions="Start"
+                                                     Source="img_theme_dot_red.png"
+                                                     WidthRequest="7"
+                                                     HeightRequest="7"
+                                                     Margin="15,7,0,0"
+                                                     Aspect="AspectFit"
+                                                     BackgroundColor="Transparent"
+                                                     IsVisible="false"
+                                                     Grid.Column="0" />
+                                        <Grid   HorizontalOptions="FillAndExpand"
+                                                    VerticalOptions="FillAndExpand"
+                                                    Grid.Column="1">
+                                            <!--    Focused="txt_MessageText_Focused"
+                                       entry:UCView_EntryChatView  ReturnType="Done"           :UCView_EntryChatView                            entry:UCView_EntryView   -->
+                                            <entry:UCView_EntryChatView  x:Name="txt_MessageText"
+                                                                         HorizontalOptions="FillAndExpand"
+                                                                         HeightRequest="50"
+                                                                         BackgroundColor="{StaticResource iAppColor_SemiGray}"
+                                                                         Keyboard="Chat"
+                                                               Placeholder="Start typing here"
+                                                                  ReturnType="Send"
+                                                                          PlaceholderColor="WhiteSmoke"
+                                                                         TextColor="White"
+                                                                         Margin="5,0,5,0"
+                                                                         
+                                                     Completed="imgBtn_SendMessage_Clicked" />
+                                            <!--Completed="imgBtn_SendMessage_Clicked"-->
+                                        </Grid>
+                                        <!--Button    Clicked="imgBtn_SendMessage_Clicked"-->
+                                        <Image   x:Name="img_SendMessage"
+                                                     HorizontalOptions="Start"
+                                                     VerticalOptions="Center"
+                                                     Source="img_send_white.png"
+                                                     WidthRequest="50"
+                                                     HeightRequest="50"
+                                                     Margin="0,0,0,10"
+                                                     Aspect="AspectFit"
+                                                     BackgroundColor="Transparent"
+                                                     Grid.Column="2"></Image>
+                                        <!--Color="Red"-->
+                                        <BoxView x:Name="imgBtn_SendMessage"
+                                                     HorizontalOptions="Start"
+                                                     VerticalOptions="Center"
+                                                     WidthRequest="50"
+                                                     HeightRequest="50"
+                                                     Margin="0,0,0,10"
+                                                    Color="Transparent"
+                                                     Grid.Column="2">
+                                            <BoxView.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="imgBtn_SendMessage_Clicked" />
+                                            </BoxView.GestureRecognizers>
+                                        </BoxView>
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+
+                            <BoxView HeightRequest="1"
+                                         BackgroundColor="White"
+                                         Color="White"
+                                         Margin="50,0,30,0" />
+                            <!--HeightRequest="295"452   VerticalOptions="FillAndExpand"
+										 -->
+                            <StackLayout   x:Name="frm_WidgetBar"
+                                               HorizontalOptions="FillAndExpand"
+                                               VerticalOptions="FillAndExpand"
+                                               Orientation="Vertical"
+                                               IsVisible="true">
+                                <!--ColumnDefinitions="50,*,1,*,1,*,1,*,1,*,50"-->
+                                <Grid   HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="CenterAndExpand"
+                                            HeightRequest="55"
+                                            ColumnDefinitions="*,70,1,70,1,70,*">
+                                    <ImageButton    x:Name="img_Widget_Image"
+                                                        HorizontalOptions="Center"
+                                                        VerticalOptions="Center"
+                                                        Source="icon_chat_share_photo_normal.png"
+                                                        WidthRequest="50"
+                                                        HeightRequest="50"
+                                                        Margin="0"
+                                                        Aspect="AspectFit"
+                                                        BackgroundColor="Transparent"
+                                                        Grid.Column="1"
+                                                        Clicked="img_Widget_Image_Clicked" />
+                                    <!---->
+                                    <Label Text="|"
+                                               HeightRequest="50"
+                                               VerticalTextAlignment="Center"
+                                               HorizontalTextAlignment="Center"
+                                               FontSize="Large"
+                                               TextColor="White"
+                                               Grid.Column="2" />
+                                    <ImageButton     x:Name="img_Widget_Video"
+                                                         HorizontalOptions="Center"
+                                                         VerticalOptions="Center"
+                                                         Source="icon_chat_share_camera_normal.png"
+                                                         WidthRequest="50"
+                                                         HeightRequest="50"
+                                                         Margin="0"
+                                                         Aspect="AspectFit"
+                                                         BackgroundColor="Transparent"
+                                                         Grid.Column="3"
+                                                         Clicked="img_Widget_Video_Clicked" />
+                                    <!---->
+                                    <Label Text="|"
+                                               HeightRequest="50"
+                                               VerticalTextAlignment="Center"
+                                               HorizontalTextAlignment="Center"
+                                               FontSize="Large"
+                                               TextColor="White"
+                                               Grid.Column="4" />
+                                    <ImageButton     x:Name="img_Widget_Location"
+                                                         HorizontalOptions="Center"
+                                                         VerticalOptions="Center"
+                                                         Source="icon_chat_share_location_normal.png"
+                                                         WidthRequest="50"
+                                                         HeightRequest="50"
+                                                         Margin="0"
+                                                         Aspect="AspectFit"
+                                                         BackgroundColor="Transparent"
+                                                         Grid.Column="5"
+                                                         Clicked="img_Widget_Location_Clicked" />
+                                    <!---->
+                                </Grid>
+                                <BoxView>
+                                    <BoxView.HeightRequest>
+                                        <OnPlatform x:TypeArguments="x:Double">
+                                            <On Platform="Android"
+                                                            Value="0" />
+                                            <On Platform="iOS"
+                                                            Value="5" />
+                                        </OnPlatform>
+                                    </BoxView.HeightRequest>
+
+
+                                </BoxView>
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+
+                </Frame>
+
+
+
+
+
+            </Grid>
+
+
+            <snackAutoHide:SnackBar_Command_GalleryOption x:Name="iSnackBar_GalleryOption"
+                                                              BackgroundColor="Transparent"
+                                                              TextColor="Black"
+                                                              IsOpen="False"
+                                                              VerticalOptions="End"
+                                                              Message="I'm a snack bar... I love showing my self."
+                                                              ButtonTextColor="Orange"
+                                                              CloseButtonText=""
+                                                              Margin="0,0,0,56" />
+            <snackAutoHide:SnackBar x:Name="iSnackBar"
+                                        BackgroundColor="Transparent"
+                                        TextColor="Black"
+                                        IsOpen="False"
+                                        VerticalOptions="End"
+                                        Message="I'm a snack bar... I love showing my self."
+                                        ButtonTextColor="Orange"
+                                        CloseButtonText=""
+                                        Margin="0,0,0,50" />
+
+
+
+
+
+        </Grid>
+
+
+          <!--</SwipeView>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <!--</SwipeView>-->
+
+        <!--</xct:SideMenuView>-->
+    </ContentPage.Content>
+</ContentPage>

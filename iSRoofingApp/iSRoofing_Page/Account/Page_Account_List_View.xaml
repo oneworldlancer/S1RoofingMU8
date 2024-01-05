@@ -1,0 +1,887 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:entry="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Entry"
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Account.Page_Account_List_View"
+             xmlns:snackAutoHide="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:sroofingHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Header"
+             xmlns:arrowBack="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Back"
+             xmlns:sroofingFooter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer"
+             xmlns:grid="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Grid"
+             ios:Page.UseSafeArea="False"
+             NavigationPage.HasNavigationBar="False"
+             Visual="Material"
+             BackgroundColor="Black">
+    <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          RowDefinitions="*,50">
+        <StackLayout  HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand"
+                      Spacing="0"
+                      Orientation="Vertical"
+                      Margin="0,0,0,50"
+                      Padding="0"
+                      Grid.Row="0">
+        
+            <StackLayout   HorizontalOptions="FillAndExpand"
+                           BackgroundColor="{StaticResource iAppColor_SemiGray}"
+                           Orientation="Horizontal"
+                           Spacing="0"
+                           Margin="0,0,0,0"
+                           Padding="0">
+                <Image HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       Source="img_my_account.png"
+                       Margin="10"
+                       Aspect="AspectFit"
+                       HeightRequest="35"
+                       WidthRequest="35" />
+                <Label x:Name="lbl_TitleAccount"
+                       Text="Settings"
+                       TextColor="{StaticResource iAppColor_White}"
+                       FontSize="Medium"
+                       Margin="5"
+                  VerticalTextAlignment="Center"/>
+            </StackLayout>
+     
+            <StackLayout   x:Name="sl_PersonalInfo"
+                HorizontalOptions="FillAndExpand"
+                           Orientation="Horizontal"
+                           Spacing="0"
+                           Margin="20,20,20,0"
+                           Padding="0">
+              
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="sl_PersonalInfo_Tapped" />
+                </StackLayout.GestureRecognizers>
+                
+                
+                <Frame    WidthRequest="50"
+                          HeightRequest="40"
+                          HasShadow="True"
+                          BorderColor="{StaticResource iAppColor_SemiOrange}"
+                          Padding="0"
+                          Margin="0,0,10,0"
+                          BackgroundColor="{StaticResource iAppColor_Transparent}">
+                    <Image HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Source="img_theme_pin_myaccount.png"
+                           Margin="0"
+                           Aspect="AspectFit"
+                           HeightRequest="25"
+                           WidthRequest="25" />
+                </Frame>
+                <Grid HorizontalOptions="FillAndExpand">
+                    <StackLayout   HorizontalOptions="FillAndExpand"
+                                   Orientation="Vertical"
+                                   Spacing="0"
+                                   Margin="0"
+                                   Padding="0">
+                        <Label x:Name="lbl_PersonalInfo"
+                               HeightRequest="50"
+                               HorizontalOptions="FillAndExpand"
+                               FontSize="Medium"
+                               TextColor="{StaticResource iAppColor_Silver}"
+                               BackgroundColor="Transparent"
+                               VerticalTextAlignment="Center"
+                               Text="Personal info" />
+                        <BoxView HeightRequest="1"
+                                 BackgroundColor="Silver"
+                                 Opacity="0.5" />
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+          
+            <StackLayout  x:Name="sl_Avatar"
+                
+                
+                HorizontalOptions="FillAndExpand"
+                           Orientation="Horizontal"
+                           Spacing="0"
+                           Margin="20,20,20,0"
+                           Padding="0">
+             
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="sl_Avatar_Tapped" />
+                </StackLayout.GestureRecognizers>
+
+                <Grid>
+
+                
+
+
+                    <Frame    x:Name="frm_UserAvatarName"  WidthRequest="50"
+                          HeightRequest="40"
+                          HasShadow="True"
+                          BorderColor="{StaticResource iAppColor_SemiOrange}"
+                          Padding="0"
+                          Margin="0,0,10,0"
+                          BackgroundColor="{StaticResource iAppColor_Transparent}">
+                    <!--  <Image  x:Name="img_Avatar"
+                        HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                        Source=""  Margin="0"
+         Aspect="AspectFit"
+                       HeightRequest="25"
+                           WidthRequest="25"      />-->
+                    <Label  x:Name="lbl_AvatarName"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            HeightRequest="50"
+                              WidthRequest="50"  TextColor="{StaticResource iAppColor_White}"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"
+                            BackgroundColor="{StaticResource iAppColor_Transparent}"
+                            Margin="0"
+                            FontSize="Medium"
+                         />
+                </Frame>
+             
+                    <Frame    x:Name="frm_CameraImage"
+       CornerRadius="25"      HeightRequest="50"
+       WidthRequest="50"     HasShadow="True"
+    BorderColor="{StaticResource iAppColor_SemiOrange}"
+    Padding="0"
+    Margin="0,0,10,0"
+    BackgroundColor="{StaticResource iAppColor_Transparent}"    IsVisible="false">
+
+                        <Image            x:Name="img_Avatar"
+                                         HeightRequest="50"
+       WidthRequest="50"
+                          Aspect="AspectFill"           
+                           >
+                        </Image>
+                        <!--<Image Source="your_image.png" Aspect="AspectFill" />-->
+                    </Frame>
+
+                </Grid>
+          
+            
+                <Grid HorizontalOptions="FillAndExpand">
+                    <StackLayout   HorizontalOptions="FillAndExpand"
+                                   Orientation="Vertical"
+                                   Spacing="0"
+                                   Margin="0"
+                                   Padding="0">
+                        <Label x:Name="lbl_Avatar"
+                               HorizontalOptions="FillAndExpand"
+                               HeightRequest="50"
+                               FontSize="Medium"
+                               TextColor="{StaticResource iAppColor_Silver}"
+                               BackgroundColor="Transparent"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Center"
+                               Text="Avatar" />
+                        <BoxView HeightRequest="1"
+                                 BackgroundColor="Silver"
+                                 Opacity="0.5" />
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+          
+        
+                <StackLayout  x:Name="sl_MobileNumber"
+                    HorizontalOptions="FillAndExpand"
+                           Orientation="Horizontal"
+                           Spacing="0"
+                           Margin="20,20,20,0"
+                           Padding="0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="sl_MobileNumber_Tapped" />
+                </StackLayout.GestureRecognizers>
+                
+                    <Frame    WidthRequest="50"
+                          HeightRequest="40"
+                          HasShadow="True"
+                          BorderColor="{StaticResource iAppColor_SemiOrange}"
+                          Padding="0"
+                          Margin="0,0,10,0"
+                          BackgroundColor="{StaticResource iAppColor_Transparent}">
+                    <Image HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Source="img_dating_phone.png"
+                           Margin="0"
+                           Aspect="AspectFit"
+                           HeightRequest="25"
+                           WidthRequest="25" />
+                </Frame>
+                <Grid HorizontalOptions="FillAndExpand">
+                    <StackLayout   HorizontalOptions="FillAndExpand"
+                                   Orientation="Vertical"
+                                   Spacing="0"
+                                   Margin="0"
+                                   Padding="0">
+                        <Label x:Name="lbl_MobileNumber"
+                               HorizontalOptions="FillAndExpand"
+                               HeightRequest="50"
+                               FontSize="Medium"
+                               TextColor="{StaticResource iAppColor_Silver}"
+                               BackgroundColor="Transparent"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Center"
+                               Text="Mobile Number" />
+                        <BoxView HeightRequest="1"
+                                 BackgroundColor="Silver"
+                                 Opacity="0.5" />
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        
+          
+                <StackLayout   x:Name="sl_Password"
+                    HorizontalOptions="FillAndExpand"
+                           Orientation="Horizontal"
+                           Spacing="0"
+                           Margin="20,20,20,0"
+                           Padding="0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="sl_Password_Tapped" />
+                </StackLayout.GestureRecognizers>
+                
+                    <Frame    WidthRequest="50"
+                          HeightRequest="40"
+                          HasShadow="True"
+                          BorderColor="{StaticResource iAppColor_SemiOrange}"
+                          Padding="0"
+                          Margin="0,0,10,0"
+                          BackgroundColor="{StaticResource iAppColor_Transparent}">
+                    <Image HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Source="img_dating_password_register.png"
+                           Margin="0"
+                           Aspect="AspectFit"
+                           HeightRequest="25"
+                           WidthRequest="25" />
+                </Frame>
+                <Grid HorizontalOptions="FillAndExpand">
+                    <StackLayout   HorizontalOptions="FillAndExpand"
+                                   Orientation="Vertical"
+                                   Spacing="0"
+                                   Margin="0"
+                                   Padding="0">
+                        <Label x:Name="lbl_Password"
+                               HorizontalOptions="FillAndExpand"
+                               HeightRequest="50"
+                               FontSize="Medium"
+                               TextColor="{StaticResource iAppColor_Silver}"
+                               BackgroundColor="Transparent"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Center"
+                               Text="Password" />
+                        <BoxView HeightRequest="1"
+                                 BackgroundColor="Silver"
+                                 Opacity="0.5" />
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+            
+            
+            <StackLayout  x:Name="sl_EmailAddress"
+                
+                HorizontalOptions="FillAndExpand"
+                           Orientation="Horizontal"
+                           Spacing="0"
+                           Margin="20,20,20,0"
+                           Padding="0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="sl_EmailAddress_Tapped" />
+                </StackLayout.GestureRecognizers>
+                
+                    <Frame    WidthRequest="50"
+                          HeightRequest="40"
+                          HasShadow="True"
+                          BorderColor="{StaticResource iAppColor_SemiOrange}"
+                          Padding="0"
+                          Margin="0,0,10,0"
+                          BackgroundColor="{StaticResource iAppColor_Transparent}">
+                    <Image HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Source="img_theme_profile_mailx.png"
+                           Margin="0"
+                           Aspect="AspectFit"
+                           HeightRequest="25"
+                           WidthRequest="25" />
+                </Frame>
+                <Grid HorizontalOptions="FillAndExpand">
+                    <StackLayout   HorizontalOptions="FillAndExpand"
+                                   Orientation="Vertical"
+                                   Spacing="0"
+                                   Margin="0"
+                                   Padding="0">
+                        <Label x:Name="lbl_EmailAddress"
+                               HorizontalOptions="FillAndExpand"
+                               HeightRequest="50"
+                               FontSize="Medium"
+                               TextColor="{StaticResource iAppColor_Silver}"
+                               BackgroundColor="Transparent"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Center"
+                               Text="E-mail address" />
+                        <BoxView HeightRequest="1"
+                                 BackgroundColor="Silver"
+                                 Opacity="0.5" />
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+         
+            
+            
+            
+            
+            
+            
+            
+            <StackLayout x:Name="sl_Privacyxxx"
+                HorizontalOptions="FillAndExpand"
+                           BackgroundColor="{StaticResource iAppColor_SemiGray}"
+                           Orientation="Horizontal"
+                           Spacing="0"
+                           Margin="0,20,0,0"
+                           Padding="0">
+             
+                
+                    <Image HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       Source="img_my_settings.png"
+                       Margin="10"
+                       Aspect="AspectFit"
+                       HeightRequest="35"
+                       WidthRequest="35" />
+                <Label x:Name="lbl_TitleSetting"
+                       Text="Settings"
+                       TextColor="{StaticResource iAppColor_White}"
+                       FontSize="Medium"
+                     Margin="5"
+                       VerticalTextAlignment="Center" />
+            </StackLayout>
+           
+                
+                <StackLayout  x:Name="sl_Privacy"
+                    
+                    HorizontalOptions="FillAndExpand"
+                           Orientation="Horizontal"
+                           Spacing="0"
+                           Margin="20,20,20,0"
+                           Padding="0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="sl_Privacy_Tapped" />
+                </StackLayout.GestureRecognizers>
+                
+                    
+                    <Frame    WidthRequest="50"
+                          HeightRequest="40"
+                          HasShadow="True"
+                          BorderColor="{StaticResource iAppColor_SemiOrange}"
+                          Padding="0"
+                          Margin="0,0,10,0"
+                          BackgroundColor="{StaticResource iAppColor_Transparent}">
+                    <Image HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Source="img_theme_profile_privacy.png"
+                           Margin="0"
+                           Aspect="AspectFit"
+                           HeightRequest="25"
+                           WidthRequest="25" />
+                </Frame>
+                <Grid HorizontalOptions="FillAndExpand">
+                    <StackLayout   HorizontalOptions="FillAndExpand"
+                                   Orientation="Vertical"
+                                   Spacing="0"
+                                   Margin="0"
+                                   Padding="0">
+                        <Label x:Name="lbl_Privacy"
+                               HorizontalOptions="FillAndExpand"
+                               HeightRequest="50"
+                               FontSize="Medium"
+                               TextColor="{StaticResource iAppColor_Silver}"
+                               BackgroundColor="Transparent"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Center"
+                               Text="Privacy" />
+                        <BoxView HeightRequest="1"
+                                 BackgroundColor="Silver"
+                                 Opacity="0.5" />
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+       
+                    
+                    <StackLayout x:Name="sl_Speech"
+                        HorizontalOptions="FillAndExpand"
+                           Orientation="Horizontal"
+                           Spacing="0"
+                           Margin="20,20,20,0"
+                           Padding="0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="sl_Speech_Tapped" />
+                </StackLayout.GestureRecognizers>
+                
+                    
+                    <Frame    WidthRequest="50"
+                          HeightRequest="40"
+                          HasShadow="True"
+                          BorderColor="{StaticResource iAppColor_SemiOrange}"
+                          Padding="0"
+                          Margin="0,0,10,0"
+                          BackgroundColor="{StaticResource iAppColor_Transparent}">
+                    <Image HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Source="img_theme_profile_tlkntalk_orange.png"
+                           Margin="0"
+                           Aspect="AspectFit"
+                           HeightRequest="25"
+                           WidthRequest="25" />
+                </Frame>
+                <Grid HorizontalOptions="FillAndExpand">
+                    <StackLayout   HorizontalOptions="FillAndExpand"
+                                   Orientation="Vertical"
+                                   Spacing="0"
+                                   Margin="0"
+                                   Padding="0">
+                        <Label x:Name="lbl_TheWorld"
+                               HorizontalOptions="FillAndExpand"
+                               HeightRequest="50"
+                               FontSize="Medium"
+                               TextColor="{StaticResource iAppColor_Silver}"
+                               BackgroundColor="Transparent"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Center"
+                               Text="S1Roofing the world" />
+                        <BoxView HeightRequest="1"
+                                 BackgroundColor="Silver"
+                                 Opacity="0.5" />
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+         
+                        
+                        <StackLayout x:Name="sl_Sounds"
+                            HorizontalOptions="FillAndExpand"
+                           Orientation="Horizontal"
+                           Spacing="0"
+                           Margin="20,20,20,0"
+                           Padding="0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="sl_Sounds_Tapped" />
+                </StackLayout.GestureRecognizers>
+                
+                    <Frame    WidthRequest="50"
+                          HeightRequest="40"
+                          HasShadow="True"
+                          BorderColor="{StaticResource iAppColor_SemiOrange}"
+                          Padding="0"
+                          Margin="0,0,10,0"
+                          BackgroundColor="{StaticResource iAppColor_Transparent}">
+                    <Image HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Source="img_theme_call_speaker_on.png"
+                           Margin="0"
+                           Aspect="AspectFit"
+                           HeightRequest="25"
+                           WidthRequest="25" />
+                </Frame>
+                <Grid HorizontalOptions="FillAndExpand">
+                    <StackLayout   HorizontalOptions="FillAndExpand"
+                                   Orientation="Vertical"
+                                   Spacing="0"
+                                   Margin="0"
+                                   Padding="0">
+                        <Label x:Name="lbl_Sounds"
+                               HorizontalOptions="FillAndExpand"
+                               HeightRequest="50"
+                               FontSize="Medium"
+                               TextColor="{StaticResource iAppColor_Silver}"
+                               BackgroundColor="Transparent"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Center"
+                               Text="S1Roofing sounds" />
+                        <BoxView HeightRequest="1"
+                                 BackgroundColor="Silver"
+                                 Opacity="0.5" />
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+         
+                            
+                            <StackLayout     x:Name="sl_Chats"
+                                HorizontalOptions="FillAndExpand"
+                           Orientation="Horizontal"
+                           Spacing="0"
+                           Margin="20,20,20,0"
+                           Padding="0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="sl_Chats_Tapped" />
+                </StackLayout.GestureRecognizers>
+                
+                    <Frame    WidthRequest="50"
+                          HeightRequest="40"
+                          HasShadow="True"
+                          BorderColor="{StaticResource iAppColor_SemiOrange}"
+                          Padding="0"
+                          Margin="0,0,10,0"
+                          BackgroundColor="{StaticResource iAppColor_Transparent}">
+                    <Image HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Source="img_theme_chat_thumsx.png"
+                           Margin="0"
+                           Aspect="AspectFit"
+                           HeightRequest="25"
+                           WidthRequest="25" />
+                </Frame>
+                <Grid HorizontalOptions="FillAndExpand">
+                    <StackLayout   HorizontalOptions="FillAndExpand"
+                                   Orientation="Vertical"
+                                   Spacing="0"
+                                   Margin="0"
+                                   Padding="0">
+                        <Label x:Name="lbl_Chats"
+                               HorizontalOptions="FillAndExpand"
+                               HeightRequest="50"
+                               FontSize="Medium"
+                               TextColor="{StaticResource iAppColor_Silver}"
+                               BackgroundColor="Transparent"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Center"
+                               Text="S1Roofing chats" />
+                        <BoxView HeightRequest="1"
+                                 BackgroundColor="Silver"
+                                 Opacity="0.5" />
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+          
+                                
+                                <StackLayout  x:Name="sl_Calls"
+                                    HorizontalOptions="FillAndExpand"
+                           Orientation="Horizontal"
+                           Spacing="0"
+                           Margin="20,20,20,0"
+                           Padding="0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="sl_Calls_Tapped" />
+                </StackLayout.GestureRecognizers>
+             
+                    <Frame    WidthRequest="50"
+                          HeightRequest="40"
+                          HasShadow="True"
+                          BorderColor="{StaticResource iAppColor_SemiOrange}"
+                          Padding="0"
+                          Margin="0,0,10,0"
+                          BackgroundColor="{StaticResource iAppColor_Transparent}">
+                    <Image HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Source="img_theme_call.png"
+                           Margin="0"
+                           Aspect="AspectFit"
+                           HeightRequest="25"
+                           WidthRequest="25" />
+                </Frame>
+                <Grid HorizontalOptions="FillAndExpand">
+                    <StackLayout   HorizontalOptions="FillAndExpand"
+                                   Orientation="Vertical"
+                                   Spacing="0"
+                                   Margin="0"
+                                   Padding="0">
+                        <Label x:Name="lbl_Calls"
+                               HorizontalOptions="FillAndExpand"
+                               HeightRequest="50"
+                               FontSize="Medium"
+                               TextColor="{StaticResource iAppColor_Silver}"
+                               BackgroundColor="Transparent"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Center"
+                               Text="S1Roofing calls" />
+                        <BoxView HeightRequest="1"
+                                 BackgroundColor="Silver"
+                                 Opacity="0.5" />
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+       
+                             
+                                    <StackLayout x:Name="sl_Notifications"
+                                        HorizontalOptions="FillAndExpand"
+                           Orientation="Horizontal"
+                           Spacing="0"
+                           Margin="20,20,20,0"
+                           Padding="0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="sl_Notifications_Tapped" />
+                </StackLayout.GestureRecognizers>
+                
+                    <Frame    WidthRequest="50"
+                          HeightRequest="40"
+                          HasShadow="True"
+                          BorderColor="{StaticResource iAppColor_SemiOrange}"
+                          Padding="0"
+                          Margin="0,0,10,0"
+                          BackgroundColor="{StaticResource iAppColor_Transparent}">
+                    <Image HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Source="img_theme_profile_notification.png"
+                           Margin="0"
+                           Aspect="AspectFit"
+                           HeightRequest="25"
+                           WidthRequest="25" />
+                </Frame>
+                <Grid HorizontalOptions="FillAndExpand">
+                    <StackLayout   HorizontalOptions="FillAndExpand"
+                                   Orientation="Vertical"
+                                   Spacing="0"
+                                   Margin="0"
+                                   Padding="0">
+                        <Label  x:Name="lbl_Notifictions"
+                                HorizontalOptions="FillAndExpand"
+                                HeightRequest="50"
+                                FontSize="Medium"
+                                TextColor="{StaticResource iAppColor_Silver}"
+                                BackgroundColor="Transparent"
+                                HorizontalTextAlignment="Start"
+                                VerticalTextAlignment="Center"
+                                Text="Notifications" />
+                        <BoxView HeightRequest="1"
+                                 BackgroundColor="Silver"
+                                 Opacity="0.5" />
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+          
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        <StackLayout x:Name="sl_RateUs"
+                                            HorizontalOptions="FillAndExpand"
+                           Orientation="Horizontal"
+                           Spacing="0"
+                           Margin="20,20,20,0"
+                           Padding="0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="sl_RateUs_Tapped" />
+                </StackLayout.GestureRecognizers>
+                
+                    <Frame    WidthRequest="50"
+                          HeightRequest="40"
+                          HasShadow="True"
+                          BorderColor="{StaticResource iAppColor_SemiOrange}"
+                          Padding="0"
+                          Margin="0,0,10,0"
+                          BackgroundColor="{StaticResource iAppColor_Transparent}">
+                    <Image HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Source="img_rate_us.png"
+                           Margin="0"
+                           Aspect="AspectFit"
+                           HeightRequest="35"
+                           WidthRequest="35" />
+                </Frame>
+                <Grid HorizontalOptions="FillAndExpand">
+                    <StackLayout   HorizontalOptions="FillAndExpand"
+                                   Orientation="Vertical"
+                                   Spacing="0"
+                                   Margin="0"
+                                   Padding="0">
+                        <Label  x:Name="lbl_RateUs"
+                                HorizontalOptions="FillAndExpand"
+                                HeightRequest="50"
+                                FontSize="Medium"
+                                TextColor="{StaticResource iAppColor_Silver}"
+                                BackgroundColor="Transparent"
+                                HorizontalTextAlignment="Start"
+                                VerticalTextAlignment="Center"
+                                Text="Rate us" />
+                        <BoxView HeightRequest="1"
+                                 BackgroundColor="Silver"
+                                 Opacity="0.5" />
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        
+                                            
+                                            
+                                            
+                                    
+                                        
+                                        <StackLayout x:Name="sl_ContactUs"
+                                            HorizontalOptions="FillAndExpand"
+                           Orientation="Horizontal"
+                           Spacing="0"
+                           Margin="20,20,20,0"
+                           Padding="0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="sl_ContactUs_Tapped" />
+                </StackLayout.GestureRecognizers>
+                
+                    <Frame    WidthRequest="50"
+                          HeightRequest="40"
+                          HasShadow="True"
+                          BorderColor="{StaticResource iAppColor_SemiOrange}"
+                          Padding="0"
+                          Margin="0,0,10,0"
+                          BackgroundColor="{StaticResource iAppColor_Transparent}">
+                    <Image HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Source="img_contact_us.png"
+                           Margin="0"
+                           Aspect="AspectFit"
+                           HeightRequest="35"
+                           WidthRequest="35" />
+                </Frame>
+                <Grid HorizontalOptions="FillAndExpand">
+                    <StackLayout   HorizontalOptions="FillAndExpand"
+                                   Orientation="Vertical"
+                                   Spacing="0"
+                                   Margin="0"
+                                   Padding="0">
+                        <Label  x:Name="lbl_ContactUs"
+                                HorizontalOptions="FillAndExpand"
+                                HeightRequest="50"
+                                FontSize="Medium"
+                                TextColor="{StaticResource iAppColor_Silver}"
+                                BackgroundColor="Transparent"
+                                HorizontalTextAlignment="Start"
+                                VerticalTextAlignment="Center"
+                                Text="Contact us" />
+                        <BoxView HeightRequest="1"
+                                 BackgroundColor="Silver"
+                                 Opacity="0.5" />
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            <StackLayout  x:Name="sl_FAQ"
+                                                HorizontalOptions="FillAndExpand"
+                           Orientation="Horizontal"
+                           Spacing="0"
+                           Margin="20,20,20,0"
+                           Padding="0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="sl_FAQ_Tapped" />
+                </StackLayout.GestureRecognizers>
+                
+                    <Frame    WidthRequest="50"
+                          HeightRequest="40"
+                          HasShadow="True"
+                          BorderColor="{StaticResource iAppColor_SemiOrange}"
+                          Padding="0"
+                          Margin="0,0,10,0"
+                          BackgroundColor="{StaticResource iAppColor_Transparent}">
+                    <Image HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Source="answer_orange.png"
+                           Margin="0"
+                           Aspect="AspectFit"
+                           HeightRequest="30"
+                           WidthRequest="30" />
+                </Frame>
+                <Grid HorizontalOptions="FillAndExpand">
+                    <StackLayout   HorizontalOptions="FillAndExpand"
+                                   Orientation="Vertical"
+                                   Spacing="0"
+                                   Margin="0"
+                                   Padding="0">
+                        <Label x:Name="lbl_FAQ"
+                               HorizontalOptions="FillAndExpand"
+                               HeightRequest="50"
+                               FontSize="Medium"
+                               TextColor="{StaticResource iAppColor_Silver}"
+                               BackgroundColor="Transparent"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Center"
+                               Text="S1Roofing FAQ" />
+                        <BoxView HeightRequest="1"
+                                 BackgroundColor="Silver"
+                                 Opacity="0.5" />
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+         
+                                                
+                                                <StackLayout x:Name="sl_About"
+                                                    
+                                                    HorizontalOptions="FillAndExpand"
+                           Orientation="Horizontal"
+                           Spacing="0"
+                           Margin="20,20,20,20"
+                           Padding="0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="sl_About_Tapped" />
+                </StackLayout.GestureRecognizers>
+                
+                    
+                    <Frame    WidthRequest="50"
+                          HeightRequest="40"
+                          HasShadow="True"
+                          BorderColor="{StaticResource iAppColor_SemiOrange}"
+                          Padding="0"
+                          Margin="0,0,10,0"
+                          BackgroundColor="{StaticResource iAppColor_Transparent}">
+                    <Image HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Source="logo_circle.png"
+                           Margin="0"
+                           Aspect="AspectFit"
+                           HeightRequest="25"
+                           WidthRequest="25" />
+                </Frame>
+                <Grid HorizontalOptions="FillAndExpand">
+                    <StackLayout   HorizontalOptions="FillAndExpand"
+                                   Orientation="Vertical"
+                                   Spacing="0"
+                                   Margin="0"
+                                   Padding="0">
+                        <Label  x:Name="lbl_About"
+                                HorizontalOptions="FillAndExpand"
+                                HeightRequest="50"
+                                FontSize="Medium"
+                                TextColor="{StaticResource iAppColor_Silver}"
+                                BackgroundColor="Transparent"
+                                HorizontalTextAlignment="Start"
+                                VerticalTextAlignment="Center"
+                                Text="About S1Roofing" />
+                        <BoxView HeightRequest="1"
+                                 BackgroundColor="Silver"
+                                 Opacity="0.5" />
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+        <!--Clicked="btn_PageDashboard_Clicked"-->
+        <Button x:Name="btn_LogOut"
+                HorizontalOptions="FillAndExpand"
+                HeightRequest="50"
+                FontAttributes="Bold"
+                Text="Log Out"
+                TextColor="{StaticResource iAppColor_White}"
+                FontSize="Medium"
+                Margin="20,0,20,0"
+                CornerRadius="5"
+                BackgroundColor="{StaticResource iAppColor_Red}"
+                Grid.Row="1"
+                Clicked="btn_LogOut_Clicked" />
+        <Image  x:Name="ll_ProgressBar"
+                WidthRequest="50"
+                HeightRequest="50"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Source="loading.gif"
+                IsVisible="false" />
+    </Grid>
+</ContentView>

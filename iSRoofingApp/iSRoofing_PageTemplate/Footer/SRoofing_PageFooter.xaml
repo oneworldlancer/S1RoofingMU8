@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer.SRoofing_PageFooter">
+    <ContentView.Content>
+        <!--Color="#000000"-->
+        <BoxView
+            HorizontalOptions="FillAndExpand"      BackgroundColor="Transparent"
+              >
+                  
+               
+            <BoxView.HeightRequest>
+                <OnPlatform x:TypeArguments="x:Double">
+                    <!--<On Platform="iOS">20</On>-->
+                    <On Platform="iOS">20</On>
+                    <On Platform="Android,Windows">0</On>
+                </OnPlatform>
+            </BoxView.HeightRequest>
+        </BoxView>
+    </ContentView.Content>
+</ContentView>

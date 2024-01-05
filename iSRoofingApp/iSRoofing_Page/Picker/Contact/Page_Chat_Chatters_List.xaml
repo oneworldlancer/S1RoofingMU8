@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="cv_Chat_ChattersList"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Picker.Contact.Page_Chat_Chatters_List"
+             xmlns:rowHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Header"
+             xmlns:rowChat="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Chatter"
+             xmlns:rowCall="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.History.Call"
+             xmlns:itmp="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowSelector.Chatter"
+             xmlns:rowNone="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.None"
+             xmlns:chatter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Chatter"
+             xmlns:snack="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar"
+             xmlns:sroofingHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Header"
+             xmlns:sroofingFooter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer"
+             BackgroundColor="{StaticResource iAppColor_Black}"
+             Loaded="cv_Chat_ChattersList_Loaded">
+  
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <!--<DataTemplate x:Key="itmp_Template_None">
+                <rowNone:Row_None_View />
+            </DataTemplate>-->
+            <DataTemplate x:Key="itmp_Template_Item_Owner_View">
+                <rowChat:Row_Chatter_Owner_View iGroupModel="{Binding .}"
+                                                iOwnerModel="{Binding _iOwnerModel, Source={x:Reference cv_Chat_ChattersList}}" />
+            </DataTemplate>
+            <DataTemplate x:Key="itmp_Template_Item_Remote_View">
+                <rowChat:Row_Chatter_Remote_View iGroupModel="{Binding .}"
+                                                 iOwnerModel="{Binding _iOwnerModel, Source={x:Reference cv_Chat_ChattersList}}" />
+            </DataTemplate>
+            <itmp:Chatter_Group_ChatterDataTemplateSelector x:Name="Group_ChatterDataTemplateSelector"
+                                                            x:Key="Group_ChatterDataTemplateSelector"
+                                                            Template_None="{StaticResource itmp_Template_None}"
+                                                            Template_Item_Owner_View="{StaticResource itmp_Template_Item_Owner_View}"
+                                                            Template_Item_Remote_View="{StaticResource itmp_Template_Item_Remote_View}" />
+            <itmp:Chatter_Private_ChatterDataTemplateSelector x:Name="Private_ChatterDataTemplateSelector"
+                                                              x:Key="Private_ChatterDataTemplateSelector"
+                                                              Template_None="{StaticResource itmp_Template_None}"
+                                                              Template_Item_Owner_View="{StaticResource itmp_Template_Item_Owner_View}" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <!--<ContentView.Content>-->
+    
+    <StackLayout HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand"
+                 Spacing="0"
+                 Margin="0"
+                 BackgroundColor="#000000"
+                 Orientation="Vertical">
+        <sroofingHeader:SRoofing_PageHeader />
+     
+        <Grid	HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                Margin="0"
+                Padding="0"
+                BackgroundColor="{StaticResource iAppColor_SemiGray}">
+            <!--<Frame 	  	HorizontalOptions="FillAndExpand"
+					VerticalOptions="FillAndExpand"
+					Margin="0"
+					Padding="0"	 
+					CornerRadius="0"
+					HasShadow="False"
+					BackgroundColor="{StaticResource iAppColor_SemiGray}">-->
+            <!--Refreshing="refresh_ChatList_Refreshing"-->
+            <RefreshView x:Name="refresh_ChatList"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         RefreshColor="{StaticResource iAppColor_LightOrange}"
+                         Command="{Binding RefreshCommand}">
+                <!--ItemsSource="{Binding Employees}"    SelectionChanged="OnCollectionViewSelectionChanged" -->
+                <StackLayout HorizontalOptions="FillAndExpand"
+                             VerticalOptions="StartAndExpand"
+                             Orientation="Vertical"
+                             Spacing="0"
+                             Margin="0"
+                             Padding="0">
+                  
+                    <Frame  x:Name="frm_New_Chatter"
+                            BackgroundColor="{StaticResource iAppColor_Opacity_White}"
+                            CornerRadius="5"
+                            Padding="0"
+                                    BorderColor="Transparent"    Margin="20">
+                        <!--Orientation="Horizontal"
+                                 Spacing="0"-->
+                        <Grid HorizontalOptions="FillAndExpand"
+                              Margin="0"
+                              Padding="0">
+                            <Image x:Name="img_Register"
+                                   Source="img_circle_new_black.png"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Start"
+                                   WidthRequest="30"
+                                   HeightRequest="30"
+                                   Margin="20,0,0,0" />
+                            <!--  VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Center"
+                                           FontSize="Medium"   -->
+                            <Button x:Name="btn_New_Chatter"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    HeightRequest="65"
+                    
+                                    FontAttributes="Bold"
+                                    Padding="5"
+                                    Text="Create New Group"
+                                    BackgroundColor="{StaticResource iAppColor_Transparent}"
+                                    TextColor="{StaticResource iAppColor_Black}"
+                                    Clicked="btn_New_Chatter_Clicked">
+                                <!--<Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="btn_New_Group_Clicked" />
+                            </Label.GestureRecognizers>-->
+                            </Button>
+                            <!--<BoxView WidthRequest="40"
+                                 HeightRequest="40"
+                                 Margin="0,0,10,0" />-->
+                        </Grid>
+                    </Frame>
+                    <!--<Grid RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                       
+                        <StackLayout x:Name="sl_List"
+                                    
+                                     BackgroundColor="Red"
+                            Grid.Row="0">
+                            -->
+                    <!-- Add your child elements here -->
+                    <!--
+                            <Label  x:Name="lbl_FullName1"
+                                    HorizontalOptions="FillAndExpand"
+                                 HeightRequest="50"   FontSize="Medium"
+                                    MaxLines="1"
+                                    LineBreakMode="TailTruncation"
+                                    TextColor="{StaticResource iAppColor_Black}"
+                                    Text="lbl_FullName" />
+                              <Label  x:Name="lbl_FullName2"
+                                    HorizontalOptions="FillAndExpand"
+                                    FontSize="Medium"
+                                    HeightRequest="50"
+                                    MaxLines="1"
+                                    LineBreakMode="TailTruncation"
+                                    TextColor="{StaticResource iAppColor_Black}"
+                                    Text="lbl_FullName" />
+                              <Label  x:Name="lbl_FullName3"
+                                    HorizontalOptions="FillAndExpand"
+                                    FontSize="Medium"
+                                    MaxLines="1"
+                            BackgroundColor="Yellow"        LineBreakMode="TailTruncation"
+                                    HeightRequest="50"
+                                    TextColor="{StaticResource iAppColor_Black}"
+                                    Text="lbl_FullName" />
+                              <Label  x:Name="lbl_FullName4"
+                                    HorizontalOptions="FillAndExpand"
+                                    FontSize="Medium"
+                                    HeightRequest="50"
+                                    MaxLines="1"
+                                    LineBreakMode="TailTruncation"
+                                    TextColor="{StaticResource iAppColor_Black}"
+                                    Text="lbl_FullName" />
+                              <Label  x:Name="lbl_FullName5"
+                                    HorizontalOptions="FillAndExpand"
+                                    FontSize="Medium"
+                                    MaxLines="1"
+                                    HeightRequest="50"
+                                    LineBreakMode="TailTruncation"
+                                    TextColor="{StaticResource iAppColor_Black}"
+                                    Text="lbl_FullName" />
+                        </StackLayout>
+                    </Grid>
+                    <Button x:Name="btn_HELP"
+                            HorizontalOptions="FillAndExpand"
+                            Text="REMOVE" Clicked="btn_HELP_Clicked" />-->
+                    <!--ItemTemplate="{StaticResource ChatterDataTemplateSelector}"-->
+                    <!--ItemTemplate="{StaticResource Group_ChatterDataTemplateSelector}"-->
+
+
+                    <ScrollView
+       HorizontalOptions="FillAndExpand"
+       VerticalOptions="StartAndExpand"
+       Margin="0"
+       Padding="0"
+       Orientation="Vertical"
+       VerticalScrollBarVisibility="Never">
+
+
+
+                        <CollectionView x:Name="cv_UserChatHistoryList"
+                                    SelectionMode="None"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="StartAndExpand"
+                                    EmptyView=""
+                                    Margin="0">
+
+
+
+                        </CollectionView>
+
+
+                    </ScrollView>
+                
+                    <!--<Button x:Name="btn_Close_MenuRight"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="EndAndExpand"
+                            HeightRequest="50"
+                            FontAttributes="Bold"
+                            CornerRadius="0"
+                            Padding="0"
+                            Text="Close"
+                            BackgroundColor="{StaticResource iAppColor_Black}"
+                            TextColor="{StaticResource iAppColor_White}"
+                            Clicked="btn_Close_MenuRight_Clicked"></Button>-->
+             
+                </StackLayout>
+            
+            </RefreshView>
+            <!--</Frame>-->
+            <ActivityIndicator x:Name="ll_ProgressBar"
+                               WidthRequest="50"
+                               HeightRequest="50"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               IsRunning="true"
+                               IsVisible="false"
+                               Color="#FFFFFF" />
+            <snack:SnackBar_Command_ConfirmOption x:Name="iSnackBar_ConfirmOption"
+                                                  BackgroundColor="Transparent"
+                                                  TextColor="Black"
+                                                  IsOpen="False"
+                                                  VerticalOptions="End"
+                                                  Message="I'm a snack bar... I love showing my self."
+                                                  ButtonTextColor="Orange"
+                                                  CloseButtonText=""
+                                                  Margin="0,0,0,0" />
+        </Grid>
+        <sroofingFooter:SRoofing_PageFooter />
+    </StackLayout>
+    <!--</ContentView.Content>-->
+</ContentView>

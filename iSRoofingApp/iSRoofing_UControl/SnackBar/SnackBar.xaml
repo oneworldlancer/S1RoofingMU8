@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TemplatedView
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			   x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar.SnackBar">
+    <TemplatedView.ControlTemplate>
+        <ControlTemplate>
+            <Grid>
+                <!--BackgroundColor="White"-->
+                <Frame
+                    HorizontalOptions="FillAndExpand"
+                    HasShadow="True"
+                    CornerRadius="5"
+                    Padding="0"
+                    Margin="10,0,10,0">
+                    <Frame.Background>
+                        <LinearGradientBrush
+                            StartPoint="0,0"
+                            EndPoint="1,0">
+                           <!--<GradientStop
+                                Color="{StaticResource iAppColor_DarkOrange}"
+                                Offset="0.1" />-->  
+                            <GradientStop
+                                Color="{StaticResource iAppColor_LightOrange}"
+                                Offset="0.1" />
+                           <GradientStop
+                                Color="Orange"
+                                Offset="1.0" /> <!--<GradientStop
+                                Color="{StaticResource iAppColor_SemiOrange}"
+                                Offset="1.0" />--> 
+                        </LinearGradientBrush>
+                    </Frame.Background>
+
+                    <Label
+                        Text="{TemplateBinding Message}"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Margin="10"
+                        LineBreakMode="WordWrap"
+                        FontSize="Medium"
+                        TextColor="{TemplateBinding TextColor}" />
+
+                </Frame>
+                <!--FontFamily="{TemplateBinding FontFamily}"-->
+                <!--<Label Text="{TemplateBinding Message}"
+                       VerticalOptions="Center" HorizontalOptions="Center"
+                       Margin="5, 5, 5, 5" LineBreakMode="NoWrap"
+                       FontSize="{TemplateBinding FontSize}"
+                       TextColor="{TemplateBinding TextColor}"
+                       FontFamily="{TemplateBinding FontFamily}"/>-->
+
+                <!--<Label Text="{TemplateBinding Message}"
+                       VerticalOptions="Center" HorizontalOptions="FillAndExpand"
+                       Margin="20, 5, 5, 5" LineBreakMode="WordWrap"
+                       FontSize="{TemplateBinding FontSize}"
+                       TextColor="{TemplateBinding TextColor}"
+                       FontFamily="{TemplateBinding FontFamily}"/>-->
+
+                <!--<Button Grid.Column="1" HorizontalOptions="End"
+                        Clicked="CloseButton_Clicked" Margin="2"
+                        FontFamily="{TemplateBinding FontFamily}"
+                        FontSize="{TemplateBinding FontSisze}"
+                        TextColor="{TemplateBinding ButtonTextColor}"
+                        BackgroundColor="{TemplateBinding CloseButtonBackGroundColor}"
+                        VerticalOptions="Center" Text="{TemplateBinding CloseButtonText}"
+                        IsVisible="false"/>-->
+            </Grid>
+        </ControlTemplate>
+    </TemplatedView.ControlTemplate>
+</TemplatedView>

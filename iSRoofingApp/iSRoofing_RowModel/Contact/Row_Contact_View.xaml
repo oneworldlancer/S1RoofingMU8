@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView  x:Name="vw_ContactRowView"
+			  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			  xmlns:swipeRight="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Swipe"
+              xmlns:icon="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Icon"
+              x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Contact.Row_Contact_View">
+    <!--CornerRadius="5"
+				   HasShadow="True"  BorderColor="Transparent"-->
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup Name="CommonStates">
+                <VisualState Name="Selected">
+                    <VisualState.Setters>
+                        <Setter Property="BackgroundColor"
+										Value="Transparent" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Border 	x:Name="frm_RowContent"
+           HorizontalOptions="FillAndExpand"
+			   VerticalOptions="StartAndExpand"
+			   Padding="0"
+
+				 	   Margin="1"
+			 
+			   BackgroundColor="{StaticResource iAppColor_SemiGray}"
+                  Stroke="{StaticResource iAppColor_SemiGray}" StrokeThickness="1" >
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="10" />
+        </Border.StrokeShape>
+
+    <!--<Frame.GestureRecognizers>
+                    <TapGestureRecognizer   Command="{Binding Command_Chat_ByUser, Source={x:Reference vw_ChatRowView}}"
+                                            CommandParameter="{Binding .}" />
+                </Frame.GestureRecognizers>-->
+        <!--BorderColor="Transparent"
+					 	   CornerRadius="5"-->
+
+        <Border HorizontalOptions="FillAndExpand"
+					   VerticalOptions="StartAndExpand"
+					   Padding="0"
+					   Margin="0"
+				 
+					   BackgroundColor="{StaticResource iAppColor_DarkGray}"
+                   Stroke="{StaticResource iAppColor_DarkGray}" StrokeThickness="1" >
+
+
+            <StackLayout HorizontalOptions="FillAndExpand"
+								 VerticalOptions="StartAndExpand"
+								 Orientation="Vertical"
+								 Spacing="0"
+								 Margin="0"
+								 Padding="0">
+
+                <StackLayout   HorizontalOptions="FillAndExpand"
+									   VerticalOptions="StartAndExpand"
+									   Orientation="Vertical"
+									   Spacing="0"
+									   Margin="0"
+									   Padding="0">
+
+
+                    <Grid   HorizontalOptions="FillAndExpand"
+									VerticalOptions="StartAndExpand"
+									Margin="0"
+									Padding="0">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="50" />
+                        </Grid.ColumnDefinitions>
+
+
+                        <Frame 	x:Name="frm_Avatar"
+                                    HeightRequest="50"
+									   WidthRequest="50"
+									   CornerRadius="25"
+											  BorderColor="Black"
+						 	   Padding="0"
+									   Margin="10,10,0,0"
+									   HorizontalOptions="Start"
+									   VerticalOptions="StartAndExpand"
+									   BackgroundColor="Black"
+									   Grid.Row="0"
+									   Grid.Column="0">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="frm_Avatar_Tapped"
+                                                              NumberOfTapsRequired="2" />
+                            </Frame.GestureRecognizers>
+                            <!--Text="{Binding AvatarName}"-->
+                            <Label  x:Name="lbl_AvatarName"
+											HeightRequest="60"
+											WidthRequest="60"
+                                            FontSize="Medium"
+											Text="{Binding AvatarName}"
+											TextColor="White"
+											HorizontalOptions="Center"
+											VerticalOptions="Center"
+											HorizontalTextAlignment="Center"
+											VerticalTextAlignment="Center" />
+                        </Frame>
+
+                        <icon:IconView_VisibleStatus />
+
+                        <!--<Image HorizontalOptions="End"
+										   VerticalOptions="End"
+										   Source="img_theme_online.png"
+										   Margin="-10,0,-10,0"
+										   Grid.Row="0"
+										   Grid.Column="0" />-->
+
+
+                        <StackLayout    HorizontalOptions="FillAndExpand"
+												Padding="0"
+												Orientation="Vertical"
+												Spacing="0"
+												Grid.Row="0"
+												Grid.Column="1">
+                            <!--Text="{Binding FullName}"-->
+
+                            <Grid	HorizontalOptions="FillAndExpand"
+											ColumnDefinitions="auto,auto"
+											Padding="0">
+
+                                <Label  x:Name="lbl_FullName"
+												HorizontalOptions="FillAndExpand"
+												Margin="0,10,0,0"
+												FontSize="Medium"
+												MaxLines="1"
+												LineBreakMode="TailTruncation"
+												TextColor="{StaticResource iAppColor_Black}"
+												Text="{Binding FullName}"
+												Grid.Column="0" />
+                                <!--Text="{Binding CategoryTitle}"-->
+                                <Label  x:Name="lbl_CategoryTitle"
+												FontSize="Small"
+												Margin="0,5,0,0"
+												MaxLines="1"
+												LineBreakMode="TailTruncation"
+												TextColor="{StaticResource iAppColor_Red}"
+												Text="(New)"
+												Grid.Column="1"
+                                                IsVisible="{Binding IsUNewJoinContact}"/>
+                            </Grid>
+
+                            <!--FontSize="Default"Text="{Binding MobileNumberE164}"-->
+                            <Label x:Name="lbl_MessageText"
+										   HorizontalOptions="FillAndExpand"
+										   MaxLines="1"
+										   LineBreakMode="TailTruncation"
+										   TextColor="{StaticResource iAppColor_White}"
+										   Text="{Binding MobileNumberE164}" />
+
+                            <Label 	  x:Name="lbl_DateTime"
+											  HorizontalOptions="FillAndExpand"
+											  FontSize="Micro"
+											  MaxLines="1"
+											  LineBreakMode="TailTruncation"
+											  Margin="0,5,0,0"
+											  TextColor="{StaticResource iAppColor_White}"
+											  Text="{Binding LocationLine}" />
+
+                            <!---->
+
+
+                        </StackLayout>
+
+                        <StackLayout   HorizontalOptions="EndAndExpand"
+											   VerticalOptions="Center"
+                                               Orientation="Vertical"
+											   Spacing="0"
+											   Grid.Row="0"
+											   Grid.Column="2">
+<!--Command_Call_ByUser-->     <!--Command="{Binding Source={x:Reference vw_ContactRowView}, Path= Command_Call_ByUser}"   
+                                               CommandParameter="{Binding .}"-->
+                            <ImageButton x:Name="imgBtn_UserCall"
+                                HorizontalOptions="End"
+											 WidthRequest="50"
+											 HeightRequest="50"
+											 Source="img_theme_call.png"
+                                                       Aspect="Center"
+											 Margin="0"
+											 IsVisible="true"
+                                          Clicked="imgBtn_UserCall_Clicked"    />
+
+                           <!--Command="{Binding Command_Call_ByUser}"  
+                                                       CommandParameter="{Binding .}"-->   
+                            <!--<StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                            Command="{Binding Command_Call_ByUser}" 
+                                                                CommandParameter="{Binding .}"/>
+                                    </StackLayout.GestureRecognizers>-->
+                        </StackLayout>
+
+
+                    </Grid>
+
+
+                    <!--<swipeRight:UCView_Swipe_Right />-->
+
+                    <BoxView  HorizontalOptions="FillAndExpand"
+									  HeightRequest="1"
+									  Margin="80,5,10,5"
+									  Color="{StaticResource iAppColor_Transparent}"
+									  Opacity=".5" />
+
+
+                </StackLayout>
+
+
+
+            </StackLayout>
+
+
+        </Border>
+    </Border>
+
+
+</ContentView>

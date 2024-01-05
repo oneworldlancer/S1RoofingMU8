@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView x:Name="vw_ChatRowView"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:swipeRight="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Swipe"
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.ScreenChatShow.Row_ScreenChatShow_Message_Command_Share_Remote_View">
+    <ContentView.Content>
+        <StackLayout  HorizontalOptions="Start"
+                      VerticalOptions="Start"
+                      Orientation="Horizontal"
+                      Spacing="0"
+                      Margin="25,0,0,0"
+                      Padding="0">
+            <ImageButton x:Name="imgBtn_Share"
+                         WidthRequest="35"
+                         HeightRequest="35"
+                         Source="img_theme_share_arrow.png"
+                         Aspect="AspectFit"
+                         BackgroundColor="Transparent"
+                         Opacity="1" 
+                         Clicked="imgBtn_Share_Clicked"/>
+          
+            <ImageButton    x:Name="imgBtn_Copy"
+                            WidthRequest="35"
+                            HeightRequest="35"
+                            Source="img_copy_orange.png"
+                            Aspect="AspectFit"
+                            Margin="20,0,0,0"
+                            BackgroundColor="Transparent"
+                            Opacity="1"
+                            Clicked="imgBtn_Copy_Clicked"
+                            IsVisible="false" />
+        </StackLayout>
+        <!--Clicked="imgBtn_Speak_Clicked"-->
+        <!--Clicked="imgBtn_Speak_Clicked"-->
+        <!--<StackLayout  HorizontalOptions="Start"
+								 VerticalOptions="Start"
+								 Orientation="Horizontal"
+								 Spacing="0"
+								 Margin="25,0,0,0"
+								 Padding="0">
+
+            <ImageButton  x:Name="imgBtn_Speak"
+                                    WidthRequest="30"
+                                             HeightRequest="30"
+                                    Source="img_download_orange.png"
+                                                Aspect="AspectFit"   Margin="0,0,30,0"
+                                             BackgroundColor="Transparent"
+                             Opacity="0"
+                          IsEnabled="False"/>
+
+
+            <ImageButton x:Name="imgBtn_Copy"
+                                    WidthRequest="30"
+                                             HeightRequest="30"
+                                    Source="img_theme_share_arrow.png"
+                                         Aspect="AspectFit"
+                                             BackgroundColor="Transparent"
+                         Opacity="1"/>
+
+        </StackLayout>-->
+    </ContentView.Content>
+</ContentView>

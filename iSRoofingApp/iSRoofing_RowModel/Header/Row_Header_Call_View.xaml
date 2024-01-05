@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Header.Row_Header_Call_View">
+
+	<ContentView.Content>
+
+		<Frame HorizontalOptions="FillAndExpand"
+			   Margin="0"
+			   Padding="0"
+			   HeightRequest="50"
+               CornerRadius="0"
+			   BackgroundColor="{StaticResource iAppColor_Black}">
+
+			<StackLayout HorizontalOptions="FillAndExpand"
+						 HeightRequest="49">
+
+				<Label x:Name="lbl_Title"
+					   HorizontalOptions="FillAndExpand"
+					   VerticalTextAlignment="Center"
+					   Text="{Binding NameLine}"
+					   FontSize="Medium"
+					   Margin="10"
+					   TextColor="{StaticResource iAppColor_White}" />
+
+				<BoxView 	 HorizontalOptions="FillAndExpand"
+							 HeightRequest="1"
+							 BackgroundColor="{StaticResource iAppColor_Silver}"
+							 Opacity="0.5" />
+			</StackLayout>
+
+		</Frame>
+
+	</ContentView.Content>
+</ContentView>

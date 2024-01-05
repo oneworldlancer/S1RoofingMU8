@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Contact.Page_Contact_Dashboard"
+        xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+ xmlns:sroofingHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Header"
+ xmlns:sroofingFooter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer"
+ xmlns:logo="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Logo"
+ xmlns:snackAutoHide="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar"
+ ios:Page.UseSafeArea="False"
+ NavigationPage.HasNavigationBar="False"
+ xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+ xmlns:arrowBack="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Back"
+ xmlns:rowContact="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Contact"
+ xmlns:rowHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Header"
+ xmlns:itmp="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowSelector.Contact.List"
+ xmlns:roAlphabet="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Alphabet"
+ xmlns:itmp_Alphabet="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowSelector.Alphabet"
+ xmlns:vwContactList="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_Page.Contact"
+  
+ xmlns:rowNone="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.None"
+ xmlns:progress="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.ProgressBar"
+ Visual="Material"
+ BackgroundColor="{StaticResource iAppColor_Blue}">
+    <!--<VerticalStackLayout>
+        <Label 
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+    </VerticalStackLayout>-->
+
+
+
+
+    <Grid HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                  BackgroundColor="Yellow"  >
+
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Spacing="0"
+                     Margin="0"
+                     Padding="0"
+                     BackgroundColor="{StaticResource iAppColor_Green}"
+                     Orientation="Vertical"
+                   Grid.Row="0"    Grid.Column="0"          >
+
+            <sroofingHeader:SRoofing_PageHeader    />
+
+
+            <!--Spacing="0"  Orientation="Vertical"-->
+            <Frame  HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand"
+            
+ Margin="0"
+ Padding="0"      BackgroundColor="Aqua">
+
+                <!--<Label Text="hi"  HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand"  BackgroundColor="Orange"/>-->
+
+            <Grid  HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand"
+                  ColumnSpacing="0"
+                  RowSpacing="0"
+                  Padding="0"
+                  Margin="0"
+           BackgroundColor="Red"
+       >
+
+                <Grid.RowDefinitions >
+                    <!--<RowDefinition Height="60" />-->
+                    <RowDefinition Height="*" />
+                    <!--<RowDefinition Height="10" />
+					<RowDefinition Height="50" />-->
+                    <!--<RowDefinition
+                        Height="10" /> 
+					<RowDefinition
+                        Height="50" />-->
+                    <!--<RowDefinition Height="10" />-->
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="1" />
+                    <ColumnDefinition Width="*"  />
+                    <!--<ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>-->
+                </Grid.ColumnDefinitions>
+
+
+                <StackLayout HorizontalOptions="FillAndExpand"
+                             VerticalOptions="FillAndExpand"
+                             Orientation="Vertical"
+                             Spacing="0"
+                             Margin="0"
+                             Padding="0"
+                             Grid.Row="0"
+                             Grid.Column="0">
+
+                    <Grid  HorizontalOptions="FillAndExpand"
+                           VerticalOptions="FillAndExpand">
+                        <!--ItemTemplate="{StaticResource  AlphabetDataTemplateSelector}"-->
+                        <CollectionView x:Name="cv_AlphabetList_Initialize"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="Start"
+                                        EmptyView=""
+                                        Margin="0"
+                                      
+                                        IsVisible="true"></CollectionView>
+
+                        <ScrollView x:Name="scrl_AlphabetList"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    Orientation="Vertical"
+                                    VerticalScrollBarVisibility="Never">
+                            <StackLayout x:Name="sl_AlphabetList"
+                                         HorizontalOptions="FillAndExpand"
+                                         VerticalOptions="FillAndExpand"
+                                         Orientation="Vertical"
+                                         Spacing="0"
+                                         Margin="0"
+                                         Padding="0"></StackLayout>
+                        </ScrollView>
+                    </Grid>
+                </StackLayout>
+
+                <BoxView WidthRequest="1"
+                       HorizontalOptions="FillAndExpand"
+                              VerticalOptions="FillAndExpand"
+                         Margin="0"
+                         Color="{StaticResource iAppColor_Silver}"
+                         Opacity=".5"
+                         Grid.Column="1" />
+                <!--Orientation="Vertical"-->
+
+                <Frame HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand"
+                       CornerRadius="0"
+                       BackgroundColor="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}"
+                       HasShadow="False"
+                       Margin="0"
+                       Padding="0"
+                       Grid.Row="0"
+                       Grid.Column="2" >
+                    <!--	 Refreshing="refresh_ContactList_Refreshing"<vwContactList:Page_Contact_List x:Name="vw_ContactList"  />-->
+                    <!--Command="{Binding RefreshCommand}"-->
+                    <RefreshView x:Name="refresh_ContactList"
+                                 HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="FillAndExpand"
+                                 RefreshColor="{StaticResource iAppColor_LightOrange}"
+                        >
+                        <!--		ItemsSource="{Binding arr_UserMarshalList}"	ItemsSource="{Binding Employees}"    SelectionChanged="OnCollectionViewSelectionChanged" 
+								  ItemTemplate="{StaticResource ContactDataTemplateSelector}"-->
+                        <StackLayout HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="StartAndExpand"
+                                     Orientation="Vertical"
+                                     Spacing="0"
+                                     Margin="0"
+                                     Padding="0">
+                            <!--<rowInfo:Row_Info_History_Contact_View />-->
+                            <!--ItemTemplate="{StaticResource ContactDataTemplateSelector}"-->
+                            <CollectionView x:Name="cv_UserContactList"
+                                            SelectionMode="Single"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand"
+                                            EmptyView=""
+                                            Margin="0"
+                                                                                      ></CollectionView>
+                        </StackLayout>
+                    </RefreshView>
+                </Frame>
+
+
+            </Grid>
+
+            </Frame>
+     <!--Clicked="imgBtn_BackPage_Clicked"-->
+            <Button x:Name="btn_Close_Window"
+           HorizontalOptions="FillAndExpand"
+           VerticalOptions="End"
+           HeightRequest="50"
+           FontAttributes="Bold"
+           CornerRadius="0"
+           Padding="0"
+           Text="Close"
+           BackgroundColor="{StaticResource iAppColor_Black}"
+           TextColor="{StaticResource iAppColor_White}"
+      
+    ></Button>
+
+            <sroofingFooter:SRoofing_PageFooter />
+
+
+
+        </StackLayout>
+
+ 
+    </Grid>
+</ContentPage>
