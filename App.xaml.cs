@@ -28,14 +28,15 @@ namespace S1RoofingMU
             InitializeComponent();
 
             //MainPage = new AppShell();
-            MainPage =new NavigationPage(new MainPage());
+            //  MainPage =new NavigationPage(new MainPage());
+            MainPage =new NavigationPage(new Page_Launcher());
 
             ////////// ///
 
 
             CrossFirebasePushNotification.Current.OnTokenRefresh += async (s, p) =>
             {
-                System.Diagnostics.Debug.WriteLine($"********** S1RoofingMU ********** TOKEN : {p.Token}");
+                SRoofing_DebugManager.Debug_ShowSystemMessage($"********** S1RoofingMU ********** TOKEN : {p.Token}");
 
                 try
                 {
@@ -80,10 +81,10 @@ namespace S1RoofingMU
                         //////////        + "&gcmid=" + p.Token
                         //////////        + "&req=" + SRoofingEnumHandler_UserDeviceHandler.UserDevice_Register_GlobalDeviceID);
 
-                      System.Diagnostics.Debug.WriteLine( $"GCMID_Token: {p.Token}");
+                        SRoofing_DebugManager.Debug_ShowSystemMessage($"GCMID_Token: {p.Token}");
 
                         //////////_bln_IsFCM_IsSaved = true;
-                       
+
 
 
 
@@ -91,11 +92,11 @@ namespace S1RoofingMU
                     }
 
 
-                    //     System.Diagnostics.Debug.WriteLine($"GCMID_Token: {e.Token}");   
+                    //          SRoofing_DebugManager.Debug_ShowSystemMessage($"GCMID_Token: {e.Token}");   
                 }
                 catch (Exception ex)
                 {
-                       System.Diagnostics.Debug.WriteLine(ex.Message.ToString());
+                    SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                     return;
                 }
 
@@ -105,17 +106,17 @@ namespace S1RoofingMU
             CrossFirebasePushNotification.Current.OnNotificationReceived += (s, p) =>
             {
 
-                System.Diagnostics.Debug.WriteLine("Received");
+                SRoofing_DebugManager.Debug_ShowSystemMessage("Received");
 
             };
 
             //Push message received event  
             CrossFirebasePushNotification.Current.OnNotificationOpened += (s, p) =>
             {
-                System.Diagnostics.Debug.WriteLine("Opened");
+                SRoofing_DebugManager.Debug_ShowSystemMessage("Opened");
                 foreach (var data in p.Data)
                 {
-                    System.Diagnostics.Debug.WriteLine($"{data.Key} : {data.Value}");
+                    SRoofing_DebugManager.Debug_ShowSystemMessage($"{data.Key} : {data.Value}");
                 }
 
             };

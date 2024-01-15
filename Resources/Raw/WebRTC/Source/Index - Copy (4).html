@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html class="h-100 w-100"  style="height: 100vh;background-color: black; color: white; margin: 0px; padding: 0px; overflow: hidden; overflow-x: hidden; overflow-y: hidden; ">
+
+<head>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>WebRTC client</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/8.2.3/adapter.min.js" integrity="sha512-q4ypwk3dUkbGb3UhK1sOcMQlEQDCcR+10FBpWouA63JGo4Bh7SQBceQJLTtPItgoxaILCtjJYfOlB2can9DCyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script src="jquery.mobile-1.4.5.min.js"></script>
+    <link href="jquery.mobile-1.4.5.min.css" rel="stylesheet" />
+    <link href="jquery.mobile.theme-1.4.5.min.css" rel="stylesheet" />
+
+    <style>
+        #credentials, #dialler, #messages {
+            clear: both;
+        }
+
+        video {
+            /*object-fit: fill;*/
+            /*   width: auto !important;
+            height: 100% !important;
+            object-fit: contain;*/
+
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+            object-position: center;
+            transform: scale(-1, 1);
+        }
+
+        /*        #remote-video {
+            max-width: 300px;
+        }
+
+        #local-video {
+            max-width: 150px;
+        }*/
+    </style>
+</head>
+
+<body class="h-100 w-100" style="margin:0px; padding: 0px; background-color: blue;">
+
+    <div class="h-100 w-100" style="margin:0px;padding:0px;position:absolute;">
+
+
+
+        <div class="h-100 w-100" style="position:absolute;margin:0px;padding:0px;display:flex;flex-direction:column;z-index:10;">
+
+            <div class="h-50 w-100" style="margin:0px;padding:0px;background-color:yellow;">
+
+                <div id="div_RemoteVideo" class="h-50 w-100" style="background-color:red;position:absolute;margin:0px;padding:0px;display:flex;flex-direction:column;z-index:10;">
+                    <!--class="position-absolute top-50 start-50 translate-middle"-->
+                    <div class="h-100 w-100" style="background-color: yellow; margin: 0px; padding: 0px;">
+                        <video id="remote-video" style="width: 100%; height: auto; margin: 0px; padding: 0px;" autoplay playsinline></video>
+                    </div>
+                </div>
+
+
+
+                <div id="div_RemoteAvatar" class="h-50 w-100 text-center align-middle" style="background-color:orange;position:absolute;margin:0px;padding:0px;display:flex;flex-direction:column;z-index:20;display:none;">
+
+                    <div class="position-absolute top-50 start-50 translate-middle">div_RemoteAvatar</div>
+
+
+                </div>
+
+            </div>
+
+
+            <div class="h-50 w-100" style="margin: 0px; padding: 0px; background-color: red; display: block; ">
+
+                <div id="div_OwnerVideo" class="h-50 w-100" style="background-color:red;position:absolute;margin:0px;padding:0px;display:flex;flex-direction:column;z-index:10;">
+                    <!--class="position-absolute top-50 start-50 translate-middle"-->
+                    <div class="h-100 w-100" style="margin: 0px; padding: 0px;">
+                        <video id="local-video" style="width: 100%; height: auto; margin: 0px; padding: 0px;" autoplay playsinline></video>
+                    </div>
+                </div>
+
+                <div id="div_OwnerAvatar" class="h-50 w-100 text-center align-middle" style="background-color: black; position: absolute; margin: 0px; padding: 0px; z-index: 20; display: none;">
+                    <!---->
+                    <div class="position-absolute top-50 start-50 translate-middle text-center align-middle" style="color:white;text-align:center;vertical-align:middle;display:flex;flex-direction:column;">
+                        <!--class="position-absolute top-50 start-50 translate-middle text-center align-middle"-->
+                        <!--<div class="text-center" style="background-color:black;color:white;width:100px;height:100px;border-radius:50px;">
+
+                            <span id="txt_OwnerAvatar" class="text-center" style="font-size:large;">SH</span>
+                        </div>-->
+                        <!--<span id="txt_OwnerAvatar" class="text-center" style="background-color: black; color: white; font-size: large;">SH</span>-->
+
+                        <span id="txt_OwnerAvatar" class="text-center" style="font-size:large;">SHaymaa hafez</span>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div style="width:300px;position: absolute; z-index: 10; margin: 0px; padding: 0px; display: block;">
+
+            <div>
+                <!--<button id="connect">Connect</button>-->
+                <button id="mute">Mute</button>
+                <button id="unmute">Unmute</button>
+                <button id="pause">Pause Video</button>
+                <button id="resume">Resume Video</button>
+            </div>
+
+            <div id="credentials">
+
+                Connect as:
+                <input type="text" id="caller-id" size="15" value="xuserx">
+                <button id="connect">Connect</button>
+
+            </div>
+
+            <div id="dialler" data-active="false">
+
+                Make call to:
+                <input type="select" id="recipient-id">
+                </input>
+                <button id="dial">Call</button>
+
+                <button id="connectCS">ConnectCS</button>
+
+                <!--<p><strong>REMOTE:</strong></p>-->
+                <!--<video id="remote-video" autoplay playsinline></video>-->
+
+                <hr>
+                <!--controls muted-->
+                <!--<p><strong>LOCAL:</strong></p>-->
+                <!--<video id="local-video" autoplay playsinline></video>-->
+            </div>
+
+            <hr>
+
+            <div id="messages">
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <script src="peer.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

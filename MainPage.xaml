@@ -1,45 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="S1RoofingMU.MainPage">
+       xmlns:toolkit="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
+                                xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+     ios:Page.UseSafeArea="False"
+  NavigationPage.HasNavigationBar="False"
+   Visual="Material"   x:Class="S1RoofingMU.MainPage">
 
 
-    <ScrollView     HorizontalOptions="FillAndExpand"
+    <Page.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="#454545" StatusBarStyle="LightContent" />
+    </Page.Behaviors>
+
+
+    <Grid     HorizontalOptions="FillAndExpand"
 VerticalOptions="FillAndExpand"
   
       >
-        <VerticalStackLayout
+        <!--<VerticalStackLayout
             Spacing="25"
             Padding="0"
                HorizontalOptions="FillAndExpand"
 VerticalOptions="FillAndExpand"
   
-      >
+      >-->
 
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
 
-<!--Navigating="webViewCall_Navigating"-->
-            <WebView 
+        <!--Navigating="webViewCall_Navigating"-->
+         <!--Source="WebRTC/Source/Index.html"--> 
+        <WebView 
                 x:Name="webViewCall"
          HorizontalOptions="FillAndExpand"
     VerticalOptions="FillAndExpand"
-  Source="WebRTC/Source/Index.html"
+
        />
 
-            <!--Source="https://oneworldlancer.ddns.net/S1Roofing/WowzaJS/Index.html"-->
-            <!--<hyber:HybridWebView  x:Name="theWebViewControl"
+
+        <Button
+                x:Name="CounterBtn"
+                HeightRequest="50"
+                Text="Click me"
+                SemanticProperties.Hint="Counts the number of times you click"
+                BackgroundColor="Red"
+                Clicked="OnCounterClicked"
+                HorizontalOptions="Center" />
+        <!--Source="https://oneworldlancer.ddns.net/S1Roofing/WowzaJS/Index.html"-->
+        <!--<hyber:HybridWebView  x:Name="theWebViewControl"
          HorizontalOptions="FillAndExpand"
     VerticalOptions="FillAndExpand"
   HybridAssetRoot="wwwroot"
        MainFile="Index.html"
                                   RawMessageReceived="theWebViewControl_RawMessageReceived"/>-->
 
-            <!--<Image
+        <!--<Image
                 Source="dotnet_bot.png"
                 SemanticProperties.Description="Cute dot net bot waving hi to you!"
                 HeightRequest="200"
@@ -65,8 +78,8 @@ VerticalOptions="FillAndExpand"
                 Clicked="OnCounterClicked"
                 HorizontalOptions="Center" />-->
 
-        </VerticalStackLayout>
-    </ScrollView>
+        <!--</VerticalStackLayout>-->
+    </Grid>
 
 
 

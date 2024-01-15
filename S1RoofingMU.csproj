@@ -82,6 +82,22 @@
 	  <None Remove="Resources\Raw\snd_chat_out_2.mp3" />
 	  <None Remove="Resources\Raw\snd_chat_out_3.mp3" />
 	  <None Remove="Resources\Raw\snd_connecting.mp3" />
+	  <None Remove="Resources\Raw\WebRTC\Source\Index - Copy (2).html" />
+	  <None Remove="Resources\Raw\WebRTC\Source\Index - Copy (3).html" />
+	  <None Remove="Resources\Raw\WebRTC\Source\Index - Copy (4).html" />
+	  <None Remove="Resources\Raw\WebRTC\Source\Index - Copy (5).html" />
+	  <None Remove="Resources\Raw\WebRTC\Source\Index - Copy (6).html" />
+	  <None Remove="Resources\Raw\WebRTC\Source\Index - Copy (7).html" />
+	  <None Remove="Resources\Raw\WebRTC\Source\Index - Copy (8).html" />
+	  <None Remove="Resources\Raw\WebRTC\Source\Index - Copy.html" />
+	  <None Remove="Resources\Raw\WebRTC\Source\jquery.mobile-1.4.5.min.js" />
+	  <None Remove="Resources\Raw\WebRTC\Source_X1\index (2).html" />
+	  <None Remove="Resources\Raw\WebRTC\Source_X1\Index.html" />
+	  <None Remove="Resources\Raw\WebRTC\Source_X1\main (3).js" />
+	  <None Remove="Resources\Raw\WebRTC\Source_X1\main.js" />
+	  <None Remove="Resources\Raw\WebRTC\Source_X1\main_X1.js" />
+	  <None Remove="Resources\Raw\WebRTC\Source_X1\main_X2.js" />
+	  <None Remove="Resources\Raw\WebRTC\Source_X1\peer.js" />
 	  <None Remove="Resources\values\colors.xml" />
 	</ItemGroup>
 
@@ -628,6 +644,54 @@
 
 	<ItemGroup>
 	  <MauiAsset Include="Platforms\Android\Resources\raw\ca.crt" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Source\Index - Copy %282%29.html">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Source\Index - Copy %283%29.html">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Source\Index - Copy %284%29.html">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Source\Index - Copy %285%29.html">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Source\Index - Copy %286%29.html">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Source\Index - Copy %287%29.html">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Source\Index - Copy %288%29.html">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Source\Index - Copy.html">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Source_X1\index (2).html">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Source_X1\Index.html">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Source_X1\main (3).js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Source_X1\main.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Source_X1\main_X1.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Source_X1\main_X2.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Source_X1\peer.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
 	</ItemGroup>
 
 	<ItemGroup>
