@@ -37,7 +37,7 @@
                         </VisualState>
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>-->
-  
+
             </DataTemplate>
             <DataTemplate x:Key="itmp_Template_Item_Private_IsNewMessage_TRUE">
 
@@ -55,7 +55,7 @@
                         </VisualState>
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>-->
-            
+
             </DataTemplate>
             <DataTemplate x:Key="itmp_Template_Item_Group_IsNewMessage_FALSE">
 
@@ -73,7 +73,7 @@
                         </VisualState>
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>-->
-      
+
             </DataTemplate>
             <DataTemplate x:Key="itmp_Template_Item_Group_IsNewMessage_TRUE">
 
@@ -92,11 +92,11 @@
                         </VisualState>
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>-->
-  
+
             </DataTemplate>
-             <!--Template_Header="{StaticResource itmp_Template_Header}"
+            <!--Template_Header="{StaticResource itmp_Template_Header}"
                                                    Template_InfoTutorial="{StaticResource itmp_Template_InfoTutorial}"-->
-                                                   <itmp:History_ChatDataTemplateSelector x:Key="ChatDataTemplateSelector"
+            <itmp:History_ChatDataTemplateSelector x:Key="ChatDataTemplateSelector"
                                                    Template_None="{StaticResource itmp_Template_None}"
                                                   Template_Item_Private_IsNewMessage_FALSE="{StaticResource itmp_Template_Item_Private_IsNewMessage_FALSE}"
                                                    Template_Item_Private_IsNewMessage_TRUE="{StaticResource itmp_Template_Item_Private_IsNewMessage_TRUE}"
@@ -226,6 +226,24 @@
                    Margin="0,0,10,0" />-->
                     </Grid>
                 </Frame>
+                <!---->
+                <ScrollView
+       HorizontalOptions="FillAndExpand"
+VerticalOptions="FillAndExpand"
+       Margin="0"
+       Padding="0"
+           BackgroundColor="{StaticResource iAppColor_SemiGray}" 
+                    Orientation="Vertical"
+       VerticalScrollBarVisibility="Never" >
+                    <!--VerticalOptions="FillAndExpand"-->
+                    <WebView 
+            x:Name="web_HistotyChat"
+     HorizontalOptions="FillAndExpand"
+
+       BackgroundColor="{StaticResource iAppColor_SemiGray}"
+IsVisible="true"   />
+
+                </ScrollView>
 
                 <ScrollView
                     HorizontalOptions="FillAndExpand"
@@ -233,7 +251,8 @@
                     Margin="0"
                     Padding="0"
                     Orientation="Vertical"
-                    VerticalScrollBarVisibility="Never">
+                    VerticalScrollBarVisibility="Never"
+                    IsVisible="false">
 
 
                     <CollectionView x:Name="cv_UserChatHistoryList"
@@ -241,7 +260,7 @@
 SelectionChanged="cv_UserChatHistoryList_SelectionChanged"
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="Start"
-                                
+                                      IsVisible="false"
                                 EmptyView=""
                          ItemTemplate="{StaticResource ChatDataTemplateSelector}"
                                 Margin="0">

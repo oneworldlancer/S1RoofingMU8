@@ -28,8 +28,8 @@ namespace S1RoofingMU
             InitializeComponent();
 
             //MainPage = new AppShell();
-            //  MainPage =new NavigationPage(new MainPage());
-            MainPage =new NavigationPage(new Page_Launcher());
+           // MainPage =new NavigationPage(new MainPage());
+              MainPage =new NavigationPage(new Page_Launcher());
 
             ////////// ///
 
@@ -318,6 +318,8 @@ namespace S1RoofingMU
         public static bool _blnSyncHistory_ScreenChatShow_CHAT_Thum_List = false;
         public static bool _blnSyncHistory_ScreenCallShow_CALL_Landing_List = false;
 
+
+ 
 
         public static bool _blnSyncHistory_Dating_ChatContactList = false;
         public static bool _blnSync_Chat_IsRefreshNewMessage = false;

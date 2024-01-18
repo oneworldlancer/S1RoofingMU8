@@ -6,7 +6,7 @@ using S1RoofingMU.iSRoofingApp.iSRoofing_EnumManager;
 
 using SQLite;
 
-namespace S1RoofingMU.iSRoofingApp.iSRoofing_Model.History.History.Call
+namespace S1RoofingMU.iSRoofingApp.iSRoofing_Model.History.Call
     {
     public class SRoofingScreenCallShowHistoryMessageModelManager
         {
@@ -284,6 +284,10 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Model.History.History.Call
 
 
         public  string  GroupTitle { get; set; } ="0" ;
+
+
+
+        public  string  ImagePath { get; set; } = "img/img_call_out_white.png";
 
 
         //public  string  GroupDescription { get; set; } ="0" ;

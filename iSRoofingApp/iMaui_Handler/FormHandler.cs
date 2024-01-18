@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Microsoft.Maui;
 using System.Drawing;
+using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 
 #if IOS
 using UIKit;
@@ -26,6 +27,8 @@ namespace S1RoofingMU.iSRoofingApp.iMaui_Handler
 #if ANDROID
                 handler.PlatformView.Background = null;
                 handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
+
+                handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Colors.Transparent.ToAndroid());
 #elif IOS
             handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;
             handler.PlatformView.Layer.BorderWidth = 0;

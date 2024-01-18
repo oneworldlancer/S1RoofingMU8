@@ -15,6 +15,8 @@ using System.Diagnostics;
 
 namespace S1RoofingMU
 {
+    // cam=&caltknid=&ownid=&ownmpoid=&rmtid=&rmtmobid=&caltag=&caldir=&caltyp=
+
 
     public partial class MainPage : ContentPage
     {
@@ -23,6 +25,33 @@ namespace S1RoofingMU
         public MainPage()
         {
             InitializeComponent();
+
+            // cam=&caltknid=&ownid=&ownmobid=&rmtid=&rmtmobid=&caltag=&caldir=&caltyp=
+
+            //# Owner
+            //
+            //cam=front&caltknid=11011101&ownid=2202&ownmobid=2202x&rmtid=1101&rmtmobid=1101x&caltag=answer&caldir=in&caltyp=video
+
+            //#Remote
+            //
+            //cam=front&caltknid=11011101&ownid=1101&ownmobid=1101x&rmtid=2202&rmtmobid=2202x&caltag=answer&caldir=in&caltyp=video
+      
+            webViewCall.Source="WebRTC/Landing_Chat/Index.html";
+
+            //webViewCall.Source="WebRTC/Source/Index.html?" +
+
+            //    "cam=" + "front" +
+            //    "&caltknid=" + "11011101" +
+            //    "&ownid=" +"1101" +
+            //    "&ownmobid=" + "1101x"+
+            //    "&rmtid=" + "2202" +
+            //    "&rmtmobid=" + "2202x" +
+            //    "&caltag=" + "offer" +
+            //    "&caldir=" + "out" +
+            //    "&caltyp=" + "video";
+
+
+
 
             CustomizeWebViewHandler();
 
@@ -46,7 +75,55 @@ namespace S1RoofingMU
             {
 
 
-                var xxx = await webViewCall.EvaluateJavaScriptAsync("callFromCSharp('" + "SHAYMAA CS 2024" + "')");
+                //var xxx = await webViewCall.EvaluateJavaScriptAsync("callFromCSharp('" + "SHAYMAA CS 2024" + "')");
+
+                // Create a stopwatch instance
+                var stopwatch = new Stopwatch();
+
+                // Create a timer instance
+                var timer = Application.Current.Dispatcher.CreateTimer();
+
+                // Set the timer interval to one second
+                timer.Interval = TimeSpan.FromSeconds(1);
+
+                // Subscribe to the Tick event
+                timer.Tick += (s, e) =>
+                {
+                    // Update the label text with the elapsed time
+                    // Use MainThread.BeginInvokeOnMainThread to ensure UI updates are done on the UI thread
+                    MainThread.BeginInvokeOnMainThread(() =>
+                    {
+                        lbl_Result.Text = stopwatch.Elapsed.ToString("hh\\:mm\\:ss");
+                    });
+                };
+
+                // Start the stopwatch and the timer
+                stopwatch.Start();
+                timer.Start();
+
+
+                ////////////// Create a timer instance
+                ////////////var timer = Application.Current!.Dispatcher.CreateTimer();
+
+                ////////////// Set the timer interval to one second
+                ////////////timer.Interval = TimeSpan.FromSeconds(1);
+
+                ////////////// Subscribe to the Tick event
+                ////////////timer.Tick += (s, e) =>
+                ////////////{
+                ////////////    // Update the label text with the current time
+                ////////////    // Use MainThread.BeginInvokeOnMainThread to ensure UI updates are done on the UI thread
+                ////////////    MainThread.BeginInvokeOnMainThread(() =>
+                ////////////    {
+                ////////////        lbl_Result.Text = DateTime.Now.ToString("h:mm:ss tt");
+                ////////////    });
+                ////////////};
+
+                ////////////// Start the timer
+                ////////////timer.Start();
+
+
+
                 //await webViewCall.EvaluateJavaScriptAsync();
 
 
@@ -203,8 +280,8 @@ namespace S1RoofingMU
             //}
 
             [JavascriptInterface]
-           [Export("invokeAction")]
-             //[Export()]
+            [Export("invokeAction")]
+            //[Export()]
             public void InvokeAction(string data)
             {
 
@@ -239,7 +316,7 @@ namespace S1RoofingMU
 
 #endif
 
- 
+
 
 
 

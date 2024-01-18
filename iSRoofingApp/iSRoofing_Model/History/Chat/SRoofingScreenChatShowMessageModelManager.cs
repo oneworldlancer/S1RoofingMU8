@@ -331,6 +331,10 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Model.History.Chat
 
 
 
+        public string ImagePath { get; set; } = "img/img_chat_white.png";
+
+
+
 
 
 

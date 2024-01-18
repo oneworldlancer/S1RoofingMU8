@@ -11,14 +11,14 @@ using System.Threading.Tasks;
 using S1RoofingMU.iSRoofingApp.iSRoofing_EnumManager;
 using S1RoofingMU.iSRoofingApp.iSRoofing_Manager;
 using S1RoofingMU.iSRoofingApp.iSRoofing_Model.History.Chat;
-using S1RoofingMU.iSRoofingApp.iSRoofing_Model.History.History.Call;
+using S1RoofingMU.iSRoofingApp.iSRoofing_Model.History.Call;
 using S1RoofingMU.iSRoofingApp.iSRoofing_Model.Language;
 using S1RoofingMU.iSRoofingApp.iSRoofing_Model.ScreenChatShow;
 using S1RoofingMU.iSRoofingApp.iSRoofing_Model.Setting;
 using S1RoofingMU.iSRoofingApp.iSRoofing_Model.User;
 
 using SQLite;
- 
+
 
 
 namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
@@ -33,23 +33,23 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
         public SQLiteAsyncConnection _database;
         public string _databasePath;
 
-        public SRoofingDatabase ( string path )
+        public SRoofingDatabase(string path)
         {
 
             _databasePath = path;
-            _database = new SQLiteAsyncConnection ( path );
+            _database = new SQLiteAsyncConnection(path);
 
 
 
-            Task.Run ( async ( ) =>
+            Task.Run(async () =>
          {
-             await _database.CreateTableAsync<SRoofingScreenChatShowMessageModelManager> ( );
+             await _database.CreateTableAsync<SRoofingScreenChatShowMessageModelManager>();
 
-             await _database.CreateTableAsync<SRoofingScreenChatShowHistoryMessageModelManager> ( );
+             await _database.CreateTableAsync<SRoofingScreenChatShowHistoryMessageModelManager>();
 
-             await _database.CreateTableAsync<SRoofingScreenCallShowHistoryMessageModelManager> ( );
+             await _database.CreateTableAsync<SRoofingScreenCallShowHistoryMessageModelManager>();
 
-         } ).Wait ( );
+         }).Wait();
 
 
         }
@@ -71,36 +71,36 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
         //}
 
 
-        public async Task<ObservableCollection<SRoofingScreenChatShowMessageModelManager>> Get_List_Chat_Message_ByGroupTokenID ( string GroupTokenID )
+        public async Task<ObservableCollection<SRoofingScreenChatShowMessageModelManager>> Get_List_Chat_Message_ByGroupTokenID(string GroupTokenID)
         {
 
             try
             {
 
 
-                using ( SQLiteConnection conn = new SQLiteConnection ( App.iDatabasePath ) )
+                using (SQLiteConnection conn = new SQLiteConnection(App.iDatabasePath))
                 {
-                    var arrList = conn.Table<SRoofingScreenChatShowMessageModelManager> ( )
-                           .Where ( c =>
+                    var arrList = conn.Table<SRoofingScreenChatShowMessageModelManager>()
+                           .Where(c =>
                            c.GroupID == GroupTokenID &&
-                           c.IsVisible == 1 )
-                           .OrderByDescending ( x => x._id ).Take ( 20 )
-                           .ToList ( );
+                           c.IsVisible == 1)
+                           .OrderByDescending(x => x._id).Take(20)
+                           .ToList();
 
-                    conn.Close ( );
+                    conn.Close();
 
                     // return arrList;
-                    arrList.Reverse ( );
+                    arrList.Reverse();
 
-                    ObservableCollection<SRoofingScreenChatShowMessageModelManager> myObservableCollection = new ObservableCollection<SRoofingScreenChatShowMessageModelManager> ( arrList );
+                    ObservableCollection<SRoofingScreenChatShowMessageModelManager> myObservableCollection = new ObservableCollection<SRoofingScreenChatShowMessageModelManager>(arrList);
 
 
                     return myObservableCollection;
                 }
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return null;
             }
 
@@ -108,95 +108,95 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
 
 
 
-        public async Task<ObservableCollection<SRoofingScreenChatShowMessageModelManager>> Get_List_Chat_Gallery_ByGroupTokenID (
-            string GroupTokenID ,
-             SRoofingScreenChatShowMessageModelManager iMessageModel )
+        public async Task<ObservableCollection<SRoofingScreenChatShowMessageModelManager>> Get_List_Chat_Gallery_ByGroupTokenID(
+            string GroupTokenID,
+             SRoofingScreenChatShowMessageModelManager iMessageModel)
         {
 
             try
             {
 
 
-                using ( SQLiteConnection conn = new SQLiteConnection ( App.iDatabasePath ) )
+                using (SQLiteConnection conn = new SQLiteConnection(App.iDatabasePath))
                 {
 
-                    var arrList = conn.Table<SRoofingScreenChatShowMessageModelManager> ( )
-                           .Where ( c =>
+                    var arrList = conn.Table<SRoofingScreenChatShowMessageModelManager>()
+                           .Where(c =>
                            c.GroupID == GroupTokenID &&
                            c.MessageTokenID != iMessageModel.MessageTokenID &&
                            c.MessageLineCode == "media" &&
                            c.IsMediaGallerySlideShow == true &&
-                           c.IsVisible == 1 )
+                           c.IsVisible == 1)
                            //.OrderByDescending ( x => x._id )
-                           .Take ( 20 )
-                           .ToList ( );
+                           .Take(20)
+                           .ToList();
 
                     // return arrList;
                     // arrList.Reverse ( );
-                    conn.Close ( );
+                    conn.Close();
 
 
-                    arrList.Insert ( 0 , iMessageModel );
+                    arrList.Insert(0, iMessageModel);
 
-                    ObservableCollection<SRoofingScreenChatShowMessageModelManager> myObservableCollection = new ObservableCollection<SRoofingScreenChatShowMessageModelManager> ( arrList );
+                    ObservableCollection<SRoofingScreenChatShowMessageModelManager> myObservableCollection = new ObservableCollection<SRoofingScreenChatShowMessageModelManager>(arrList);
 
 
                     return myObservableCollection;
                 }
 
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return null;
             }
 
         }
 
 
-        public async Task<ObservableCollection<SRoofingScreenChatShowMessageModelManager>> Get_New_Chat_MessageList_ByGroupTokenID (
+        public async Task<ObservableCollection<SRoofingScreenChatShowMessageModelManager>> Get_New_Chat_MessageList_ByGroupTokenID(
 
-       SRoofingUserOwnerModelManager iOwnerModel , string GroupTokenID )
+       SRoofingUserOwnerModelManager iOwnerModel, string GroupTokenID)
         {
 
             try
             {
 
 
-                using ( SQLiteConnection conn = new SQLiteConnection ( App.iDatabasePath ) )
+                using (SQLiteConnection conn = new SQLiteConnection(App.iDatabasePath))
                 {
 
-                    var arrList = conn.Table<SRoofingScreenChatShowMessageModelManager> ( )
-                     .Where ( c =>
+                    var arrList = conn.Table<SRoofingScreenChatShowMessageModelManager>()
+                     .Where(c =>
                      c.GroupID == GroupTokenID &&
                      c.OwnerMobileNumberID == iOwnerModel.OwnerMobileNumberTokenID &&
                      c.IsNewMessage == 1 &&
-                     c.IsVisible == 1 )
-                     .ToList ( );
+                     c.IsVisible == 1)
+                     .ToList();
 
-                    for ( int i = 0 ; i < arrList.Count ; i++ )
+                    for (int i = 0; i < arrList.Count; i++)
                     {
-                        arrList[ i ].IsNewMessage = 0;
+                        arrList[i].IsNewMessage = 0;
 
                     }
 
-                    conn.UpdateAll ( arrList );
+                    conn.UpdateAll(arrList);
 
-                    conn.Close ( );
+                    conn.Close();
 
                     // return arrList;
                     //arrList.Reverse();
 
-                    ObservableCollection<SRoofingScreenChatShowMessageModelManager> myObservableCollection = new ObservableCollection<SRoofingScreenChatShowMessageModelManager> ( arrList );
+                    ObservableCollection<SRoofingScreenChatShowMessageModelManager> myObservableCollection = new ObservableCollection<SRoofingScreenChatShowMessageModelManager>(arrList);
 
 
                     return myObservableCollection;
                 }
 
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return null;
             }
 
@@ -208,9 +208,9 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
 
 
 
-        public async Task<bool> Check_History_IsNew_Message_True_ByOwnerUserTokenID (
+        public async Task<bool> Check_History_IsNew_Message_True_ByOwnerUserTokenID(
 
-           SRoofingUserOwnerModelManager iOwnerModel )
+           SRoofingUserOwnerModelManager iOwnerModel)
         {
 
             try
@@ -218,19 +218,19 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
 
 
 
-                using ( SQLiteConnection conn = new SQLiteConnection ( App.iDatabasePath ) )
+                using (SQLiteConnection conn = new SQLiteConnection(App.iDatabasePath))
                 {
 
-                    var arrList = conn.Table<SRoofingScreenChatShowHistoryMessageModelManager> ( )
-                     .Where ( c =>
+                    var arrList = conn.Table<SRoofingScreenChatShowHistoryMessageModelManager>()
+                     .Where(c =>
                      c.OwnerUserTokenID == iOwnerModel.OwnerUserTokenID &&
                      c.IsNewMessage == true &&
-                     c.IsVisible == true )
-                     .ToList ( );
+                     c.IsVisible == true)
+                     .ToList();
 
-                    conn.Close ( );
+                    conn.Close();
 
-                    if ( arrList.Count > 0 )
+                    if (arrList.Count > 0)
                     {
                         return true;
                     }
@@ -241,9 +241,9 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
                 }
 
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return false;
             }
 
@@ -257,39 +257,39 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
 
 
 
-        public async Task<bool> Get_Reset_Chat_Message_IsNew_FALSE_ByGroupTokenID (
+        public async Task<bool> Get_Reset_Chat_Message_IsNew_FALSE_ByGroupTokenID(
 
-            string GroupTokenID )
+            string GroupTokenID)
         {
 
             try
             {
 
 
-                using ( SQLiteConnection conn = new SQLiteConnection ( App.iDatabasePath ) )
+                using (SQLiteConnection conn = new SQLiteConnection(App.iDatabasePath))
                 {
 
 
-                    var arrList = conn.Table<SRoofingScreenChatShowMessageModelManager> ( )
-                     .Where ( c =>
+                    var arrList = conn.Table<SRoofingScreenChatShowMessageModelManager>()
+                     .Where(c =>
                      c.GroupID == GroupTokenID &&
-                     c.IsNewMessage == 1 )
-                     .ToList ( );
+                     c.IsNewMessage == 1)
+                     .ToList();
 
-                    for ( int i = 0 ; i < arrList.Count ; i++ )
+                    for (int i = 0; i < arrList.Count; i++)
                     {
-                        arrList[ i ].IsNewMessage = 0;
+                        arrList[i].IsNewMessage = 0;
 
                     }
 
-                    conn.UpdateAll ( arrList );
+                    conn.UpdateAll(arrList);
 
 
 
 
 
 
-                    conn.Close ( );
+                    conn.Close();
 
 
 
@@ -298,9 +298,9 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
                 }
 
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return false;
             }
 
@@ -319,29 +319,29 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
 
 
 
-        public async Task<int> ScreenChatShow_Update_MediaPath_MessageModel (
-            string iMessageTokenID ,
-            string iFileCode ,
-            string iFilePath )
+        public async Task<int> ScreenChatShow_Update_MediaPath_MessageModel(
+            string iMessageTokenID,
+            string iFileCode,
+            string iFilePath)
         {
 
             try
             {
 
-                using ( SQLiteConnection conn = new SQLiteConnection ( App.iDatabasePath ) )
+                using (SQLiteConnection conn = new SQLiteConnection(App.iDatabasePath))
                 {
 
                     string _MessageTokenID = iMessageTokenID;
 
-                    var arrList = conn.Table<SRoofingScreenChatShowMessageModelManager> ( )
-                  .Where ( c =>
-                  c.MessageTokenID == _MessageTokenID )
-                  .FirstOrDefault ( );
+                    var arrList = conn.Table<SRoofingScreenChatShowMessageModelManager>()
+                  .Where(c =>
+                  c.MessageTokenID == _MessageTokenID)
+                  .FirstOrDefault();
 
 
-                    if ( arrList != null )
+                    if (arrList != null)
                     {
-                        if ( iFileCode == SRoofingEnum_File_Code.FileCode_Video )
+                        if (iFileCode == SRoofingEnum_File_Code.FileCode_Video)
                         {
                             arrList.VideoDefaultPath = iFilePath;
 
@@ -352,18 +352,18 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
 
                         }
 
-                        conn.Update ( arrList );
+                        conn.Update(arrList);
                     }
 
 
-                    conn.Close ( );
+                    conn.Close();
 
                     return 1;
                 }
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return 0;
             }
 
@@ -423,42 +423,42 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
         // }
 
 
-        public async Task<int> saveDataAsync ( SRoofingScreenChatShowMessageModelManager iData )
+        public async Task<int> saveDataAsync(SRoofingScreenChatShowMessageModelManager iData)
         {
 
             try
             {
 
-                using ( SQLiteConnection conn = new SQLiteConnection ( App.iDatabasePath ) )
+                using (SQLiteConnection conn = new SQLiteConnection(App.iDatabasePath))
                 {
 
-                    conn.Insert ( iData );
+                    conn.Insert(iData);
 
-                    conn.Close ( );
+                    conn.Close();
 
                     return 1;
                 }
 
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return 0;
             }
 
         }
 
-        public async Task<int> saveDataAsync_X1 ( SRoofingScreenChatShowMessageModelManager iData )
+        public async Task<int> saveDataAsync_X1(SRoofingScreenChatShowMessageModelManager iData)
         {
 
             try
             {
 
-                return await _database.InsertAsync ( iData );
+                return await _database.InsertAsync(iData);
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return 0;
             }
 
@@ -478,15 +478,15 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
 
 
 
-        public async Task<ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager>> Get_List_History_Chat_Message_ByOwnerUserTokenID (
-            SRoofingUserOwnerModelManager iOwnerModel ,
-            SRoofingUserSettingModelManager iSettingModel )
+        public async Task<ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager>> Get_List_History_Chat_Message_ByOwnerUserTokenID(
+            SRoofingUserOwnerModelManager iOwnerModel,
+            SRoofingUserSettingModelManager iSettingModel)
         {
 
             try
             {
 
-                using ( SQLiteConnection conn = new SQLiteConnection ( App.iDatabasePath ) )
+                using (SQLiteConnection conn = new SQLiteConnection(App.iDatabasePath))
                 {
                     //////conn.CreateTable<Location> ( );
                     //////foreach ( var location in locations )
@@ -496,41 +496,41 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
                     ////////OR
                     ////////conn.InsertAll(locations);
 
-                    List<SRoofingScreenChatShowHistoryMessageModelManager> arrList = new List<SRoofingScreenChatShowHistoryMessageModelManager> ( ); ;
+                    List<SRoofingScreenChatShowHistoryMessageModelManager> arrList = new List<SRoofingScreenChatShowHistoryMessageModelManager>(); ;
 
-                    if ( iSettingModel.History_Chat_SortBy == SRoofing_Enum_SortBy.SortBy_NAME )
+                    if (iSettingModel.History_Chat_SortBy == SRoofing_Enum_SortBy.SortBy_NAME)
                     {
-                        arrList = conn.Table<SRoofingScreenChatShowHistoryMessageModelManager> ( )
-                                .Where ( c =>
+                        arrList = conn.Table<SRoofingScreenChatShowHistoryMessageModelManager>()
+                                .Where(c =>
                                 c.OwnerUserTokenID == iOwnerModel.OwnerUserTokenID &&
                                 c.OwnerMobileNumberTokenID == iOwnerModel.OwnerMobileNumberTokenID &&
-                                c.IsVisible == true )
-                                .OrderBy ( x => x.AvatarName )
-                                .Take ( 20 ).ToList<SRoofingScreenChatShowHistoryMessageModelManager> ( )
-                                .ToList ( );
+                                c.IsVisible == true)
+                                .OrderBy(x => x.AvatarName)
+                                .Take(20).ToList<SRoofingScreenChatShowHistoryMessageModelManager>()
+                                .ToList();
                     }
-                    else if ( iSettingModel.History_Chat_SortBy == SRoofing_Enum_SortBy.SortBy_RECENT )
+                    else if (iSettingModel.History_Chat_SortBy == SRoofing_Enum_SortBy.SortBy_RECENT)
                     {
 
-                        arrList = conn.Table<SRoofingScreenChatShowHistoryMessageModelManager> ( )
-                                .Where ( c =>
+                        arrList = conn.Table<SRoofingScreenChatShowHistoryMessageModelManager>()
+                                .Where(c =>
                                 c.OwnerUserTokenID == iOwnerModel.OwnerUserTokenID &&
                                 c.OwnerMobileNumberTokenID == iOwnerModel.OwnerMobileNumberTokenID &&
-                                c.IsVisible == true )
-                                .OrderByDescending ( x => x._id )
-                                .Take ( 20 ).ToList<SRoofingScreenChatShowHistoryMessageModelManager> ( )
-                                .ToList ( );
+                                c.IsVisible == true)
+                                .OrderByDescending(x => x._id)
+                                .Take(20).ToList<SRoofingScreenChatShowHistoryMessageModelManager>()
+                                .ToList();
 
 
                     }
                     // return arrList;
                     //arrList.Reverse ( );
 
-                    conn.Close ( );
+                    conn.Close();
 
 
 
-                    ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager> myObservableCollection = new ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager> ( arrList );
+                    ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager> myObservableCollection = new ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager>(arrList);
 
 
 
@@ -543,9 +543,9 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
 
 
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return null;
             }
 
@@ -557,32 +557,32 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
 
 
 
-        public async Task<bool> Get_Reset_History_Chat_Message_IsNew_False_ByGroupTokenID (
+        public async Task<bool> Get_Reset_History_Chat_Message_IsNew_False_ByGroupTokenID(
 
-        SRoofingUserOwnerModelManager iOwnerModel ,
-        string GroupTokenID )
+        SRoofingUserOwnerModelManager iOwnerModel,
+        string GroupTokenID)
         {
 
             try
             {
-                using ( SQLiteConnection conn = new SQLiteConnection ( App.iDatabasePath ) )
+                using (SQLiteConnection conn = new SQLiteConnection(App.iDatabasePath))
                 {
 
-                    var arrList = conn.Table<SRoofingScreenChatShowHistoryMessageModelManager> ( )
-                     .Where ( c =>
+                    var arrList = conn.Table<SRoofingScreenChatShowHistoryMessageModelManager>()
+                     .Where(c =>
                      c.GroupTokenID == GroupTokenID &&
-                     c.IsNewMessage == true )
-                     .ToList ( );
+                     c.IsNewMessage == true)
+                     .ToList();
 
-                    for ( int i = 0 ; i < arrList.Count ; i++ )
+                    for (int i = 0; i < arrList.Count; i++)
                     {
-                        arrList[ i ].IsNewMessage = false;
+                        arrList[i].IsNewMessage = false;
 
                     }
-                    await _database.UpdateAllAsync ( arrList );
+                    await _database.UpdateAllAsync(arrList);
 
 
-                    conn.Close ( );
+                    conn.Close();
 
 
                     return true;
@@ -590,9 +590,9 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
                 }
 
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return false;
             }
 
@@ -601,27 +601,27 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
 
 
 
-        public async Task<int> updateDataAsync_HistoryChat_MessageModel (
-            SRoofingUserOwnerModelManager iOwnerModel ,
-            SRoofingScreenChatShowHistoryMessageModelManager iData )
+        public async Task<int> updateDataAsync_HistoryChat_MessageModel(
+            SRoofingUserOwnerModelManager iOwnerModel,
+            SRoofingScreenChatShowHistoryMessageModelManager iData)
         {
 
             try
             {
 
-                using ( SQLiteConnection conn = new SQLiteConnection ( App.iDatabasePath ) )
+                using (SQLiteConnection conn = new SQLiteConnection(App.iDatabasePath))
                 {
 
                     string GroupTokenID = iData.GroupTokenID;
 
-                    var arrList = conn.Table<SRoofingScreenChatShowHistoryMessageModelManager> ( )
-                  .Where ( c =>
+                    var arrList = conn.Table<SRoofingScreenChatShowHistoryMessageModelManager>()
+                  .Where(c =>
                   c.GroupTokenID == GroupTokenID &&
-                  c.OwnerMobileNumberTokenID == iOwnerModel.OwnerMobileNumberTokenID )
-                  .FirstOrDefault ( );
+                  c.OwnerMobileNumberTokenID == iOwnerModel.OwnerMobileNumberTokenID)
+                  .FirstOrDefault();
 
 
-                    if ( arrList != null )
+                    if (arrList != null)
                     {
                         //  arrList = iData;
                         // conn.Update ( arrList );
@@ -636,51 +636,52 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
                         arrList.MessageText = iData.MessageText;
                         arrList.DateTimeText = iData.DateTimeText;
                         arrList.UploadDateTimeMilliSec = iData.UploadDateTimeMilliSec;
+                        arrList.ImagePath = iData.ImagePath;
                         arrList.IsNewMessage = iData.IsNewMessage;
 
 
-                        conn.Update ( arrList );
+                        conn.Update(arrList);
                     }
                     else
                     {
-                        conn.Insert ( iData );
+                        conn.Insert(iData);
                     }
 
 
-                    conn.Close ( );
+                    conn.Close();
 
                     return 1;
                 }
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return 0;
             }
 
         }
 
 
-        public async Task<int> saveDataAsync_HistoryChat_MessageModel ( SRoofingScreenChatShowHistoryMessageModelManager iData )
+        public async Task<int> saveDataAsync_HistoryChat_MessageModel(SRoofingScreenChatShowHistoryMessageModelManager iData)
         {
 
             try
             {
 
-                using ( SQLiteConnection conn = new SQLiteConnection ( App.iDatabasePath ) )
+                using (SQLiteConnection conn = new SQLiteConnection(App.iDatabasePath))
                 {
 
 
-                    conn.Insert ( iData );
+                    conn.Insert(iData);
 
-                    conn.Close ( );
+                    conn.Close();
 
                     return 1;
                 }
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return 0;
             }
 
@@ -694,53 +695,53 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
 
 
 
-        public async Task<int> Initialize_DataAsync_HistoryChat_MessageModel (
-          SRoofingUserOwnerModelManager iOwnerModel ,
-           SRoofingLanguageTranslateModel iLanguageModel ,
-          ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager> iData )
+        public async Task<int> Initialize_DataAsync_HistoryChat_MessageModel(
+          SRoofingUserOwnerModelManager iOwnerModel,
+           SRoofingLanguageTranslateModel iLanguageModel,
+          ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager> iData)
         {
 
             try
             {
 
-                using ( SQLiteConnection conn = new SQLiteConnection ( App.iDatabasePath ) )
+                using (SQLiteConnection conn = new SQLiteConnection(App.iDatabasePath))
                 {
 
-                    conn.DeleteAll<SRoofingScreenChatShowHistoryMessageModelManager> ( );
+                    conn.DeleteAll<SRoofingScreenChatShowHistoryMessageModelManager>();
 
-                    for ( int i = 0 ; i < iData.Count ; i++ )
+                    for (int i = 0; i < iData.Count; i++)
                     {
 
-                        if ( iData[ i ].MessageType == SRoofingEnum_ScreenChatShowMessageTypeManager.ScreenChatShowTextTypeMessage_SharePhotoMessage )
+                        if (iData[i].MessageType == SRoofingEnum_ScreenChatShowMessageTypeManager.ScreenChatShowTextTypeMessage_SharePhotoMessage)
                         {
-                            iData[ i ].MessageText = iLanguageModel.lblText_ScreenChatShow_ShareImage_Message;
+                            iData[i].MessageText = iLanguageModel.lblText_ScreenChatShow_ShareImage_Message;
                         }
 
-                        else if ( iData[ i ].MessageType == SRoofingEnum_ScreenChatShowMessageTypeManager.ScreenChatShowTextTypeMessage_ShareVideoMessage )
+                        else if (iData[i].MessageType == SRoofingEnum_ScreenChatShowMessageTypeManager.ScreenChatShowTextTypeMessage_ShareVideoMessage)
                         {
-                            iData[ i ].MessageText = iLanguageModel.lblText_ScreenChatShow_ShareVideo_Message;
-                        }
-
-
-                        else if ( iData[ i ].MessageType == SRoofingEnum_ScreenChatShowMessageTypeManager.ScreenChatShowTextTypeMessage_ShareDocument )
-                        {
-                            iData[ i ].MessageText = iLanguageModel.lblText_ScreenChatShow_ShareDocument_Message;
+                            iData[i].MessageText = iLanguageModel.lblText_ScreenChatShow_ShareVideo_Message;
                         }
 
 
-                        else if ( iData[ i ].MessageType == SRoofingEnum_ScreenChatShowMessageTypeManager.ScreenChatShowTextTypeMessage_ShareLocationMessage )
+                        else if (iData[i].MessageType == SRoofingEnum_ScreenChatShowMessageTypeManager.ScreenChatShowTextTypeMessage_ShareDocument)
                         {
-                            iData[ i ].MessageText = iLanguageModel.lblText_ScreenChatShow_ShareLocation_Message;
+                            iData[i].MessageText = iLanguageModel.lblText_ScreenChatShow_ShareDocument_Message;
                         }
 
 
-                        else if ( iData[ i ].MessageType == SRoofingEnum_ScreenChatShowMessageTypeManager.ScreenChatShowTextTypeMessage_GlobalMessage )
+                        else if (iData[i].MessageType == SRoofingEnum_ScreenChatShowMessageTypeManager.ScreenChatShowTextTypeMessage_ShareLocationMessage)
                         {
-                            iData[ i ].MessageText = iLanguageModel.lblText_ScreenChatShow_StartNew_Message;
+                            iData[i].MessageText = iLanguageModel.lblText_ScreenChatShow_ShareLocation_Message;
                         }
 
 
-                        conn.Insert ( iData[ i ] );
+                        else if (iData[i].MessageType == SRoofingEnum_ScreenChatShowMessageTypeManager.ScreenChatShowTextTypeMessage_GlobalMessage)
+                        {
+                            iData[i].MessageText = iLanguageModel.lblText_ScreenChatShow_StartNew_Message;
+                        }
+
+
+                        conn.Insert(iData[i]);
 
                         ////////string GroupTokenID = iData[ i ].GroupTokenID;
 
@@ -763,7 +764,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
                     }
 
 
-                    conn.Close ( );
+                    conn.Close();
 
                     return 1;
 
@@ -771,9 +772,9 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
                 }
 
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return 0;
             }
 
@@ -794,35 +795,35 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
 
 
 
-        public async Task<bool> deleteDataAsync_HistoryChat_MessageModel ( string GroupTokenID )
+        public async Task<bool> deleteDataAsync_HistoryChat_MessageModel(string GroupTokenID)
         {
 
             try
             {
 
-                using ( SQLiteConnection conn = new SQLiteConnection ( App.iDatabasePath ) )
+                using (SQLiteConnection conn = new SQLiteConnection(App.iDatabasePath))
                 {
 
-                    var arrList = conn.Table<SRoofingScreenChatShowHistoryMessageModelManager> ( )
-                   .Where ( c =>
-                   c.GroupTokenID == GroupTokenID )
-                   .ToList ( );
+                    var arrList = conn.Table<SRoofingScreenChatShowHistoryMessageModelManager>()
+                   .Where(c =>
+                   c.GroupTokenID == GroupTokenID)
+                   .ToList();
 
-                    for ( int i = 0 ; i < arrList.Count ; i++ )
+                    for (int i = 0; i < arrList.Count; i++)
                     {
-                        conn.Delete ( arrList[ i ] );
+                        conn.Delete(arrList[i]);
 
                     }
 
-                    conn.Close ( );
+                    conn.Close();
 
                     return true;
                 }
 
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return false;
             }
 
@@ -848,43 +849,43 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
 
 
 
-        public async Task<ObservableCollection<SRoofingScreenCallShowHistoryMessageModelManager>> Get_List_History_Call_Message_ByOwnerUserTokenID (
-            SRoofingUserOwnerModelManager iOwnerModel ,
-            SRoofingUserSettingModelManager iSettingModel )
+        public async Task<ObservableCollection<SRoofingScreenCallShowHistoryMessageModelManager>> Get_List_History_Call_Message_ByOwnerUserTokenID(
+            SRoofingUserOwnerModelManager iOwnerModel,
+            SRoofingUserSettingModelManager iSettingModel)
         {
 
             try
             {
 
-                using ( SQLiteConnection conn = new SQLiteConnection ( App.iDatabasePath ) )
+                using (SQLiteConnection conn = new SQLiteConnection(App.iDatabasePath))
                 {
 
-                    List<SRoofingScreenCallShowHistoryMessageModelManager> arrList = new List<SRoofingScreenCallShowHistoryMessageModelManager> ( );
+                    List<SRoofingScreenCallShowHistoryMessageModelManager> arrList = new List<SRoofingScreenCallShowHistoryMessageModelManager>();
 
-                    if ( iSettingModel.History_Chat_SortBy == SRoofing_Enum_SortBy.SortBy_NAME )
+                    if (iSettingModel.History_Chat_SortBy == SRoofing_Enum_SortBy.SortBy_NAME)
                     {
-                        arrList = conn.Table<SRoofingScreenCallShowHistoryMessageModelManager> ( )
-                       .Where ( c =>
+                        arrList = conn.Table<SRoofingScreenCallShowHistoryMessageModelManager>()
+                       .Where(c =>
                        c.OwnerUserTokenID == iOwnerModel.OwnerUserTokenID &&
                        c.OwnerMobileNumberTokenID == iOwnerModel.OwnerMobileNumberTokenID &&
-                       c.IsVisible == true )
-                       .OrderBy ( x => x.AvatarName )
-                       .Take ( 20 ).ToList<SRoofingScreenCallShowHistoryMessageModelManager> ( )
-                       .ToList ( );
+                       c.IsVisible == true)
+                       .OrderBy(x => x.AvatarName)
+                       .Take(20).ToList<SRoofingScreenCallShowHistoryMessageModelManager>()
+                       .ToList();
 
 
                     }
-                    else if ( iSettingModel.History_Chat_SortBy == SRoofing_Enum_SortBy.SortBy_RECENT )
+                    else if (iSettingModel.History_Chat_SortBy == SRoofing_Enum_SortBy.SortBy_RECENT)
                     {
 
-                        arrList = conn.Table<SRoofingScreenCallShowHistoryMessageModelManager> ( )
-                             .Where ( c =>
+                        arrList = conn.Table<SRoofingScreenCallShowHistoryMessageModelManager>()
+                             .Where(c =>
                             c.OwnerUserTokenID == iOwnerModel.OwnerUserTokenID &&
                             c.OwnerMobileNumberTokenID == iOwnerModel.OwnerMobileNumberTokenID &&
-                            c.IsVisible == true )
-                            .OrderByDescending ( x => x._id )
-                            .Take ( 20 ).ToList<SRoofingScreenCallShowHistoryMessageModelManager> ( )
-                            .ToList ( );
+                            c.IsVisible == true)
+                            .OrderByDescending(x => x._id)
+                            .Take(20).ToList<SRoofingScreenCallShowHistoryMessageModelManager>()
+                            .ToList();
 
 
 
@@ -893,11 +894,11 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
                     // return arrList;
                     //arrList.Reverse ( );
 
-                    conn.Close ( );
+                    conn.Close();
 
 
 
-                    ObservableCollection<SRoofingScreenCallShowHistoryMessageModelManager> myObservableCollection = new ObservableCollection<SRoofingScreenCallShowHistoryMessageModelManager> ( arrList );
+                    ObservableCollection<SRoofingScreenCallShowHistoryMessageModelManager> myObservableCollection = new ObservableCollection<SRoofingScreenCallShowHistoryMessageModelManager>(arrList);
 
 
 
@@ -910,9 +911,9 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
 
 
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return null;
             }
 
@@ -921,32 +922,32 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
 
 
 
-        public async Task<ObservableCollection<SRoofingScreenCallShowHistoryMessageModelManager>> Get_List_History_Call_Message_ByOwnerUserTokenID_X1 ( SRoofingUserOwnerModelManager iOwnerModel )
+        public async Task<ObservableCollection<SRoofingScreenCallShowHistoryMessageModelManager>> Get_List_History_Call_Message_ByOwnerUserTokenID_X1(SRoofingUserOwnerModelManager iOwnerModel)
         {
 
             try
             {
 
-                var arrList = await _database.Table<SRoofingScreenCallShowHistoryMessageModelManager> ( )
-                           .Where ( c =>
+                var arrList = await _database.Table<SRoofingScreenCallShowHistoryMessageModelManager>()
+                           .Where(c =>
                            c.OwnerUserTokenID == iOwnerModel.OwnerUserTokenID &&
                            c.OwnerMobileNumberTokenID == iOwnerModel.OwnerMobileNumberTokenID &&
-                           c.IsVisible == true )
-                           .OrderByDescending ( x => x._id )
-                           .Take ( 20 )
-                           .ToListAsync ( );
+                           c.IsVisible == true)
+                           .OrderByDescending(x => x._id)
+                           .Take(20)
+                           .ToListAsync();
 
                 // return arrList;
                 //arrList.Reverse ( );
 
-                ObservableCollection<SRoofingScreenCallShowHistoryMessageModelManager> myObservableCollection = new ObservableCollection<SRoofingScreenCallShowHistoryMessageModelManager> ( arrList );
+                ObservableCollection<SRoofingScreenCallShowHistoryMessageModelManager> myObservableCollection = new ObservableCollection<SRoofingScreenCallShowHistoryMessageModelManager>(arrList);
 
 
                 return myObservableCollection;
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return null;
             }
 
@@ -954,32 +955,32 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
 
 
 
-        public async Task<bool> Get_Reset_History_Call_Message_IsNew_False_ByGroupTokenID (
+        public async Task<bool> Get_Reset_History_Call_Message_IsNew_False_ByGroupTokenID(
 
-        SRoofingUserOwnerModelManager iOwnerModel ,
-        string GroupTokenID )
+        SRoofingUserOwnerModelManager iOwnerModel,
+        string GroupTokenID)
         {
 
             try
             {
-                using ( SQLiteConnection conn = new SQLiteConnection ( App.iDatabasePath ) )
+                using (SQLiteConnection conn = new SQLiteConnection(App.iDatabasePath))
                 {
 
-                    var arrList = conn.Table<SRoofingScreenCallShowHistoryMessageModelManager> ( )
-                     .Where ( c =>
+                    var arrList = conn.Table<SRoofingScreenCallShowHistoryMessageModelManager>()
+                     .Where(c =>
                      c.GroupTokenID == GroupTokenID &&
-                     c.IsNewMessage == true )
-                     .ToList ( );
+                     c.IsNewMessage == true)
+                     .ToList();
 
-                    for ( int i = 0 ; i < arrList.Count ; i++ )
+                    for (int i = 0; i < arrList.Count; i++)
                     {
-                        arrList[ i ].IsNewMessage = false;
+                        arrList[i].IsNewMessage = false;
 
                     }
-                    await _database.UpdateAllAsync ( arrList );
+                    await _database.UpdateAllAsync(arrList);
 
 
-                    conn.Close ( );
+                    conn.Close();
 
 
                     return true;
@@ -987,9 +988,9 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
                 }
 
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return false;
             }
 
@@ -998,34 +999,34 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
 
 
 
-        public async Task<bool> Get_Reset_History_Call_Message_IsNew_False_ByGroupTokenID_X1 (
+        public async Task<bool> Get_Reset_History_Call_Message_IsNew_False_ByGroupTokenID_X1(
 
-        SRoofingUserOwnerModelManager iOwnerModel ,
-        string GroupTokenID )
+        SRoofingUserOwnerModelManager iOwnerModel,
+        string GroupTokenID)
         {
 
             try
             {
 
-                var arrList = await _database.Table<SRoofingScreenCallShowHistoryMessageModelManager> ( )
-                     .Where ( c =>
+                var arrList = await _database.Table<SRoofingScreenCallShowHistoryMessageModelManager>()
+                     .Where(c =>
                      c.GroupTokenID == GroupTokenID &&
-                     c.IsNewMessage == true )
-                     .ToListAsync ( );
+                     c.IsNewMessage == true)
+                     .ToListAsync();
 
-                for ( int i = 0 ; i < arrList.Count ; i++ )
+                for (int i = 0; i < arrList.Count; i++)
                 {
-                    arrList[ i ].IsNewMessage = false;
+                    arrList[i].IsNewMessage = false;
 
                 }
-                await _database.UpdateAllAsync ( arrList );
+                await _database.UpdateAllAsync(arrList);
 
 
                 return true;
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return false;
             }
 
@@ -1033,45 +1034,26 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
 
 
 
-        public async Task<int> saveDataAsync_HistoryCall_MessageModel ( SRoofingScreenCallShowHistoryMessageModelManager iData )
+        public async Task<int> saveDataAsync_HistoryCall_MessageModel(SRoofingScreenCallShowHistoryMessageModelManager iData)
         {
 
             try
             {
 
-                using ( SQLiteConnection conn = new SQLiteConnection ( App.iDatabasePath ) )
+                using (SQLiteConnection conn = new SQLiteConnection(App.iDatabasePath))
                 {
 
 
-                    conn.Insert ( iData );
+                    conn.Insert(iData);
 
-                    conn.Close ( );
+                    conn.Close();
 
                     return 1;
                 }
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
-                return 0;
-            }
-
-        }
-
-
-
-
-        public async Task<int> saveDataAsync_HistoryCall_MessageModel_Xx1 ( SRoofingScreenCallShowHistoryMessageModelManager iData )
-        {
-
-            try
-            {
-
-                return await _database.InsertAsync ( iData );
-            }
-            catch ( Exception ex )
-            {
-                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return 0;
             }
 
@@ -1082,28 +1064,94 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
 
 
 
-        public async Task<int> Initialize_DataAsync_HistoryCall_MessageModel (
-              SRoofingUserOwnerModelManager iOwnerModel ,
-              SRoofingLanguageTranslateModel iLanguageModel ,
-         ObservableCollection<SRoofingScreenCallShowHistoryMessageModelManager> iData )
+        public async Task<int> updateDataAsync_HistoryCall_MessageModel(
+            SRoofingUserOwnerModelManager iOwnerModel,
+            SRoofingScreenCallShowHistoryMessageModelManager iData)
         {
 
             try
             {
 
-                using ( SQLiteConnection conn = new SQLiteConnection ( App.iDatabasePath ) )
+                using (SQLiteConnection conn = new SQLiteConnection(App.iDatabasePath))
                 {
 
-                    conn.DeleteAll<SRoofingScreenCallShowHistoryMessageModelManager> ( );
+                    string GroupTokenID = iData.GroupTokenID;
 
-                    for ( int i = 0 ; i < iData.Count ; i++ )
+                    var arrList = conn.Table<SRoofingScreenCallShowHistoryMessageModelManager>()
+                  .Where(c =>
+                  c.GroupTokenID == GroupTokenID &&
+                  c.OwnerMobileNumberTokenID == iOwnerModel.OwnerMobileNumberTokenID)
+                  .FirstOrDefault();
+
+
+                    if (arrList != null)
+                    {
+                        //  arrList = iData;
+                        // conn.Update ( arrList );
+
+                        arrList.GroupTokenID = iData.GroupTokenID;
+
+                        //arrList.MessageType = iData.MessageType;
+                        arrList.DateTime = iData.DateTime;
+                        arrList.DateTimeMilliSec = iData.DateTimeMilliSec;
+
+
+                        arrList.MessageText = iData.MessageText;
+                        arrList.DateTimeText = iData.DateTimeText;
+                        arrList.UploadDateTimeMilliSec = iData.UploadDateTimeMilliSec;
+                        arrList.ImagePath = iData.ImagePath;
+                        arrList.IsNewMessage = iData.IsNewMessage;
+
+
+                        conn.Update(arrList);
+                    }
+                    else
+                    {
+                        conn.Insert(iData);
+                    }
+
+
+                    conn.Close();
+
+                    return 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                return 0;
+            }
+
+        }
+
+
+
+
+
+
+
+        public async Task<int> Initialize_DataAsync_HistoryCall_MessageModel(
+              SRoofingUserOwnerModelManager iOwnerModel,
+              SRoofingLanguageTranslateModel iLanguageModel,
+         ObservableCollection<SRoofingScreenCallShowHistoryMessageModelManager> iData)
+        {
+
+            try
+            {
+
+                using (SQLiteConnection conn = new SQLiteConnection(App.iDatabasePath))
+                {
+
+                    conn.DeleteAll<SRoofingScreenCallShowHistoryMessageModelManager>();
+
+                    for (int i = 0; i < iData.Count; i++)
                     {
 
-                        conn.Insert ( iData[ i ] );
+                        conn.Insert(iData[i]);
 
                     }
 
-                    conn.Close ( );
+                    conn.Close();
 
                     return 1;
 
@@ -1146,9 +1194,9 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
                 //////}
 
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return 0;
             }
 
@@ -1157,7 +1205,6 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
 
 
 
-   
 
 
 
@@ -1168,35 +1215,36 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Database
 
 
 
-        public async Task<bool> deleteDataAsync_HistoryCall_MessageModel ( string GroupTokenID )
+
+        public async Task<bool> deleteDataAsync_HistoryCall_MessageModel(string GroupTokenID)
         {
 
             try
             {
 
-                using ( SQLiteConnection conn = new SQLiteConnection ( App.iDatabasePath ) )
+                using (SQLiteConnection conn = new SQLiteConnection(App.iDatabasePath))
                 {
 
-                    var arrList = conn.Table<SRoofingScreenCallShowHistoryMessageModelManager> ( )
-                   .Where ( c =>
-                   c.GroupTokenID == GroupTokenID )
-                   .ToList ( );
+                    var arrList = conn.Table<SRoofingScreenCallShowHistoryMessageModelManager>()
+                   .Where(c =>
+                   c.GroupTokenID == GroupTokenID)
+                   .ToList();
 
-                    for ( int i = 0 ; i < arrList.Count ; i++ )
+                    for (int i = 0; i < arrList.Count; i++)
                     {
-                        conn.Delete ( arrList[ i ] );
+                        conn.Delete(arrList[i]);
 
                     }
 
-                    conn.Close ( );
+                    conn.Close();
 
                     return true;
                 }
 
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return false;
             }
 

@@ -61,14 +61,16 @@ namespace S1RoofingMU
             builder.Services.AddSingleton<iSRoofing_DependencyService_SaveMediaDataFile, DependencyService_SaveMediaDataFile>();
             builder.Services.AddSingleton<iSRoofing_DependencyService_VideoModel, DependencyService_VideoModel>();
             builder.Services.AddSingleton(AudioManager.Current);
-
-            FormHandler.RemoveBorders();
-
-
+      
+            
             CustomizeWebViewHandler();
 
 
 
+            FormHandler.RemoveBorders();
+
+
+    
 
 
             return builder.Build();

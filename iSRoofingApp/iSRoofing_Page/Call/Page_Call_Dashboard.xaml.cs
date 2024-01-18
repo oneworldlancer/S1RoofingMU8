@@ -1,5 +1,18 @@
-﻿using System;
+﻿
+#if ANDROID
+
+
+using Android.Webkit;
+using Android.Widget;
+
+using Java.Interop;
+
+#endif
+
+
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.WebSockets;
 using System.Text;
@@ -700,7 +713,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
 
                     lbl_CallMessageText.Text = strMessageText;
 
-
+                    webViewCall.Source=null;
 
 
                     //////await SRoofing_Page_OpenerManager
@@ -1109,44 +1122,46 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
 
                 await Call_StopCallInSound();
 
+                await ShowView(ll_Ring, ll_ActionVoice);
+
+                await Owner_Call_AnswerWS();
+
 
                 _=  Task.Run(async () =>
-                {
-                    string skt_Message = _iCallModel.CallTokenID + "-" +  _iCallModel.GroupTokenID + "-" + _iOwnerModel.OwnerUserTokenID + "-" + _iOwnerModel.OwnerMobileNumberTokenID + "-"+ SRoofingEnum_Socket_Call.SRoofingSocket_Call_Answer_RemoteToOwner;
+                 {
+                     string skt_Message = _iCallModel.CallTokenID + "-" +  _iCallModel.GroupTokenID + "-" + _iOwnerModel.OwnerUserTokenID + "-" + _iOwnerModel.OwnerMobileNumberTokenID + "-"+ SRoofingEnum_Socket_Call.SRoofingSocket_Call_Answer_RemoteToOwner + ",0";
 
-                    await Send(client, skt_Message, CancellationToken.None);
-
-
-
-                    //////////                 await SRoofing_ScreenCallShowMessageManager
-                    //////////                   .ScreenCallShowMessage_New_Event_Message_ByScreenCallShowID(
-
-                    //////////             App.Current,
-                    //////////             App.iAccountType,
-                    //////////             _iOwnerModel,
-                    //////////   _iCallModel.iRemoteModel,
-                    //////////       SRoofing_TimeManager.Time_GenerateToken(),
-                    //////////    _iCallModel.CallTokenID,
-                    //////////     _iCallModel.GroupTokenID,
-                    //////////      _iCallModel.GroupTokenID,
-                    //////////_iCallModel.iRemoteModel.OwnerUserTokenID,
-                    //////////     _iCallModel.iRemoteModel.OwnerMobileNumberTokenID,
-                    //////////       "0",
-                    //////////       "0",
-                    //////////        SRoofingEnum_Call_Code.CallCode_Voice,
-                    //////////       SRoofingEnum_Call_Type.CallType_Voice,
-                    //////////       SRoofingEnum_Call_Direction.CallDirection_In,
-                    //////////       SRoofingEnum_Call_State.CallState_DECLINE,
-                    //////////       "0",
-                    //////////       "0",
-                    //////////       "1");
-
-                })
-                    .ConfigureAwait(false);
+                     await Send(client, skt_Message, CancellationToken.None);
 
 
 
-                await ShowView(ll_Ring, ll_ActionVoice);
+                     //////////                 await SRoofing_ScreenCallShowMessageManager
+                     //////////                   .ScreenCallShowMessage_New_Event_Message_ByScreenCallShowID(
+
+                     //////////             App.Current,
+                     //////////             App.iAccountType,
+                     //////////             _iOwnerModel,
+                     //////////   _iCallModel.iRemoteModel,
+                     //////////       SRoofing_TimeManager.Time_GenerateToken(),
+                     //////////    _iCallModel.CallTokenID,
+                     //////////     _iCallModel.GroupTokenID,
+                     //////////      _iCallModel.GroupTokenID,
+                     //////////_iCallModel.iRemoteModel.OwnerUserTokenID,
+                     //////////     _iCallModel.iRemoteModel.OwnerMobileNumberTokenID,
+                     //////////       "0",
+                     //////////       "0",
+                     //////////        SRoofingEnum_Call_Code.CallCode_Voice,
+                     //////////       SRoofingEnum_Call_Type.CallType_Voice,
+                     //////////       SRoofingEnum_Call_Direction.CallDirection_In,
+                     //////////       SRoofingEnum_Call_State.CallState_DECLINE,
+                     //////////       "0",
+                     //////////       "0",
+                     //////////       "1");
+
+                 })
+                     .ConfigureAwait(false);
+
+
 
 
 
@@ -1174,6 +1189,14 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
         {
             try
             {
+
+                _ = Task.Run(async () =>
+                {
+                    await webViewCall.EvaluateJavaScriptAsync("stop()");
+
+                }).ConfigureAwait(false);
+
+
 
                 MainThread.BeginInvokeOnMainThread(async () =>
             {
@@ -1289,17 +1312,25 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
             {
 
 
+                _ = Task.Run(async () =>
+                {
+                    await webViewCall.EvaluateJavaScriptAsync("stop()");
+
+                }).ConfigureAwait(false);
+
+
+
                 _=  Task.Run(async () =>
                 {
 
-                    string skt_Message = _iCallModel.CallTokenID + "-" +  _iCallModel.GroupTokenID + "-" + _iOwnerModel.OwnerUserTokenID + "-" + _iOwnerModel.OwnerMobileNumberTokenID + "-"+ SRoofingEnum_Socket_Call.SRoofingSocket_Call_EndTime;
+                    string skt_Message = _iCallModel.CallTokenID + "-" +  _iCallModel.GroupTokenID + "-" + _iOwnerModel.OwnerUserTokenID + "-" + _iOwnerModel.OwnerMobileNumberTokenID + "-"+ SRoofingEnum_Socket_Call.SRoofingSocket_Call_EndTime + ",0x0x0x";
 
                     await Send(client, skt_Message, CancellationToken.None);
 
 
-              
-                    
-                    
+
+
+
                     await SRoofing_ScreenCallShowMessageManager
                       .ScreenCallShowMessage_New_Event_Message_ByScreenCallShowID(
 
@@ -1354,7 +1385,15 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
         {
             try
             {
+
+                await ShowView(ll_SplashBG, ll_ActionVideo);
                 await ShowView(ll_ActionVoice, ll_ActionVideo);
+                await ShowView(grd_CallActionVideo, grd_ToggleCallActionVideo);
+
+                _CallType_Owner=SRoofingEnum_Call_Type.CallType_Video;
+                _CallType_Remote=SRoofingEnum_Call_Type.CallType_Video;
+
+
 
             }
             catch (Exception ex)
@@ -1403,14 +1442,28 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     // Code to run on the main thread
+                    if (objHide!= null)
+                    {
+                        if (objHide.IsVisible== true)
+                        {
+                            await objHide.FadeTo(0, 500);
+                            objHide.IsVisible = false;
+                            objHide.Opacity = 0;
 
-                    await objHide.FadeTo(0, 500);
-                    objHide.IsVisible = false;
-                    objHide.Opacity = 0;
+                        }
+                    }
 
-                    objShow.Opacity = 0;
-                    objShow.IsVisible = true;
-                    await objShow.FadeTo(1, 500);
+                    if (objShow!= null)
+                    {
+                        if (objShow.IsVisible== false)
+                        {
+                            objShow.Opacity = 0;
+                            objShow.IsVisible = true;
+                            await objShow.FadeTo(1, 500);
+                        }
+                    }
+
+
 
 
                 });
@@ -1428,7 +1481,12 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
         {
             try
             {
+
+                await ShowView(ll_ActionVideo, ll_SplashBG);
                 await ShowView(ll_ActionVideo, ll_ActionVoice);
+
+                _CallType_Owner=SRoofingEnum_Call_Type.CallType_Voice;
+                _CallType_Remote=SRoofingEnum_Call_Type.CallType_Voice;
 
             }
             catch (Exception ex)
@@ -1442,8 +1500,75 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
         {
             // Remove page before Edit Page
             ////this.Navigation.RemovePage ( this.Navigation.NavigationStack[ this.Navigation.NavigationStack.Count - 1  ] );
-            await Navigation.PopAsync();
+            //await Navigation.PopAsync();
+            try
+            {
 
+
+                _ = Task.Run(async () =>
+                {
+                    await webViewCall.EvaluateJavaScriptAsync("stop()");
+
+                }).ConfigureAwait(false);
+
+
+
+                _=  Task.Run(async () =>
+                {
+
+                    string skt_Message = _iCallModel.CallTokenID + "-" +  _iCallModel.GroupTokenID + "-" + _iOwnerModel.OwnerUserTokenID + "-" + _iOwnerModel.OwnerMobileNumberTokenID + "-"+ SRoofingEnum_Socket_Call.SRoofingSocket_Call_EndTime + ",0x0x0x";
+
+                    await Send(client, skt_Message, CancellationToken.None);
+
+
+                    await SRoofing_ScreenCallShowMessageManager
+                      .ScreenCallShowMessage_New_Event_Message_ByScreenCallShowID(
+
+                App.Current,
+                App.iAccountType,
+                _iOwnerModel,
+      _iCallModel.iRemoteModel,
+          SRoofing_TimeManager.Time_GenerateToken(),
+       _iCallModel.CallTokenID,
+        _iCallModel.GroupTokenID,
+         _iCallModel.GroupTokenID,
+   _iCallModel.iRemoteModel.OwnerUserTokenID,
+        _iCallModel.iRemoteModel.OwnerMobileNumberTokenID,
+          "0",
+          "0",
+           SRoofingEnum_Call_Code.CallCode_Video,
+          SRoofingEnum_Call_Type.CallType_Video,
+          _iCallModel.CallDirection,
+          SRoofingEnum_Call_State.CallState_ENDTIME,
+          "0",
+          "0",
+          "1");
+
+                })
+                    .ConfigureAwait(false);
+
+
+
+
+
+                MainThread.BeginInvokeOnMainThread(async () =>
+                {
+                    CallWindow = "close";
+
+
+                    await Navigation.PopAsync();
+
+                    // Code to run on the main thread
+
+                });
+
+
+            }
+            catch (Exception ex)
+            {
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                return;
+            }
         }
 
         private void imgBtn_CallMute_Video_Clicked(object sender, EventArgs e)
@@ -1608,6 +1733,9 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
 
 
 
+
+
+                CustomizeWebViewHandler();
 
 
                 //////_iCurrent_CategoryModel = ( arg as SRoofingKeyValueModelManager );
@@ -1832,7 +1960,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
 
                 _=  Task.Run(async () =>
                 {
-                    string skt_Message = _iCallModel.CallTokenID + "-" +  _iCallModel.GroupTokenID + "-" + _iOwnerModel.OwnerUserTokenID + "-" + _iOwnerModel.OwnerMobileNumberTokenID + "-"+ SRoofingEnum_Socket_Call.SRoofingSocket_Call_Decline;
+                    string skt_Message = _iCallModel.CallTokenID + "-" +  _iCallModel.GroupTokenID + "-" + _iOwnerModel.OwnerUserTokenID + "-" + _iOwnerModel.OwnerMobileNumberTokenID + "-"+ SRoofingEnum_Socket_Call.SRoofingSocket_Call_Decline + ",0";
 
                     await Send(client, skt_Message, CancellationToken.None);
 
@@ -2220,6 +2348,35 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
             {
 
 
+                // Connect WebRTC 
+
+                //
+
+                //var xxx = await webViewCall.EvaluateJavaScriptAsync("callFromCSharp('" + "SHAYMAA CS 2024" + "')");
+
+                MainThread.BeginInvokeOnMainThread(async () =>
+                {
+
+
+                    // Code to run on the main thread
+                    webViewCall.Source="WebRTC/Source/Index.html?" +
+
+                        "cam=" + "front" +
+                        "&caltknid=" + _iCallModel.CallTokenID +
+                        "&ownid=" + _iOwnerModel.OwnerUserTokenID +
+                        "&ownmobid=" + _iOwnerModel.OwnerMobileNumberTokenID +
+                        "&rmtid=" + _iRemoteModel.OwnerUserTokenID +
+                        "&rmtmobid=" + _iRemoteModel.OwnerMobileNumberTokenID +
+                        "&caltag=" + "answer" +
+                        "&caldir=" + "in" +
+                        "&caltyp=" + "video";
+
+
+
+
+                });
+
+
 
                 _=  Task.Run(async () =>
                 {
@@ -2293,18 +2450,70 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
 
                 await ShowView(ll_Drop, ll_ActionVoice);
 
-                // Connect WebRTC 
+                // Connect WebRTC + Dial
+
+                //////////webViewCall.Source="WebRTC/Source/Index.html?" +
+
+                //////////    "cam=" + "front" +
+                //////////    "&caltknid=" + _iCallModel.CallTokenID +
+                //////////    "&ownid=" + _iOwnerModel.OwnerUserTokenID +
+                //////////    "&ownmobid=" + _iOwnerModel.OwnerMobileNumberTokenID +
+                //////////    "&rmtid=" + _iRemoteModel.OwnerUserTokenID +
+                //////////    "&rmtmobid=" + _iRemoteModel.OwnerMobileNumberTokenID +
+                //////////    "&caltag=" + "offer" +
+                //////////    "&caldir=" + "out" +
+                //////////    "&caltyp=" + "video";
+
+                MainThread.BeginInvokeOnMainThread(async () =>
+                            {
 
 
-                _=  Task.Run(async () =>
-                {
-                    string skt_Message = _iCallModel.CallTokenID + "-" +  _iCallModel.GroupTokenID + "-" + _iOwnerModel.OwnerUserTokenID + "-" + _iOwnerModel.OwnerMobileNumberTokenID + "-"+ SRoofingEnum_Socket_Call.SRoofingSocket_Call_Answer_OwnerToRemote;
+                                // Code to run on the main thread
 
-                    await Send(client, skt_Message, CancellationToken.None);
+                                // Connect WebRTC + Dial
+
+                                webViewCall.Source="WebRTC/Source/Index.html?" +
+
+                                    "cam=" + "front" +
+                                    "&caltknid=" + _iCallModel.CallTokenID +
+                                    "&ownid=" + _iOwnerModel.OwnerUserTokenID +
+                                    "&ownmobid=" + _iOwnerModel.OwnerMobileNumberTokenID +
+                                    "&rmtid=" + _iRemoteModel.OwnerUserTokenID +
+                                    "&rmtmobid=" + _iRemoteModel.OwnerMobileNumberTokenID +
+                                    "&caltag=" + "offer" +
+                                    "&caldir=" + "out" +
+                                    "&caltyp=" + "video";
 
 
-                })
-                    .ConfigureAwait(false);
+
+                                //webViewCall.Source="WebRTC/Source/Index.html?" +
+
+                                //"cam=" + "front" +
+                                //"&caltknid=" + "11011101" +
+                                //"&ownid=" +"1101" +
+                                //"&ownmobid=" + "1101x"+
+                                //"&rmtid=" + "2202" +
+                                //"&rmtmobid=" + "2202x" +
+                                //"&caltag=" + "offer" +
+                                //"&caldir=" + "out" +
+                                //"&caltyp=" + "video";
+
+
+
+                            });
+
+
+
+
+                //_=  Task.Run(async () =>
+                //{
+                //    string skt_Message = _iCallModel.CallTokenID + "-" +  _iCallModel.GroupTokenID + "-" + _iOwnerModel.OwnerUserTokenID + "-" + _iOwnerModel.OwnerMobileNumberTokenID + "-"+ SRoofingEnum_Socket_Call.SRoofingSocket_Call_Answer_OwnerToRemote;
+
+                //    await Send(client, skt_Message, CancellationToken.None);
+
+
+                //})
+                //    .ConfigureAwait(false);
 
 
 
@@ -2554,7 +2763,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
                     using (var reader = new StreamReader(ms, Encoding.UTF8))
                     {
 
-                        //Console.WriteLine("WebSocket-WS ::: " + await reader.ReadToEndAsync());
+                        // SRoofing_DebugManager.Debug_ShowSystemMessage("WebSocket-WS ::: " + await reader.ReadToEndAsync());
 
 
                         //string[ ] _arrSocketMsg = msg.Split("-");
@@ -2567,8 +2776,8 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
                         {
 
 
-                           string _socket_Code, _socket_Message;
-                           string[ ] _arrSocket = _arrSocketMsg[4].Split(",");
+                            string _socket_Code, _socket_Message;
+                            string[ ] _arrSocket = _arrSocketMsg[4].Split(",");
 
                             _socket_Code = _arrSocket[0];
                             _socket_Message = _arrSocket[1];
@@ -2700,6 +2909,49 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
                             else if (_socket_Code == SRoofingEnum_Socket_Call.SRoofingSocket_Call_EndTime)
                             {
 
+
+                                try
+                                {
+
+                                    _ = Task.Run(async () =>
+                                                        {
+                                                            await webViewCall.EvaluateJavaScriptAsync("stop()");
+
+                                                        }).ConfigureAwait(false);
+
+
+                                    MainThread.BeginInvokeOnMainThread(async () =>
+                                  {
+
+                                      await ShowView(ll_ActionVoice, ll_SplashBG);
+                                      await ShowView(ll_ActionVideo, ll_Splash);
+                                      await ShowView(null, ll_Redial);
+                                      //await ShowView(ll_Drop, ll_Redial);
+
+                                      await Call_PlayCallEndSound();
+
+                                      await Call_Remote_OnReplyByMessageType(
+                                                SRoofingEnum_ScreenChatShowMessageTypeManager.ScreenChatShowTextTypeMessage_CallEndDurationMessage,
+                                                "",
+                                                _socket_Message);
+
+
+                                  });
+
+
+
+
+
+                                }
+                                catch (Exception ex)
+                                {
+                                    SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                                    return;
+                                }
+
+
+
+
                                 // Connect WebRTC + Dial
 
 
@@ -2763,5 +3015,377 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
 
         #endregion
 
+
+
+
+
+        #region Call_Timer
+
+        async Task CallTimer_Start()
+        {
+
+
+            try
+            {
+
+
+                //var xxx = await webViewCall.EvaluateJavaScriptAsync("callFromCSharp('" + "SHAYMAA CS 2024" + "')");
+
+                // Create a stopwatch instance
+                var stopwatch = new Stopwatch();
+
+                // Create a timer instance
+                var timer = Application.Current.Dispatcher.CreateTimer();
+
+                // Set the timer interval to one second
+                timer.Interval = TimeSpan.FromSeconds(1);
+
+                // Subscribe to the Tick event
+                timer.Tick += (s, e) =>
+                {
+                    // Update the label text with the elapsed time
+                    // Use MainThread.BeginInvokeOnMainThread to ensure UI updates are done on the UI thread
+                    MainThread.BeginInvokeOnMainThread(() =>
+                    {
+                        // lbl_Result.Text = stopwatch.Elapsed.ToString("hh\\:mm\\:ss");
+                    });
+                };
+
+                // Start the stopwatch and the timer
+                stopwatch.Start();
+                timer.Start();
+
+
+                ////////////// Create a timer instance
+                ////////////var timer = Application.Current!.Dispatcher.CreateTimer();
+
+                ////////////// Set the timer interval to one second
+                ////////////timer.Interval = TimeSpan.FromSeconds(1);
+
+                ////////////// Subscribe to the Tick event
+                ////////////timer.Tick += (s, e) =>
+                ////////////{
+                ////////////    // Update the label text with the current time
+                ////////////    // Use MainThread.BeginInvokeOnMainThread to ensure UI updates are done on the UI thread
+                ////////////    MainThread.BeginInvokeOnMainThread(() =>
+                ////////////    {
+                ////////////        lbl_Result.Text = DateTime.Now.ToString("h:mm:ss tt");
+                ////////////    });
+                ////////////};
+
+                ////////////// Start the timer
+                ////////////timer.Start();
+
+
+
+                //await webViewCall.EvaluateJavaScriptAsync();
+
+
+                //////////if (App.client.State == WebSocketState.Open)
+                //////////{
+                //////////    //Debug.Log("Input message ('exit' to exit): ");
+
+                //////////    ArraySegment<byte> bytesToSend = new ArraySegment<byte>(
+                //////////        Encoding.UTF8.GetBytes("hello fury from unity")
+                //////////    );
+                //////////    await App.client.SendAsync(
+                //////////        bytesToSend,
+                //////////        WebSocketMessageType.Text,
+                //////////        true,
+                //////////        CancellationToken.None
+                //////////    );
+                //////////}
+
+            }
+            catch (Exception ex)
+            {
+                SRoofing_DebugManager.Debug_ShowSystemMessage("WebSocket-WS ::: "  + ex.Message);
+            }
+
+
+
+        }
+
+
+
+        async Task CallTimer_Stop()
+        {
+
+
+            try
+            {
+
+
+                //var xxx = await webViewCall.EvaluateJavaScriptAsync("callFromCSharp('" + "SHAYMAA CS 2024" + "')");
+
+                // Create a stopwatch instance
+                var stopwatch = new Stopwatch();
+
+                // Create a timer instance
+                var timer = Application.Current.Dispatcher.CreateTimer();
+
+                // Set the timer interval to one second
+                timer.Interval = TimeSpan.FromSeconds(1);
+
+                // Subscribe to the Tick event
+                timer.Tick += (s, e) =>
+                {
+                    // Update the label text with the elapsed time
+                    // Use MainThread.BeginInvokeOnMainThread to ensure UI updates are done on the UI thread
+                    MainThread.BeginInvokeOnMainThread(() =>
+                    {
+                        // lbl_Result.Text = stopwatch.Elapsed.ToString("hh\\:mm\\:ss");
+                    });
+                };
+
+                // Start the stopwatch and the timer
+                stopwatch.Start();
+                timer.Start();
+
+
+                ////////////// Create a timer instance
+                ////////////var timer = Application.Current!.Dispatcher.CreateTimer();
+
+                ////////////// Set the timer interval to one second
+                ////////////timer.Interval = TimeSpan.FromSeconds(1);
+
+                ////////////// Subscribe to the Tick event
+                ////////////timer.Tick += (s, e) =>
+                ////////////{
+                ////////////    // Update the label text with the current time
+                ////////////    // Use MainThread.BeginInvokeOnMainThread to ensure UI updates are done on the UI thread
+                ////////////    MainThread.BeginInvokeOnMainThread(() =>
+                ////////////    {
+                ////////////        lbl_Result.Text = DateTime.Now.ToString("h:mm:ss tt");
+                ////////////    });
+                ////////////};
+
+                ////////////// Start the timer
+                ////////////timer.Start();
+
+
+
+                //await webViewCall.EvaluateJavaScriptAsync();
+
+
+                //////////if (App.client.State == WebSocketState.Open)
+                //////////{
+                //////////    //Debug.Log("Input message ('exit' to exit): ");
+
+                //////////    ArraySegment<byte> bytesToSend = new ArraySegment<byte>(
+                //////////        Encoding.UTF8.GetBytes("hello fury from unity")
+                //////////    );
+                //////////    await App.client.SendAsync(
+                //////////        bytesToSend,
+                //////////        WebSocketMessageType.Text,
+                //////////        true,
+                //////////        CancellationToken.None
+                //////////    );
+                //////////}
+
+            }
+            catch (Exception ex)
+            {
+                SRoofing_DebugManager.Debug_ShowSystemMessage("WebSocket-WS ::: "  + ex.Message);
+            }
+
+
+
+        }
+
+
+
+
+        #endregion
+
+
+
+        #region WebView
+
+
+
+        void CustomizeWebViewHandler()
+        {
+#if ANDROID
+
+            Microsoft.Maui.Handlers.WebViewHandler.Mapper.Add("WebChromeClientXXX", (handler, view) =>
+            {
+
+                //Android.Webkit.WebView.SetWebContentsDebuggingEnabled(true);
+
+                //handler.PlatformView.Settings.UseWideViewPort= true;
+                //handler.PlatformView.Settings.JavaScriptEnabled= true;
+                //handler.PlatformView.Settings.JavaScriptCanOpenWindowsAutomatically= true;
+                //handler.PlatformView.Settings.MediaPlaybackRequiresUserGesture= false;
+
+
+                //handler.PlatformView.Settings.AllowContentAccess=true;
+                //handler.PlatformView.Settings.AllowFileAccess=true;
+                //handler.PlatformView.Settings.SetAppCacheEnabled(true);
+                //handler.PlatformView.Settings.DomStorageEnabled=true;
+
+
+                //handler.PlatformView.SetWebViewClient(new CustomWebViewClient());
+                //handler.PlatformView.SetWebChromeClient(new CustomWebChromeClient());
+
+
+                ////////////////////////////////////
+
+                //////////handler.PlatformView.SetWebViewClient(new JavascriptWebViewClient($"javascript: {JavascriptFunction}"));
+                handler.PlatformView.AddJavascriptInterface(new JsBridge(), "jsBridge");
+
+            });
+#elif WINDOWS
+#elif IOS
+#endif
+        }
+
+
+
+
+
+        // Define a C# method that you want to invoke from JavaScript
+        public static void MyCSharpMethod()
+        {
+            // Your C# code here
+            SRoofing_DebugManager.Debug_ShowSystemMessage("MyCSharpMethod-WS ::: ");
+              DisplayAlert("titleX", "msg-MyCSharpMethod=invokeTimer", "OK");
+        }
+
+
+
+
+
+
+#if ANDROID
+
+
+        public class JsBridge : Java.Lang.Object
+        {
+            //readonly WeakReference<HybridWebViewRenderer> HybridWebViewMainRenderer;
+
+            //public JsBridge(HybridWebViewRenderer hybridRenderer)
+            //{
+            //    HybridWebViewMainRenderer = new WeakReference<HybridWebViewRenderer>(hybridRenderer);
+            //}
+
+            [JavascriptInterface]
+            [Export("invokeAction")]
+            //[Export()]
+            public void InvokeAction(string data)
+            {
+
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+
+                    //Toast.MakeText(Android.App.Application.Context, "InvokeAction :: " + data, ToastLength.Long).Show();
+
+                    MyCSharpMethod();
+
+                    //DisplayAlert("titleX", "msg-JsBridge", "OK");
+
+                    // Code to run on the main thread
+
+                    SRoofing_DebugManager.Debug_ShowSystemMessage("JavascriptInterface :: " + data);
+
+                });
+                //if (HybridWebViewMainRenderer != null && HybridWebViewMainRenderer.TryGetTarget(out var hybridRenderer))
+                //{
+                //    ((UCView_HybridWebView)hybridRenderer.Element).InvokeAction(data);
+                //}
+            }
+     
+        
+        
+        
+        
+        
+            [JavascriptInterface]
+            [Export("invokeTimer")]
+            //[Export()]
+            public void InvokeTimer(string data)
+            {
+
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+
+                    //Toast.MakeText(Android.App.Application.Context, "InvokeAction :: " + data, ToastLength.Long).Show();
+
+                    MyCSharpMethod();
+
+                    //DisplayAlert("titleX", "msg-JsBridge", "OK");
+
+                    // Code to run on the main thread
+
+                    SRoofing_DebugManager.Debug_ShowSystemMessage("JavascriptInterface :: invokeTimer " + data);
+
+                });
+                //if (HybridWebViewMainRenderer != null && HybridWebViewMainRenderer.TryGetTarget(out var hybridRenderer))
+                //{
+                //    ((UCView_HybridWebView)hybridRenderer.Element).InvokeAction(data);
+                //}
+            }
+     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        }
+
+
+
+#elif IOS
+
+        public class JsBridge
+        {
+
+        }
+
+#endif
+
+
+
+
+
+
+
+        #endregion
+
+        async void imgBtn_ToggleCallActionVideo_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                if (grd_CallActionVideo.IsVisible== true)
+                {
+                    await ShowView(grd_CallActionVideo, null);
+
+
+                }
+                else
+                {
+                    await ShowView(null, grd_CallActionVideo);
+
+
+                }
+
+                _CallType_Owner=SRoofingEnum_Call_Type.CallType_Video;
+                _CallType_Remote=SRoofingEnum_Call_Type.CallType_Video;
+
+
+
+            }
+            catch (Exception ex)
+            {
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                return;
+            }
+
+        }
     }
 }

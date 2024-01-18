@@ -12,7 +12,7 @@ using Microsoft.Maui.Controls;
 using S1RoofingMU.iSRoofingApp.iSRoofing_Model.User;
 using S1RoofingMU.iSRoofingApp.iSRoofing_Model.Call;
 using S1RoofingMU.iSRoofingApp.iSRoofing_Model.Chat;
-using S1RoofingMU.iSRoofingApp.iSRoofing_Model.History.History.Call;
+using S1RoofingMU.iSRoofingApp.iSRoofing_Model.History.Call;
 
 namespace S1RoofingMU.iSRoofingApp.iSRoofing_SyncManager
     {

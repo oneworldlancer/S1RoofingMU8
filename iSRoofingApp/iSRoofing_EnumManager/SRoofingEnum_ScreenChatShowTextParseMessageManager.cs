@@ -19,12 +19,29 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_EnumManager
 
             if (CallDirection == ("in"))
             {
-                str = "Incoming call ended (" + CallDuration + ")";
+                if (CallDuration!= "0")
+                {
+  str = "Incoming call ended (" + CallDuration + ")";
+                }
+                else
+                {
+                    str = "Incoming call ended";
+                }
+                
+              
             }
 
             else if (CallDirection == ("out"))
             {
-                str = "Outgoing call ended  (" + CallDuration + ")";
+                if (CallDuration!= "0")
+                {
+    str = "Outgoing call ended  (" + CallDuration + ")";
+                }
+                else
+                {
+                    str = "Outgoing call ended";
+                }
+            
             }
 
             return str;

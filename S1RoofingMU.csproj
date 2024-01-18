@@ -63,6 +63,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiCss Remove="Resources\Raw\WebRTC\Landing_Chat\jquery.mobile-1.4.5.min.css" />
+	  <MauiCss Remove="Resources\Raw\WebRTC\Landing_Chat\jquery.mobile.icons-1.4.5.min.css" />
+	  <MauiCss Remove="Resources\Raw\WebRTC\Landing_Chat\jquery.mobile.structure-1.4.5.min.css" />
+	  <MauiCss Remove="Resources\Raw\WebRTC\Landing_Chat\jquery.mobile.theme-1.4.5.min.css" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="Platforms\Android\google-services.json" />
 	  <None Remove="Platforms\Android\Resources\raw\ca.crt" />
 	  <None Remove="Platforms\Android\Resources\values\attrs.xml" />
@@ -82,6 +89,51 @@
 	  <None Remove="Resources\Raw\snd_chat_out_2.mp3" />
 	  <None Remove="Resources\Raw\snd_chat_out_3.mp3" />
 	  <None Remove="Resources\Raw\snd_connecting.mp3" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\img\france.png" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\img\img_call_in_white.png" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\img\img_call_missed_red.png" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\img\img_call_out_white.png" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\img\img_chat_red.png" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\img\img_chat_white.png" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\Index - Copy (10).html" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\Index - Copy (11).html" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\Index - Copy (12).html" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\Index - Copy (2).html" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\Index - Copy (3).html" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\Index - Copy (4).html" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\Index - Copy (5).html" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\Index - Copy (6).html" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\Index - Copy (7).html" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\Index - Copy (8).html" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\Index - Copy (9).html" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\Index - Copy.html" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\Index.html" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\jquery.mobile-1.4.5.min.js" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\JS\ajax_libs_webrtc-adapter_3.3.4_adapter.js" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\JS\example.html" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\JS\hark.bundle.js" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\JS\jquery.draggableTouch.js" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\JS\script_CallConnection.js" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\JS\script_CallConnectionRemote.js" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\JS\script_CallConnectionXXX.js" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\JS\script_CallFunction.js" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\JS\script_CallFunction_Owner.js" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\JS\script_CallFunction_Remote.js" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\JS\script_CallFunction_Remote_X1.js" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\JS\script_CallState.js" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\JS\script_CallStatus.js" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\JS\script_CallType.js" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\JS\script_CameraID.js" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\JS\script_CameraTarget.js" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\JS\script_CameraType.js" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\JS\script_DocHeight.js" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\JS\script_querystring.js" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\JS\script_timer.js" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\main (3).js" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\main.js" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\main_X1.js" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\main_X2.js" />
+	  <None Remove="Resources\Raw\WebRTC\Landing_Chat\peer.js" />
 	  <None Remove="Resources\Raw\WebRTC\Source\Index - Copy (2).html" />
 	  <None Remove="Resources\Raw\WebRTC\Source\Index - Copy (3).html" />
 	  <None Remove="Resources\Raw\WebRTC\Source\Index - Copy (4).html" />
@@ -144,6 +196,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="iSRoofingApp\iSRoofing_Page\Landing\Page_Landing_Chat_List_X1.xaml.cs">
+	    <DependentUpon>Page_Landing_Chat_List_X1.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="MainPage_X1.xaml.cs">
 	    <DependentUpon>MainPage_X1.xaml</DependentUpon>
 	  </Compile>
@@ -232,6 +287,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="iSRoofingApp\iSRoofing_Page\Landing\Page_Landing_Call_List.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="iSRoofingApp\iSRoofing_Page\Landing\Page_Landing_Chat_List_X1.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="iSRoofingApp\iSRoofing_Page\Landing\Page_Landing_Chat_List.xaml">
@@ -635,7 +693,6 @@
 	  <Folder Include="iSRoofingApp\iSRoofing_UControl\Profile\Owner\" />
 	  <Folder Include="iSRoofingApp\iSRoofing_UploaderHandler\" />
 	  <Folder Include="iSRoofingApp\iSRoofing_ViewModel\" />
-	  <Folder Include="iSRoofingApp\ScreenCallShow\" />
 	  <Folder Include="iSRoofingApp\ScreenChatShow\GCM\" />
 	  <Folder Include="Platforms\Android\iSRoofing_Render\GMap\" />
 	  <Folder Include="Platforms\Android\iSRoofing_Render\Image\" />
@@ -647,6 +704,135 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\Index - Copy %2810%29.html">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\Index - Copy %2811%29.html">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\Index - Copy %2812%29.html">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\Index - Copy %282%29.html">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\Index - Copy %283%29.html">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\Index - Copy %284%29.html">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\Index - Copy %285%29.html">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\Index - Copy %286%29.html">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\Index - Copy %287%29.html">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\Index - Copy %288%29.html">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\Index - Copy %289%29.html">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\Index - Copy.html">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\Index.html">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\jquery.mobile-1.4.5.min.css">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\jquery.mobile-1.4.5.min.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\jquery.mobile.icons-1.4.5.min.css">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\jquery.mobile.structure-1.4.5.min.css">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\jquery.mobile.theme-1.4.5.min.css">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\JS\ajax_libs_webrtc-adapter_3.3.4_adapter.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\JS\example.html">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\JS\hark.bundle.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\JS\jquery.draggableTouch.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\JS\script_CallConnection.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\JS\script_CallConnectionRemote.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\JS\script_CallConnectionXXX.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\JS\script_CallFunction.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\JS\script_CallFunction_Owner.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\JS\script_CallFunction_Remote.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\JS\script_CallFunction_Remote_X1.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\JS\script_CallState.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\JS\script_CallStatus.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\JS\script_CallType.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\JS\script_CameraID.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\JS\script_CameraTarget.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\JS\script_CameraType.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\JS\script_DocHeight.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\JS\script_querystring.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\JS\script_timer.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\main (3).js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\main.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\main_X1.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\main_X2.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Landing_Chat\peer.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
 	  <MauiAsset Update="Resources\Raw\WebRTC\Source\Index - Copy %282%29.html">
 	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
 	  </MauiAsset>

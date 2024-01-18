@@ -199,6 +199,9 @@ document.addEventListener('DOMContentLoaded', function () {
         call.on('stream', showRemoteStream);
 
         call.answer(localStream);
+
+        window.jsBridge.invokeTimer("start");
+
     };
 
     // wire up button events
@@ -247,6 +250,251 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
+    ////////////////////////////////////
+
+
+
+
+
+    window.PeerConnect = function () {
+
+        console.log('TlknCall==' + 'window.PeerConnect');
+
+
+        //callerId = callerIdEntry.value;
+        callerId = _OwnerPeerUserID;
+
+        if (!callerId) {
+            logError('please set caller ID first');
+            return;
+        }
+
+        try {
+            // create connection to the ID server
+            peer = new Peer(callerId, { host: SERVER_IP, port: SERVER_PORT });
+
+            // hack to get around the fact that if a server connection cannot
+            // be established, the peer and its socket property both still have
+            // open === true; instead, listen to the wrapped WebSocket
+            // and show an error if its readyState becomes CLOSED
+            peer.socket._socket.onclose = function () {
+                logError('no connection to server');
+                peer = null;
+                stop();
+            };
+
+            // get local stream ready for incoming calls once the wrapped
+            // WebSocket is open
+            peer.socket._socket.onopen = function () {
+                //getLocalStream();
+                //getLocalStreamConstraint();
+
+                stop();
+                gum('user');
+
+            };
+
+            // handle events representing incoming calls
+            peer.on('call', answer);
+        }
+        catch (e) {
+            stop();
+            peer = null;
+            logError('error while connecting to server');
+        }
+    };
+
+
+
+
+
+
+    window.PeerDial = function () {
+
+        console.log('TlknCall==' + 'window.PeerDial');
+
+
+        if (!peer) {
+            logError('please connect first');
+            return;
+        }
+
+        if (!localStream) {
+            logError('could not start call as there is no local camera');
+            return
+        }
+
+        var recipientId = _RemotePeerUserID;
+
+        if (!recipientId) {
+            logError('could not start call as no recipient ID is set');
+            return;
+        }
+
+
+        getLocalStream(function (stream) {
+            logMessage('outgoing call initiated');
+
+            var call = peer.call(recipientId, stream);
+
+            call.on('stream', showRemoteStream);
+
+            call.on('error', function (e) {
+                logError('error with call');
+                logError(e.message);
+            });
+        });
+
+
+
+
+
+    };
+
+    window.getLocalStreamConstraint = function (successCb) {
+        if (localStream && successCb) {
+            successCb(localStream);
+        }
+        else {
+            navigator.webkitGetUserMedia(
+                {
+                    audio: true,
+                    video: true
+                }
+
+                //{
+                //	audio: true,
+                //	video:{
+
+                //		optional: [{
+                //			sourceId: GetCameraDeviceID()
+                //					}]
+                //			}
+                //}
+
+                //constraint_VideoCall
+                ,
+
+                function (stream) {
+                    localStream = stream;
+
+                    localVideo.src = window.URL.createObjectURL(stream);
+
+                    if (successCb) {
+                        successCb(stream);
+                    }
+
+                    _IsGUMConnected = true;
+
+                    if (_CallIsOffer == true) {
+                        Android.jsCall_UserOffer();
+                        _CallIsOffer = false;
+                    }
+                    //else {
+
+                    //	Android.jsCall_UserDial();
+                    //}
+
+
+                },
+
+                function (err) {
+                    logError('failed to access local camera');
+                    logError(err.message);
+                }
+            );
+        }
+    };
+
+
+
+
+
+
+    function Call_SetStream(objStream) {
+
+        try {
+
+            console.log('TlknCall==' + 'Call_SetStream');
+
+            localVideo.srcObject = objStream;
+            localStream = objStream;
+            window.localStream = objStream;
+
+            console.log('TlknCall==' + '_IsGUMConnected = ' + _IsGUMConnected);
+
+
+            if (_CallTag == 'offer') {
+
+                setTimeout('PeerDial();', 3000);
+
+
+            }
+
+            //////////if (_CallIsOffer == true) {
+
+            //////////    _CallIsOffer = false;
+            //////////   //123X Android.jsCall_UserOffer();
+            //////////} else {
+            //////////    setTimeout('PeerDial();', 2000);
+            //////////}
+
+            _IsGUMConnected = true;
+
+            console.log('TlknCall==' + '_IsGUMConnected = ' + _IsGUMConnected);
+
+            //if (_CallIsRunning == true) {
+            //	localVideoSplash.srcObject = objStream;
+
+            //	//if (document.getElementById('divRemoteCamera').style.display == 'block')
+            //	//{
+            //	//	document.getElementById('divOwnerCameraSplash').style.display = 'none';
+            //	//} else {
+            //	//	document.getElementById('divOwnerCameraSplash').style.display = 'block';
+            //	//}
+            //}
+
+
+
+        } catch (e) {
+
+        }
+
+    }
+
+
+    window.gum = mode =>
+        navigator.mediaDevices.getUserMedia
+            (
+                {
+                    audio: true,
+                    video: {
+                        facingMode: { exact: mode }
+                    }
+                }
+            )
+            .then(stream => (Call_SetStream(stream)))
+            .catch(e => log(e));
+
+
+    window.stop = () => localVideo.srcObject && localVideo.srcObject.getTracks().forEach(t => t.stop());
+
+
+    var log = msg => logError(msg);
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /////////////////////////////////
 
 
     window.callFromCSharp = function (msg) {
@@ -267,7 +515,7 @@ document.addEventListener('DOMContentLoaded', function () {
         //  window.location = "/api/" + dataId;
         //window.external.notify('MyCSharpMethod');
     }
-    
+
 
     function callCSharpMethod() {
 

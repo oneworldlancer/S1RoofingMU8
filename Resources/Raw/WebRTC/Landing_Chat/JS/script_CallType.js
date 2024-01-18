@@ -1,0 +1,1 @@
+﻿window._CallType = null;

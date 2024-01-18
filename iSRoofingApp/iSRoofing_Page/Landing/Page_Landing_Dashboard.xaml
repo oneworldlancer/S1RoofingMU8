@@ -11,6 +11,7 @@
              xmlns:snackAutoHide="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar"
              ios:Page.UseSafeArea="False"
              NavigationPage.HasNavigationBar="False"
+               xmlns:toolkit="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
              x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing.Page_Landing_Dashboard"
               xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:listHistory="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing"
@@ -19,6 +20,14 @@
              BackgroundColor="{StaticResource iAppColor_Black}"
              Visual="Material"
               Loaded="page_LandingDashboard_Loaded">
+
+
+    <Page.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="#454545" StatusBarStyle="LightContent" />
+    </Page.Behaviors>
+
+
+
     <!--BackgroundColor=""-->
     <StackLayout HorizontalOptions="FillAndExpand"
                  Spacing="0"

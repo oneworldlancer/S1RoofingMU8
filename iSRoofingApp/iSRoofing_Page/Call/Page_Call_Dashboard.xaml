@@ -43,7 +43,9 @@
 				   VerticalOptions="FillAndExpand"
 				   BackgroundColor="Black"
 				   CornerRadius="0"
-			BorderColor="Transparent"	   HasShadow="False"
+			BorderColor="Transparent"	  
+                   
+                   HasShadow="False"
 				   Margin="0"
 				   Padding="0">
 
@@ -54,22 +56,29 @@
 					   VerticalOptions="FillAndExpand"
 					   Margin="0"
 					   Padding="0"
-					   IsVisible="false"
 					   >
 
+                    <WebView 
+            x:Name="webViewCall"
+     HorizontalOptions="FillAndExpand"
+VerticalOptions="FillAndExpand" 
+                        />
 
 
-                    <Frame HorizontalOptions="FillAndExpand"
+
+                    <!--BorderColor="Transparent"		   CornerRadius="0"
+						   HasShadow="False"-->
+                    <Grid         x:Name="grd_CallActionVideo"
+    HorizontalOptions="FillAndExpand"
 						   VerticalOptions="FillAndExpand"
 						   BackgroundColor="Transparent"
-						BorderColor="Transparent"		   CornerRadius="0"
-						   HasShadow="False"
+					
 						   Margin="0"
 						   Padding="0">
 
                         <Grid		HorizontalOptions="FillAndExpand"
 									VerticalOptions="FillAndExpand"
-									RowDefinitions="100,*,50,50,20">
+									RowDefinitions="100,*,50,50,40">
 
 
 
@@ -147,7 +156,7 @@
 
 
                         </Grid>
-                    </Frame>
+                    </Grid>
 
 
 
@@ -178,7 +187,7 @@
 						BorderColor="Transparent"		Margin="0,20,10,0"
 							Padding="0"
 							BackgroundColor="Transparent"
-							IsVisible="true">
+							IsVisible="false">
 
                         <StackLayout		 Padding="5"
 											 Spacing="0"
@@ -224,6 +233,24 @@
                     </Frame>
 
 
+                    <Grid  x:Name="grd_ToggleCallActionVideo"
+				   HorizontalOptions="Center"
+				   VerticalOptions="End"
+				   Margin="0"
+				   Padding="0"
+				   WidthRequest="30"
+                           HeightRequest="30"  IsVisible="false">
+                    
+                        <ImageButton x:Name="imgBtn_ToggleCallActionVideo"  
+                                 Source="img_menu_white.png"
+                                 BackgroundColor="Transparent"
+                                 Background="Transparent"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="End"
+                                 Clicked="imgBtn_ToggleCallActionVideo_Clicked"	
+                                WidthRequest="30"
+          HeightRequest="30"  />
+                    </Grid>
                 </Grid>
 
 
@@ -263,7 +290,7 @@
 
                         <Grid		HorizontalOptions="FillAndExpand"
 									VerticalOptions="FillAndExpand"
-									RowDefinitions="100,*,50,50,20">
+									RowDefinitions="100,*,50,50,40">
 
                             <Grid		HorizontalOptions="CenterAndExpand"
 										VerticalOptions="Start"
@@ -417,7 +444,7 @@
 
                         <Grid		HorizontalOptions="FillAndExpand"
 									VerticalOptions="FillAndExpand"
-									RowDefinitions="100,*,50,50,20">
+									RowDefinitions="100,*,50,50,40">
 
                             <Grid		HorizontalOptions="CenterAndExpand"
 										VerticalOptions="Start"
@@ -506,7 +533,7 @@
 
                         <Grid		HorizontalOptions="FillAndExpand"
 									VerticalOptions="FillAndExpand"
-									RowDefinitions="100,*,50,50,20">
+									RowDefinitions="100,*,50,50,40">
 
                             <Grid		HorizontalOptions="CenterAndExpand"
 										VerticalOptions="Start"
@@ -651,7 +678,7 @@
 							Margin="0,20,10,0"
 					BorderColor="Transparent"			Padding="0"
 							BackgroundColor="Transparent"
-							IsVisible="true">
+							IsVisible="false">
 
                         <StackLayout		 Padding="5"
 											 Spacing="0"
@@ -708,7 +735,7 @@
 
                         <Grid		HorizontalOptions="FillAndExpand"
 									VerticalOptions="FillAndExpand"
-									RowDefinitions="100,*,50,50,20">
+									RowDefinitions="100,*,50,50,40">
 
                             <Grid		HorizontalOptions="CenterAndExpand"
 										VerticalOptions="Start"

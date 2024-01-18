@@ -9,8 +9,8 @@ using S1RoofingMU.iSRoofingApp.iSRoofing_DependencyService;
 using S1RoofingMU.iSRoofingApp.iSRoofing_EnumManager;
 using S1RoofingMU.iSRoofingApp.iSRoofing_Manager;
 using S1RoofingMU.iSRoofingApp.iSRoofing_Model.Group;
-using S1RoofingMU.iSRoofingApp.iSRoofing_Model.History.Chat;
-using S1RoofingMU.iSRoofingApp.iSRoofing_Model.History.History.Call;
+ 
+using S1RoofingMU.iSRoofingApp.iSRoofing_Model.History.Call;
 using S1RoofingMU.iSRoofingApp.iSRoofing_Model.User;
 //using S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call;
 ////using S1RoofingMU.iSRoofingApp.iSRoofing_Page.Chat;

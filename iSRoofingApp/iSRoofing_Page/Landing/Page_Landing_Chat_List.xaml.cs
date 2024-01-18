@@ -1,4 +1,17 @@
-﻿using System;
+﻿
+#if ANDROID
+
+
+using Android.Webkit;
+using Android.Widget;
+
+using Java.Interop;
+
+#endif
+
+
+
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
@@ -23,6 +36,7 @@ using S1RoofingMU.iSRoofingApp.iSRoofing_Model.User;
 //////using S1RoofingMU.iSRoofingApp.iSRoofing_Page.Chat;
 //using S1RoofingMU.iSRoofingApp.iSRoofing_Page.Picker.Contact;
 using S1RoofingMU.iSRoofingApp.iSRoofing_SyncManager;
+using Newtonsoft.Json;
 
 
 
@@ -47,8 +61,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
 
             RefreshCommand = new Command(Refresh_List);
 
-            // Initialize_Command ( );
-
+            CustomizeWebViewHandler();
 
             if (!_blnIsInitialized_BroadcastReceiver)
             {
@@ -143,7 +156,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
         public static ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager> arr_History_ChatList { get; set; } = new ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager>();
         public static ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager> arr_History_ChatList_Temp { get; set; } = new ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager>();
 
-        public Page_Landing_Dashboard _iParent;
+        public static Page_Landing_Dashboard _iParent;
 
 
 
@@ -158,12 +171,17 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
                     _iParent = iParent;
                     //_iOwnerModel = _iParent._iOwnerModel;
                 }
+
                 MainThread.BeginInvokeOnMainThread(() =>
       {
+
           btn_New_Group.Text = _iParent._iLanguageModel.lblText_Group_New_Message;
           ll_ProgressBar_Chat.IsVisible = true;
-      });
 
+
+          web_HistotyChat.Source="WebRTC/Landing_Chat/Index.html";
+
+      });
 
 
 
@@ -595,9 +613,15 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
         {
 
 
+            var jsonChatList = JsonConvert.SerializeObject(arr_History_ChatList_Temp, Formatting.None);
+
+
             MainThread.BeginInvokeOnMainThread(async () =>
             {
 
+
+                //web_HistotyChat.Source="WebRTC/Landing_Chat/Index.html";
+                await web_HistotyChat.EvaluateJavaScriptAsync("loadJsonList('" + jsonChatList + "')");
 
                 // Code to run on the main thread
 
@@ -764,7 +788,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
 
 
                         //await open_ChatDashboard(_iChatScreenModel);
-                     
+
                         await _iParent.Chat_Opener(_iChatScreenModel, true);
 
 
@@ -783,7 +807,249 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
 
         }
 
+        #region WebRTC
 
+
+        // Define a C# method that you want to invoke from JavaScript
+        public static async Task MyCSharpMethod(string jsonObject)
+        {
+            // Your C# code here
+            Console.WriteLine("MyCSharpMethod-WS ::: ");
+            ///   DisplayAlert("titleX", "msg-MyCSharpMethod", "OK");
+            ///   
+
+            try
+            {
+                if (!_iParent._bln_IsBusyOnProgress)
+                {
+                    _iParent._bln_IsBusyOnProgress= true;
+
+                    await _iParent.iProgress_Start();
+
+                    //var objService = App.Current.MainPage.Handler.MauiContext.Services.GetService<iSRoofing_DependencyService_SoundClick>();
+
+                    //if (objService != null)
+                    //{
+                    //    objService.KeyboardClick();
+                    //}
+
+
+                    // string xxx = (e.CurrentSelection.FirstOrDefault() as SRoofingKeyValueModelManager).ItemValue.ToString();
+
+
+
+
+                    //  await SRoofing_AnimationManager.Animation_FadeInOut(App.Current, frm_RowContent);
+
+
+                    //  await Task.Delay ( 100 );
+
+                    _ = Task.Run(async () =>
+                    {
+
+                        SRoofingScreenChatShowHistoryMessageModelManager _iHistoryChatModel = JsonConvert.DeserializeObject<SRoofingScreenChatShowHistoryMessageModelManager>(jsonObject);
+                        //SRoofingScreenChatShowHistoryMessageModelManager _iHistoryChatModel = (SRoofingScreenChatShowHistoryMessageModelManager)e.CurrentSelection.FirstOrDefault();//(SRoofingScreenChatShowHistoryMessageModelManager)iObjectModel;
+
+                        SRoofingUserRemoteModelManager _iRemoteModel = null;
+                        SRoofingUserGroupModelManager _iGroupModel = null;
+
+                        if (_iHistoryChatModel.GroupType == (SRoofingEnum_GroupType.GroupType_PRIVATE))
+                        {
+
+                            _iRemoteModel = new SRoofingUserRemoteModelManager();
+
+                            _iRemoteModel = await SRoofingSync_User_RemoteManager
+                           .Sync_User_Remote_Get_UserModel(
+                 App.Current,
+            _iParent._iOwnerModel,
+    _iHistoryChatModel.RemoteUserTokenID,
+    _iHistoryChatModel.RemoteMobileNumberTokenID);
+
+                            if (_iRemoteModel == null)
+                            {
+                                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                                {
+                                    _iRemoteModel =
+                               await SRoofing_UserProfileRemoteManager.SRoofing_User_Get_Remote_Model_ByRemoteUserTokenID(
+                                         App.Current,
+                                         _iParent._iOwnerModel,
+                                         _iHistoryChatModel.RemoteUserTokenID,
+                                         _iHistoryChatModel.RemoteMobileNumberTokenID);
+                                }
+
+                            }
+                        }
+
+                        else if (_iHistoryChatModel.GroupType == (SRoofingEnum_GroupType.GroupType_GROUP))
+                        {
+
+                            _iRemoteModel = null;
+                        }
+
+                        _iGroupModel = new SRoofingUserGroupModelManager();
+
+
+                        _iGroupModel = await SRoofingSync_UserGroupManager.Sync_User_Group_Get_UserModel(
+                             App.Current,
+                             _iParent._iOwnerModel,
+                             _iHistoryChatModel.GroupTokenID);
+
+
+                        if (_iGroupModel == null)
+                        {
+                            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                            {
+
+                                _iGroupModel = new SRoofingUserGroupModelManager();
+
+                                _iGroupModel =
+                               await SRoofing_UserGroupManager.SRoofing_UserGroup_Get_Group_Model_ByGroupTokenID(
+
+                                           App.Current,
+                                               _iParent._iOwnerModel,
+                                                _iHistoryChatModel.GroupTokenID);
+                            }
+
+                        }
+
+
+
+
+
+
+                        SRoofingScreenChatShowScreenModel _iChatScreenModel = new SRoofingScreenChatShowScreenModel();
+                        _iChatScreenModel = await SRoofing_ScreenChatShowManager
+                      .Chat_Initialize_Chat_Show(
+                           App.Current,
+                           _iParent._iOwnerModel,
+                           _iRemoteModel,
+                           _iGroupModel);
+
+
+                        //await open_ChatDashboard(_iChatScreenModel);
+
+                        await _iParent.Chat_Opener(_iChatScreenModel, true);
+
+
+                    })
+                     .ConfigureAwait(false);
+
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                return;
+            }
+
+
+        }
+
+
+        void CustomizeWebViewHandler()
+        {
+#if ANDROID
+
+            Microsoft.Maui.Handlers.WebViewHandler.Mapper.Add("WebChromeClientXXX", (handler, view) =>
+            {
+
+                //Android.Webkit.WebView.SetWebContentsDebuggingEnabled(true);
+
+                //handler.PlatformView.Settings.UseWideViewPort= true;
+                //handler.PlatformView.Settings.JavaScriptEnabled= true;
+                //handler.PlatformView.Settings.JavaScriptCanOpenWindowsAutomatically= true;
+                //handler.PlatformView.Settings.MediaPlaybackRequiresUserGesture= false;
+
+
+                //handler.PlatformView.Settings.AllowContentAccess=true;
+                //handler.PlatformView.Settings.AllowFileAccess=true;
+                //handler.PlatformView.Settings.SetAppCacheEnabled(true);
+                //handler.PlatformView.Settings.DomStorageEnabled=true;
+
+
+                //handler.PlatformView.SetWebViewClient(new CustomWebViewClient());
+                //handler.PlatformView.SetWebChromeClient(new CustomWebChromeClient());
+
+
+                ////////////////////////////////////
+
+                //////////handler.PlatformView.SetWebViewClient(new JavascriptWebViewClient($"javascript: {JavascriptFunction}"));
+                handler.PlatformView.AddJavascriptInterface(new JsBridge(), "jsBridge");
+
+            });
+#elif WINDOWS
+#elif IOS
+#endif
+        }
+
+
+
+
+
+
+
+
+#if ANDROID
+
+
+        public class JsBridge : Java.Lang.Object
+        {
+            //readonly WeakReference<HybridWebViewRenderer> HybridWebViewMainRenderer;
+
+            //public JsBridge(HybridWebViewRenderer hybridRenderer)
+            //{
+            //    HybridWebViewMainRenderer = new WeakReference<HybridWebViewRenderer>(hybridRenderer);
+            //}
+
+            [JavascriptInterface]
+            [Export("invokeAction")]
+            //[Export()]
+            public void InvokeAction(string data)
+            {
+
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+
+                    //Toast.MakeText(Android.App.Application.Context, "InvokeAction :: " + data, ToastLength.Long).Show();
+
+                    Task.Run(async () =>
+                         {
+
+                             await MyCSharpMethod(data);
+                         });
+
+                    //DisplayAlert("titleX", "msg-JsBridge", "OK");
+
+                    // Code to run on the main thread
+
+                    Console.WriteLine("JavascriptInterface :: " + data);
+
+                });
+                //if (HybridWebViewMainRenderer != null && HybridWebViewMainRenderer.TryGetTarget(out var hybridRenderer))
+                //{
+                //    ((UCView_HybridWebView)hybridRenderer.Element).InvokeAction(data);
+                //}
+            }
+        }
+
+
+
+#elif IOS
+
+  public class JsBridge {
+  
+  }
+
+#endif
+
+
+
+
+
+
+        #endregion
 
 
     }
