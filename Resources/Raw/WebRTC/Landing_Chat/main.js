@@ -1,485 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // PeerJS server location
-    //var SERVER_IP = '41.205.116.6';
-    //var SERVER_IP = '41.205.113.23'; // loca
-    //var SERVER_IP = '146.255.34.170'; //server
-    //////var SERVER_IP = 'tlkn2.com'; //server
-    /*//var SERVER_IP = 'localhost'; //server*/
-    ///////////var SERVER_IP = 'oneworldlancer.ddns.net'; //server
-    var SERVER_IP = '160.153.251.219'; //server
-    //	var SERVER_PORT = 1337;
-    var SERVER_PORT = 1979;
-
-    // DOM elements manipulated as user interacts with the app
-    var messageBox = document.querySelector('#messages');
-    var callerIdEntry = document.querySelector('#caller-id');
-
-    var connectBtn = document.querySelector('#connect');
-    var connectCSBtn = document.querySelector('#connectCS');
-
-    var muteBtn = document.querySelector('#mute');
-    var unmuteBtn = document.querySelector('#unmute');
-
-    var pauseBtn = document.querySelector('#pause');
-    var resumetBtn = document.querySelector('#resume');
-
-    var recipientIdEntry = document.querySelector('#recipient-id');
-    var dialBtn = document.querySelector('#dial');
-    var remoteVideo = document.querySelector('#remote-video');
-    var localVideo = document.querySelector('#local-video');
-
-    // the ID set for this client
-    var callerId = null;
-
-    // PeerJS object, instantiated when this client connects with its
-    // caller ID
-    var peer = null;
-
-    // the local video stream captured with getUserMedia()
-    var localStream = null;
-
-    // DOM utilities
-    var makePara = function (text) {
-        var p = document.createElement('p');
-        p.innerText = text;
-        return p;
-    };
-
-    var addMessage = function (para) {
-        if (messageBox.firstChild) {
-            messageBox.insertBefore(para, messageBox.firstChild);
-        }
-        else {
-            messageBox.appendChild(para);
-        }
-    };
-
-    var logError = function (text) {
-        var p = makePara('ERROR: ' + text);
-        p.style.color = 'red';
-        addMessage(p);
-    };
-
-    var logMessage = function (text) {
-        addMessage(makePara(text));
-    };
-
-    // get the local video and audio stream and show preview in the
-    // "LOCAL" video element
-    // successCb: has the signature successCb(stream); receives
-    // the local video stream as an argument
-    var getLocalStream = function (successCb) {
-        if (localStream && successCb) {
-            successCb(localStream);
-        }
-        else {
-
-            navigator.getUserMedia = navigator.webkitGetUserMedia || navigator.getUserMedia;
-
-            navigator.getUserMedia(
-                {
-                    audio: true,
-                    video: true
-                },
-
-                function (stream) {
-                    localStream = stream;
-
-                    //localVideo.src = window.URL.createObjectURL( stream );
-                    localVideo.srcObject = stream;
-                    //localVideo.play();
-
-
-                    if (successCb) {
-                        successCb(stream);
-                    }
-                },
-
-                function (err) {
-                    logError('failed to access local camera');
-                    logError(err.message);
-                }
-            );
-        }
-    };
-
-    // set the "REMOTE" video element source
-    var showRemoteStream = function (stream) {
-        //remoteVideo.src = window.URL.createObjectURL( stream );
-        remoteVideo.srcObject = stream;
-        //remoteVideo.play();
-    };
-
-    // set caller ID and connect to the PeerJS server
-    var connect = function () {
-        callerId = callerIdEntry.value;
-
-        if (!callerId) {
-            logError('please set caller ID first');
-            return;
-        }
-
-        try {
-            // create connection to the ID server
-            peer = new Peer(callerId, { host: SERVER_IP, port: SERVER_PORT });
-
-            // hack to get around the fact that if a server connection cannot
-            // be established, the peer and its socket property both still have
-            // open === true; instead, listen to the wrapped WebSocket
-            // and show an error if its readyState becomes CLOSED
-            peer.socket._socket.onclose = function () {
-                logError('no connection to server');
-                peer = null;
-            };
-
-            // get local stream ready for incoming calls once the wrapped
-            // WebSocket is open
-            peer.socket._socket.onopen = function () {
-                getLocalStream();
-            };
-
-            // handle events representing incoming calls
-            peer.on('call', answer);
-        }
-        catch (e) {
-            peer = null;
-            logError('error while connecting to server');
-        }
-    };
-
-    // make an outgoing call
-    var dial = function () {
-        if (!peer) {
-            logError('please connect first');
-            return;
-        }
-
-        if (!localStream) {
-            logError('could not start call as there is no local camera');
-            return
-        }
-
-        var recipientId = recipientIdEntry.value;
-
-        if (!recipientId) {
-            logError('could not start call as no recipient ID is set');
-            return;
-        }
-
-        getLocalStream(function (stream) {
-            logMessage('outgoing call initiated');
-
-            var call = peer.call(recipientId, stream);
-
-            call.on('stream', showRemoteStream);
-
-            call.on('error', function (e) {
-                logError('error with call');
-                logError(e.message);
-            });
-        });
-
-
-    };
-
-    // answer an incoming call
-    var answer = function (call) {
-        if (!peer) {
-            logError('cannot answer a call without a connection');
-            return;
-        }
-
-        if (!localStream) {
-            logError('could not answer call as there is no localStream ready');
-            return;
-        }
-
-        logMessage('incoming call answered');
-
-        call.on('stream', showRemoteStream);
-
-        call.answer(localStream);
-    };
-
-    // wire up button events
-    connectBtn.addEventListener('click', connect);
-    dialBtn.addEventListener('click', dial);
-
-    muteBtn.addEventListener('click', callMute);
-    unmuteBtn.addEventListener('click', callUnMute);
-
-    pauseBtn.addEventListener('click', callPause);
-    resumetBtn.addEventListener('click', callResume);
-
-    connectCSBtn.addEventListener('click', callCSharpMethod);
-
-
-    function callMute() {
-        if (localStream) {
-            //audioTracks[i].enabled = !audioTracks[i].enabled;
-            localStream.getAudioTracks()[0].enabled = false;
-
-        }
-    }
-
-    function callUnMute() {
-        if (localStream) {
-            //audioTracks[i].enabled = !audioTracks[i].enabled;
-            localStream.getAudioTracks()[0].enabled = true;
-
-        }
-    }
-
-    function callPause() {
-        if (localStream) {
-            //audioTracks[i].enabled = !audioTracks[i].enabled;
-            localStream.getVideoTracks()[0].enabled = false;
-
-        }
-    }
-
-    function callResume() {
-        if (localStream) {
-            //audioTracks[i].enabled = !audioTracks[i].enabled;
-            localStream.getVideoTracks()[0].enabled = true;
-
-        }
-    }
-
-
-    ////////////////////////////////////
-
-
-
-
-
-    window.PeerConnect = function () {
-
-        console.log('TlknCall==' + 'window.PeerConnect');
-
-
-        //callerId = callerIdEntry.value;
-        callerId = _OwnerPeerUserID;
-
-        if (!callerId) {
-            logError('please set caller ID first');
-            return;
-        }
-
-        try {
-            // create connection to the ID server
-            peer = new Peer(callerId, { host: SERVER_IP, port: SERVER_PORT });
-
-            // hack to get around the fact that if a server connection cannot
-            // be established, the peer and its socket property both still have
-            // open === true; instead, listen to the wrapped WebSocket
-            // and show an error if its readyState becomes CLOSED
-            peer.socket._socket.onclose = function () {
-                logError('no connection to server');
-                peer = null;
-            };
-
-            // get local stream ready for incoming calls once the wrapped
-            // WebSocket is open
-            peer.socket._socket.onopen = function () {
-                //getLocalStream();
-                //getLocalStreamConstraint();
-
-                stop();
-                gum('user');
-
-            };
-
-            // handle events representing incoming calls
-            peer.on('call', answer);
-        }
-        catch (e) {
-            peer = null;
-            logError('error while connecting to server');
-        }
-    };
-
-
-
-
-
-
-    window.PeerDial = function () {
-
-        console.log('TlknCall==' + 'window.PeerDial');
-
-
-        if (!peer) {
-            logError('please connect first');
-            return;
-        }
-
-        if (!localStream) {
-            logError('could not start call as there is no local camera');
-            return
-        }
-
-        var recipientId = _RemotePeerUserID;
-
-        if (!recipientId) {
-            logError('could not start call as no recipient ID is set');
-            return;
-        }
-
-
-        getLocalStream(function (stream) {
-            logMessage('outgoing call initiated');
-
-            var call = peer.call(recipientId, stream);
-
-            call.on('stream', showRemoteStream);
-
-            call.on('error', function (e) {
-                logError('error with call');
-                logError(e.message);
-            });
-        });
-
-
-
-
-
-    };
-
-    window.getLocalStreamConstraint = function (successCb) {
-        if (localStream && successCb) {
-            successCb(localStream);
-        }
-        else {
-            navigator.webkitGetUserMedia(
-                {
-                    audio: true,
-                    video: true
-                }
-
-                //{
-                //	audio: true,
-                //	video:{
-
-                //		optional: [{
-                //			sourceId: GetCameraDeviceID()
-                //					}]
-                //			}
-                //}
-
-                //constraint_VideoCall
-                ,
-
-                function (stream) {
-                    localStream = stream;
-
-                    localVideo.src = window.URL.createObjectURL(stream);
-
-                    if (successCb) {
-                        successCb(stream);
-                    }
-
-                    _IsGUMConnected = true;
-
-                    if (_CallIsOffer == true) {
-                        Android.jsCall_UserOffer();
-                        _CallIsOffer = false;
-                    }
-                    //else {
-
-                    //	Android.jsCall_UserDial();
-                    //}
-
-
-                },
-
-                function (err) {
-                    logError('failed to access local camera');
-                    logError(err.message);
-                }
-            );
-        }
-    };
-
-
-
-
-
-
-    function Call_SetStream(objStream) {
-
-        try {
-
-            console.log('TlknCall==' + 'Call_SetStream');
-
-            localVideo.srcObject = objStream;
-            localStream = objStream;
-            window.localStream = objStream;
-
-            console.log('TlknCall==' + '_IsGUMConnected = ' + _IsGUMConnected);
-
-
-            if (_CallTag == 'offer') {
-
-                setTimeout('PeerDial();', 3000);
-
-
-            }
-
-            //////////if (_CallIsOffer == true) {
-
-            //////////    _CallIsOffer = false;
-            //////////   //123X Android.jsCall_UserOffer();
-            //////////} else {
-            //////////    setTimeout('PeerDial();', 2000);
-            //////////}
-
-            _IsGUMConnected = true;
-
-            console.log('TlknCall==' + '_IsGUMConnected = ' + _IsGUMConnected);
-
-            //if (_CallIsRunning == true) {
-            //	localVideoSplash.srcObject = objStream;
-
-            //	//if (document.getElementById('divRemoteCamera').style.display == 'block')
-            //	//{
-            //	//	document.getElementById('divOwnerCameraSplash').style.display = 'none';
-            //	//} else {
-            //	//	document.getElementById('divOwnerCameraSplash').style.display = 'block';
-            //	//}
-            //}
-
-
-
-        } catch (e) {
-
-        }
-
-    }
-
-
-    window.gum = mode =>
-        navigator.mediaDevices.getUserMedia
-            (
-                {
-                    audio: true,
-                    video: {
-                        facingMode: { exact: mode }
-                    }
-                }
-            )
-            .then(stream => (Call_SetStream(stream)))
-            .catch(e => log(e));
-
-
-    window.stop = () => localVideo.srcObject && localVideo.srcObject.getTracks().forEach(t => t.stop());
-
-
-    var log = msg => logError(msg);
-
-
-
-
 
 
 
@@ -490,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     /////////////////////////////////
-
 
     window.callFromCSharp = function (msg) {
 
@@ -524,3 +42,66 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 });
+
+
+
+
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
+window.loadJsonList = async function (arrJsonList) {
+
+
+    try {
+
+        //alert('callFromCSharp == ' + 'xxxx');
+
+        /*var new_field_html = '<div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;"><div class="col-11" ><input type="text"  type="url" pattern="https?://.+" class="form-control" id="input_fileURL2" name="input_fileURL2" placeholder="Insert your hyperlink here ..." style="color:blue;"   data-inputfor="fupload"  required /></div><div class="col-1 text-center" style="width:50px;" ><img id="img_delURL2" name="img_delURL2" class="remove_input_button"  src="https://bsr.vemcoconsulting.com/img/img_delete.png" style="width:20px;height:20px;" alt="Delete" title="Delete" /></div></div>';*/
+
+        var new_field_html;// = '<div class="row m-1 p-1 d-flex flex-row" style="height: 90px; color: white; background-color: #656565; border-radius: 5px; border: 1px solid #656565;" onclick="doClick();"><div style = "width:60px;margin:0px; padding: 0px;" ><div class="ms-1 mt-1 rounded-circle text-cetner align-middle" style="width:50px;height:50px;background-color:black;text-align:center;vertical-align:middle;"><div style="width:50px;height:50px;font-size:large;padding-top:10px;">SH</div></div></div ><div class="col d-flex flex-column" style="margin: 0px; padding: 0px; "><div style="color:black;font-size:large;">Shaymaa Hafez</div><div style="color:white;font-size:medium;">+201221977230</div><div style="color:whitesmoke;font-size:small;">Egypt, Ismailia</div></div><div class="p-1 float-end" style="width: 40px; margin: 0px; padding: 0px; "><img src="img/img_chat_white.png" class="float-end" alt="Logo" width="30" height="30" /></div></div> ';
+
+
+        window.arrJson = JSON.parse(arrJsonList);
+
+        //alert('arrJson == ' + arrJson.length);
+        //alert('arrJson[0].GroupTitle == ' + arrJson[0].GroupTitle);
+
+        $('#div_HTMLContent').empty();
+
+
+        await sleep(500);
+
+
+        for (var i = 0; i < window.arrJson.length; i++) {
+
+            await sleep(i * 50);
+
+            //alert('JSON.stringify(arrJson[i])  == ' + JSON.stringify(arrJson[i]));
+
+            // onclick="doClick(\'asasa\');"
+            //var jsonStringfy = JSON.stringify(arrJson[i]);// 'jsonStringfy';
+
+            //alert('jsonStringfy == ' + jsonStringfy);
+
+            new_field_html = '<div class="row m-1 p-1 d-flex flex-row" style="height: 90px; color: white; background-color: #656565; border-radius: 5px; border: 1px solid #656565;" onclick="doClick(\' ' + i + ' \');"><div style = "width:60px;margin:0px; padding: 0px;" ><div class="ms-1 mt-1 rounded-circle text-cetner align-middle" style="width:50px;height:50px;background-color:black;text-align:center;vertical-align:middle;"><div style="width:50px;height:50px;font-size:large;padding-top:10px;">' + window.arrJson[i].AvatarName + '</div></div></div ><div class="col d-flex flex-column" style="margin: 0px; padding: 0px; "><div style="color:black;font-size:large;margin:0px; padding: 0px;">' + window.arrJson[i].GroupTitle + '</div><div style="color:white;font-size:medium;margin:0px; padding: 0px;">' + arrJson[i].MessageText + '</div><div style="color:whitesmoke;font-size:small;margin:0px; padding: 0px;">' + window.arrJson[i].DateTimeText + '</div></div><div class="p-1 float-end" style="width: 40px; margin: 0px; padding: 0px; "><img src="img/img_chat_white.png" class="float-end" alt="Logo" width="30" height="30" style="margin:0px; padding: 0px;" /></div></div> ';
+
+            $("#div_HTMLContent").append(new_field_html);
+
+
+        }
+
+    }
+    catch (err) {
+
+        //alert(err);
+    }
+
+
+
+
+
+}
+

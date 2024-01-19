@@ -24,10 +24,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <script src="JS/jquery.draggableTouch.js"></script>
-
-
-    <script src="JS/script_querystring.js"></script>
+    <!--<script src="JS/jquery.draggableTouch.js"></script>-->
+    <!--<script src="JS/script_querystring.js"></script>
 
 
     <script src="JS/script_CallConnection.js"></script>
@@ -42,7 +40,7 @@
     <script src="JS/script_CameraID.js"></script>
     <script src="JS/script_CameraTarget.js"></script>
     <script src="JS/script_CameraType.js"></script>
-    <script src="JS/script_timer.js"></script>
+    <script src="JS/script_timer.js"></script>-->
 
 
 
@@ -53,142 +51,65 @@
 
     <script>
 
-        $(document).ready(function () {
 
-            // $(".draggable").draggableTouch();
-
-            //$("#enable").click(function () {
-            //    $(".draggable").draggableTouch();
-            //});
-            //$("#enable-transform").click(function () {
-            //    $(".draggable").draggableTouch({ useTransform: true });
-            //});
-            //$("#disable").click(function () {
-            //    $(".draggable").draggableTouch("disable");
-            //});
-
-            //$(".draggable").bind("dragstart", function (e, pos) {
-            //    console.log("dragstart:", this, pos.left + "," + pos.top);
-            //}).bind("dragend", function (e, pos) {
-            //    console.log("dragend:", this, pos.left + "," + pos.top);
-            //});
-        });
-
-        //$(function () {
-        //    $("#div_OwnerVideo").draggableTouch();
-
-        //});
         window.arrJson;
 
-        window.onload = async function () {
-
-
-            ////////////////////    window.arrJson = JSON.parse(strJson);
-
-            ////////////////////    //alert('arrJson == ' + arrJson.length);
-            ////////////////////    //alert('arrJson[0].GroupTitle == ' + arrJson[0].GroupTitle);
-
-
-            ////////////////////    for (var i = 0; i < window.arrJson.length; i++) {
-
-            ////////////////////        await sleep(i * 10);
-
-            ////////////////////        //alert('JSON.stringify(arrJson[i])  == ' + JSON.stringify(arrJson[i]));
-
-            ////////////////////        // onclick="doClick(\'asasa\');"
-            ////////////////////        //var jsonStringfy = JSON.stringify(arrJson[i]);// 'jsonStringfy';
-
-            ////////////////////        //alert('jsonStringfy == ' + jsonStringfy);
-
-            ////////////////////        new_field_html = '<div class="row m-1 p-1 d-flex flex-row" style="height: 90px; color: white; background-color: #656565; border-radius: 5px; border: 1px solid #656565;" onclick="doClick(\' ' + i + ' \');"><div style = "width:60px;margin:0px; padding: 0px;" ><div class="ms-1 mt-1 rounded-circle text-cetner align-middle" style="width:50px;height:50px;background-color:black;text-align:center;vertical-align:middle;"><div style="width:50px;height:50px;font-size:large;padding-top:10px;">' + window.arrJson[i].AvatarName + '</div></div></div ><div class="col d-flex flex-column" style="margin: 0px; padding: 0px; "><div style="color:black;font-size:large;">' + window.arrJson[i].RemoteFullName + '</div><div style="color:white;font-size:medium;">' + arrJson[i].MessageText + '</div><div style="color:whitesmoke;font-size:small;">' + window.arrJson[i].DateTimeText + '</div></div><div class="p-1 float-end" style="width: 40px; margin: 0px; padding: 0px; "><img src="img/img_chat_white.png" class="float-end" alt="Logo" width="30" height="30" /></div></div> ';
-
-            ////////////////////        $("#div_HTMLContent").append(new_field_html);
-
-
-            ////////////////////    }
-
-            ////////////////////}
-            ////////////////////catch (err) {
-
-
-            ////////////////////}
-
-
-
-            //////////$(".draggable").draggableTouch();
-
-
-
-
-            ////////////OnLoad_Owner_ShowCamera();
-            ////////////docHeight();
-
-            //////////Call_LoadParam();
-
-            //////////if (_CallType == 'video') {
-            //////////    document.getElementById('div_OwnerVideo').style.display = 'block';
-            //////////    document.getElementById('div_RemoteVideo').style.display = 'block';
-            //////////}
-
-            ////////////LoadMediaDeviceList();
-
-            //////////ConnectServer();
-
-        };
-
-
-
-
-
-
-        window.loadJsonList = async function (arrJsonList) {
-
-
-            try {
-
-                //alert('callFromCSharp == ' + 'xxxx');
-
-                /*var new_field_html = '<div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;"><div class="col-11" ><input type="text"  type="url" pattern="https?://.+" class="form-control" id="input_fileURL2" name="input_fileURL2" placeholder="Insert your hyperlink here ..." style="color:blue;"   data-inputfor="fupload"  required /></div><div class="col-1 text-center" style="width:50px;" ><img id="img_delURL2" name="img_delURL2" class="remove_input_button"  src="https://bsr.vemcoconsulting.com/img/img_delete.png" style="width:20px;height:20px;" alt="Delete" title="Delete" /></div></div>';*/
-
-                var new_field_html;// = '<div class="row m-1 p-1 d-flex flex-row" style="height: 90px; color: white; background-color: #656565; border-radius: 5px; border: 1px solid #656565;" onclick="doClick();"><div style = "width:60px;margin:0px; padding: 0px;" ><div class="ms-1 mt-1 rounded-circle text-cetner align-middle" style="width:50px;height:50px;background-color:black;text-align:center;vertical-align:middle;"><div style="width:50px;height:50px;font-size:large;padding-top:10px;">SH</div></div></div ><div class="col d-flex flex-column" style="margin: 0px; padding: 0px; "><div style="color:black;font-size:large;">Shaymaa Hafez</div><div style="color:white;font-size:medium;">+201221977230</div><div style="color:whitesmoke;font-size:small;">Egypt, Ismailia</div></div><div class="p-1 float-end" style="width: 40px; margin: 0px; padding: 0px; "><img src="img/img_chat_white.png" class="float-end" alt="Logo" width="30" height="30" /></div></div> ';
-
-
-                window.arrJson = JSON.parse(arrJsonList);
-
-                //alert('arrJson == ' + arrJson.length);
-                //alert('arrJson[0].GroupTitle == ' + arrJson[0].GroupTitle);
-
-                $('#div_HTMLContent').empty();
-
-                for (var i = 0; i < window.arrJson.length; i++) {
-
-                    await sleep(i * 50);
-
-                    //alert('JSON.stringify(arrJson[i])  == ' + JSON.stringify(arrJson[i]));
-
-                    // onclick="doClick(\'asasa\');"
-                    //var jsonStringfy = JSON.stringify(arrJson[i]);// 'jsonStringfy';
-
-                    //alert('jsonStringfy == ' + jsonStringfy);
-
-                    new_field_html = '<div class="row m-1 p-1 d-flex flex-row" style="height: 90px; color: white; background-color: #656565; border-radius: 5px; border: 1px solid #656565;" onclick="doClick(\' ' + i + ' \');"><div style = "width:60px;margin:0px; padding: 0px;" ><div class="ms-1 mt-1 rounded-circle text-cetner align-middle" style="width:50px;height:50px;background-color:black;text-align:center;vertical-align:middle;"><div style="width:50px;height:50px;font-size:large;padding-top:10px;">' + window.arrJson[i].AvatarName + '</div></div></div ><div class="col d-flex flex-column" style="margin: 0px; padding: 0px; "><div style="color:black;font-size:large;">' + window.arrJson[i].GroupTitle + '</div><div style="color:white;font-size:medium;">' + arrJson[i].MessageText + '</div><div style="color:whitesmoke;font-size:small;">' + window.arrJson[i].DateTimeText + '</div></div><div class="p-1 float-end" style="width: 40px; margin: 0px; padding: 0px; "><img src="img/img_chat_white.png" class="float-end" alt="Logo" width="30" height="30" /></div></div> ';
-
-                    $("#div_HTMLContent").append(new_field_html);
-
-
-                }
-
-            }
-            catch (err) {
-
-                alert(err);
-            }
-
-
-
-
-
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
         }
+
+        //////////async function loadJsonList(arrJsonList) {
+
+
+        //////////    try {
+
+        //////////        //alert('callFromCSharp == ' + 'xxxx');
+
+        //////////        /*var new_field_html = '<div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;"><div class="col-11" ><input type="text"  type="url" pattern="https?://.+" class="form-control" id="input_fileURL2" name="input_fileURL2" placeholder="Insert your hyperlink here ..." style="color:blue;"   data-inputfor="fupload"  required /></div><div class="col-1 text-center" style="width:50px;" ><img id="img_delURL2" name="img_delURL2" class="remove_input_button"  src="https://bsr.vemcoconsulting.com/img/img_delete.png" style="width:20px;height:20px;" alt="Delete" title="Delete" /></div></div>';*/
+
+        //////////        var new_field_html;// = '<div class="row m-1 p-1 d-flex flex-row" style="height: 90px; color: white; background-color: #656565; border-radius: 5px; border: 1px solid #656565;" onclick="doClick();"><div style = "width:60px;margin:0px; padding: 0px;" ><div class="ms-1 mt-1 rounded-circle text-cetner align-middle" style="width:50px;height:50px;background-color:black;text-align:center;vertical-align:middle;"><div style="width:50px;height:50px;font-size:large;padding-top:10px;">SH</div></div></div ><div class="col d-flex flex-column" style="margin: 0px; padding: 0px; "><div style="color:black;font-size:large;">Shaymaa Hafez</div><div style="color:white;font-size:medium;">+201221977230</div><div style="color:whitesmoke;font-size:small;">Egypt, Ismailia</div></div><div class="p-1 float-end" style="width: 40px; margin: 0px; padding: 0px; "><img src="img/img_chat_white.png" class="float-end" alt="Logo" width="30" height="30" /></div></div> ';
+
+
+        //////////        window.arrJson = JSON.parse(arrJsonList);
+
+        //////////        //alert('arrJson == ' + arrJson.length);
+        //////////        //alert('arrJson[0].GroupTitle == ' + arrJson[0].GroupTitle);
+
+        //////////        $('#div_HTMLContent').empty();
+
+
+        //////////        await sleep(500);
+
+
+        //////////        for (var i = 0; i < window.arrJson.length; i++) {
+
+        //////////            await sleep(i * 50);
+
+        //////////            //alert('JSON.stringify(arrJson[i])  == ' + JSON.stringify(arrJson[i]));
+
+        //////////            // onclick="doClick(\'asasa\');"
+        //////////            //var jsonStringfy = JSON.stringify(arrJson[i]);// 'jsonStringfy';
+
+        //////////            //alert('jsonStringfy == ' + jsonStringfy);
+
+        //////////            new_field_html = '<div class="row m-1 p-1 d-flex flex-row" style="height: 90px; color: white; background-color: #656565; border-radius: 5px; border: 1px solid #656565;" onclick="doClick(\' ' + i + ' \');"><div style = "width:60px;margin:0px; padding: 0px;" ><div class="ms-1 mt-1 rounded-circle text-cetner align-middle" style="width:50px;height:50px;background-color:black;text-align:center;vertical-align:middle;"><div style="width:50px;height:50px;font-size:large;padding-top:10px;">' + window.arrJson[i].AvatarName + '</div></div></div ><div class="col d-flex flex-column" style="margin: 0px; padding: 0px; "><div style="color:black;font-size:large;margin:0px; padding: 0px;">' + window.arrJson[i].GroupTitle + '</div><div style="color:white;font-size:medium;margin:0px; padding: 0px;">' + arrJson[i].MessageText + '</div><div style="color:whitesmoke;font-size:small;margin:0px; padding: 0px;">' + window.arrJson[i].DateTimeText + '</div></div><div class="p-1 float-end" style="width: 40px; margin: 0px; padding: 0px; "><img src="img/img_chat_white.png" class="float-end" alt="Logo" width="30" height="30" style="margin:0px; padding: 0px;" /></div></div> ';
+
+        //////////            $("#div_HTMLContent").append(new_field_html);
+
+
+        //////////        }
+
+        //////////    }
+        //////////    catch (err) {
+
+        //////////        //alert(err);
+        //////////    }
+
+
+
+
+
+        //////////}
 
 
 
@@ -209,15 +130,19 @@
             }
 
             catch (err) {
-                alert(err);
+                //alert(err);
             }
 
         }
 
 
-        function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
+
+        //$(document).ready(function () {
+
+        //    /*            window.*/
+
+
+        //});
 
     </script>
 
@@ -323,109 +248,9 @@
 
 
 
-
-
-
-
-
-    <div class="w-100" style="margin:0px;padding:0px;position:absolute;display:none">
-
-
-        <div id="div_RemoteVideo" class="h-100 w-100" style="background-color:red;position:absolute;margin:0px;padding:0px;z-index:10;">
-            <!--class="position-absolute top-50 start-50 translate-middle"-->
-            <div class="h-100 w-100" style="background-color: yellow; margin: 0px; padding: 0px;">
-                <video id="remote-video" style="object-fit: cover;width: 100%; height: 100%; margin: 0px; padding: 0px;" autoplay playsinline></video>
-            </div>
-        </div>
-        <div id="div_OwnerVideo" class="rounded-circle align-text-bottom position-absolute top-100 start-50 translate-middle"
-             style="position: absolute; margin:auto;vertical-align:bottom;width: 200px; height: 200px; z-index:20;bottom:-80px; display: block;">
-            <!--class="draggable"-->
-            <div style="position: relative;width:200px;height:200px;z-index:30;display:inline-block;">
-
-                <video id="local-video" class="draggable" autoplay muted
-                       style="position: absolute;width: 150px; height: 150px; margin: auto; padding: 0px; background-color: #000000;
- border-radius: 100%;
-object-fit: cover;
-
-    overflow:hidden;"></video>
-
-
-
-            </div>
-
-        </div>
-
-
-        <!--<div id="div_OwnerVideo" class="rounded-circle" style="background-color:red;position:absolute;margin:0px;padding:0px;display:block;z-index:20;">-->
-        <!--class="position-absolute top-50 start-50 translate-middle"-->
-        <!--<div class="h-100 w-100" style="margin: 0px; padding: 0px;">-->
-        <!--<video id="local-video" style="width: 100%; height: auto; margin: 0px; padding: 0px;" autoplay playsinline></video>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--<div class="h-100 w-100" style="position:absolute;margin:0px;padding:0px;display:flex;flex-direction:column;z-index:10;">
-
-            <div class="h-50 w-100" style="margin:0px;padding:0px;">
-
-            </div>
-
-
-            <div class="h-50 w-100" style="margin: 0px; padding: 0px; background-color: red; display: block; ">
-
-
-            </div>
-
-        </div>-->
-
-
-
-        <div style="width:300px;position: absolute; z-index: 10; margin: 0px; padding: 0px; display: none;z-index:30;">
-
-            <div>
-                <!--<button id="connect">Connect</button>-->
-                <button id="mute">Mute</button>
-                <button id="unmute">Unmute</button>
-                <button id="pause">Pause Video</button>
-                <button id="resume">Resume Video</button>
-            </div>
-
-            <div id="credentials">
-
-                Connect as:
-                <input type="text" id="caller-id" size="15" value="xuserx">
-                <button id="connect">Connect</button>
-
-            </div>
-
-            <div id="dialler" data-active="false">
-
-                Make call to:
-                <input type="select" id="recipient-id">
-                </input>
-                <button id="dial">Call</button>
-
-                <button id="connectCS">ConnectCS</button>
-
-                <!--<p><strong>REMOTE:</strong></p>-->
-                <!--<video id="remote-video" autoplay playsinline></video>-->
-
-                <hr>
-                <!--controls muted-->
-                <!--<p><strong>LOCAL:</strong></p>-->
-                <!--<video id="local-video" autoplay playsinline></video>-->
-            </div>
-
-            <hr>
-
-            <div id="messages">
-            </div>
-
-
-        </div>
-
-    </div>
-
-    <script src="peer.js"></script>
     <script src="main.js"></script>
+
+
 </body>
 
 </html>

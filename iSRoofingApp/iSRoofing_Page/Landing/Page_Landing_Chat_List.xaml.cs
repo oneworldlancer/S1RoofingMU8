@@ -611,56 +611,69 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
 
         async Task ShowList()
         {
-
-
-            var jsonChatList = JsonConvert.SerializeObject(arr_History_ChatList_Temp, Formatting.None);
-
-
-            MainThread.BeginInvokeOnMainThread(async () =>
+            try
             {
 
-
-                //web_HistotyChat.Source="WebRTC/Landing_Chat/Index.html";
-                await web_HistotyChat.EvaluateJavaScriptAsync("loadJsonList('" + jsonChatList + "')");
-
-                // Code to run on the main thread
-
-                if (refresh_ChatList.IsRefreshing)
-                {
-                    refresh_ChatList.IsRefreshing = false;
-                }
-
-                ll_ProgressBar_Chat.IsVisible = false;
-
-                if (cv_UserChatHistoryList.ItemsSource == null)
-                {
-                    cv_UserChatHistoryList.ItemsSource = arr_History_ChatList;
-                }
-
-                if (arr_History_ChatList_Temp != null)
-                {
-                    arr_History_ChatList.Clear();
-
-                    for (int i = 0; i < arr_History_ChatList_Temp.Count; i++)
-                    {
-                        arr_History_ChatList.Add(arr_History_ChatList_Temp[i]);
-
-                        await Task.Delay(SRoofing_EnumGlobalPreference.Global_ROW_LIST_DELAY);
-                    }
-
-                }
-
-                _iParent.llProgress_ToggleVisible_ChatList(true, false);
-
-                _bln_IsInitialized_History_ChatList = true;
-
-                App._blnSyncHistory_ScreenChatShow_CHAT_Landing_List = false;
+                //_ = Task.Run(async () =>
+                //                    {
 
 
+                //                    }).ConfigureAwait(false);
+
+                MainThread.BeginInvokeOnMainThread(async () =>
+               {
 
 
-            });
+                   // Code to run on the main thread
+                   var jsonChatList = JsonConvert.SerializeObject(arr_History_ChatList_Temp, Formatting.None);
 
+                   //web_HistotyChat.Source="WebRTC/Landing_Chat/Index.html";
+                   await web_HistotyChat.EvaluateJavaScriptAsync("loadJsonList('" + jsonChatList + "')");
+
+                   if (refresh_ChatList.IsRefreshing)
+                   {
+                       refresh_ChatList.IsRefreshing = false;
+                   }
+
+                   ll_ProgressBar_Chat.IsVisible = false;
+
+                   //////////if (cv_UserChatHistoryList.ItemsSource == null)
+                   //////////{
+                   //////////    cv_UserChatHistoryList.ItemsSource = arr_History_ChatList;
+                   //////////}
+
+                   //////////if (arr_History_ChatList_Temp != null)
+                   //////////{
+                   //////////    arr_History_ChatList.Clear();
+
+                   //////////    for (int i = 0; i < arr_History_ChatList_Temp.Count; i++)
+                   //////////    {
+                   //////////        arr_History_ChatList.Add(arr_History_ChatList_Temp[i]);
+
+                   //////////        await Task.Delay(SRoofing_EnumGlobalPreference.Global_ROW_LIST_DELAY);
+                   //////////    }
+
+                   //////////}
+
+                   _iParent.llProgress_ToggleVisible_ChatList(true, false);
+
+                   _bln_IsInitialized_History_ChatList = true;
+
+                   App._blnSyncHistory_ScreenChatShow_CHAT_Landing_List = false;
+
+
+
+
+               });
+
+
+            }
+            catch (Exception ex)
+            {
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                return;
+
+            }
 
 
         }

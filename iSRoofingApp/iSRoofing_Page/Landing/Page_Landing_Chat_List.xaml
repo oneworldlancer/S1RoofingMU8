@@ -226,20 +226,21 @@
                    Margin="0,0,10,0" />-->
                     </Grid>
                 </Frame>
-                <!---->
+                <!--    HeightRequest="500"-->
                 <ScrollView
        HorizontalOptions="FillAndExpand"
 VerticalOptions="FillAndExpand"
-       Margin="0"
+   Margin="0"
        Padding="0"
            BackgroundColor="{StaticResource iAppColor_SemiGray}" 
                     Orientation="Vertical"
        VerticalScrollBarVisibility="Never" >
-                    <!--VerticalOptions="FillAndExpand"-->
+                    <!--HeightRequest="500"
+          iAppColor_SemiGray-->
                     <WebView 
             x:Name="web_HistotyChat"
      HorizontalOptions="FillAndExpand"
-
+           VerticalOptions="FillAndExpand" 
        BackgroundColor="{StaticResource iAppColor_SemiGray}"
 IsVisible="true"   />
 

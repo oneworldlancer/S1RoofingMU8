@@ -710,6 +710,8 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
 
                     // Code to run on the main thread
 
+                    frm_TimerText.IsVisible=false;
+
 
                     lbl_CallMessageText.Text = strMessageText;
 
@@ -729,6 +731,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
                 //handler_Start_CloseScreen ( );
 
                 await ShowView(ll_Drop, ll_Redial);
+                await ShowView(null, ll_Redial);
 
                 CallWindow = "close";
 
@@ -1323,12 +1326,12 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
                 _=  Task.Run(async () =>
                 {
 
-                    string skt_Message = _iCallModel.CallTokenID + "-" +  _iCallModel.GroupTokenID + "-" + _iOwnerModel.OwnerUserTokenID + "-" + _iOwnerModel.OwnerMobileNumberTokenID + "-"+ SRoofingEnum_Socket_Call.SRoofingSocket_Call_EndTime + ",0x0x0x";
+                    string skt_Message = _iCallModel.CallTokenID + "-" +  _iCallModel.GroupTokenID + "-" + _iOwnerModel.OwnerUserTokenID + "-" + _iOwnerModel.OwnerMobileNumberTokenID + "-"+ SRoofingEnum_Socket_Call.SRoofingSocket_Call_EndTime + "," +lbl_TimerText.Text;
 
                     await Send(client, skt_Message, CancellationToken.None);
 
 
-
+                    await CallTimer_Stop();
 
 
                     await SRoofing_ScreenCallShowMessageManager
@@ -1516,9 +1519,12 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
                 _=  Task.Run(async () =>
                 {
 
-                    string skt_Message = _iCallModel.CallTokenID + "-" +  _iCallModel.GroupTokenID + "-" + _iOwnerModel.OwnerUserTokenID + "-" + _iOwnerModel.OwnerMobileNumberTokenID + "-"+ SRoofingEnum_Socket_Call.SRoofingSocket_Call_EndTime + ",0x0x0x";
+                    string skt_Message = _iCallModel.CallTokenID + "-" +  _iCallModel.GroupTokenID + "-" + _iOwnerModel.OwnerUserTokenID + "-" + _iOwnerModel.OwnerMobileNumberTokenID + "-"+ SRoofingEnum_Socket_Call.SRoofingSocket_Call_EndTime + "," +lbl_TimerText.Text;
 
                     await Send(client, skt_Message, CancellationToken.None);
+
+
+                    await CallTimer_Stop();
 
 
                     await SRoofing_ScreenCallShowMessageManager
@@ -2366,11 +2372,14 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
                         "&ownid=" + _iOwnerModel.OwnerUserTokenID +
                         "&ownmobid=" + _iOwnerModel.OwnerMobileNumberTokenID +
                         "&rmtid=" + _iRemoteModel.OwnerUserTokenID +
-                        "&rmtmobid=" + _iRemoteModel.OwnerMobileNumberTokenID +
+                        "&yrmtmobid=" + _iRemoteModel.OwnerMobileNumberTokenID +
                         "&caltag=" + "answer" +
                         "&caldir=" + "in" +
                         "&caltyp=" + "video";
 
+
+
+                    await CallTimer_Start();
 
 
 
@@ -2485,6 +2494,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
                                     "&caltyp=" + "video";
 
 
+                                await CallTimer_Start();
 
                                 //webViewCall.Source="WebRTC/Source/Index.html?" +
 
@@ -2906,6 +2916,131 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
 
 
 
+
+                            else if (_socket_Code == SRoofingEnum_Socket_Call.SRoofingSocket_Call_Mute)
+                            {
+
+
+
+                                //////////if (_CallStatus != SRoofingEnum_Call_Status.CallStatus_NotApproved
+                                //////////    && ll_Redial.IsVisible == false)
+                                //////////{
+
+                                //////////    await Call_StopCallOutSound();
+
+                                //////////    //if ( _hndlr_iGlobalHandler != null )
+                                //////////    //    {
+                                //////////    //    _hndlr_iGlobalHandler.removeCallbacks ( _run_SoundPlayer_CallOut );
+                                //////////    //    _hndlr_iGlobalHandler.removeCallbacks ( _run_Owner_Offer_TimeOut_Ring );
+                                //////////    //    }
+
+                                //////////    await SoundPlayer_Play_CallFail();
+
+                                //////////    await Call_Remote_OnReplyByMessageType(
+                                //////////            SRoofingEnum_ScreenChatShowMessageTypeManager.ScreenChatShowTextTypeMessage_CallReplyByDeclineMessage,
+                                //////////            "",
+                                //////////            "");
+
+
+                                //////////}
+
+                            }
+
+
+
+                            else if (_socket_Code == SRoofingEnum_Socket_Call.SRoofingSocket_Call_UnMute)
+                            {
+
+
+
+                                //////////if (_CallStatus != SRoofingEnum_Call_Status.CallStatus_NotApproved
+                                //////////    && ll_Redial.IsVisible == false)
+                                //////////{
+
+                                //////////    await Call_StopCallOutSound();
+
+                                //////////    //if ( _hndlr_iGlobalHandler != null )
+                                //////////    //    {
+                                //////////    //    _hndlr_iGlobalHandler.removeCallbacks ( _run_SoundPlayer_CallOut );
+                                //////////    //    _hndlr_iGlobalHandler.removeCallbacks ( _run_Owner_Offer_TimeOut_Ring );
+                                //////////    //    }
+
+                                //////////    await SoundPlayer_Play_CallFail();
+
+                                //////////    await Call_Remote_OnReplyByMessageType(
+                                //////////            SRoofingEnum_ScreenChatShowMessageTypeManager.ScreenChatShowTextTypeMessage_CallReplyByDeclineMessage,
+                                //////////            "",
+                                //////////            "");
+
+
+                                //////////}
+
+                            }
+
+
+
+                            else if (_socket_Code == SRoofingEnum_Socket_Call.SRoofingSocket_Call_Pause)
+                            {
+
+
+
+                                //////////if (_CallStatus != SRoofingEnum_Call_Status.CallStatus_NotApproved
+                                //////////    && ll_Redial.IsVisible == false)
+                                //////////{
+
+                                //////////    await Call_StopCallOutSound();
+
+                                //////////    //if ( _hndlr_iGlobalHandler != null )
+                                //////////    //    {
+                                //////////    //    _hndlr_iGlobalHandler.removeCallbacks ( _run_SoundPlayer_CallOut );
+                                //////////    //    _hndlr_iGlobalHandler.removeCallbacks ( _run_Owner_Offer_TimeOut_Ring );
+                                //////////    //    }
+
+                                //////////    await SoundPlayer_Play_CallFail();
+
+                                //////////    await Call_Remote_OnReplyByMessageType(
+                                //////////            SRoofingEnum_ScreenChatShowMessageTypeManager.ScreenChatShowTextTypeMessage_CallReplyByDeclineMessage,
+                                //////////            "",
+                                //////////            "");
+
+
+                                //////////}
+
+                            }
+
+
+
+                            else if (_socket_Code == SRoofingEnum_Socket_Call.SRoofingSocket_Call_Resume)
+                            {
+
+
+
+                                //////////if (_CallStatus != SRoofingEnum_Call_Status.CallStatus_NotApproved
+                                //////////    && ll_Redial.IsVisible == false)
+                                //////////{
+
+                                //////////    await Call_StopCallOutSound();
+
+                                //////////    //if ( _hndlr_iGlobalHandler != null )
+                                //////////    //    {
+                                //////////    //    _hndlr_iGlobalHandler.removeCallbacks ( _run_SoundPlayer_CallOut );
+                                //////////    //    _hndlr_iGlobalHandler.removeCallbacks ( _run_Owner_Offer_TimeOut_Ring );
+                                //////////    //    }
+
+                                //////////    await SoundPlayer_Play_CallFail();
+
+                                //////////    await Call_Remote_OnReplyByMessageType(
+                                //////////            SRoofingEnum_ScreenChatShowMessageTypeManager.ScreenChatShowTextTypeMessage_CallReplyByDeclineMessage,
+                                //////////            "",
+                                //////////            "");
+
+
+                                //////////}
+
+                            }
+
+
+
                             else if (_socket_Code == SRoofingEnum_Socket_Call.SRoofingSocket_Call_EndTime)
                             {
 
@@ -2913,33 +3048,41 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
                                 try
                                 {
 
-                                    _ = Task.Run(async () =>
+                                    if (_CallStatus != SRoofingEnum_Call_Status.CallStatus_NotApproved
+                                   && ll_Redial.IsVisible == false)
+                                    {
+
+                                        _ = Task.Run(async () =>
                                                         {
                                                             await webViewCall.EvaluateJavaScriptAsync("stop()");
 
-                                                        }).ConfigureAwait(false);
+                                                            await CallTimer_Stop();
 
 
-                                    MainThread.BeginInvokeOnMainThread(async () =>
-                                  {
-
-                                      await ShowView(ll_ActionVoice, ll_SplashBG);
-                                      await ShowView(ll_ActionVideo, ll_Splash);
-                                      await ShowView(null, ll_Redial);
-                                      //await ShowView(ll_Drop, ll_Redial);
-
-                                      await Call_PlayCallEndSound();
-
-                                      await Call_Remote_OnReplyByMessageType(
-                                                SRoofingEnum_ScreenChatShowMessageTypeManager.ScreenChatShowTextTypeMessage_CallEndDurationMessage,
-                                                "",
-                                                _socket_Message);
+                                                        })
+                                            .ConfigureAwait(false);
 
 
-                                  });
+                                        MainThread.BeginInvokeOnMainThread(async () =>
+                                      {
+
+                                          await ShowView(ll_ActionVoice, ll_SplashBG);
+                                          await ShowView(ll_ActionVideo, ll_Splash);
+                                          //await ShowView(null, ll_Redial);
+                                          //await ShowView(ll_Drop, ll_Redial);
+
+                                          await Call_PlayCallEndSound();
+
+                                          await Call_Remote_OnReplyByMessageType(
+                                                    SRoofingEnum_ScreenChatShowMessageTypeManager.ScreenChatShowTextTypeMessage_CallEndDurationMessage,
+                                                    "",
+                                                    _socket_Message);
 
 
+                                      });
 
+
+                                    }
 
 
                                 }
@@ -3021,6 +3164,9 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
 
         #region Call_Timer
 
+        Stopwatch stopwatch;
+        IDispatcherTimer timer;
+
         async Task CallTimer_Start()
         {
 
@@ -3028,32 +3174,41 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
             try
             {
 
+                MainThread.BeginInvokeOnMainThread(async () =>
+                            {
 
-                //var xxx = await webViewCall.EvaluateJavaScriptAsync("callFromCSharp('" + "SHAYMAA CS 2024" + "')");
 
-                // Create a stopwatch instance
-                var stopwatch = new Stopwatch();
+                                // Code to run on the main thread
 
-                // Create a timer instance
-                var timer = Application.Current.Dispatcher.CreateTimer();
 
-                // Set the timer interval to one second
-                timer.Interval = TimeSpan.FromSeconds(1);
+                                lbl_TimerText.Text = "00:00:00";
 
-                // Subscribe to the Tick event
-                timer.Tick += (s, e) =>
-                {
-                    // Update the label text with the elapsed time
-                    // Use MainThread.BeginInvokeOnMainThread to ensure UI updates are done on the UI thread
-                    MainThread.BeginInvokeOnMainThread(() =>
-                    {
-                        // lbl_Result.Text = stopwatch.Elapsed.ToString("hh\\:mm\\:ss");
-                    });
-                };
+                                //var xxx = await webViewCall.EvaluateJavaScriptAsync("callFromCSharp('" + "SHAYMAA CS 2024" + "')");
 
-                // Start the stopwatch and the timer
-                stopwatch.Start();
-                timer.Start();
+                                // Create a stopwatch instance
+                                stopwatch = new Stopwatch();
+
+                                // Create a timer instance
+                                timer = Application.Current.Dispatcher.CreateTimer();
+
+                                // Set the timer interval to one second
+                                timer.Interval = TimeSpan.FromSeconds(1);
+
+                                // Subscribe to the Tick event
+                                timer.Tick += (s, e) =>
+                                {
+                                    // Update the label text with the elapsed time
+                                    // Use MainThread.BeginInvokeOnMainThread to ensure UI updates are done on the UI thread
+
+                                    lbl_TimerText.Text = stopwatch.Elapsed.ToString("hh\\:mm\\:ss");
+
+                                };
+
+                                // Start the stopwatch and the timer
+                                stopwatch.Start();
+                                timer.Start();
+                                frm_TimerText.IsVisible= true;
+                            });
 
 
                 ////////////// Create a timer instance
@@ -3115,78 +3270,36 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
             try
             {
 
-
-                //var xxx = await webViewCall.EvaluateJavaScriptAsync("callFromCSharp('" + "SHAYMAA CS 2024" + "')");
-
-                // Create a stopwatch instance
-                var stopwatch = new Stopwatch();
-
-                // Create a timer instance
-                var timer = Application.Current.Dispatcher.CreateTimer();
-
-                // Set the timer interval to one second
-                timer.Interval = TimeSpan.FromSeconds(1);
-
-                // Subscribe to the Tick event
-                timer.Tick += (s, e) =>
+                // Update the label text with the elapsed time
+                // Use MainThread.BeginInvokeOnMainThread to ensure UI updates are done on the UI thread
+                MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    // Update the label text with the elapsed time
-                    // Use MainThread.BeginInvokeOnMainThread to ensure UI updates are done on the UI thread
-                    MainThread.BeginInvokeOnMainThread(() =>
+
+                    frm_TimerText.IsVisible=false;
+
+                    if (stopwatch != null)
                     {
-                        // lbl_Result.Text = stopwatch.Elapsed.ToString("hh\\:mm\\:ss");
-                    });
-                };
+                        stopwatch.Stop();
+                        stopwatch=null;
+                    }
 
-                // Start the stopwatch and the timer
-                stopwatch.Start();
-                timer.Start();
+                    if (timer != null)
+                    {
+                        timer.Stop();
+                        timer= null;
+                    }
 
+                    lbl_TimerText.Text = "00:00:00";
+             
+   });
 
-                ////////////// Create a timer instance
-                ////////////var timer = Application.Current!.Dispatcher.CreateTimer();
-
-                ////////////// Set the timer interval to one second
-                ////////////timer.Interval = TimeSpan.FromSeconds(1);
-
-                ////////////// Subscribe to the Tick event
-                ////////////timer.Tick += (s, e) =>
-                ////////////{
-                ////////////    // Update the label text with the current time
-                ////////////    // Use MainThread.BeginInvokeOnMainThread to ensure UI updates are done on the UI thread
-                ////////////    MainThread.BeginInvokeOnMainThread(() =>
-                ////////////    {
-                ////////////        lbl_Result.Text = DateTime.Now.ToString("h:mm:ss tt");
-                ////////////    });
-                ////////////};
-
-                ////////////// Start the timer
-                ////////////timer.Start();
-
-
-
-                //await webViewCall.EvaluateJavaScriptAsync();
-
-
-                //////////if (App.client.State == WebSocketState.Open)
-                //////////{
-                //////////    //Debug.Log("Input message ('exit' to exit): ");
-
-                //////////    ArraySegment<byte> bytesToSend = new ArraySegment<byte>(
-                //////////        Encoding.UTF8.GetBytes("hello fury from unity")
-                //////////    );
-                //////////    await App.client.SendAsync(
-                //////////        bytesToSend,
-                //////////        WebSocketMessageType.Text,
-                //////////        true,
-                //////////        CancellationToken.None
-                //////////    );
-                //////////}
+ 
 
             }
             catch (Exception ex)
             {
                 SRoofing_DebugManager.Debug_ShowSystemMessage("WebSocket-WS ::: "  + ex.Message);
+                return;
             }
 
 
@@ -3248,13 +3361,14 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
         public static void MyCSharpMethod()
         {
             // Your C# code here
-            SRoofing_DebugManager.Debug_ShowSystemMessage("MyCSharpMethod-WS ::: ");
-              DisplayAlert("titleX", "msg-MyCSharpMethod=invokeTimer", "OK");
+            MainThread.BeginInvokeOnMainThread(async () =>
+              {
+                  // Code to run on the main thread
+                  SRoofing_DebugManager.Debug_ShowSystemMessage("MyCSharpMethod-WS ::: ");
+                  //await  DisplayAlert("titleX", "msg-MyCSharpMethod=invokeTimer", "OK");
+
+              });
         }
-
-
-
-
 
 
 #if ANDROID
@@ -3294,24 +3408,26 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
                 //    ((UCView_HybridWebView)hybridRenderer.Element).InvokeAction(data);
                 //}
             }
-     
-        
-        
-        
-        
-        
+
+
+
+
+
+
             [JavascriptInterface]
             [Export("invokeTimer")]
             //[Export()]
             public void InvokeTimer(string data)
             {
 
-                MainThread.BeginInvokeOnMainThread(() =>
+                MainThread.BeginInvokeOnMainThread(async () =>
                 {
 
+                    //CallTimer_Start();
                     //Toast.MakeText(Android.App.Application.Context, "InvokeAction :: " + data, ToastLength.Long).Show();
 
-                    MyCSharpMethod();
+                    //MyCSharpMethod();
+                    //
 
                     //DisplayAlert("titleX", "msg-JsBridge", "OK");
 
@@ -3325,17 +3441,17 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
                 //    ((UCView_HybridWebView)hybridRenderer.Element).InvokeAction(data);
                 //}
             }
-     
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
+
+
+
         }
 
 
@@ -3348,12 +3464,6 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
         }
 
 #endif
-
-
-
-
-
-
 
         #endregion
 

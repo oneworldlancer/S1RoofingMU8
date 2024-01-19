@@ -166,7 +166,7 @@ VerticalOptions="FillAndExpand"
 							Margin="10"
 						BorderColor="Transparent"		Padding="5"
 							BackgroundColor="#40ffffff"
-							IsVisible="true">
+							IsVisible="false">
 
                         <Label		x:Name="lbl_Timer_Video"               
                                 
@@ -240,16 +240,26 @@ VerticalOptions="FillAndExpand"
 				   Padding="0"
 				   WidthRequest="30"
                            HeightRequest="30"  IsVisible="false">
-                    
-                        <ImageButton x:Name="imgBtn_ToggleCallActionVideo"  
+
+                        <Frame 	HorizontalOptions="Center"
+					VerticalOptions="Center"
+					CornerRadius="5"
+BorderColor="Transparent"		
+        Margin="0"
+					Padding="0"
+					BackgroundColor="#40ffffff"
+					>
+
+                            <ImageButton x:Name="imgBtn_ToggleCallActionVideo"  
                                  Source="img_menu_white.png"
                                  BackgroundColor="Transparent"
                                  Background="Transparent"
                                  HorizontalOptions="Center"
-                                 VerticalOptions="End"
+                                 VerticalOptions="Center"
                                  Clicked="imgBtn_ToggleCallActionVideo_Clicked"	
                                 WidthRequest="30"
           HeightRequest="30"  />
+                        </Frame>
                     </Grid>
                 </Grid>
 
@@ -655,10 +665,11 @@ VerticalOptions="FillAndExpand"
                     <Frame 	HorizontalOptions="Start"
 							VerticalOptions="Start"
 							CornerRadius="5"
-					BorderColor="Transparent"			Margin="10"
+					BorderColor="Transparent"		
+                            Margin="10"
 							Padding="5"
 							BackgroundColor="#40ffffff"
-							IsVisible="true">
+							IsVisible="false">
 
                         <Label	x:Name="lbl_Timer_Voice"                 
                                 HorizontalOptions="FillAndExpand"
@@ -964,6 +975,27 @@ VerticalOptions="FillAndExpand"
 
 
             </Grid>
+
+            <Frame 	x:Name="frm_TimerText"	HorizontalOptions="Start"
+					VerticalOptions="Start"
+					CornerRadius="5"
+					Margin="10"
+				BorderColor="Transparent"		Padding="5"
+					BackgroundColor="#40ffffff"
+					IsVisible="false">
+
+                <Label		x:Name="lbl_TimerText"               
+               
+           HorizontalOptions="FillAndExpand"
+							VerticalOptions="FillAndExpand"
+							HorizontalTextAlignment="Center"
+							VerticalTextAlignment="Start"
+							Padding="5"
+							FontSize="Medium"
+							Text="00:00:00"
+							TextColor="White"
+							Margin="0" />
+            </Frame>
 
         </Grid>
         <sroofingFooter:SRoofing_PageFooter />

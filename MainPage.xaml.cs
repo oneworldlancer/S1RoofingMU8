@@ -81,7 +81,7 @@ namespace S1RoofingMU
                 var stopwatch = new Stopwatch();
 
                 // Create a timer instance
-                var timer = Application.Current.Dispatcher.CreateTimer();
+                IDispatcherTimer? timer = Application.Current.Dispatcher.CreateTimer();
 
                 // Set the timer interval to one second
                 timer.Interval = TimeSpan.FromSeconds(1);
