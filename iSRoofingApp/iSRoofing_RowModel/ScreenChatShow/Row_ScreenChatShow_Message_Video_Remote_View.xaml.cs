@@ -90,7 +90,26 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.ScreenChatShow
     if (iGroupModel != null)
                 {
                     // Update ContentView properties and elements.
-                    Initialize_Command();
+                    if (File.Exists(iGroupModel.VideoThumPath))
+                    {
+                        img_Thum.Source = iGroupModel.VideoThumPath;
+
+                    }
+                    else
+                    {
+                        img_Thum.Source = iGroupModel.VideoThumServerURL;
+
+                    }
+
+
+
+
+                    grd_Media.WidthRequest = iGroupModel.iScreenChatShow_iMedia_Width;
+                    grd_Media.HeightRequest = iGroupModel.iScreenChatShow_iMedia_Height;
+
+
+
+                    //Initialize_Command();
 
                 }
             }
@@ -299,9 +318,36 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.ScreenChatShow
 
 
 
+
+
         #endregion
 
+        async void img_Thum_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+
+                var objService = App.Current.MainPage.Handler.MauiContext.Services.GetService<iSRoofing_DependencyService_SoundClick>();
+
+                if (objService != null)
+                {
+                    objService.KeyboardClick();
+                }
 
 
+                await((Page_ScreenChatShow_Dashboard)Parent.BindingContext)
+                       .GalleryOpener_ShowMedia(
+                     SRoofingEnum_File_Code.FileCode_Video,
+                 "view",
+                    iGroupModel);
+
+
+            }
+            catch (Exception ex)
+            {
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                return;
+            }
+        }
     }
 }

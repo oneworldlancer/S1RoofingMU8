@@ -7,25 +7,87 @@
     <ContentView.Content>
 
 
-        <!--<SwipeView  BackgroundColor="{StaticResource iAppColor_SemiGray}">
-
-			<SwipeView.LeftItems>
-				<SwipeItems   Mode="Execute">
-					-->
-        <!--  Command="{Binding 
-											Source={x:Reference vw_ChatRow_Text_Only_Owner_View},
-											Path=BindingContext.Command_Chat_ByUser}"	Source={x:Reference vw_ChatRow_Text_Only_Owner_View},
-											-->
-        <!--
-					<SwipeItem BackgroundColor="{StaticResource iAppColor_SemiGray}"
-							   Command="{Binding Command_Chat_ByUser, Source={x:Reference vw_ChatRow_Text_Only_Owner_View}}"	 							 
-							   CommandParameter="{Binding .}" />
-
-				</SwipeItems>
-			</SwipeView.LeftItems>-->
+        <StackLayout
+             HorizontalOptions="EndAndExpand"
+          VerticalOptions="Start"
+          Orientation="Vertical"
+          Spacing="0"
+          Margin="0"
+          Padding="50,0,0,10">
 
 
-        <StackLayout  HorizontalOptions="End"
+            <Grid 
+            HorizontalOptions="FillAndExpand">
+
+
+
+                <Frame HorizontalOptions="EndAndExpand"
+VerticalOptions="StartAndExpand"
+Padding="10"
+Margin="0,15,35,0"
+CornerRadius="5"
+HasShadow="True"
+BackgroundColor="{StaticResource iAppColor_Silver}"
+BorderColor="Transparent"
+                ZIndex="1"    >
+                    <StackLayout HorizontalOptions="EndAndExpand"
+          VerticalOptions="StartAndExpand"
+          Orientation="Vertical"
+          Spacing="0"
+          Margin="0"
+          Padding="0">
+                        <Label x:Name="lbl_MessageText"
+        HorizontalOptions="End"
+        VerticalOptions="Start"
+        TextColor="Black"
+      Text="{Binding MessageText_Translated}"  />
+                        <ctl:Row_ScreenChatShow_Message_Time_Owner_View x:Name="lbl_MessageTime"
+                                                 HorizontalOptions="End"
+                                                 VerticalOptions="Start" />
+                    </StackLayout>
+                </Frame>
+
+
+                <Frame x:Name="frm_AvatarName"
+           HeightRequest="40"
+           WidthRequest="40"
+           CornerRadius="20"
+           Padding="0"
+           HasShadow="true"
+           Margin="0,0,10,0"
+									   HorizontalOptions="End"
+									   VerticalOptions="StartAndExpand"
+           BackgroundColor="{StaticResource iAppColor_Silver}"
+           BorderColor="Transparent"
+               ZIndex="2" >
+
+                    <Label  x:Name="lbl_AvatarName"
+										
+											FontSize="Small"
+										Text="{Binding AvatarName}"
+                            TextColor="Black"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+											HorizontalTextAlignment="Center"
+											VerticalTextAlignment="Center" />
+                </Frame>
+
+
+                <!--<ctl:Row_ScreenChatShow_Message_Avatar_Owner_View    
+            
+                         iOwnerModel="{Binding iOwnerModel, Source={x:Reference vw_ChatRow_Image_Owner_View}}"
+                                                      iGroupModel="{Binding iGroupModel, Source={x:Reference vw_ChatRow_Image_Owner_View}}" 
+                                               ZIndex="2"      />-->
+
+
+            </Grid>
+
+
+        </StackLayout>
+
+
+
+        <!--<StackLayout  HorizontalOptions="End"
 								 VerticalOptions="StartAndExpand"
 								 Orientation="Vertical"
 								 Spacing="0"
@@ -69,11 +131,11 @@
                                 iOwnerModel="{Binding iOwnerModel, Source={x:Reference vw_ChatRow_Text_Only_Owner_View}}"
                                 iGroupModel="{Binding iGroupModel, Source={x:Reference vw_ChatRow_Text_Only_Owner_View}}"/>
 
-                        <!--<Label    x:Name="lbl_MessageTime"
+                        --><!--<Label    x:Name="lbl_MessageTime"
                           HorizontalOptions="End"
                                      VerticalOptions="Start"
                                     Margin="0,50,0,0"
-                               Text="00:00"/>-->
+                               Text="00:00"/>--><!--
 
               
 
@@ -89,7 +151,7 @@
                                 iOwnerModel="{Binding iOwnerModel, Source={x:Reference vw_ChatRow_Text_Only_Owner_View}}"
                                 iGroupModel="{Binding iGroupModel, Source={x:Reference vw_ChatRow_Text_Only_Owner_View}}"/>
 
-                            <!--<Frame HorizontalOptions="EndAndExpand"
+                            --><!--<Frame HorizontalOptions="EndAndExpand"
 					   VerticalOptions="StartAndExpand"
 					   Padding="10"
 					   Margin="0,10,40,0"
@@ -101,7 +163,7 @@
                                    
                                    Text="Hello world..."/>
 
-            </Frame>-->
+            </Frame>--><!--
 
 
 
@@ -109,7 +171,7 @@
                                 iOwnerModel="{Binding iOwnerModel, Source={x:Reference vw_ChatRow_Text_Only_Owner_View}}"
                                 iGroupModel="{Binding iGroupModel, Source={x:Reference vw_ChatRow_Text_Only_Owner_View}}"/>
 
-                            <!--<StackLayout  HorizontalOptions="End"
+                            --><!--<StackLayout  HorizontalOptions="End"
 								 VerticalOptions="Start"
 								 Orientation="Horizontal"
 								 Spacing="0"
@@ -131,7 +193,7 @@
                                          Aspect="AspectFit"
                                              BorderColor="Yellow"/>
                           
-                            </StackLayout>-->
+                            </StackLayout>--><!--
 
                         </StackLayout>
                         
@@ -142,7 +204,7 @@
                                 iGroupModel="{Binding iGroupModel, Source={x:Reference vw_ChatRow_Text_Only_Owner_View}}"  />
 
         
-  <!--iOwnerModel="{Binding iOwnerModel, Source={x:Reference chatDashboard}}"
+  --><!--iOwnerModel="{Binding iOwnerModel, Source={x:Reference chatDashboard}}"
                                 iGroupModel="{Binding iGroupModel, Source={x:Reference chatDashboard}}"-->
 
               <!--<Frame x:Name="frm_AvatarName"
@@ -166,7 +228,7 @@
 											VerticalOptions="Center"
 											HorizontalTextAlignment="Center"
 											VerticalTextAlignment="Center" />
-                        </Frame>-->
+                        </Frame>--><!--
 
 
 
@@ -178,10 +240,8 @@
             </Frame>
 
 
-        </StackLayout>
-
-        <!--</SwipeView>-->
-
+        </StackLayout>-->
+ 
 
     </ContentView.Content>
 </ContentView>

@@ -227,7 +227,7 @@
                     </Grid>
                 </Frame>
                 <!--    HeightRequest="500"-->
-                <ScrollView
+                <!--<ScrollView
        HorizontalOptions="FillAndExpand"
 VerticalOptions="FillAndExpand"
    Margin="0"
@@ -235,16 +235,17 @@ VerticalOptions="FillAndExpand"
            BackgroundColor="{StaticResource iAppColor_SemiGray}" 
                     Orientation="Vertical"
        VerticalScrollBarVisibility="Never" >
-                    <!--HeightRequest="500"
-          iAppColor_SemiGray-->
+                    --><!--HeightRequest="500"
+          iAppColor_SemiGray--><!--
                     <WebView 
             x:Name="web_HistotyChat"
      HorizontalOptions="FillAndExpand"
            VerticalOptions="FillAndExpand" 
+                        Source="WebRTC/Landing_Chat/Index.html"
        BackgroundColor="{StaticResource iAppColor_SemiGray}"
 IsVisible="true"   />
 
-                </ScrollView>
+                </ScrollView>-->
 
                 <ScrollView
                     HorizontalOptions="FillAndExpand"
@@ -253,7 +254,7 @@ IsVisible="true"   />
                     Padding="0"
                     Orientation="Vertical"
                     VerticalScrollBarVisibility="Never"
-                    IsVisible="false">
+                    IsVisible="true">
 
 
                     <CollectionView x:Name="cv_UserChatHistoryList"
@@ -261,7 +262,7 @@ IsVisible="true"   />
 SelectionChanged="cv_UserChatHistoryList_SelectionChanged"
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="Start"
-                                      IsVisible="false"
+                                     
                                 EmptyView=""
                          ItemTemplate="{StaticResource ChatDataTemplateSelector}"
                                 Margin="0">

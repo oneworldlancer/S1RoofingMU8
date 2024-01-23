@@ -11,11 +11,11 @@ using S1RoofingMU.iSRoofingApp.iSRoofing_Model.Group;
 using S1RoofingMU.iSRoofingApp.iSRoofing_Model.History.Chat;
 using S1RoofingMU.iSRoofingApp.iSRoofing_Model.ScreenChatShow;
 using S1RoofingMU.iSRoofingApp.iSRoofing_Model.User;
- 
+
 using S1RoofingMU.iSRoofingApp.iSRoofing_Page.Chat;
 
- 
- 
+
+
 
 namespace S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.ScreenChatShow
 {
@@ -84,12 +84,21 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.ScreenChatShow
             base.OnPropertyChanged(propertyName);
 
             // if (propertyName == iOwnerModelProperty.PropertyName)
-               if (propertyName == iGroupModelProperty.PropertyName)
+            if (propertyName == iGroupModelProperty.PropertyName)
             {
-    if (iGroupModel != null)
+                if (iGroupModel != null)
                 {
                     // Update ContentView properties and elements.
-                    Initialize_Command();
+
+                    lbl_FileTitle.Text = iGroupModel.MediaFile_Title;
+                    lbl_FileSize.Text = iGroupModel.MediaFile_Size;
+
+
+                    img_Thum.Source = iGroupModel.MediaFile_Thum;
+
+                    grd_Media.WidthRequest = iGroupModel.iScreenChatShow_iMedia_Width;
+
+                    //Initialize_Command();
 
                 }
             }
@@ -210,20 +219,20 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.ScreenChatShow
         #endregion
 
 
-        async void imgBtn_Share_Clicked ( object sender , EventArgs e )
+        async void imgBtn_Share_Clicked(object sender, EventArgs e)
         {
             try
             {
 
-                await ( ( Page_ScreenChatShow_Dashboard ) Parent.BindingContext )
-                       .Picker_ShareMedia (
-                    SRoofingEnum_File_Code.FileCode_Document ,
-              "list" ,
-                iGroupModel );
+                await ((Page_ScreenChatShow_Dashboard)Parent.BindingContext)
+                       .Picker_ShareMedia(
+                    SRoofingEnum_File_Code.FileCode_Document,
+              "list",
+                iGroupModel);
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return;
             }
         }

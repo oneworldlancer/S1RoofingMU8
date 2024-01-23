@@ -46,6 +46,7 @@
                 <gallery:Row_Gallery_Document_View    iGroupModel="{Binding .}"
                                                       iOwnerModel="{Binding _iOwnerModel, Source={x:Reference ct_GalleryList}}" />
             </DataTemplate>
+
             <itmp:Gallery_ListDataTemplateSelector x:Key="GalleryDataTemplateSelector"
                                                    Template_None="{StaticResource itmp_Template_None}"
                                                    Template_Header="{StaticResource itmp_Template_Header}"
@@ -56,118 +57,111 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <Grid x:Name="grd_Content"
+    <StackLayout HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand"
+                   Spacing="0"
+                   Margin="0"
+                   Padding="0"
+                 Orientation="Vertical"
+               
+                      BackgroundColor="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}"      >
+        <sroofingHeader:SRoofing_PageHeader />
+
+        <Grid x:Name="grd_Content"
           HorizontalOptions="FillAndExpand"
           VerticalOptions="FillAndExpand"
           Margin="0"
           Padding="0"
-        >
-        <!---->
-        <!--   BackgroundColor="{StaticResource iAppColor_DarkGray}"-->
+          BackgroundColor="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}" 
+          >
+            <!---->
+            <!--   BackgroundColor="{StaticResource iAppColor_DarkGray}"-->
 
-        <StackLayout HorizontalOptions="FillAndExpand"
+
+            <!--<StackLayout HorizontalOptions="FillAndExpand"
                      VerticalOptions="FillAndExpand"
                      Spacing="0"
                      Margin="0"
                      Padding="0"
                    Orientation="Vertical"
                  
-                        BackgroundColor="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}"      >
-            <sroofingHeader:SRoofing_PageHeader />
-            <!--<arrowBack:UCView_Back HorizontalOptions="Start" />-->
-            <Grid HorizontalOptions="FillAndExpand"
-                  VerticalOptions="FillAndExpand"
-                 Margin="0"
-          Padding="0"
-        >
-                <Grid.RowDefinitions>
-                    <!--<RowDefinition Height="100" />-->
-                    <!--<RowDefinition Height="0" />-->
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="auto" />
-                    <!--<RowDefinition Height="10" />
-				-->
-                    <!--<RowDefinition
-                        Height="10" /> 
-					<RowDefinition
-                        Height="50" />-->
-                    <!--<RowDefinition Height="10" />-->
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <!--<ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>-->
-                </Grid.ColumnDefinitions>
+                        BackgroundColor="{StaticResource iAppColor_Green}"     >-->
 
-                <RefreshView x:Name="refresh_GroupList"
+
+                <Grid x:Name="grd_ContentXXX"
+          HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          Margin="0"
+          Padding="0"
+          BackgroundColor="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}" 
+            RowDefinitions="*,auto"  >
+
+                    <!--<ScrollView
+                    HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     
+                     Margin="0"
+                     Padding="0"
+           
+                 
+                        BackgroundColor="{StaticResource iAppColor_Yellow}" 
+                        Grid.Row="0">-->
+
+                        <RefreshView x:Name="refresh_GroupList"
                              HorizontalOptions="FillAndExpand"
                              VerticalOptions="FillAndExpand"
                              RefreshColor="{StaticResource iAppColor_LightOrange}"
                              Command="{Binding RefreshCommand}"
-                             Grid.Row="0"
+                          
                              Margin="0"
                              Padding="0">
 
 
-                    <!---->
-                    <CollectionView x:Name="cv_UserGroupList"
+                        <!---->
+                        <CollectionView x:Name="cv_UserGroupList"
                                         SelectionMode="None"
                                         HorizontalOptions="FillAndExpand"
                                         VerticalOptions="FillAndExpand"
                                         EmptyView=""
-                                
+                           
                                          
                                         ItemTemplate="{StaticResource GalleryDataTemplateSelector}">
-                        <!--<VisualStateManager.VisualStateGroups>
-                                <VisualStateGroup Name="CommonStates">
-                                    <VisualState Name="Selected">
-                                        <VisualState.Setters>
-                                            <Setter Property="BackgroundColor"
-                                                    Value="Transparent" />
-                                        </VisualState.Setters>
-                                    </VisualState>
-                                </VisualStateGroup>
-                            </VisualStateManager.VisualStateGroups>-->
-                        <!--<CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <gallery:Row_Gallery_Image_View iGroupModel="{Binding .}"
-                                                                   iOwnerModel="{Binding _iOwnerModel, Source={x:Reference ct_GalleryList}}" />
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>-->
-                    </CollectionView>
 
-                </RefreshView>
+                        </CollectionView>
 
-             <!--,50,0,0-->   
-                <Button x:Name="btn_Close_Window"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="EndAndExpand"
-                    HeightRequest="50"
-                    FontAttributes="Bold"
-                    CornerRadius="0"
-                    Margin="0"
-                    Padding="0"
-                    Text="Close"
-                    BackgroundColor="{StaticResource iAppColor_Black}"
-                    TextColor="{StaticResource iAppColor_White}"
+                        </RefreshView>
+
+
+                    <!--</ScrollView>-->
+
+
+                    <Button x:Name="btn_Close_Window"
+                         HorizontalOptions="FillAndExpand"
+         VerticalOptions="StartAndExpand"
+         HeightRequest="50"
+         FontAttributes="Bold"
+         CornerRadius="0"
+         Padding="0"
+      
+         BackgroundColor="{StaticResource iAppColor_Black}"
+         TextColor="{StaticResource iAppColor_White}"
                     Clicked="imgBtn_BackPage_Clicked"
-                      Grid.Row="1"></Button>
-
-            </Grid>
-
+                    Grid.Row="1"    ></Button>
+                </Grid>
 
 
-            <sroofingFooter:SRoofing_PageFooter />
+                
 
-        </StackLayout>
+            <!--</StackLayout>-->
 
-        <Grid x:Name="grd_MediaContent"
+
+            <Grid x:Name="grd_MediaContent"
               HorizontalOptions="FillAndExpand"
               VerticalOptions="FillAndExpand"
               BackgroundColor="#E6000000"
               RowDefinitions="*,auto,*"
               IsVisible="false">
-            <Frame  x:Name="frm_ImagePreview"
+                <Frame  x:Name="frm_ImagePreview"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"
                     Margin="0,60,0,0"
@@ -176,16 +170,16 @@
                     BackgroundColor="Transparent"
                     Grid.Row="1"
                     IsVisible="false">
-                <!--<Frame.GestureRecognizers>
+                    <!--<Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="frm_ImagePreview_Tapped" />
                 </Frame.GestureRecognizers>-->
-                <Image   x:Name="img_Preview"
+                    <Image   x:Name="img_Preview"
                          Source="me.jpg"
                          HorizontalOptions="FillAndExpand"
                          VerticalOptions="FillAndExpand"
                          Aspect="AspectFill" />
-            </Frame>
-            <Frame  x:Name="frm_VideoPlayer"
+                </Frame>
+                <Frame  x:Name="frm_VideoPlayer"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"
                     Margin="0,60,0,0"
@@ -194,29 +188,29 @@
                     BackgroundColor="Transparent"
                     Grid.Row="1"
                     IsVisible="false">
-                <!--<Frame.GestureRecognizers>
+                    <!--<Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="frm_VideoPlayer_Tapped" />
                 </Frame.GestureRecognizers>-->
-                <!--Source="https://oneworldlancer.ddns.net/S1Roofing/_iUMedia/_iUVideo/vid_1681954174287.mp4"-->
-                <!--http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4-->
-                <!--<o:VideoPlayer    x:Name="video_Preview"
+                    <!--Source="https://oneworldlancer.ddns.net/S1Roofing/_iUMedia/_iUVideo/vid_1681954174287.mp4"-->
+                    <!--http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4-->
+                    <!--<o:VideoPlayer    x:Name="video_Preview"
                                    HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"
                                   Source="https://oneworldlancer.ddns.net/S1Roofing/_iUMedia/_iUVideo/vid_1686804260229.mp4" />-->
-                <!--<webview:UCView_HybridWebView     x:Name="video_Preview"
+                    <!--<webview:UCView_HybridWebView     x:Name="video_Preview"
                                   
                     />-->
-                <!--https://archive.org/download/BigBuckBunny_328/BigBuckBunny_512kb.mp4-->
-                <!--Source="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"-->
-                <!--<video:VideoPlayer        x:Name="video_Preview"
+                    <!--https://archive.org/download/BigBuckBunny_328/BigBuckBunny_512kb.mp4-->
+                    <!--Source="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"-->
+                    <!--<video:VideoPlayer        x:Name="video_Preview"
                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand"
                                     
                                    Mute="False" />-->
-                <!--ShowsPlaybackControls="True"    AutoPlay="False"-->
-                <!--Source="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"-->
+                    <!--ShowsPlaybackControls="True"    AutoPlay="False"-->
+                    <!--Source="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"-->
 
-                <toolkit:MediaElement       x:Name="video_Preview"
+                    <toolkit:MediaElement       x:Name="video_Preview"
                                         HorizontalOptions="FillAndExpand"
                                         VerticalOptions="FillAndExpand"
                                       Aspect="AspectFill"
@@ -224,14 +218,14 @@
                                         Source="https://oneworldlancer.ddns.net/S1Roofing/_iUMedia/_iUVideo/video.mp4"
                                              ShouldShowPlaybackControls="True"
                                             IsVisible="True"/>
-                <!--Source="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"-->
-                <!--<video:VideoView    x:Name="video_Preview"
+                    <!--Source="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"-->
+                    <!--<video:VideoView    x:Name="video_Preview"
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand"
                                       AutoPlay="False"
                                     ShowControls="True" />-->
-            </Frame>
-            <ImageButton x:Name="imgBtn_Close"
+                </Frame>
+                <ImageButton x:Name="imgBtn_Close"
                          HorizontalOptions="Center"
                          VerticalOptions="Start"
                          WidthRequest="50"
@@ -240,9 +234,9 @@
                          Source="img_circle_close_black.png"
                          BackgroundColor="Transparent"
                          Clicked="ImgBtn_Close_Clicked" />
-        </Grid>
+            </Grid>
 
-        <ActivityIndicator x:Name="ll_ProgressBarX"
+            <ActivityIndicator x:Name="ll_ProgressBarX"
                            WidthRequest="50"
                            HeightRequest="50"
                            HorizontalOptions="Center"
@@ -251,7 +245,7 @@
                            Color="#FFFFFF"
                            IsVisible="false" />
 
-        <progressbar:UCView_ProgressBarView
+            <progressbar:UCView_ProgressBarView
    x:Name="ll_ProgressBar"
                    HorizontalOptions="FillAndExpand"
    VerticalOptions="Start"
@@ -262,21 +256,7 @@ HeightRequest="5"
 
 
 
-        <!--<StackLayout HorizontalOptions="End"
-                     VerticalOptions="End"
-                     Orientation="Vertical">
-
-            <ImageButton  x:Name="imgBtn_BackPage"
-                          Source="img_circle_back_black.png"
-                          WidthRequest="50"
-                          HeightRequest="50"
-                          Margin="0,0,10,20"
-                          VerticalOptions="Center"
-                          BackgroundColor="Transparent"
-                          Clicked="imgBtn_BackPage_Clicked" />
-        </StackLayout>-->
-
-        <snackAutoHide:SnackBar x:Name="iSnackBar"
+            <snackAutoHide:SnackBar x:Name="iSnackBar"
                                 BackgroundColor="Transparent"
                                 TextColor="Black"
                                 IsOpen="False"
@@ -285,6 +265,9 @@ HeightRequest="5"
                                 ButtonTextColor="Orange"
                                 CloseButtonText=""
                                 Margin="0,0,0,50" />
-    </Grid>
+        </Grid>
 
+        <sroofingFooter:SRoofing_PageFooter />
+
+    </StackLayout>
 </ContentPage>

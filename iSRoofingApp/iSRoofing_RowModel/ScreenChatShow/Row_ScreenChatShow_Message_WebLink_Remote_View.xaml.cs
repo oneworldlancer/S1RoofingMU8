@@ -89,7 +89,7 @@ public partial class Row_ScreenChatShow_Message_WebLink_Remote_View : ContentVie
 if (iGroupModel != null)
             {
                 // Update ContentView properties and elements.
-                Initialize_Command();
+                //Initialize_Command();
 
             }
         }

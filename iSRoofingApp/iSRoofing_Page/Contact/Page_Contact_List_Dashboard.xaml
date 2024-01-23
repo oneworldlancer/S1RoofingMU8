@@ -97,8 +97,7 @@
                   RowSpacing="0"
                   Padding="0"
                   Margin="0"
-              IsClippedToBounds="True"
-             >
+              IsClippedToBounds="True"     >
 
                 <Grid.RowDefinitions>
                     <!--<RowDefinition Height="60" />-->
@@ -168,7 +167,7 @@
                          Opacity=".5"
                          Grid.Column="1" />
                 <!--Orientation="Vertical"-->
-                <Frame HorizontalOptions="FillAndExpand"
+                <!--<Frame HorizontalOptions="FillAndExpand"
                        VerticalOptions="FillAndExpand"
                        CornerRadius="0"
                     BorderColor="Transparent"
@@ -176,26 +175,27 @@
                        HasShadow="False"
                        Margin="0"
                        Padding="0"
-                       Grid.Column="2">
-                    <!--	 Refreshing="refresh_ContactList_Refreshing"<vwContactList:Page_Contact_List x:Name="vw_ContactList"  />-->
-                    <RefreshView x:Name="refresh_ContactList"
+                       Grid.Column="2">-->
+                <!--	 Refreshing="refresh_ContactList_Refreshing"<vwContactList:Page_Contact_List x:Name="vw_ContactList"  />-->
+                <RefreshView x:Name="refresh_ContactList"
                                  HorizontalOptions="FillAndExpand"
                                  VerticalOptions="FillAndExpand"
                                  RefreshColor="{StaticResource iAppColor_LightOrange}"
-                                 Command="{Binding RefreshCommand}">
-                        <!--		ItemsSource="{Binding arr_UserMarshalList}"	ItemsSource="{Binding Employees}"    SelectionChanged="OnCollectionViewSelectionChanged" 
+                                 Command="{Binding RefreshCommand}"
+                                       Grid.Column="2">
+                    <!--		ItemsSource="{Binding arr_UserMarshalList}"	ItemsSource="{Binding Employees}"    SelectionChanged="OnCollectionViewSelectionChanged" 
 								  ItemTemplate="{StaticResource ContactDataTemplateSelector}"-->
-                        <StackLayout HorizontalOptions="FillAndExpand"
-                                     VerticalOptions="StartAndExpand"
+                    <StackLayout HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="FillAndExpand"
                                      Orientation="Vertical"
                                      Spacing="0"
                          BackgroundColor="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}"      
                                      Margin="0"
                                      Padding="0">
-                            <!--<rowInfo:Row_Info_History_Contact_View />-->
-                            <!---->
+                        <!--<rowInfo:Row_Info_History_Contact_View />-->
+                        <!---->
 
-                            <CollectionView x:Name="cv_UserContactList"
+                        <CollectionView x:Name="cv_UserContactList"
                                             SelectionMode="Single"
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="FillAndExpand"
@@ -203,9 +203,9 @@
                                             Margin="0"
                                           SelectionChanged="cv_UserContactList_SelectionChanged"  
                                             ItemTemplate="{StaticResource ContactDataTemplateSelector}"></CollectionView>
-                        </StackLayout>
-                    </RefreshView>
-                </Frame>
+                    </StackLayout>
+                </RefreshView>
+                <!--</Frame>-->
 
 
             </Grid>

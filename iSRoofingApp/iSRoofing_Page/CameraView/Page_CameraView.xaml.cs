@@ -27,6 +27,7 @@ using CommunityToolkit.Maui.Views;
 
 //using FFmpeg.AutoGen.Abstractions;
 using S1RoofingMU.iSRoofingApp.iSRoofing_Model.ScreenChatShow;
+using S1RoofingMU.iSRoofingApp.iSRoofing_DependencyService;
 
 namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.CameraView;
 
@@ -1860,8 +1861,23 @@ str_FilePath,
                 return;
             }
 
+
+            ///////////////////////////////////////////
+            ///
+
+            var objService = App.Current.MainPage.Handler.MauiContext.Services.GetService<iSRoofing_DependencyService_SaveMediaDataFile>();
+            string _downloadFolder;
+
+            if (objService != null)
+            {
+
+                _downloadFolder= objService.Get_DownloadPath();
+
+
             // save the file into local storage
-            var newFile = Path.Combine(FileSystem.Current.CacheDirectory, photo.FileName);
+            //var newFile = Path.Combine(FileSystem.Current.CacheDirectory, photo.FileName);
+           //  var newFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), photo.FileName);
+             var newFile = Path.Combine(_downloadFolder, photo.FileName);
 
             using (var stream = await photo.OpenReadAsync())
 
@@ -1876,6 +1892,10 @@ str_FilePath,
             vid_Preview.IsVisible= false;
             img_Preview.IsVisible= true;
             frm_Preview.IsVisible= true;
+
+            }
+            ////////////////////////////////////////
+
 
         }
         catch (Exception ex)

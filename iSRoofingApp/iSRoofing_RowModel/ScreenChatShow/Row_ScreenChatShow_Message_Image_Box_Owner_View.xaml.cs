@@ -112,223 +112,247 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.ScreenChatShow
         {
             base.OnPropertyChanged(propertyName);
 
-
-
-            // https://heartbeat.comet.ml/using-ffimageloading-in-xamaring-forms-for-caching-and-optimizing-images-48e381be226b
-            //https://github.com/luberda-molinet/FFImageLoading/wiki/Xamarin.Forms-API
-            // if (propertyName == iOwnerModelProperty.PropertyName)
-            if (propertyName == iGroupModelProperty.PropertyName)
+            try
             {
-                if (iGroupModel != null)
+                // https://heartbeat.comet.ml/using-ffimageloading-in-xamaring-forms-for-caching-and-optimizing-images-48e381be226b
+                //https://github.com/luberda-molinet/FFImageLoading/wiki/Xamarin.Forms-API
+                // if (propertyName == iOwnerModelProperty.PropertyName)
+                if (propertyName == iGroupModelProperty.PropertyName)
                 {
-                    // Update ContentView properties and elements.
-                    lbl_MessageText.Text = iGroupModel.MessageText;
-
-                  //  img_Thum.Source = iGroupModel.ImageDefaultServerURL;
-                    //img_Thum.Source = iGroupModel.ImageDefaultPath;
-                    if (File.Exists(iGroupModel.ImageDefaultPath))
+                    if (iGroupModel != null)
                     {
-                        img_Thum.Source = iGroupModel.ImageDefaultPath;
+                        // Update ContentView properties and elements.
+                        lbl_MessageText.Text = iGroupModel.MessageText;
+
+
+                        string xxx = iGroupModel.ImageDefaultPath ;
+
+
+
+                        //img_Thum.Source = "/storage/emulated/0/Download/7521121026864ca4b372f60b144508ec.jpg";
+
+
+
+                        //  img_Thum.Source = iGroupModel.ImageDefaultServerURL;
+                        //  img_Thum.Source = iGroupModel.ImageDefaultServerURL;
+                        //img_Thum.Source = iGroupModel.ImageDefaultPath;
+                        //////////if (File.Exists(iGroupModel.ImageDefaultPath))
+                        //////////{
+                        //////////    img_Thum.Source = iGroupModel.ImageDefaultPath ;
+
+                        //////////}
+                        //////////else
+                        //////////{
+                        //////////    //img_Thum.Source = ImageSource.FromUri(new Uri(iGroupModel.ImageDefaultServerURL));
+                        //////////    img_Thum.Source =  (iGroupModel.ImageDefaultServerURL );
+
+                        //////////}
+
+
+
+                        //////////try
+                        //////////{
+
+
+
+                        //////////    Task.Run(async () =>
+                        //////////    {
+
+                        //////////        try
+                        //////////        {
+
+                        //////////            if (Preferences.Get("img", null)!= null)
+                        //////////            {
+                        //////////                var imageBytes = Convert.FromBase64String(Preferences.Get("img", null));
+
+
+                        //////////                MemoryStream imageDecodeStream = new(imageBytes);
+
+                        //////////                MainThread.BeginInvokeOnMainThread(() =>
+                        //////////                {
+                        //////////                    // Code to run on the main thread
+                        //////////                    img_Thum.Source = ImageSource.FromStream(() => imageDecodeStream);
+                        //////////                });
+
+
+                        //////////            }
+                        //////////            else
+                        //////////            {
+
+                        //////////                var _client = SRoofing_HTTPManager.HTTP_Get_HttpClientInstance();
+                        //////////                _client.DefaultRequestHeaders.ConnectionClose=true;
+
+                        //////////                Stream stm = await _client.GetStreamAsync("https://s1r.chat/_iUMedia/_iUImage/img_1690955857233.jpg");
+                        //////////                //    Stream stm = await _client.GetStreamAsync("https://oneworldlancer.ddns.net/S1Roofing/_iUMedia/_iUImage/img_1573442000971.jpg");
+
+
+                        //////////                Preferences.Set("img", await SRoofing_MediaManager.Media_ConvertToBase64(stm));
+
+
+                        //////////                var imageBytes = Convert.FromBase64String(Preferences.Get("img", null));
+
+
+                        //////////                MemoryStream imageDecodeStream = new(imageBytes);
+
+
+
+                        //////////                ///////////////////////////
+                        //////////                ///
+                        //////////                MainThread.BeginInvokeOnMainThread(() =>
+                        //////////                {
+                        //////////                    // Code to run on the main thread
+
+
+
+                        //////////                    //img_Test.Source= ImageSource.FromStream(() => stm);
+
+                        //////////                    //StreamReader reader = new StreamReader(stm);
+                        //////////                    // string text = reader.ReadToEnd();
+
+                        //////////                    /////////////////////////////////
+                        //////////                    ///
+                        //////////                    //string base64EncodedString = "SGVsbG8sIHdvcmxkIQ==";
+                        //////////                    //byte[ ] byteArray = Convert.FromBase64String(base64EncodedString);
+                        //////////                    //string imageSource = $"data:image/png;base64,{Convert.ToBase64String(byteArray)}";
+
+
+                        //////////                    //byte[ ] byteArray = Convert.FromBase64String(Preferences.Get("img", null)); // Encoding.ASCII.GetBytes(Preferences.Get("img", null));
+                        //////////                    //MemoryStream stream = new MemoryStream(byteArray);
+                        //////////                    //string imageSource = $"data:image/png;base64,{Convert.ToBase64String(byteArray)}";
+                        //////////                    //////img_Test.Source= ImageSource.FromStream(() => stream);
+
+                        //////////                    img_Thum.Source = ImageSource.FromStream(() => imageDecodeStream);
+                        //////////                });
+
+
+
+                        //////////                //await imageDecodeStream.DisposeAsync();
+
+                        //////////                _client.Dispose();
+
+
+                        //////////            }
+
+
+
+                        //////////            //using ()
+                        //////////            //                   {
+                        //////////            //                       // Do any logic with the image stream, save it,...
+
+                        //////////            //                       //  img_Test.Source = ImageSource.FromUri(new Uri("https://s1r.chat/_iUMedia/_iUImage/img_1690955857233.jpg"));
+                        //////////            //                       //Console.WriteLine("********** STREAM **********"+ stm.Length);
+                        //////////            //                       //  img_Test.Source =CreateImageSourceFromStream(stm);
+
+
+                        //////////            //                   }
+
+
+
+
+
+
+
+
+
+
+
+                        //////////            //using (_client)
+                        //////////            //{
+                        //////////            //    using ()
+                        //////////            //    {
+                        //////////            //        // Do any logic with the image stream, save it,...
+
+                        //////////            //        //  img_Test.Source = ImageSource.FromUri(new Uri("https://s1r.chat/_iUMedia/_iUImage/img_1690955857233.jpg"));
+                        //////////            //        //Console.WriteLine("********** STREAM **********"+ stm.Length);
+                        //////////            //        //  img_Test.Source =CreateImageSourceFromStream(stm);
+
+
+                        //////////            //    }
+                        //////////            //}
+
+                        //////////        }
+                        //////////        catch (Exception ex)
+                        //////////        {
+                        //////////            Console.WriteLine("********** STREAM-EX **********"+ ex.Message);
+                        //////////            return;
+                        //////////        }
+
+                        //////////    });
+
+
+
+                        //////////}
+                        //////////catch (Exception ex)
+                        //////////{
+                        //////////    SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                        //////////    return;
+
+                        //////////}
+
+
+
+                        lbl_MessageTime.iGroupModel = iGroupModel;
+
+
+
+
+                        //////var converter = new SRoofingConverter_ImageSourceURL();
+                        //////var imageUrl = iGroupModel.ImageDefaultServerURL;
+                        //////var imageSource = (ImageSource)converter.Convert(imageUrl, typeof(ImageSource), null, CultureInfo.CurrentCulture);
+                        //  img_Thum.Source = iGroupModel.ImageDefaultServerURL;
+                        ///  img_Thum.Source = iGroupModel.ImageDefaultPath;
+
+
+
+
+
+                        //  int xxx=   ( ( Page_Chat_Dashboard ) Parent.BindingContext )._iMediaDimension;
+
+                        //////var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
+
+                        //////// Orientation (Landscape, Portrait, Square, Unknown)
+                        ////////var orientation = mainDisplayInfo.Orientation;
+
+                        ////////// Rotation (0, 90, 180, 270)
+                        ////////var rotation = mainDisplayInfo.Rotation;
+
+                        //////// Width (in pixels)
+                        //////var width = mainDisplayInfo.Width;
+
+                        ////////// Height (in pixels)
+                        ////////var height = mainDisplayInfo.Height;
+
+                        //////// Screen density
+                        //////var density = mainDisplayInfo.Density;
+                        //////int ScreenWidth = ( int ) ( width / density ); // device independent pixels
+                        //////                                               //  int   ScreenHeight = (int)(height / density); // device independent pixels
+
+
+
+                        //////grd_Media.WidthRequest = ScreenWidth / 2;
+                        //////grd_Media.HeightRequest = ScreenWidth / 2;
+
+                        grd_Media.WidthRequest = iGroupModel.iScreenChatShow_iMedia_Width;
+                        grd_Media.HeightRequest = iGroupModel.iScreenChatShow_iMedia_Height;
+
+
+                        Initialize_Command();
 
                     }
-                    else
-                    {
-                        img_Thum.Source = iGroupModel.ImageDefaultServerURL;
-
-                    }
-
-
-
-                    //////////try
-                    //////////{
-
-
-
-                    //////////    Task.Run(async () =>
-                    //////////    {
-
-                    //////////        try
-                    //////////        {
-
-                    //////////            if (Preferences.Get("img", null)!= null)
-                    //////////            {
-                    //////////                var imageBytes = Convert.FromBase64String(Preferences.Get("img", null));
-
-
-                    //////////                MemoryStream imageDecodeStream = new(imageBytes);
-
-                    //////////                MainThread.BeginInvokeOnMainThread(() =>
-                    //////////                {
-                    //////////                    // Code to run on the main thread
-                    //////////                    img_Thum.Source = ImageSource.FromStream(() => imageDecodeStream);
-                    //////////                });
-
-
-                    //////////            }
-                    //////////            else
-                    //////////            {
-
-                    //////////                var _client = SRoofing_HTTPManager.HTTP_Get_HttpClientInstance();
-                    //////////                _client.DefaultRequestHeaders.ConnectionClose=true;
-
-                    //////////                Stream stm = await _client.GetStreamAsync("https://s1r.chat/_iUMedia/_iUImage/img_1690955857233.jpg");
-                    //////////                //    Stream stm = await _client.GetStreamAsync("https://oneworldlancer.ddns.net/S1Roofing/_iUMedia/_iUImage/img_1573442000971.jpg");
-
-
-                    //////////                Preferences.Set("img", await SRoofing_MediaManager.Media_ConvertToBase64(stm));
-
-
-                    //////////                var imageBytes = Convert.FromBase64String(Preferences.Get("img", null));
-
-
-                    //////////                MemoryStream imageDecodeStream = new(imageBytes);
-
-
-
-                    //////////                ///////////////////////////
-                    //////////                ///
-                    //////////                MainThread.BeginInvokeOnMainThread(() =>
-                    //////////                {
-                    //////////                    // Code to run on the main thread
-
-
-
-                    //////////                    //img_Test.Source= ImageSource.FromStream(() => stm);
-
-                    //////////                    //StreamReader reader = new StreamReader(stm);
-                    //////////                    // string text = reader.ReadToEnd();
-
-                    //////////                    /////////////////////////////////
-                    //////////                    ///
-                    //////////                    //string base64EncodedString = "SGVsbG8sIHdvcmxkIQ==";
-                    //////////                    //byte[ ] byteArray = Convert.FromBase64String(base64EncodedString);
-                    //////////                    //string imageSource = $"data:image/png;base64,{Convert.ToBase64String(byteArray)}";
-
-
-                    //////////                    //byte[ ] byteArray = Convert.FromBase64String(Preferences.Get("img", null)); // Encoding.ASCII.GetBytes(Preferences.Get("img", null));
-                    //////////                    //MemoryStream stream = new MemoryStream(byteArray);
-                    //////////                    //string imageSource = $"data:image/png;base64,{Convert.ToBase64String(byteArray)}";
-                    //////////                    //////img_Test.Source= ImageSource.FromStream(() => stream);
-
-                    //////////                    img_Thum.Source = ImageSource.FromStream(() => imageDecodeStream);
-                    //////////                });
-
-
-
-                    //////////                //await imageDecodeStream.DisposeAsync();
-
-                    //////////                _client.Dispose();
-
-
-                    //////////            }
-
-
-
-                    //////////            //using ()
-                    //////////            //                   {
-                    //////////            //                       // Do any logic with the image stream, save it,...
-
-                    //////////            //                       //  img_Test.Source = ImageSource.FromUri(new Uri("https://s1r.chat/_iUMedia/_iUImage/img_1690955857233.jpg"));
-                    //////////            //                       //Console.WriteLine("********** STREAM **********"+ stm.Length);
-                    //////////            //                       //  img_Test.Source =CreateImageSourceFromStream(stm);
-
-
-                    //////////            //                   }
-
-
-
-
-
-
-
-
-
-
-
-                    //////////            //using (_client)
-                    //////////            //{
-                    //////////            //    using ()
-                    //////////            //    {
-                    //////////            //        // Do any logic with the image stream, save it,...
-
-                    //////////            //        //  img_Test.Source = ImageSource.FromUri(new Uri("https://s1r.chat/_iUMedia/_iUImage/img_1690955857233.jpg"));
-                    //////////            //        //Console.WriteLine("********** STREAM **********"+ stm.Length);
-                    //////////            //        //  img_Test.Source =CreateImageSourceFromStream(stm);
-
-
-                    //////////            //    }
-                    //////////            //}
-
-                    //////////        }
-                    //////////        catch (Exception ex)
-                    //////////        {
-                    //////////            Console.WriteLine("********** STREAM-EX **********"+ ex.Message);
-                    //////////            return;
-                    //////////        }
-
-                    //////////    });
-
-
-
-                    //////////}
-                    //////////catch (Exception ex)
-                    //////////{
-                    //////////    SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
-                    //////////    return;
-
-                    //////////}
-
-
-
-                    lbl_MessageTime.iGroupModel = iGroupModel;
-
-
-
-
-                    //////var converter = new SRoofingConverter_ImageSourceURL();
-                    //////var imageUrl = iGroupModel.ImageDefaultServerURL;
-                    //////var imageSource = (ImageSource)converter.Convert(imageUrl, typeof(ImageSource), null, CultureInfo.CurrentCulture);
-                    //  img_Thum.Source = iGroupModel.ImageDefaultServerURL;
-                    ///  img_Thum.Source = iGroupModel.ImageDefaultPath;
-
-
-
-
-
-                    //  int xxx=   ( ( Page_Chat_Dashboard ) Parent.BindingContext )._iMediaDimension;
-
-                    //////var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
-
-                    //////// Orientation (Landscape, Portrait, Square, Unknown)
-                    ////////var orientation = mainDisplayInfo.Orientation;
-
-                    ////////// Rotation (0, 90, 180, 270)
-                    ////////var rotation = mainDisplayInfo.Rotation;
-
-                    //////// Width (in pixels)
-                    //////var width = mainDisplayInfo.Width;
-
-                    ////////// Height (in pixels)
-                    ////////var height = mainDisplayInfo.Height;
-
-                    //////// Screen density
-                    //////var density = mainDisplayInfo.Density;
-                    //////int ScreenWidth = ( int ) ( width / density ); // device independent pixels
-                    //////                                               //  int   ScreenHeight = (int)(height / density); // device independent pixels
-
-
-
-                    //////grd_Media.WidthRequest = ScreenWidth / 2;
-                    //////grd_Media.HeightRequest = ScreenWidth / 2;
-
-                    grd_Media.WidthRequest = iGroupModel.iScreenChatShow_iMedia_Width;
-                    grd_Media.HeightRequest = iGroupModel.iScreenChatShow_iMedia_Height;
-
-
-                    Initialize_Command();
-
                 }
+
+
+
+
+
             }
+            catch (Exception ex)
+            {
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                return;
+
+            }
+
         }
 
         #endregion
@@ -592,5 +616,10 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.ScreenChatShow
 
 
         #endregion
+
+        private void imgBtn_Gallery_Clicked(object sender, TappedEventArgs e)
+        {
+
+        }
     }
 }

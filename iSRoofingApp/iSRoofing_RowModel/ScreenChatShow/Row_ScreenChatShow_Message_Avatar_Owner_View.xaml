@@ -3,7 +3,8 @@
 			 xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 xmlns:swipeRight="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Swipe"
-			 x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.ScreenChatShow.Row_ScreenChatShow_Message_Avatar_Owner_View">
+			 x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.ScreenChatShow.Row_ScreenChatShow_Message_Avatar_Owner_View"
+                 ZIndex="2" >
 
     <Frame x:Name="frm_AvatarName"
            HeightRequest="40"
@@ -15,7 +16,8 @@
 									   HorizontalOptions="End"
 									   VerticalOptions="StartAndExpand"
            BackgroundColor="{StaticResource iAppColor_Silver}"
-           BorderColor="Transparent">
+           BorderColor="Transparent"
+               ZIndex="20" >
             <!--	HeightRequest="60"
 											WidthRequest="60"Text="{Binding AvatarName}"-->
             <Label  x:Name="lbl_AvatarName"

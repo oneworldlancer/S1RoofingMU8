@@ -179,7 +179,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
           ll_ProgressBar_Chat.IsVisible = true;
 
 
-          web_HistotyChat.Source="WebRTC/Landing_Chat/Index.html";
+          //web_HistotyChat.Source="WebRTC/Landing_Chat/Index.html";
 
       });
 
@@ -212,7 +212,13 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
                     //_iOwnerModel = _iParent._iOwnerModel;
                 }
 
+                //MainThread.BeginInvokeOnMainThread(async () =>
+                //            {
 
+                //                web_HistotyChat.Reload();
+                //                // Code to run on the main thread
+
+                //            });
                 //btn_New_Group.Text = _iParent._iLanguageModel.lblText_Group_New_Message;
 
 
@@ -627,8 +633,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
                    // Code to run on the main thread
                    var jsonChatList = JsonConvert.SerializeObject(arr_History_ChatList_Temp, Formatting.None);
 
-                   //web_HistotyChat.Source="WebRTC/Landing_Chat/Index.html";
-                   await web_HistotyChat.EvaluateJavaScriptAsync("loadJsonList('" + jsonChatList + "')");
+                    //////////await web_HistotyChat.EvaluateJavaScriptAsync("loadJsonList('" + jsonChatList + "')");
 
                    if (refresh_ChatList.IsRefreshing)
                    {
@@ -637,23 +642,23 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
 
                    ll_ProgressBar_Chat.IsVisible = false;
 
-                   //////////if (cv_UserChatHistoryList.ItemsSource == null)
-                   //////////{
-                   //////////    cv_UserChatHistoryList.ItemsSource = arr_History_ChatList;
-                   //////////}
+                   if (cv_UserChatHistoryList.ItemsSource == null)
+                   {
+                       cv_UserChatHistoryList.ItemsSource = arr_History_ChatList;
+                   }
 
-                   //////////if (arr_History_ChatList_Temp != null)
-                   //////////{
-                   //////////    arr_History_ChatList.Clear();
+                   if (arr_History_ChatList_Temp != null)
+                   {
+                       arr_History_ChatList.Clear();
 
-                   //////////    for (int i = 0; i < arr_History_ChatList_Temp.Count; i++)
-                   //////////    {
-                   //////////        arr_History_ChatList.Add(arr_History_ChatList_Temp[i]);
+                       for (int i = 0; i < arr_History_ChatList_Temp.Count; i++)
+                       {
+                           arr_History_ChatList.Add(arr_History_ChatList_Temp[i]);
 
-                   //////////        await Task.Delay(SRoofing_EnumGlobalPreference.Global_ROW_LIST_DELAY);
-                   //////////    }
+                           await Task.Delay(SRoofing_EnumGlobalPreference.Global_ROW_LIST_DELAY);
+                       }
 
-                   //////////}
+                   }
 
                    _iParent.llProgress_ToggleVisible_ChatList(true, false);
 

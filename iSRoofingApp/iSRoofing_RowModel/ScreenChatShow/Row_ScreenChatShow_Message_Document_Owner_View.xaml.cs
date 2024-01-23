@@ -89,7 +89,21 @@ public partial class Row_ScreenChatShow_Message_Document_Owner_View : ContentVie
 if (iGroupModel != null)
             {
                 // Update ContentView properties and elements.
-                Initialize_Command();
+
+                lbl_FileTitle.Text = iGroupModel.MediaFile_Title;
+                lbl_FileSize.Text = iGroupModel.MediaFile_Size;
+
+
+                img_Thum.Source = iGroupModel.MediaFile_Thum;
+
+
+
+                grd_Media.WidthRequest = iGroupModel.iScreenChatShow_iMedia_Width;
+
+
+
+
+                //Initialize_Command();
 
             }
         }

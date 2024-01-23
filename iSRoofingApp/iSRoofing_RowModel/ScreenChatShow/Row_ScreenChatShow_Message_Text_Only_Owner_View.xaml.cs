@@ -95,7 +95,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.ScreenChatShow
                     //ctrl_AvatarName.iOwnerModel = iOwnerModel;
 
 
-                    Initialize_Command();
+                    //Initialize_Command();
 
                 }
             }

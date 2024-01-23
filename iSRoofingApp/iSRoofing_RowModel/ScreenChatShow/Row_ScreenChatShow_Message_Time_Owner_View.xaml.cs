@@ -89,16 +89,16 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.ScreenChatShow
     if (iGroupModel != null)
                 {
 
-                    if (iGroupModel.UploadTime!= null)
-                    {
+                    //////////if (iGroupModel.UploadTime!= null)
+                    //////////{
 
-                    lbl_MessageTime.Text = iGroupModel.UploadTime.ToLower();
+                    //////////lbl_MessageTime.Text = iGroupModel.UploadTime.ToLower();
 
-                    }
+                    //////////}
 
 
-                    // Update ContentView properties and elements.
-                    Initialize_Command();
+                    //////////// Update ContentView properties and elements.
+                    //////////Initialize_Command();
 
                 }
             }

@@ -45,6 +45,7 @@ using System.Runtime.InteropServices.ComTypes;
 using System.IO;
 using Microsoft.Maui.ApplicationModel;
 using S1RoofingMU.iSRoofingApp.iSRoofing_Page.Picker.Chatter;
+using S1RoofingMU.iSRoofingApp.iSRoofing_EnumGlobalManager;
 
 namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Gallery.Chat
 {
@@ -380,7 +381,11 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Gallery.Chat
             try
             {
 
-                btn_Close_Window.Text = _iLanguageModel.lblText_Command_CLOSE_Message;
+
+                MainThread.BeginInvokeOnMainThread(() =>
+                   {
+                       btn_Close_Window.Text = _iLanguageModel.lblText_Command_CLOSE_Message;
+                   });
 
                 //        _iOwnerModel = await
                 //   SRoofingSync_User_OwnerManager.Sync_User_Owner_Get_UserModel (
@@ -638,7 +643,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Gallery.Chat
                     // Code to run on the main thread
                     // iSnackBar.BackgroundColor = Colors.Red;
 
-                    await SRoofing_ToastMessageManager.ToastMessage_Show_Message( strMessage);
+                    await SRoofing_ToastMessageManager.ToastMessage_Show_Message(strMessage);
 
 
 
@@ -1139,7 +1144,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Gallery.Chat
             {
                 ll_ProgressBar.IsVisible = false;
 
-                refresh_GroupList.IsRefreshing = false;
+                //////////refresh_GroupList.IsRefreshing = false;
 
 
                 // Code to run on the main thread
@@ -1156,7 +1161,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Gallery.Chat
                     {
                         arr_ChatGalleryList.Add(arr_ChatGalleryList_Temp[i]);
 
-                        await Task.Delay(50);
+                        await Task.Delay(SRoofing_EnumGlobalPreference.Global_ROW_LIST_DELAY);
                     }
 
                 }
@@ -1200,6 +1205,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Gallery.Chat
             catch (Exception ex)
             {
                 SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                return;
             }
 
         }

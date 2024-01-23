@@ -7,23 +7,26 @@
     <meta charset="utf-8">
     <title>WebRTC client</title>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/8.2.3/adapter.min.js" integrity="sha512-q4ypwk3dUkbGb3UhK1sOcMQlEQDCcR+10FBpWouA63JGo4Bh7SQBceQJLTtPItgoxaILCtjJYfOlB2can9DCyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="JS/jquery.js"></script>
+    <script src="JS/jquery_ajax.js"></script>
+    <script src="JS/jquery_ui.js"></script>
+
+
+    <script src="JS/webrtc_adapter.js"></script>
+    <link href="JS/bootsrap_css.css" rel="stylesheet" />
+    <script src="JS/bootstrap_bundle.js"></script>
+
+
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/8.2.3/adapter.min.js" integrity="sha512-q4ypwk3dUkbGb3UhK1sOcMQlEQDCcR+10FBpWouA63JGo4Bh7SQBceQJLTtPItgoxaILCtjJYfOlB2can9DCyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-    <!--<script src="jquery.mobile-1.4.5.min.js"></script>
-    <link href="jquery.mobile-1.4.5.min.css" rel="stylesheet" />
-    <link href="jquery.mobile.theme-1.4.5.min.css" rel="stylesheet" />-->
-    <!--<script src="http://code.jquery.com/jquery.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.8.17/jquery-ui.min.js"></script>
-    <script src="JS/jquery.ui.touch-punch.min.js"></script>-->
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>-->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>-->
     <!--<script src="JS/jquery.draggableTouch.js"></script>-->
     <!--<script src="JS/script_querystring.js"></script>
 
@@ -41,8 +44,7 @@
     <script src="JS/script_CameraTarget.js"></script>
     <script src="JS/script_CameraType.js"></script>
     <script src="JS/script_timer.js"></script>-->
-
-
+    <!--<script src="main.js"></script>-->
 
 
 
@@ -56,6 +58,62 @@
 
         function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+
+
+
+        function loadJsonList(arrJsonList) {
+
+
+            try {
+
+                //alert('callFromCSharp == ' + 'xxxx');
+
+                /*var new_field_html = '<div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;"><div class="col-11" ><input type="text"  type="url" pattern="https?://.+" class="form-control" id="input_fileURL2" name="input_fileURL2" placeholder="Insert your hyperlink here ..." style="color:blue;"   data-inputfor="fupload"  required /></div><div class="col-1 text-center" style="width:50px;" ><img id="img_delURL2" name="img_delURL2" class="remove_input_button"  src="https://bsr.vemcoconsulting.com/img/img_delete.png" style="width:20px;height:20px;" alt="Delete" title="Delete" /></div></div>';*/
+
+                var new_field_html;// = '<div class="row m-1 p-1 d-flex flex-row" style="height: 90px; color: white; background-color: #656565; border-radius: 5px; border: 1px solid #656565;" onclick="doClick();"><div style = "width:60px;margin:0px; padding: 0px;" ><div class="ms-1 mt-1 rounded-circle text-cetner align-middle" style="width:50px;height:50px;background-color:black;text-align:center;vertical-align:middle;"><div style="width:50px;height:50px;font-size:large;padding-top:10px;">SH</div></div></div ><div class="col d-flex flex-column" style="margin: 0px; padding: 0px; "><div style="color:black;font-size:large;">Shaymaa Hafez</div><div style="color:white;font-size:medium;">+201221977230</div><div style="color:whitesmoke;font-size:small;">Egypt, Ismailia</div></div><div class="p-1 float-end" style="width: 40px; margin: 0px; padding: 0px; "><img src="img/img_chat_white.png" class="float-end" alt="Logo" width="30" height="30" /></div></div> ';
+
+
+                window.arrJson = JSON.parse(arrJsonList);
+
+                //alert('arrJson == ' + arrJson.length);
+                //alert('arrJson[0].GroupTitle == ' + arrJson[0].GroupTitle);
+
+                $('#div_HTMLContent').empty();
+
+
+                sleep(500);
+
+
+                for (var i = 0; i < window.arrJson.length; i++) {
+
+                    sleep(i * 50);
+
+                    //alert('JSON.stringify(arrJson[i])  == ' + JSON.stringify(arrJson[i]));
+
+                    // onclick="doClick(\'asasa\');"
+                    //var jsonStringfy = JSON.stringify(arrJson[i]);// 'jsonStringfy';
+
+                    //alert('jsonStringfy == ' + jsonStringfy);
+
+                    new_field_html = '<div class="row m-1 p-1 d-flex flex-row" style="height: 90px; color: white; background-color: #656565; border-radius: 5px; border: 1px solid #656565;" onclick="doClick(\' ' + i + ' \');"><div style = "width:60px;margin:0px; padding: 0px;" ><div class="ms-1 mt-1 rounded-circle text-cetner align-middle" style="width:50px;height:50px;background-color:black;text-align:center;vertical-align:middle;"><div style="width:50px;height:50px;font-size:large;padding-top:10px;">' + window.arrJson[i].AvatarName + '</div></div></div ><div class="col d-flex flex-column" style="margin: 0px; padding: 0px; "><div style="color:black;font-size:large;margin:0px; padding: 0px;">' + window.arrJson[i].GroupTitle + '</div><div style="color:white;font-size:medium;margin:0px; padding: 0px;">' + arrJson[i].MessageText + '</div><div style="color:whitesmoke;font-size:small;margin:0px; padding: 0px;">' + window.arrJson[i].DateTimeText + '</div></div><div class="p-1 float-end" style="width: 40px; margin: 0px; padding: 0px; "><img src="img/img_chat_white.png" class="float-end" alt="Logo" width="30" height="30" style="margin:0px; padding: 0px;" /></div></div> ';
+
+                    $("#div_HTMLContent").append(new_field_html);
+
+
+                }
+
+            }
+            catch (err) {
+
+                //alert(err);
+            }
+
+
+
+
+
         }
 
         //////////async function loadJsonList(arrJsonList) {
@@ -247,8 +305,6 @@
     </div>
 
 
-
-    <script src="main.js"></script>
 
 
 </body>

@@ -33,16 +33,29 @@ VerticalOptions="FillAndExpand"
          HorizontalOptions="FillAndExpand"
     VerticalOptions="FillAndExpand"
 
-    IsVisible="true"   />
+    IsVisible="false"   />
 
         <VerticalStackLayout
             Spacing="25"
             Padding="0"
                HorizontalOptions="FillAndExpand"
 VerticalOptions="Center" 
-            IsVisible="false">
-            
-              <Button
+            IsVisible="true">
+<!--https://aka.ms/campus.jpg  HorizontalOptions="FillAndExpand"
+                                           VerticalOptions="FillAndExpand"-->
+          <!--https://oneworldlancer.ddns.net/s1roofing/_iuMedia/_iUImage/img_0.jpg-->
+                   <!--Source="http://oneworldlancer.ddns.net:8090/SRoofingStreamImageWS/GetImage"-->
+            <!--<Image x:Name="imgURL"
+                WidthRequest="400"
+                HeightRequest="300"
+          />-->
+            <Image x:Name="img_Thum"
+                                           
+                                        WidthRequest="400"
+HeightRequest="300"          BackgroundColor="Transparent"
+                                           Aspect="AspectFill"
+                                   Source="/storage/emulated/0/Download/7521121026864ca4b372f60b144508ec.jpg"   />
+            <Button
                 x:Name="CounterBtn"
                 HeightRequest="50"
                 Text="Click me"

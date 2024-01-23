@@ -4,27 +4,150 @@
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 xmlns:swipeRight="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Swipe" xmlns:ctl="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.ScreenChatShow"
              x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.ScreenChatShow.Row_ScreenChatShow_Message_Video_Owner_View">
+   
     <ContentView.Content>
 
 
-        <!--<SwipeView  BackgroundColor="{StaticResource iAppColor_SemiGray}">
 
-			<SwipeView.LeftItems>
-				<SwipeItems   Mode="Execute">
-					-->
-        <!--  Command="{Binding 
-											Source={x:Reference vw_ChatRowView},
-											Path=BindingContext.Command_Chat_ByUser}"	Source={x:Reference vw_ChatRowView},
-											-->
-        <!--
-					<SwipeItem BackgroundColor="{StaticResource iAppColor_SemiGray}"
-							   Command="{Binding Command_Chat_ByUser, Source={x:Reference vw_ChatRowView}}"	 							 
-							   CommandParameter="{Binding .}" />
 
-				</SwipeItems>
-			</SwipeView.LeftItems>-->
 
-        <StackLayout  HorizontalOptions="End"
+        <StackLayout
+             HorizontalOptions="EndAndExpand"
+          VerticalOptions="Start"
+          Orientation="Vertical"
+          Spacing="0"
+          Margin="0"
+          Padding="50,0,0,10">
+
+
+            <Grid 
+            HorizontalOptions="FillAndExpand">
+
+
+
+                <Frame HorizontalOptions="EndAndExpand"
+VerticalOptions="StartAndExpand"
+Padding="10"
+Margin="0,15,35,0"
+CornerRadius="5"
+HasShadow="True"
+BackgroundColor="{StaticResource iAppColor_Silver}"
+BorderColor="Transparent"
+                ZIndex="1"    >
+                    <StackLayout HorizontalOptions="EndAndExpand"
+          VerticalOptions="StartAndExpand"
+          Orientation="Vertical"
+          Spacing="0"
+          Margin="0"
+          Padding="0">
+                        <Label x:Name="lbl_MessageText"
+        HorizontalOptions="End"
+        VerticalOptions="Start"
+        TextColor="Black"
+        Text="{Binding MessageText}" />
+                        <ctl:Row_ScreenChatShow_Message_Time_Owner_View x:Name="lbl_MessageTime"
+                                                 HorizontalOptions="End"
+                                                 VerticalOptions="Start" />
+                    </StackLayout>
+                </Frame>
+
+
+                <Frame x:Name="frm_AvatarName"
+           HeightRequest="40"
+           WidthRequest="40"
+           CornerRadius="20"
+           Padding="0"
+           HasShadow="true"
+           Margin="0,0,10,0"
+									   HorizontalOptions="End"
+									   VerticalOptions="StartAndExpand"
+           BackgroundColor="{StaticResource iAppColor_Silver}"
+           BorderColor="Transparent"
+               ZIndex="2" >
+
+                    <Label  x:Name="lbl_AvatarName"
+										
+											FontSize="Small"
+										Text="{Binding AvatarName}"
+                            TextColor="Black"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+											HorizontalTextAlignment="Center"
+											VerticalTextAlignment="Center" />
+                </Frame>
+
+
+                <!--<ctl:Row_ScreenChatShow_Message_Avatar_Owner_View    
+            
+                         iOwnerModel="{Binding iOwnerModel, Source={x:Reference vw_ChatRow_Image_Owner_View}}"
+                                                      iGroupModel="{Binding iGroupModel, Source={x:Reference vw_ChatRow_Image_Owner_View}}" 
+                                               ZIndex="2"      />-->
+
+
+            </Grid>
+
+            <Grid x:Name="grd_Media"
+              HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand"
+              Margin="0,10,40,0">
+                <!--CornerRadius="5"
+                   HasShadow="True"-->
+
+                <Border HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand"
+                   Padding="1"
+                   Margin="0"
+                  BackgroundColor="{StaticResource iAppColor_Opacity_White}"
+                     StrokeShape="RoundRectangle 40,0,0,40" 
+                 Stroke="{StaticResource iAppColor_LightSilver}">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="imgBtn_Gallery_Clicked" />
+                    </Border.GestureRecognizers>
+
+                    <ImageButton x:Name="img_Thum"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand"
+                                                 
+                                              
+                            BackgroundColor="Transparent"
+                                           Aspect="AspectFill"
+                                     Clicked="img_Thum_Clicked"  />
+                </Border>
+
+                <Frame   HorizontalOptions="Start"
+                     VerticalOptions="Start"
+                     Margin="20"
+                     Padding="5"
+                     BackgroundColor="{StaticResource iAppColor_Opacity_Black}">
+                    <Label x:Name="lbl_FileMetaData"
+                       TextColor="{StaticResource iAppColor_SemiOrange}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding MediaFile_Size}" />
+
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </Frame>
+
+                <Image HorizontalOptions="Center"
+							 VerticalOptions="Center"
+				   Margin="10"
+            Source="img_theme_player_play.png" 
+                       WidthRequest="50"
+                       HeightRequest="50"
+                       BackgroundColor="{StaticResource iAppColor_Transparent}"
+               IsVisible="true" />
+                
+            </Grid>
+
+        </StackLayout>
+
+
+        
+        
+ 
+        <!--<StackLayout  HorizontalOptions="End"
 								 VerticalOptions="StartAndExpand"
 								 Orientation="Vertical"
 								 Spacing="0"
@@ -62,20 +185,7 @@
                            Grid.Column="1"
 				  BackgroundColor="{StaticResource iAppColor_Transparent}"
                    >
-
-                        <!--<ctl:Row_ScreenChatShow_Message_Time_Owner_View
-                     iOwnerModel="{Binding iOwnerModel, Source={x:Reference vw_ChatRow_Video_Owner_View}}"
-                                iGroupModel="{Binding iGroupModel, Source={x:Reference vw_ChatRow_Video_Owner_View}}"/>-->
-
-                        <!--<Label    x:Name="lbl_MessageTime"
-                          HorizontalOptions="End"
-                                     VerticalOptions="Start"
-                                    Margin="0,50,0,0"
-                               Text="00:00"/>-->
-
-
-
-
+ 
                         <StackLayout  HorizontalOptions="End"
 								 VerticalOptions="StartAndExpand"
 								 Orientation="Vertical"
@@ -87,50 +197,7 @@
                      iOwnerModel="{Binding iOwnerModel, Source={x:Reference vw_ChatRow_Video_Owner_View}}"
                                 iGroupModel="{Binding iGroupModel, Source={x:Reference vw_ChatRow_Video_Owner_View}}"/>
 
-                            <!--<Frame HorizontalOptions="EndAndExpand"
-					   VerticalOptions="StartAndExpand"
-					   Padding="10"
-					   Margin="0,10,40,0"
-					   CornerRadius="5"
-					   BackgroundColor="{StaticResource iAppColor_Silver}">
-
-                            <Label x:Name="lbl_MessageText" 
-                                   TextColor="Black"
-                                   
-                                   Text="Hello world..."/>
-
-            </Frame>-->
-
-
-
-                            <!--<ctl:Row_ScreenChatShow_Message_Command_Share_Owner_View
-                     iOwnerModel="{Binding iOwnerModel, Source={x:Reference vw_ChatRow_Video_Owner_View}}"
-                                iGroupModel="{Binding iGroupModel, Source={x:Reference vw_ChatRow_Video_Owner_View}}"/>-->
-
-                            <!--<StackLayout  HorizontalOptions="End"
-								 VerticalOptions="Start"
-								 Orientation="Horizontal"
-								 Spacing="0"
-								 Margin="0,0,50,0"
-								 Padding="0">
-
-                                <ImageButton x:Name="imgBtn_Copy"
-                                    WidthRequest="40"
-                                             HeightRequest="40"
-                                    Source="img_theme_copy.png"
-                                                Aspect="AspectFit"   Margin="0,0,30,0"
-                                             BorderColor="Yellow"/>
-                          
-                           
-                                <ImageButton x:Name="imgBtn_Speak"
-                                    WidthRequest="40"
-                                             HeightRequest="40"
-                                    Source="img_theme_speaker_small.png"
-                                         Aspect="AspectFit"
-                                             BorderColor="Yellow"/>
-                          
-                            </StackLayout>-->
-
+                        
                         </StackLayout>
 
 
@@ -138,46 +205,14 @@
                      iOwnerModel="{Binding iOwnerModel, Source={x:Reference vw_ChatRow_Video_Owner_View}}"
                                 iGroupModel="{Binding iGroupModel, Source={x:Reference vw_ChatRow_Video_Owner_View}}"/>
 
-                        <!--<Frame x:Name="frm_AvatarName"
-                                    HeightRequest="50"
-									   WidthRequest="50"
-									   CornerRadius="25"
-									   Padding="0"
-									   Margin="0"
-									   HorizontalOptions="End"
-									   VerticalOptions="StartAndExpand"
-									   BackgroundColor="Black">
-                            -->
-                        <!--Text="{Binding AvatarName}"-->
-                        <!--
-                            <Label  x:Name="lbl_AvatarName"
-											HeightRequest="60"
-											WidthRequest="60"
-											FontSize="Large"
-										Text="SH"	TextColor="White"
-											HorizontalOptions="Center"
-											VerticalOptions="Center"
-											HorizontalTextAlignment="Center"
-											VerticalTextAlignment="Center" />
-                        </Frame>-->
-                        <Grid x:Name="bx_MediaContent"
+                      <Grid x:Name="bx_MediaContent"
                               HorizontalOptions="FillAndExpand"
                               VerticalOptions="FillAndExpand"
                               Margin="0,100,40,10">
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="bx_MediaContent_Tapped" />
                             </Grid.GestureRecognizers>
-                            <!--<ImageButton  x:Name="imgBtn_Gallery"
-                                          HorizontalOptions="EndAndExpand"
-                                          VerticalOptions="StartAndExpand"
-                                          Margin="0,0,10,0"
-                                          CornerRadius="5"
-                                          Source="img_menu_black.png"
-                                          WidthRequest="40"
-                                          HeightRequest="40"
-                                          BackgroundColor="{StaticResource iAppColor_Opacity_Black}"
-                                          Clicked="imgBtn_Gallery_Clicked"
-                                          IsVisible="true" />-->
+                           
                         </Grid>
                     </Grid>
 
@@ -190,8 +225,8 @@
                           Spacing="0"
                           Margin="0,0,0,0"
                           Padding="0">
-                <!--Clicked="imgBtn_Copy_Clicked"
-                                Clicked="imgBtn_Speak_Clicked"-->
+                --><!--Clicked="imgBtn_Copy_Clicked"
+                                Clicked="imgBtn_Speak_Clicked"--><!--
                 <ImageButton    x:Name="imgBtn_Copy"
                                 WidthRequest="35"
                                 HeightRequest="35"
@@ -211,10 +246,8 @@
                               Opacity="1"
                               Clicked="imgBtn_Share_Clicked" />
             </StackLayout>
-        </StackLayout>
-
-        <!--</SwipeView>-->
-
+        </StackLayout>-->
+ 
 
     </ContentView.Content>
 </ContentView>

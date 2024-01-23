@@ -89,7 +89,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.ScreenChatShow
     if (iGroupModel != null)
                 {
                     // Update ContentView properties and elements.
-                    Initialize_Command();
+                    //Initialize_Command();
 
                 }
             }

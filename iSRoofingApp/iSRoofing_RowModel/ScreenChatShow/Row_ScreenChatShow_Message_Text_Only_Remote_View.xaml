@@ -4,134 +4,86 @@
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 xmlns:swipeRight="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Swipe" xmlns:ctl="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.ScreenChatShow"
              x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.ScreenChatShow.Row_ScreenChatShow_Message_Text_Only_Remote_View">
- 
-
-        <StackLayout  HorizontalOptions="Start"
-								 VerticalOptions="StartAndExpand"
-								 Orientation="Vertical"
-								 Spacing="0"
-								   Margin="0"
-					 
-								 Padding="0">
-
-            <ctl:Row_ScreenChatShow_Message_UserName_Remote_View
-                                iOwnerModel="{Binding iOwnerModel, Source={x:Reference vw_ChatRow_Text_Only_Remote_View}}"
-                                iGroupModel="{Binding iGroupModel, Source={x:Reference vw_ChatRow_Text_Only_Remote_View}}"/>
-      
-        
-        <Frame HorizontalOptions="FillAndExpand"
-				   VerticalOptions="StartAndExpand"
-				   Padding="0"
-				   Margin="0"
-				   CornerRadius="5"
-				   HasShadow="False"
-				   BackgroundColor="{StaticResource iAppColor_Transparent}"
-                   BorderColor="{StaticResource iAppColor_Transparent}">
-
-            <Grid  HorizontalOptions="FillAndExpand"
-				   VerticalOptions="StartAndExpand"
-				  ColumnDefinitions="9*,1*" Padding="0"
-					  BackgroundColor="{StaticResource iAppColor_Transparent}"
-                    Margin="0"
-					  >
-
-                <Grid  HorizontalOptions="Start"
-				   VerticalOptions="StartAndExpand"
-			 Padding="0"
-					   Margin="0"
-                           Grid.Column="0"
-				  BackgroundColor="{StaticResource iAppColor_Transparent}"
-                   >
-
-                    <!--<ctl:Row_ScreenChatShow_Message_Time_Remote_View   
-                    
-                                iOwnerModel="{Binding iOwnerModel, Source={x:Reference vw_ChatRow_Text_Only_Remote_View}}"
-                                iGroupModel="{Binding iGroupModel, Source={x:Reference vw_ChatRow_Text_Only_Remote_View}}"/>-->
-
-                    <!--<Label    x:Name="lbl_MessageTime"
-                          HorizontalOptions="End"
-                                     VerticalOptions="Start"
-                                    Margin="0,50,0,0"
-                               Text="00:00"/>-->
 
 
 
+    <StackLayout
+             HorizontalOptions="StartAndExpand"
+          VerticalOptions="Start"
+          Orientation="Vertical"
+          Spacing="0"
+          Margin="0"
+          Padding="0,0,50,10">
 
-                    <StackLayout  HorizontalOptions="Start"
-								 VerticalOptions="StartAndExpand"
-								 Orientation="Vertical"
-								 Spacing="0"
-								   Margin="40,0,0,0"
-					 
-								 Padding="0">
 
-                            <ctl:Row_ScreenChatShow_Message_Text_Only_Box_Remote_View
-                                iOwnerModel="{Binding iOwnerModel, Source={x:Reference vw_ChatRow_Text_Only_Remote_View}}"
-                                iGroupModel="{Binding iGroupModel, Source={x:Reference vw_ChatRow_Text_Only_Remote_View}}"/>
-
-                        <!--<Frame HorizontalOptions="EndAndExpand"
-					   VerticalOptions="StartAndExpand"
-					   Padding="10"
-					   Margin="0,10,40,0"
-					   CornerRadius="5"
-					   BackgroundColor="{StaticResource iAppColor_Silver}">
-
-                            <Label x:Name="lbl_MessageText" 
-                                   TextColor="Black"
-                                   
-                                   Text="Hello world..."/>
-
-            </Frame>-->
+        <Grid 
+            HorizontalOptions="FillAndExpand">
 
 
 
-                            <ctl:Row_ScreenChatShow_Message_Command_Copy_Remote_View
-                                iOwnerModel="{Binding iOwnerModel, Source={x:Reference vw_ChatRow_Text_Only_Remote_View}}"
-                                iGroupModel="{Binding iGroupModel, Source={x:Reference vw_ChatRow_Text_Only_Remote_View}}"/>
-
-                        <!--<StackLayout  HorizontalOptions="End"
-								 VerticalOptions="Start"
-								 Orientation="Horizontal"
-								 Spacing="0"
-								 Margin="0,0,50,0"
-								 Padding="0">
-
-                                <ImageButton x:Name="imgBtn_Copy"
-                                    WidthRequest="40"
-                                             HeightRequest="40"
-                                    Source="img_theme_copy.png"
-                                                Aspect="AspectFit"   Margin="0,0,30,0"
-                                             BorderColor="Yellow"/>
-                          
-                           
-                                <ImageButton x:Name="imgBtn_Speak"
-                                    WidthRequest="40"
-                                             HeightRequest="40"
-                                    Source="img_theme_speaker_small.png"
-                                         Aspect="AspectFit"
-                                             BorderColor="Yellow"/>
-                          
-                            </StackLayout>-->
-
-                    </StackLayout>
+            <Frame HorizontalOptions="StartAndExpand"
+VerticalOptions="StartAndExpand"
+Padding="10"
+Margin="35,15,0,0"
+CornerRadius="5"
+HasShadow="True"
+BackgroundColor="{StaticResource iAppColor_LightOrange}"
+BorderColor="Transparent"
+                ZIndex="1"    >
+                <StackLayout HorizontalOptions="EndAndExpand"
+          VerticalOptions="StartAndExpand"
+          Orientation="Vertical"
+          Spacing="0"
+          Margin="0"
+          Padding="0">
+                    <Label x:Name="lbl_MessageText"
+        HorizontalOptions="End"
+        VerticalOptions="Start"
+        TextColor="White"
+      Text="{Binding MessageText_Translated}"  />
+                    <ctl:Row_ScreenChatShow_Message_Time_Remote_View x:Name="lbl_MessageTime"
+                                                 HorizontalOptions="End"
+                                                 VerticalOptions="Start" />
+                </StackLayout>
+            </Frame>
 
 
-                    <ctl:Row_ScreenChatShow_Message_Avatar_Remote_View
-                        HorizontalOptions="Start"
-                                iOwnerModel="{Binding iOwnerModel, Source={x:Reference vw_ChatRow_Text_Only_Remote_View}}"
-                                iGroupModel="{Binding iGroupModel, Source={x:Reference vw_ChatRow_Text_Only_Remote_View}}"/>
+            <Frame x:Name="frm_AvatarName"
+           HeightRequest="40"
+           WidthRequest="40"
+           CornerRadius="20"
+           Padding="0"
+           HasShadow="true"
+           Margin="10,0,0,0"
+									   HorizontalOptions="Start"
+									   VerticalOptions="StartAndExpand"
+           BackgroundColor="{StaticResource iAppColor_LightOrange}"
+           BorderColor="Transparent"
+               ZIndex="2" >
 
-              
+                <Label  x:Name="lbl_AvatarName"
+										
+											FontSize="Small"
+										Text="{Binding AvatarName}"
+                            TextColor="White"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+											HorizontalTextAlignment="Center"
+											VerticalTextAlignment="Center" />
+            </Frame>
 
 
-                </Grid>
+            <!--<ctl:Row_ScreenChatShow_Message_Avatar_Owner_View    
+            
+                         iOwnerModel="{Binding iOwnerModel, Source={x:Reference vw_ChatRow_Image_Owner_View}}"
+                                                      iGroupModel="{Binding iGroupModel, Source={x:Reference vw_ChatRow_Image_Owner_View}}" 
+                                               ZIndex="2"      />-->
 
 
-            </Grid>
-        </Frame>
+        </Grid>
 
-   
-        
-        </StackLayout>
-  
+
+    </StackLayout>
+
+
 </ContentView>

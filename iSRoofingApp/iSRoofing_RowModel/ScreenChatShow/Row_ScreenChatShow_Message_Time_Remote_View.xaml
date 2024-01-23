@@ -24,7 +24,7 @@
                   TextType="Html"
                   Margin="0,5,0,0"
                   FontSize="Small"    
-                      Text="00:00"
+                        Text="{Binding UploadTime}"
                 TextColor="White"  />
 
         <!--</Frame>-->

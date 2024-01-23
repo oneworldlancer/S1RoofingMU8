@@ -34,19 +34,19 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Contact;
 
 
 //[XamlCompilation ( XamlCompilationOptions.Compile )]
-public partial class Page_Contact_List_Dashboard : ContentPage, INotifyPropertyChanged
+public partial class Page_Contact_List_Dashboard : ContentPage///, INotifyPropertyChanged
 {
 
-    #region INotifyPropertyChanged
+    //#region INotifyPropertyChanged
 
-    public event PropertyChangedEventHandler PropertyChanged;
+    //public event PropertyChangedEventHandler PropertyChanged;
 
-    void OnPropertyChanged([CallerMemberName] string propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
+    //void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    //{
+    //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    //}
 
-    #endregion
+    //#endregion
 
 
 
@@ -595,88 +595,164 @@ public partial class Page_Contact_List_Dashboard : ContentPage, INotifyPropertyC
                                     App.Current,
                                   _iOwnerModel);
 
-                    MainThread.BeginInvokeOnMainThread(() =>
-                    {
-                        // Code to run on the main thread
+                    //////////MainThread.BeginInvokeOnMainThread(() =>
+                    //////////{
+                    //////////    // Code to run on the main thread
 
-                        for (int i = 0; i < arr_AlphabetList.Count; i++)
-                        {
-
-
-                            iAlphabetChar = new Row_Alphabet_View();
-                            iAlphabetChar.iOwnerModel = _iOwnerModel;
-                            iAlphabetChar.iKeyValueModel = new SRoofingKeyValueModelManager()
-                            {
-                                ItemIndex = i,
-                                ItemText = arr_AlphabetList[i].ItemText,
-                                ItemValue = arr_AlphabetList[i].ItemValue,
-                                ItemCode = arr_AlphabetList[i].ItemCode
-                            };
-
-                            if (arr_AlphabetList[i].ItemCode == "active")
-                            {
-                                iAlphabetChar.Command_Call_ByUser = new Command(async (obj) =>
-                                {
-                                    try
-                                    {
-
-                                        MainThread.BeginInvokeOnMainThread(() =>
-                                        {
-                                            // Code to run on the main thread
-
-                                            if (_iCurrentSelected_Index != -1)
-                                            {
-                                                ((Row_Alphabet_View)sl_AlphabetList.Children[_iCurrentSelected_Index]).UnSelectMe();
-                                            }
+                    //////////    for (int i = 0; i < arr_AlphabetList.Count; i++)
+                    //////////    {
 
 
-                              ((Row_Alphabet_View)sl_AlphabetList.Children[((SRoofingKeyValueModelManager)obj).ItemIndex]).SelectMe();
+                    //////////        iAlphabetChar = new Row_Alphabet_View();
+                    //////////        iAlphabetChar.iOwnerModel = _iOwnerModel;
+                    //////////        iAlphabetChar.iKeyValueModel = new SRoofingKeyValueModelManager()
+                    //////////        {
+                    //////////            ItemIndex = i,
+                    //////////            ItemText = arr_AlphabetList[i].ItemText,
+                    //////////            ItemValue = arr_AlphabetList[i].ItemValue,
+                    //////////            ItemCode = arr_AlphabetList[i].ItemCode
+                    //////////        };
+
+                    //////////        if (arr_AlphabetList[i].ItemCode == "active")
+                    //////////        {
+                    //////////            iAlphabetChar.Command_Call_ByUser = new Command(async (obj) =>
+                    //////////            {
+                    //////////                try
+                    //////////                {
+
+                    //////////                    MainThread.BeginInvokeOnMainThread(() =>
+                    //////////                    {
+                    //////////                        // Code to run on the main thread
+
+                    //////////                        if (_iCurrentSelected_Index != -1)
+                    //////////                        {
+                    //////////                            ((Row_Alphabet_View)sl_AlphabetList.Children[_iCurrentSelected_Index]).UnSelectMe();
+                    //////////                        }
 
 
-                                            _iCurrentSelected_Index = ((SRoofingKeyValueModelManager)obj).ItemIndex;
+                    //////////          ((Row_Alphabet_View)sl_AlphabetList.Children[((SRoofingKeyValueModelManager)obj).ItemIndex]).SelectMe();
+
+
+                    //////////                        _iCurrentSelected_Index = ((SRoofingKeyValueModelManager)obj).ItemIndex;
 
 
 
-                                        });
+                    //////////                    });
 
 
-                                        await Initialize_List_Contact_ByAlphabet(((SRoofingKeyValueModelManager)obj), false);
+                    //////////                    await Initialize_List_Contact_ByAlphabet(((SRoofingKeyValueModelManager)obj), false);
 
 
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
-                                        return;
-                                    }
+                    //////////                }
+                    //////////                catch (Exception ex)
+                    //////////                {
+                    //////////                    SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                    //////////                    return;
+                    //////////                }
 
-                                });
+                    //////////            });
 
 
-                            }
+                    //////////        }
 
-                            arr_AlpabetItems.Add(iAlphabetChar);
+                    //////////        arr_AlpabetItems.Add(iAlphabetChar);
 
-                        }
+                    //////////    }
 
-                        for (int i = 0; i < arr_AlpabetItems.Count; i++)
-                        {
-                            sl_AlphabetList.Children.Add(arr_AlpabetItems[i]);
-                        }
+                    //////////    for (int i = 0; i < arr_AlpabetItems.Count; i++)
+                    //////////    {
+                    //////////        sl_AlphabetList.Children.Add(arr_AlpabetItems[i]);
+                    //////////    }
 
-                        //if (iHistoryCharacterModel != null)
-                        //    ((Row_Alphabet_View)sl_AlphabetList.Children[iHistoryCharacterModel.ItemIndex]).SelectMe();
+                    //////////    //if (iHistoryCharacterModel != null)
+                    //////////    //    ((Row_Alphabet_View)sl_AlphabetList.Children[iHistoryCharacterModel.ItemIndex]).SelectMe();
 
-                    });
+                    //////////});
 
-                    await ShowList();
+                    //////////await ShowList();
 
                 }
-                else
+                //else
+                //{
+                //    await Initialize_Alphabet_List_History_Active_ByOwnerUserTokenID();
+                //}
+
+
+                MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    await Initialize_Alphabet_List_History_Active_ByOwnerUserTokenID();
-                }
+                    // Code to run on the main thread
 
+                    for (int i = 0; i < arr_AlphabetList.Count; i++)
+                    {
+
+
+                        iAlphabetChar = new Row_Alphabet_View();
+                        iAlphabetChar.iOwnerModel = _iOwnerModel;
+                        iAlphabetChar.iKeyValueModel = new SRoofingKeyValueModelManager()
+                        {
+                            ItemIndex = i,
+                            ItemText = arr_AlphabetList[i].ItemText,
+                            ItemValue = arr_AlphabetList[i].ItemValue,
+                            ItemCode = arr_AlphabetList[i].ItemCode
+                        };
+
+                        if (arr_AlphabetList[i].ItemCode == "active")
+                        {
+                            iAlphabetChar.Command_Call_ByUser = new Command(async (obj) =>
+                            {
+                                try
+                                {
+
+                                    MainThread.BeginInvokeOnMainThread(() =>
+                                    {
+                                        // Code to run on the main thread
+
+                                        if (_iCurrentSelected_Index != -1)
+                                        {
+                                            ((Row_Alphabet_View)sl_AlphabetList.Children[_iCurrentSelected_Index]).UnSelectMe();
+                                        }
+
+
+                          ((Row_Alphabet_View)sl_AlphabetList.Children[((SRoofingKeyValueModelManager)obj).ItemIndex]).SelectMe();
+
+
+                                        _iCurrentSelected_Index = ((SRoofingKeyValueModelManager)obj).ItemIndex;
+
+
+
+                                    });
+
+
+                                    await Initialize_List_Contact_ByAlphabet(((SRoofingKeyValueModelManager)obj), false);
+
+
+                                }
+                                catch (Exception ex)
+                                {
+                                    SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                                    return;
+                                }
+
+                            });
+
+
+                        }
+
+                        arr_AlpabetItems.Add(iAlphabetChar);
+
+                    }
+
+                    for (int i = 0; i < arr_AlpabetItems.Count; i++)
+                    {
+                        sl_AlphabetList.Children.Add(arr_AlpabetItems[i]);
+                    }
+
+                    //if (iHistoryCharacterModel != null)
+                    //    ((Row_Alphabet_View)sl_AlphabetList.Children[iHistoryCharacterModel.ItemIndex]).SelectMe();
+
+                });
+
+                await ShowList();
 
                 ////      MainThread.BeginInvokeOnMainThread(() =>
                 ////{

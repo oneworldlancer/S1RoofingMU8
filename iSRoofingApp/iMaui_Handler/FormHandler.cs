@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 using Microsoft.Maui;
 using System.Drawing;
+
+
+
+
+
+#if ANDROID
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
+#endif
 
 #if IOS
 using UIKit;

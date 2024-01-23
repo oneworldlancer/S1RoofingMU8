@@ -10,6 +10,7 @@ using S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Entry;
 using Plugin.Maui.Audio;
 using S1RoofingMU.Platforms;
 using CommunityToolkit.Maui;
+using CommunityToolkit.Maui.Storage;
 
 namespace S1RoofingMU
 {
@@ -61,8 +62,10 @@ namespace S1RoofingMU
             builder.Services.AddSingleton<iSRoofing_DependencyService_SaveMediaDataFile, DependencyService_SaveMediaDataFile>();
             builder.Services.AddSingleton<iSRoofing_DependencyService_VideoModel, DependencyService_VideoModel>();
             builder.Services.AddSingleton(AudioManager.Current);
-      
-            
+
+
+            builder.Services.AddSingleton<IFileSaver>(FileSaver.Default);
+
             CustomizeWebViewHandler();
 
 

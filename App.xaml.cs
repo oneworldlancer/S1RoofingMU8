@@ -1,4 +1,6 @@
 ﻿
+using CommunityToolkit.Maui.Storage;
+
 using Plugin.FirebasePushNotification;
 
 using S1RoofingMU.iSRoofingApp.iSRoofing_Database;
@@ -22,14 +24,14 @@ namespace S1RoofingMU
     public partial class App : Application
     {
 
-
+        IFileSaver fileSaver;
         public App()
         {
             InitializeComponent();
 
             //MainPage = new AppShell();
-           // MainPage =new NavigationPage(new MainPage());
-              MainPage =new NavigationPage(new Page_Launcher());
+            //   MainPage =new NavigationPage(new MainPage(   ));
+           MainPage =new NavigationPage(new Page_Launcher());
 
             ////////// ///
 

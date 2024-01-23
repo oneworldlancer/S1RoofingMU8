@@ -91,7 +91,6 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Gallery.Chat
                     // Update ContentView properties and elements.
                     Initialize_Command();
 
-                    //   imgBtn_Thum.Source = iGroupModel.ImageDefaultServerURL;
                     if (File.Exists(iGroupModel.ImageDefaultPath))
                     {
                         imgBtn_Thum.Source = iGroupModel.ImageDefaultPath;
@@ -108,11 +107,10 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Gallery.Chat
 
 
 
-                    frm_Avatar.WidthRequest = iGroupModel.iGallery_iMedia_Width;
-                    frm_Avatar.HeightRequest = iGroupModel.iGallery_iMedia_Height;
+                    grd_Avatar.WidthRequest = iGroupModel.iGallery_iMedia_Width;
+                    grd_Avatar.HeightRequest = iGroupModel.iGallery_iMedia_Height;
 
 
-                    //lbl_Play.Text = iGroupModel.CommandText_View;
                     lbl_Download.Text = iGroupModel.CommandText_Download;
                     lbl_Share.Text = iGroupModel.CommandText_Share;
 

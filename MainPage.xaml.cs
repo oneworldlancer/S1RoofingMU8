@@ -9,9 +9,14 @@ using Java.Interop;
 
 #endif
 
+using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Storage;
+
+using S1RoofingMU.iSRoofingApp.iSRoofing_Manager;
 using S1RoofingMU.Platforms;
 
 using System.Diagnostics;
+using System.Text;
 
 namespace S1RoofingMU
 {
@@ -21,11 +26,15 @@ namespace S1RoofingMU
     public partial class MainPage : ContentPage
     {
         int count = 0;
-
+        //        private readonly IFileSaver fileSaver;
+        //IFileSaver fileSaver
         public MainPage()
         {
             InitializeComponent();
 
+            //imgURL.Source="/storage/emulated/0/Download/7521121026864ca4b372f60b144508ec.jpg";
+
+            //this.fileSaver = fileSaver;
             // cam=&caltknid=&ownid=&ownmobid=&rmtid=&rmtmobid=&caltag=&caldir=&caltyp=
 
             //# Owner
@@ -35,7 +44,7 @@ namespace S1RoofingMU
             //#Remote
             //
             //cam=front&caltknid=11011101&ownid=1101&ownmobid=1101x&rmtid=2202&rmtmobid=2202x&caltag=answer&caldir=in&caltyp=video
-      
+
             webViewCall.Source="WebRTC/Landing_Chat/Index.html";
 
             //webViewCall.Source="WebRTC/Source/Index.html?" +
@@ -70,83 +79,92 @@ namespace S1RoofingMU
         {
             count++;
 
-
             try
             {
 
-
-                //var xxx = await webViewCall.EvaluateJavaScriptAsync("callFromCSharp('" + "SHAYMAA CS 2024" + "')");
-
-                // Create a stopwatch instance
-                var stopwatch = new Stopwatch();
-
-                // Create a timer instance
-                IDispatcherTimer? timer = Application.Current.Dispatcher.CreateTimer();
-
-                // Set the timer interval to one second
-                timer.Interval = TimeSpan.FromSeconds(1);
-
-                // Subscribe to the Tick event
-                timer.Tick += (s, e) =>
-                {
-                    // Update the label text with the elapsed time
-                    // Use MainThread.BeginInvokeOnMainThread to ensure UI updates are done on the UI thread
-                    MainThread.BeginInvokeOnMainThread(() =>
-                    {
-                        lbl_Result.Text = stopwatch.Elapsed.ToString("hh\\:mm\\:ss");
-                    });
-                };
-
-                // Start the stopwatch and the timer
-                stopwatch.Start();
-                timer.Start();
+                string folderPath = System.IO.Path.Combine(FileSystem.Current.AppDataDirectory, "SRoofingUser1XXX");
+                System.IO.Directory.CreateDirectory(folderPath);
 
 
-                ////////////// Create a timer instance
-                ////////////var timer = Application.Current!.Dispatcher.CreateTimer();
+                /////////////////////////////////
 
-                ////////////// Set the timer interval to one second
-                ////////////timer.Interval = TimeSpan.FromSeconds(1);
+                using var stream = new MemoryStream(Encoding.Default.GetBytes("Hello from the Community Toolkit!"));
 
-                ////////////// Subscribe to the Tick event
-                ////////////timer.Tick += (s, e) =>
-                ////////////{
-                ////////////    // Update the label text with the current time
-                ////////////    // Use MainThread.BeginInvokeOnMainThread to ensure UI updates are done on the UI thread
-                ////////////    MainThread.BeginInvokeOnMainThread(() =>
-                ////////////    {
-                ////////////        lbl_Result.Text = DateTime.Now.ToString("h:mm:ss tt");
-                ////////////    });
-                ////////////};
+                var newFile = Path.Combine(folderPath, "testXXX.txt");
 
-                ////////////// Start the timer
-                ////////////timer.Start();
+                //using (var stream = await photo.OpenReadAsync())
 
+                using (var newStream = File.OpenWrite(newFile))
+                    await stream.CopyToAsync(newStream);
 
+                await CommunityToolkit.Maui.Alerts.Toast.Make($"The file was saved successfully to location: {newFile}").Show(CancellationToken.None);
+             
+                SRoofing_DebugManager.Debug_ShowSystemMessage(newFile);
 
-                //await webViewCall.EvaluateJavaScriptAsync();
+                //var fileSaverResult = await FileSaver.Default.SaveAsync("test.txt", stream, CancellationToken.None);
 
+                await CommunityToolkit.Maui.Alerts.Toast.Make($"File is saved: ").Show(CancellationToken.None);
 
-                //////////if (App.client.State == WebSocketState.Open)
+                //////////System.IO.Directory.CreateDirectory(folderPath);
+                //////////var filePath = System.IO.Path.Combine(folderPath, "test.txt");
+                //////////var fileSaverResult = await FileSaver.Default.SaveAsync(filePath, stream, CancellationToken.None);
+
+                //////////fileSaverResult.EnsureSuccess();
+
+                //////////if (fileSaverResult.IsSuccessful)
                 //////////{
-                //////////    //Debug.Log("Input message ('exit' to exit): ");
-
-                //////////    ArraySegment<byte> bytesToSend = new ArraySegment<byte>(
-                //////////        Encoding.UTF8.GetBytes("hello fury from unity")
-                //////////    );
-                //////////    await App.client.SendAsync(
-                //////////        bytesToSend,
-                //////////        WebSocketMessageType.Text,
-                //////////        true,
-                //////////        CancellationToken.None
-                //////////    );
+                //////////    await CommunityToolkit.Maui.Alerts.Toast.Make($"The file was saved successfully to location: {fileSaverResult.FilePath}").Show(CancellationToken.None);
+                //////////}
+                //////////else
+                //////////{
+                //////////    await CommunityToolkit.Maui.Alerts.Toast.Make($"The file was not saved successfully with error: {fileSaverResult.Exception.Message}").Show(CancellationToken.None);
                 //////////}
 
             }
             catch (Exception ex)
             {
-                Console.WriteLine("WebSocket-WS ::: "  + ex.Message);
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                return;
+
             }
+
+
+            //////////try
+            //////////{
+
+
+            //////////    //var xxx = await webViewCall.EvaluateJavaScriptAsync("callFromCSharp('" + "SHAYMAA CS 2024" + "')");
+
+            //////////    // Create a stopwatch instance
+            //////////    var stopwatch = new Stopwatch();
+
+            //////////    // Create a timer instance
+            //////////    IDispatcherTimer? timer = Application.Current.Dispatcher.CreateTimer();
+
+            //////////    // Set the timer interval to one second
+            //////////    timer.Interval = TimeSpan.FromSeconds(1);
+
+            //////////    // Subscribe to the Tick event
+            //////////    timer.Tick += (s, e) =>
+            //////////    {
+            //////////        // Update the label text with the elapsed time
+            //////////        // Use MainThread.BeginInvokeOnMainThread to ensure UI updates are done on the UI thread
+            //////////        MainThread.BeginInvokeOnMainThread(() =>
+            //////////        {
+            //////////            lbl_Result.Text = stopwatch.Elapsed.ToString("hh\\:mm\\:ss");
+            //////////        });
+            //////////    };
+
+            //////////    // Start the stopwatch and the timer
+            //////////    stopwatch.Start();
+            //////////    timer.Start();
+
+
+            //////////}
+            //////////catch (Exception ex)
+            //////////{
+            //////////    Console.WriteLine("WebSocket-WS ::: "  + ex.Message);
+            //////////}
 
             //if (count == 1)
             //    CounterBtn.Text = $"Clicked {count} time";
@@ -288,7 +306,7 @@ namespace S1RoofingMU
                 MainThread.BeginInvokeOnMainThread(() =>
                             {
 
-                                Toast.MakeText(Android.App.Application.Context, "InvokeAction :: " + data, ToastLength.Long).Show();
+                              //Toast.MakeText(Android.App.Application.Context, "InvokeAction :: " + data, ToastLength.Long).Show();
 
                                 MyCSharpMethod();
 
@@ -310,9 +328,10 @@ namespace S1RoofingMU
 
 #elif IOS
 
-  public class JsBridge {
-  
-  }
+        public class JsBridge
+        {
+
+        }
 
 #endif
 
