@@ -143,10 +143,55 @@ namespace S1RoofingMU.iSRoofingApp.ScreenChatShow.Video
 
                         string _VideoThumPath = "0";
                         ImageSource imageSource = null;
-                        _VideoThumPath = Path.Combine(FileSystem.Current.CacheDirectory, "thm_" + VideoID + ".jpg");
+
+
+                        /////////////////////////////
+
+
+
+                        var objServiceFolder = App.Current.MainPage.Handler.MauiContext.Services.GetService<iSRoofing_DependencyService_SaveMediaDataFile>();
+                        string _downloadFolder;
+
+                        if (objServiceFolder != null)
+                        {
+
+                            _downloadFolder= objServiceFolder.Get_DownloadPath();
+
+                            _VideoThumPath = Path.Combine(_downloadFolder, "thm_" + VideoID + ".jpg");
+
+                            //  _VideoThumPath = Path.Combine(FileSystem.Current.CacheDirectory, "thm_" + VideoID + ".jpg");
+
+                        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        //if (_VideoThumPath != "0")
+                        //{
+
+                        //}
+
+
+
+
+
 
                         if (objService != null)
                         {
+
+
+
+
                             //imageSource = objService.GenerateThumbImage(fileResult.FullPath);
                             imageSource = objService.GenerateThumbImage(FileFullPath);
 

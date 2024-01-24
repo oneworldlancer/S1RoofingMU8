@@ -32,7 +32,7 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
- 
+
 using S1RoofingMU.iSRoofingApp.iSRoofing_Page.Picker.Contact;
 using S1RoofingMU.iSRoofingApp.iSRoofing_Page.Picker.Chatter;
 
@@ -475,16 +475,16 @@ public partial class Page_ScreenChatShow_Dashboard : ContentPage
         try
         {
 
-  //          if (_bln_IsDrawerOpen)
-  //          {
-  //              MainThread.BeginInvokeOnMainThread(async () =>
-  //{
-  //    // Code to run on the main thread
-  //    swipe_ChatDashboard.Close();
-  //    _bln_IsDrawerOpen= false;
-  //});
-  //              return true;
-  //          }
+            //          if (_bln_IsDrawerOpen)
+            //          {
+            //              MainThread.BeginInvokeOnMainThread(async () =>
+            //{
+            //    // Code to run on the main thread
+            //    swipe_ChatDashboard.Close();
+            //    _bln_IsDrawerOpen= false;
+            //});
+            //              return true;
+            //          }
 
 
             //if (_iSwipe_ViewCode == "left_open")
@@ -1250,19 +1250,19 @@ iTargetCode));
 
                     });
 
-                 
+
                     _ = Task.Run(async () =>
                     {
-                      
-                           await SRoofing_ScreenChatShowTextMessageManager.ScreenChatShowMessage_Reset_History_Chat_Message_IsNew_False_ByGroupTokenID(
-  App.Current, App.iAccountType,
-  _iOwnerModel,
-            arr_ChatMessageList.Last().UserType,
-  _iChatScreenModel.GroupTokenID,
-  arr_ChatMessageList.Last().MessageTokenID);
+
+                        await SRoofing_ScreenChatShowTextMessageManager.ScreenChatShowMessage_Reset_History_Chat_Message_IsNew_False_ByGroupTokenID(
+App.Current, App.iAccountType,
+_iOwnerModel,
+         arr_ChatMessageList.Last().UserType,
+_iChatScreenModel.GroupTokenID,
+arr_ChatMessageList.Last().MessageTokenID);
 
 
-                        
+
                         ////////////////////await vw_GroupList.Bind_ChatRow ( iBroadcastModel );
 
                     }).ConfigureAwait(false);
@@ -1678,7 +1678,7 @@ iTargetCode));
                              false, true);
 
 
-        
+
 
         }
         catch (Exception ex)
@@ -1687,10 +1687,10 @@ iTargetCode));
             return;
         }
 
-   
-    
-    
-    
+
+
+
+
         //////////////////////try
         //////////////////////{
 
@@ -1858,27 +1858,27 @@ iTargetCode));
         //////////////////////    return;
         //////////////////////}
 
-   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     async void img_Widget_Image_Clicked(object sender, EventArgs e)
@@ -2136,7 +2136,7 @@ iTargetCode));
 
             if (_iChatScreenModel.GroupType == SRoofingEnum_GroupType.GroupType_PRIVATE)
             {
-                //await Start_Call ( );
+                await Start_Call();
             }
             else if (_iChatScreenModel.GroupType == SRoofingEnum_GroupType.GroupType_GROUP)
             {
@@ -2262,190 +2262,280 @@ iTargetCode));
         }
     }
 
-
+    //bool _bln_IsBusyOnProgress = false;
 
     async Task Start_Call()
     {
 
 
+
         try
         {
 
-            SRoofingUserRemoteModelManager _iRemoteModel = null;
-            String _InviteCode = "call";
-            String _InviteType = "voice";
-            bool _blnPopup_NoMoreCall = (false);
-            bool _blnStartCall = (false);
-            bool _blnSubscribe = (false);
-            String sResponse = "";
-            /*String _iPrivateGroupTokenID = "0";*/
-            String _iOwnerProjectRoleCode = "0";
-            SRoofingUserGroupModelManager _iGroupModel;
 
-
-            //   SRoofingScreenCallShowHistoryMessageModelManager _iHistoryCallModel = ( SRoofingScreenCallShowHistoryMessageModelManager ) iObjectModel;
-
-
-
-
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            if (!_bln_IsBusyOnProgress)
             {
+                _bln_IsBusyOnProgress= true;
+
+                await iProgress_Start();
 
 
-                //                    _iRemoteModel = new SRoofingUserRemoteModelManager ( );
 
-                //                    _iRemoteModel = await SRoofingSync_User_RemoteManager
-                //                    .Sync_User_Remote_Get_UserModel (
-                //          App.Current ,
-                //          _iOwnerModel ,
-                //_iHistoryCallModel.RemoteUserTokenID ,
-                //_iHistoryCallModel.RemoteMobileNumberTokenID );
+                //var objService = App.Current.MainPage.Handler.MauiContext.Services.GetService<iSRoofing_DependencyService_SoundClick>();
 
-                //                    if ( _iRemoteModel == null )
-                //                    {
-                //                        if ( Connectivity.NetworkAccess == NetworkAccess.Internet )
-                //                        {
-                //                            _iRemoteModel =
-                //                        await SRoofing_UserProfileRemoteManager.SRoofing_User_Get_Remote_Model_ByRemoteUserTokenID (
-                //                                  App.Current ,
-                //                                  _iOwnerModel ,
-                //                                  _iHistoryCallModel.RemoteUserTokenID ,
-                //                                  _iHistoryCallModel.RemoteMobileNumberTokenID );
-                //                        }
-
-                //                    }
-                //_iGroupModel = new SRoofingUserGroupModelManager ( );
-
-
-                //_iGroupModel = await SRoofingSync_UserGroupManager.Sync_User_Group_Get_UserModel (
-                //      App.Current ,
-                //      iOwnerModel ,
-                //      _iHistoryCallModel.GroupTokenID );
-
-
-                //if ( _iGroupModel == null )
+                //if (objService != null)
                 //{
-                //    if ( Connectivity.NetworkAccess == NetworkAccess.Internet )
-                //    {
-
-                //        _iGroupModel = new SRoofingUserGroupModelManager ( );
-
-                //        _iGroupModel =
-                //        await SRoofing_UserGroupManager.SRoofing_UserGroup_Get_Group_Model_ByGroupTokenID (
-
-                //                    App.Current ,
-                //                        iOwnerModel ,
-                //                         _iHistoryCallModel.GroupTokenID );
-                //    }
-
+                //    objService.KeyboardClick();
                 //}
 
-                //_iGroupModel = new SRoofingUserGroupModelManager();
-                //_iGroupModel =
-                //              await SRoofing_UserGroupManager.SRoofing_UserGroup_Get_Group_Model_ByGroupTokenID(
 
-                //                          App.Current,
-                //                              iOwnerModel,
-                //                               _iHistoryCallModel.GroupTokenID);
+                //  await Task.Delay ( 100 );
+
+                // await SRoofing_AnimationManager.Animation_FadeInOut(App.Current, frm_RowContent);
 
 
-
-                bool _blnSystemCall_IsAvailable;
-                _blnSystemCall_IsAvailable = true;
-
-
-                //////////TlknCallManager.Call_ResetCallScreen_IfNotActive(
-                //////////       _iActivity,
-                //////////       _iActivity._iAccountType);
-
-
-                if (_blnSystemCall_IsAvailable == true)
+                _ = Task.Run(async () =>
                 {
 
 
-
-                    bool blnAvatarIsBlur = false;
-
+                    //SRoofingScreenCallShowHistoryMessageModelManager _iHistoryCallModel = (SRoofingScreenCallShowHistoryMessageModelManager)e.CurrentSelection.FirstOrDefault();//(SRoofingScreenChatShowHistoryMessageModelManager)iObjectModel;
 
 
+                    SRoofingUserRemoteModelManager _iRemoteModel = null;
+                    String _InviteCode = "call";
+                    String _InviteType = "voice";
+                    bool _blnPopup_NoMoreCall = (false);
+                    bool _blnStartCall = (false);
+                    bool _blnSubscribe = (false);
+                    String sResponse = "";
+                    /*String _iPrivateGroupTokenID = "0";*/
+                    String _iOwnerProjectRoleCode = "0";
+                    SRoofingUserGroupModelManager _iGroupModel;
 
 
-                    //     await SRoofing_ScreenCallShowManager
-                    //.Call_Initialize_Call_Show (
-                    //     App.Current ,
-                    //     _iOwnerModel ,
-                    //     _iChatScreenModel. ,
-                    //     _iGroupModel );
+                    //  SRoofingScreenCallShowHistoryMessageModelManager _iHistoryCallModel = (SRoofingScreenCallShowHistoryMessageModelManager)iObjectModel;
 
 
 
-                    _blnStartCall = (true);
-                    _blnPopup_NoMoreCall = (false);
-                    _blnSubscribe = (false);
 
-                }
+                    if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                    {
 
 
-                else
-                {
+                        _iRemoteModel = new SRoofingUserRemoteModelManager();
 
-                    ////////////Call is Running
-                    //////////if (TlknSyncManager.Sync_Call_GetCurrentScreenCallShowByUserID(_iActivity)
-                    //////////                    .get_GroupID()
-                    //////////                    .equalsIgnoreCase(iCallModel.get_GroupTokenID()))
-                    //////////{
+                        _iRemoteModel = await SRoofingSync_User_RemoteManager
+                        .Sync_User_Remote_Get_UserModel(
+              App.Current,
+           _iOwnerModel,
+_iChatScreenModel.RemoteUserID,
+_iChatScreenModel.RemoteMobileNumberID);
 
-                    //////////    TlknCallManager
-                    //////////            .Call_CurrentCallTicket_ToUserID(
-                    //////////                    _iActivity,
+                        if (_iRemoteModel == null)
+                        {
+                            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                            {
+                                _iRemoteModel =
+                            await SRoofing_UserProfileRemoteManager.SRoofing_User_Get_Remote_Model_ByRemoteUserTokenID(
+                                      App.Current,
+                                       _iOwnerModel,
+                                     _iChatScreenModel.RemoteUserID,
+_iChatScreenModel.RemoteMobileNumberID);
+                            }
 
-                    //////////                    TlknEnum_User_Account.UserAccount_Personal,
-                    //////////                    TlknEnum_Direction.Direction_Out,
-                    //////////                    TlknEnum_ScreenShow_InviteTag.InviteTag_Chat,
-                    //////////                    TlknEnum_Call_ScreenType.CallScreenType_Chat,
-
-                    //////////                    _InviteCode,
-                    //////////                    _InviteType,
-                    //////////                    _iRemoteModel,
-                    //////////                    _iActivity._iOwnerModel,
-
-                    //////////                    TlknEnum_Dating_MatchType.DatingMatchType_Chat,
-                    //////////                    false);
-
-                    //////////    //same group, open call screen
-                    //////////    _blnStartCall = true;
-                    //////////    _blnPopup_NoMoreCall = false;
-                    //////////    _blnSubscribe = false;
-
-                    //////////}
-
-                    //////////else
-                    //////////{
-
-                    //////////    ShowAlert_NoNewCall;
-                    //////////    _blnStartCall = false;
-                    //////////    _blnPopup_NoMoreCall = true;
-                    //////////    _blnSubscribe = false;
-                    //////////}
-                }
+                        }
+                        _iGroupModel = new SRoofingUserGroupModelManager();
 
 
-                await iSRoofing_Manager.SRoofing_Page_OpenerManager.Page_Opener(
-                        Navigation,
-                    new Page_Call_Dashboard(),
-                    false,
-                    true);
+                        _iGroupModel = await SRoofingSync_UserGroupManager.Sync_User_Group_Get_UserModel(
+                              App.Current,
+                               _iOwnerModel,
+                              _iChatScreenModel.GroupTokenID);
 
 
-            }
-            else
-            {
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    // Code to run on the main thread
-                    Snack_ShowMessage(SRoofingEnum_Toast_MessageManager.Message_Internet_Connection.PopupMessage_MessageConnectionFalse());
+                        if (_iGroupModel == null)
+                        {
+                            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                            {
 
-                });
+                                _iGroupModel = new SRoofingUserGroupModelManager();
+
+                                _iGroupModel =
+                                await SRoofing_UserGroupManager.SRoofing_UserGroup_Get_Group_Model_ByGroupTokenID(
+
+                                            App.Current,
+                                                 _iOwnerModel,
+                                                 _iChatScreenModel.GroupTokenID);
+                            }
+
+                        }
+
+                        //_iGroupModel = new SRoofingUserGroupModelManager();
+                        //_iGroupModel =
+                        //              await SRoofing_UserGroupManager.SRoofing_UserGroup_Get_Group_Model_ByGroupTokenID(
+
+                        //                          App.Current,
+                        //                              iOwnerModel,
+                        //                               _iHistoryCallModel.GroupTokenID);
+
+
+
+                        bool _blnSystemCall_IsAvailable;
+                        _blnSystemCall_IsAvailable = true;
+
+
+                        //////////TlknCallManager.Call_ResetCallScreen_IfNotActive(
+                        //////////       _iActivity,
+                        //////////       _iActivity._iAccountType);
+
+
+                        if (_blnSystemCall_IsAvailable == true)
+                        {
+
+
+
+                            bool blnAvatarIsBlur = false;
+
+
+
+
+
+                            await SRoofing_ScreenCallShowManager
+                       .Call_Initialize_Call_Show_Offer(
+                            App.Current,
+                             _iOwnerModel,
+                            _iRemoteModel,
+                            _iGroupModel);
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            ///////////////////////////////////
+
+
+                            //////////TlknCallManager.Call_StartCallTicket_ToUserID(
+                            //////////        _iActivity,
+                            //////////        _iActivity._iAccountType,
+                            //////////        "out",
+                            //////////        "chat",
+                            //////////        "chat",
+                            //////////        _InviteCode,
+                            //////////        _InviteType,
+                            //////////        _iRemoteModel,
+                            //////////        _iActivity._iOwnerModel,
+
+                            //////////        "chat",
+                            //////////        blnAvatarIsBlur,
+
+                            //////////         (false));
+
+                            _blnStartCall = (true);
+                            _blnPopup_NoMoreCall = (false);
+                            _blnSubscribe = (false);
+
+
+
+                        }
+
+
+                        else
+                        {
+
+                            ////////////Call is Running
+                            //////////if (TlknSyncManager.Sync_Call_GetCurrentScreenCallShowByUserID(_iActivity)
+                            //////////                    .get_GroupID()
+                            //////////                    .equalsIgnoreCase(iCallModel.get_GroupTokenID()))
+                            //////////{
+
+                            //////////    TlknCallManager
+                            //////////            .Call_CurrentCallTicket_ToUserID(
+                            //////////                    _iActivity,
+
+                            //////////                    TlknEnum_User_Account.UserAccount_Personal,
+                            //////////                    TlknEnum_Direction.Direction_Out,
+                            //////////                    TlknEnum_ScreenShow_InviteTag.InviteTag_Chat,
+                            //////////                    TlknEnum_Call_ScreenType.CallScreenType_Chat,
+
+                            //////////                    _InviteCode,
+                            //////////                    _InviteType,
+                            //////////                    _iRemoteModel,
+                            //////////                    _iActivity._iOwnerModel,
+
+                            //////////                    TlknEnum_Dating_MatchType.DatingMatchType_Chat,
+                            //////////                    false);
+
+                            //////////    //same group, open call screen
+                            //////////    _blnStartCall = true;
+                            //////////    _blnPopup_NoMoreCall = false;
+                            //////////    _blnSubscribe = false;
+
+                            //////////}
+
+                            //////////else
+                            //////////{
+
+                            //////////    ShowAlert_NoNewCall;
+                            //////////    _blnStartCall = false;
+                            //////////    _blnPopup_NoMoreCall = true;
+                            //////////    _blnSubscribe = false;
+                            //////////}
+                        }
+
+
+
+
+
+
+
+
+
+                        //////////}
+
+                        //await Task.Delay ( 1000 );
+
+
+                        await iProgress_Stop();
+
+
+                        await iSRoofing_Manager.SRoofing_Page_OpenerManager.Page_Opener_WithChecker(
+                                Navigation,
+                                typeof(Page_Call_Dashboard),
+                            new Page_Call_Dashboard(),
+                            false,
+                            true);
+
+
+                        _bln_IsBusyOnProgress= false;
+
+
+
+                    }
+
+                    else
+                    {
+                        MainThread.BeginInvokeOnMainThread(async () =>
+                        {
+                            // Code to run on the main thread
+
+                            await iProgress_Stop();
+
+
+                            await Snack_ShowMessage(_iLanguageModel.lblText_Connection_CheckOnline_Message);
+
+                        });
+                    }
+
+                }).ConfigureAwait(false);
+
             }
         }
 
@@ -2456,7 +2546,6 @@ iTargetCode));
             return;
         }
 
-
     }
 
 
@@ -2465,6 +2554,57 @@ iTargetCode));
 
 
 
+
+
+    #region ProgressBar
+
+
+    public bool _bln_IsBusyOnProgress = false;
+
+
+    public async Task<bool> iProgress_Start()
+    {
+        try
+        {
+
+            return await ll_ProgressBar.Progress_Start();
+
+
+        }
+        catch (Exception ex)
+        {
+            SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+            return false;
+
+        }
+
+    }
+
+
+
+    public async Task<bool> iProgress_Stop()
+    {
+
+        try
+        {
+
+            return await ll_ProgressBar.Progress_Stop();
+
+
+        }
+        catch (Exception ex)
+        {
+            SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+            return false;
+
+        }
+    }
+
+
+
+
+
+    #endregion
 
 
 
@@ -2728,17 +2868,17 @@ iTargetCode));
 
                                 _ = Task.Run(async () =>
                                 {
-                                  
-                                    
-                                await SRoofing_ScreenChatShowTextMessageManager.ScreenChatShowMessage_Reset_History_Chat_Message_IsNew_False_ByGroupTokenID(
-              App.Current, App.iAccountType,
-              _iOwnerModel,
-                        arr_ChatMessageList.Last().UserType,
-              _iChatScreenModel.GroupTokenID,
-              arr_ChatMessageList.Last().MessageTokenID);
 
 
-                                    
+                                    await SRoofing_ScreenChatShowTextMessageManager.ScreenChatShowMessage_Reset_History_Chat_Message_IsNew_False_ByGroupTokenID(
+                  App.Current, App.iAccountType,
+                  _iOwnerModel,
+                            arr_ChatMessageList.Last().UserType,
+                  _iChatScreenModel.GroupTokenID,
+                  arr_ChatMessageList.Last().MessageTokenID);
+
+
+
                                     ////////////////////await vw_GroupList.Bind_ChatRow ( iBroadcastModel );
 
                                 }).ConfigureAwait(false);
@@ -3030,7 +3170,7 @@ iTargetCode));
 
             if (_iChatScreenModel.GroupType == SRoofingEnum_GroupType.GroupType_PRIVATE)
             {
-                //await Start_Call ( );
+                await Start_Call();
             }
             else if (_iChatScreenModel.GroupType == SRoofingEnum_GroupType.GroupType_GROUP)
             {

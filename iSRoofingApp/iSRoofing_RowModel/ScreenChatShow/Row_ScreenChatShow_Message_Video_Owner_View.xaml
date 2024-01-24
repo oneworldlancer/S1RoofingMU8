@@ -123,7 +123,7 @@ BorderColor="Transparent"
                        TextColor="{StaticResource iAppColor_SemiOrange}">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="{Binding MediaFile_Size}" />
+                                <Span Text="{Binding MediaFileMetaData}" />
 
                             </FormattedString>
                         </Label.FormattedText>

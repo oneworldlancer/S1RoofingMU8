@@ -295,6 +295,7 @@ namespace S1RoofingMU.iSRoofingApp.ScreenChatShow.Image
                 iSRoofingScreenChatShowMessageDatabaseModel.MediaFile_Extension = SRoofingEnum_File_Extension.FileExtension_Image_JPG; //"0";
                 iSRoofingScreenChatShowMessageDatabaseModel.MediaFile_Thum = SRoofingEnum_File_Thum.FileThum_Image; //"0";
 
+                iSRoofingScreenChatShowMessageDatabaseModel.MediaFileMetaData = iUserMediaModel.MediaFile_Size ; //"0";
 
 
 

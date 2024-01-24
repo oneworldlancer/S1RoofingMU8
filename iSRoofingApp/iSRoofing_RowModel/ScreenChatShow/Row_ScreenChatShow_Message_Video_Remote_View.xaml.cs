@@ -104,6 +104,8 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.ScreenChatShow
 
 
 
+
+
                     grd_Media.WidthRequest = iGroupModel.iScreenChatShow_iMedia_Width;
                     grd_Media.HeightRequest = iGroupModel.iScreenChatShow_iMedia_Height;
 

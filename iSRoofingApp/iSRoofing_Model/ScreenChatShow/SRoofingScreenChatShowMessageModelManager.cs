@@ -194,6 +194,8 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Model.ScreenChatShow
         public string VideoToUserID { get; set; } = "0";
 
 
+        public string MediaFileMetaData { get; set; } = "0";
+      
         public string VideoThum { get; set; } = "0";
         public string ImageThum { get; set; } = "0";
 

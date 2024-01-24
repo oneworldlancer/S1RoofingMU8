@@ -38,12 +38,15 @@
         </VisualStateGroup>
     </VisualStateManager.VisualStateGroups>
 
+
+
+
     <Border 	x:Name="frm_RowContent"
            HorizontalOptions="FillAndExpand"
 			   VerticalOptions="StartAndExpand"
 			   Padding="0"
 
-				 	   Margin="0"
+				 	   Margin="0,20,0,0"
 			 
 			   BackgroundColor="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}"
                   Stroke="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}" StrokeThickness="0" >
@@ -51,97 +54,62 @@
             <RoundRectangle CornerRadius="0" />
         </Border.StrokeShape>
 
-
-        <Frame HorizontalOptions="FillAndExpand"
-                       VerticalOptions="StartAndExpand"
-                       Padding="0,20,0,0"
-                 BorderColor="Transparent"           Margin="0"
-                       CornerRadius="0"
-                       BackgroundColor="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}">
-            <StackLayout HorizontalOptions="FillAndExpand"
-                                 VerticalOptions="StartAndExpand"
+        <StackLayout HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="Start"
                                  Orientation="Vertical"
                                  Spacing="0"
-                                 Margin="0"
+                                 Margin="0,0,0,0"
                                  Padding="0">
-                <StackLayout   HorizontalOptions="FillAndExpand"
-                                       VerticalOptions="StartAndExpand"
-                                       Orientation="Vertical"
-                                       Spacing="0"
-                                       Margin="0"
-                                       Padding="0">
-                    <Grid   HorizontalOptions="FillAndExpand"
-                                    VerticalOptions="StartAndExpand"
-                                    Margin="0"
-                                    Padding="0">
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="50" />
-                            <!--<RowDefinition Height="50" />-->
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <!--<ColumnDefinition Width="420" />
-                                    <ColumnDefinition Width="*" />-->
-                        </Grid.ColumnDefinitions>
 
-                        <Grid HorizontalOptions="FillAndExpand"
-                                      ColumnDefinitions="*,auto,*"
-                                      Grid.Row="0"  Grid.Column="0">
+            <Grid  x:Name="grd_Avatar"
+              HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand" >
 
-                           <!--CornerRadius="5"--> 
-                            
-                            <Border x:Name="frm_Avatar"
+                <Border x:Name="frm_Avatar"
                                        HorizontalOptions="FillAndExpand"
+                                       StrokeShape="RoundRectangle 40,0,0,40" 
                                      
-                                         StrokeShape="RoundRectangle 40,0,0,40"
                                        Padding="1"
-                                       Margin="10"
-                                        VerticalOptions="StartAndExpand"
+   Margin="0"
+                  VerticalOptions="StartAndExpand"
                                        BackgroundColor="{StaticResource iAppColor_Opacity_Black}"
-                                       Grid.Row="0"
-                                       Grid.Column="1">
-                                <Border.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="frm_Avatar_Tapped"
-                                                              NumberOfTapsRequired="1" />
-                                </Border.GestureRecognizers>
-                                <!--          Source="{Binding ImageThumServerURL}"     Source="https://assets.codepen.io/32795/poster.png"Text="{Binding AvatarName}"
-										Text="{Binding AvatarName}"-->
-                                <Image  x:Name="imgBtn_Thum"
+                                    >
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="sl_Play_Tapped" />
+                    </Border.GestureRecognizers>
+
+                    <Image  x:Name="imgBtn_Thum"
                                     
                                             HorizontalOptions="FillAndExpand"  
                                                   VerticalOptions="FillAndExpand"
                                          BackgroundColor="Transparent" 
                                             Aspect="AspectFill"
-                                        />
-                            </Border>
+                                        Source="france.png" />
+                </Border>
 
-
-                            <Frame   HorizontalOptions="Start"
-                     VerticalOptions="Start"  
-                     Margin="30"
+                <Frame   HorizontalOptions="Start"
+        VerticalOptions="Start"
+                     Margin="20"
                      Padding="5"
-                BackgroundColor="{StaticResource iAppColor_Opacity_Black}"
-                                           Grid.Row="0"
-      Grid.Column="1">
-                                <Label x:Name="lbl_FileMetaData"
-                       TextColor="{StaticResource iAppColor_SemiOrange}"
-                     >
-                                    <!--<Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="{Binding MediaFile_Size}" />
-                            <Span Text=" | " />
-                            <Span Text="{Binding MediaFile_Duration}" />
-                        </FormattedString>
-                    </Label.FormattedText>-->
-                                </Label>
-                            </Frame>
+                       BackgroundColor="{StaticResource iAppColor_Opacity_Black}"
+                   Grid.Row="0"
+Grid.Column="0">
+                    <Label x:Name="lbl_FileMetaData"
+         TextColor="{StaticResource iAppColor_SemiOrange}"
+                                      >
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding MediaFile_Size}" />
+
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </Frame>
 
 
 
-                            <ImageButton   x:Name="imgBtn_Play"
+                <ImageButton   x:Name="imgBtn_Play"
                                         HorizontalOptions="Center"
                                     VerticalOptions="Center"
                                     Margin="10"
@@ -152,143 +120,74 @@
                                            Grid.Row="0"
                                            Grid.Column="1"
                                            Clicked="imgBtn_Thum_Tapped"/>
-                        </Grid>
+                
+            </Grid>
+
+            <Grid	HorizontalOptions="FillAndExpand"
+          ColumnDefinitions="10,*,10,*,10"
+               
+          Padding="0,5,0,5">
 
 
-                        <StackLayout    HorizontalOptions="FillAndExpand"
-                                                Padding="0"
-                                                Orientation="Vertical"
-                                                Spacing="0"
-                                                Grid.Row="1"
-                                                Grid.Column="0"
-                                                IsVisible="false">
-
-                            <!--Text="{Binding VideoTitle}"-->
-                            <Label  x:Name="lbl_FullName"
-                                        HorizontalOptions="FillAndExpand"
-                                        Margin="10,0,10,0"
-                                        FontSize="Medium"
-                                        MaxLines="2"
-                                        LineBreakMode="TailTruncation"
-                                      TextColor="{StaticResource iAppColor_Black}"
-                                     
-                                      />
-                            <!--Text="{Binding VideoDescription}"-->
-                            <Label x:Name="lbl_MessageText"
-                                       HorizontalOptions="FillAndExpand"
-                                       MaxLines="1"
-                                       LineBreakMode="TailTruncation"
-                                       TextColor="{StaticResource iAppColor_Silver}"
-                                       Margin="10,5,10,0"
-                                        
-                                       />
-                        </StackLayout>
-
-                        <StackLayout    HorizontalOptions="FillAndExpand"
-                                                Padding="0"
-                                                Orientation="Horizontal"
-                                              
-                                                Spacing="0"
-                                                Grid.Row="2"
-                                                Grid.Column="0">
-                            <!--       ColumnDefinitions="2,*,2,*,2,*,2"Text="{Binding FullName}"-->
-                            <Grid	HorizontalOptions="FillAndExpand"
-                                      ColumnDefinitions="10,*,10,*,10"
-                                    Padding="0">
-                                <!--Text="{Binding GroupTitle}"-->
-                                <!--<StackLayout   x:Name="sl_Play"
-                                               HorizontalOptions="End"
-                                               Padding="0"
-                                               VerticalOptions="Center"
-                                               Orientation="Horizontal"
-                                               Spacing="0"
-                                               Grid.Column="1">
-                                    <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="sl_Play_Tapped" />
-                                    </StackLayout.GestureRecognizers>
-                                    <Image     x:Name="img_View"
-                                                                    WidthRequest="30"
-                                                                    VerticalOptions="Center"
-                                                                    HeightRequest="30"
-                                                                    Margin="10"
-                                                                    Source="img_circle_send_black.png" />
-                                    <Label  x:Name="lbl_Play"
-                                            HorizontalOptions="FillAndExpand"
-                                            VerticalOptions="Center"
-                                         
-                                            TextColor="{StaticResource iAppColor_Silver}"
-                                            Text="VIEW" />
-                                </StackLayout>-->
-                                <StackLayout   x:Name="sl_Download"
-                                               HorizontalOptions="Center"
-                                               Padding="0"
-                                               VerticalOptions="Center"
-                                               Orientation="Horizontal"
-                                               Spacing="0"
-                                               Grid.Column="1">
-                                    <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="sl_Download_Tapped" />
-                                    </StackLayout.GestureRecognizers>
-                                    <Image     x:Name="img_Download"
-                                                                    WidthRequest="30"
-                                                                    VerticalOptions="Center"
-                                                                    HeightRequest="30"
-                                                                    Margin="10"
-                                                                    Source="img_circle_download_black.png" />
-                                    <Label  x:Name="lbl_Download"
-                                            HorizontalOptions="FillAndExpand"
-                                            VerticalOptions="Center"
-                                                FontSize="Medium"  
-                                            TextColor="{StaticResource iAppColor_Silver}"
-                                            Text="DOWNLOAD" />
-                                </StackLayout>
-                                <StackLayout    x:Name="sl_Share"
-                                                HorizontalOptions="Center"
-                                                Padding="0"
-                                                Orientation="Horizontal"
-                                                Spacing="0"
-                                                Grid.Column="3">
-                                    <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="sl_Share_Tapped" />
-                                    </StackLayout.GestureRecognizers>
-                                    <Image   x:Name="img_Share"
-                                             WidthRequest="30"
-                                             HeightRequest="30"
-                                             VerticalOptions="Center"
-                                             Margin="10"
-                                             Source="img_circle_share_black.png" />
-                                    <Label  x:Name="lbl_Share"
-                                            FontSize="Medium" 
-                                            VerticalOptions="Center"
-                                            TextColor="{StaticResource iAppColor_Silver}"
-                                            Text="SHARE" />
-                                </StackLayout>
-                            </Grid>
-                        </StackLayout>
-                        <!--<StackLayout   HorizontalOptions="EndAndExpand"
-										   VerticalOptions="Center"
-										   Spacing="0"
-										   Grid.Row="0"
-										   Grid.Column="2">
-
-								<Image   HorizontalOptions="End"
-										 WidthRequest="30"
-										 HeightRequest="30"
-										 Source="img_theme_call.png"
-										 Margin="10" 
-										 IsVisible="false"/>
-							</StackLayout>-->
-                    </Grid>
-                    <!--<swipeRight:UCView_Swipe_Right />-->
-                    <BoxView  HorizontalOptions="FillAndExpand"
-                                      HeightRequest="1"
-                                      Margin="5,5,10,5"
-                                      Color="{StaticResource iAppColor_Silver}"
-                                      Opacity=".5" />
+                <StackLayout   x:Name="sl_Download"
+                     HorizontalOptions="Center"
+                     Padding="0"
+                     VerticalOptions="Center"
+                     Orientation="Horizontal"
+                     Spacing="0"
+                     Grid.Column="1">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="sl_Download_Tapped" />
+                    </StackLayout.GestureRecognizers>
+                    <Image     x:Name="img_Download"
+                                          WidthRequest="30"
+                                          VerticalOptions="Center"
+                                          HeightRequest="30"
+                                          Margin="10"
+                                          Source="img_circle_download_black.png" />
+                    <Label  x:Name="lbl_Download"
+                  HorizontalOptions="FillAndExpand"
+                  VerticalOptions="Center"
+            FontSize="Medium" 
+                  TextColor="{StaticResource iAppColor_Silver}"
+                  Text="DOWNLOAD" />
                 </StackLayout>
-            </StackLayout>
-        </Frame>
+
+                <StackLayout    x:Name="sl_Share"
+                      HorizontalOptions="Center"
+                      Padding="0"
+                      Orientation="Horizontal"
+                      Spacing="0"
+                      Grid.Column="3">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="sl_Share_Tapped" />
+                    </StackLayout.GestureRecognizers>
+                    <Image   x:Name="img_Share"
+                   WidthRequest="30"
+                   HeightRequest="30"
+                   VerticalOptions="Center"
+                   Margin="10"
+                   Source="img_circle_share_black.png" />
+                    <Label  x:Name="lbl_Share"
+                     FontSize="Medium" 
+                  VerticalOptions="Center"
+                  TextColor="{StaticResource iAppColor_Silver}"
+                  Text="SHARE" />
+                </StackLayout>
+
+            </Grid>
+
+
+            <BoxView  HorizontalOptions="FillAndExpand"
+                              HeightRequest="1"
+                              Margin="5,5,10,5"
+                              Color="{StaticResource iAppColor_Silver}"
+                              Opacity=".5" />
+        </StackLayout>
+
+
+     
     </Border>
-    <!--</SwipeView>
-    </ContentView.Content>-->
+
+ 
 </ContentView>

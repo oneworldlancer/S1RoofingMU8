@@ -121,8 +121,8 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Gallery.Chat
 
 
 
-                    frm_Avatar.WidthRequest = iGroupModel.iGallery_iMedia_Width;
-                    frm_Avatar.HeightRequest = iGroupModel.iGallery_iMedia_Height;
+                    grd_Avatar.WidthRequest = iGroupModel.iGallery_iMedia_Width;
+                    grd_Avatar.HeightRequest = iGroupModel.iGallery_iMedia_Height;
 
 
                     //lbl_Play.Text = iGroupModel.CommandText_View;

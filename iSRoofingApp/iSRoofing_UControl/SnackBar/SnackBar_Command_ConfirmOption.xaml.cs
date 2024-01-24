@@ -17,6 +17,7 @@ using S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Xaml;
 using S1RoofingMU.iSRoofingApp.iSRoofing_Page.Picker.Chatter;
+using S1RoofingMU.iSRoofingApp.iSRoofing_Page.Picker.Share;
 
 namespace S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar
 {
@@ -515,11 +516,11 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar
 
 
 
-                else if (_iParentView == typeof(View_Chat_Share_List))
+                else if (_iParentView == typeof(S1RoofingMU.iSRoofingApp.iSRoofing_Page.Picker.Share.View_Chat_Share_List))
                 {
 
 
-                    await ((Picker_Chatter_Dashboard)Parent.BindingContext)
+                    await ((Picker_Chat_Share_Dashboard)Parent.BindingContext)
                         .snackBar_Action_ShareMessage(_iParentView,
           _iViewCode, _iViewValue);
 

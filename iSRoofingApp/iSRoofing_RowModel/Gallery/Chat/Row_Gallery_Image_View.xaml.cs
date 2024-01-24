@@ -32,7 +32,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Gallery.Chat
         public Row_Gallery_Image_View()
         {
             InitializeComponent();
-        }
+        } 
 
 
 

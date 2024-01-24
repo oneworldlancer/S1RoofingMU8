@@ -13,7 +13,7 @@ using S1RoofingMU.iSRoofingApp.iSRoofing_Model.History.Chat;
 using S1RoofingMU.iSRoofingApp.iSRoofing_Model.User;
 
 using S1RoofingMU.iSRoofingApp.iSRoofing_Page.Chat;
-using S1RoofingMU.iSRoofingApp.iSRoofing_Page.Picker.Chatter;
+using S1RoofingMU.iSRoofingApp.iSRoofing_Page.Picker.Share;
  
 using S1RoofingMU.iSRoofingApp.iSRoofing_SyncManager;
 

@@ -292,6 +292,8 @@ namespace S1RoofingMU.iSRoofingApp.ScreenChatShow.Video
                 iSRoofingScreenChatShowMessageDatabaseModel.MediaFile_Duration = iUserMediaModel.MediaFile_Duration; //"0";
                 iSRoofingScreenChatShowMessageDatabaseModel.MediaFile_Extension = SRoofingEnum_File_Extension.FileExtension_Video_MP4; //"0";
                 iSRoofingScreenChatShowMessageDatabaseModel.MediaFile_Thum = iUserMediaModel.MediaFile_Thum; //"0";
+             
+                iSRoofingScreenChatShowMessageDatabaseModel.MediaFileMetaData = iUserMediaModel.MediaFile_Size + " - " +  iUserMediaModel.MediaFile_Duration; //"0";
 
 
 

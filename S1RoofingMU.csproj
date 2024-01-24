@@ -205,6 +205,12 @@
 	  <Compile Update="iSRoofingApp\iSRoofing_Page\Landing\Page_Landing_Chat_List_X1.xaml.cs">
 	    <DependentUpon>Page_Landing_Chat_List_X1.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="iSRoofingApp\iSRoofing_Page\Picker\Share\Picker_Chat_Share_Dashboard.xaml.cs">
+	    <DependentUpon>Picker_Chat_Share_Dashboard.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="iSRoofingApp\iSRoofing_Page\Picker\Share\View_Chat_Share_List.xaml.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
 	  <Compile Update="MainPage_X1.xaml.cs">
 	    <DependentUpon>MainPage_X1.xaml</DependentUpon>
 	  </Compile>
@@ -341,6 +347,12 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="iSRoofingApp\iSRoofing_Page\Picker\Contact\Picker_Contact_List.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="iSRoofingApp\iSRoofing_Page\Picker\Share\Picker_Chat_Share_Dashboard.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="iSRoofingApp\iSRoofing_Page\Picker\Share\View_Chat_Share_List.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="iSRoofingApp\iSRoofing_Page\Register\Page_Register_Dashboard.xaml">

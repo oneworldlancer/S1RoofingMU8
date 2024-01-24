@@ -46,6 +46,7 @@ using System.IO;
 using Microsoft.Maui.ApplicationModel;
 using S1RoofingMU.iSRoofingApp.iSRoofing_Page.Picker.Chatter;
 using S1RoofingMU.iSRoofingApp.iSRoofing_EnumGlobalManager;
+using S1RoofingMU.iSRoofingApp.iSRoofing_Page.Picker.Share;
 
 namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Gallery.Chat
 {
@@ -917,21 +918,40 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Gallery.Chat
             try
             {
 
+                MainThread.BeginInvokeOnMainThread(async () =>
+              {
 
-                await SRoofing_Page_OpenerManager.Page_Opener_WithChecker(
-                                                 Navigation,
-                                             typeof(Picker_Chatter_Dashboard),
-                                             new Picker_Chatter_Dashboard(
-                                                                       _iApplicationUtilityModel,
-                                                                       _iSettingModel,
-                                                                       _iLanguageModel,
-                                                                          _iOwnerModel,
-                                                                      _iSpeechModel,
-                                                                         _iOwner_Incoming_LanguageCode,
-                                                                     _iOwner_Outgoing_LanguageCode,
-                                                                  _iChatScreenModel,
-                                                                  "chat_share",
-                                               iMessageModel), false, true);
+
+                  // Code to run on the main thread
+                  await Navigation.PushModalAsync(
+
+                             new Picker_Chat_Share_Dashboard(
+                                         _iApplicationUtilityModel,
+                                         _iSettingModel,
+                                         _iLanguageModel,
+                                         _iOwnerModel,
+                                         _iSpeechModel,
+                                         _iOwner_Incoming_LanguageCode,
+                                         _iOwner_Outgoing_LanguageCode,
+                                         _iChatScreenModel,
+                                         "chat_share",
+                                         iMessageModel));
+
+
+              });   //await SRoofing_Page_OpenerManager.Page_Opener_WithChecker(
+                //                                 Navigation,
+                //                             typeof(Picker_Chat_Share_Dashboard),
+                //                             new Picker_Chat_Share_Dashboard(
+                //                                                       _iApplicationUtilityModel,
+                //                                                       _iSettingModel,
+                //                                                       _iLanguageModel,
+                //                                                          _iOwnerModel,
+                //                                                      _iSpeechModel,
+                //                                                         _iOwner_Incoming_LanguageCode,
+                //                                                     _iOwner_Outgoing_LanguageCode,
+                //                                                  _iChatScreenModel,
+                //                                                  "chat_share",
+                //                               iMessageModel), false, true);
 
                 //Picker_Group_Dashboard 
 
@@ -1019,6 +1039,9 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Gallery.Chat
 
                 _ = Task.Run(async () =>
                 {
+
+
+                    // Code to run on the main thread
                     await Snack_ShowMessage(_iLanguageModel.lblText_Command_DOWNLOAD_Message + " ... ");
 
 

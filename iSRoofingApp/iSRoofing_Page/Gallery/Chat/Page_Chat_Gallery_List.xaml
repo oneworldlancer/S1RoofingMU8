@@ -91,10 +91,12 @@
                 <Grid x:Name="grd_ContentXXX"
           HorizontalOptions="FillAndExpand"
           VerticalOptions="FillAndExpand"
+                     RowSpacing="0"
+                      ColumnSpacing="0"
           Margin="0"
           Padding="0"
           BackgroundColor="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}" 
-            RowDefinitions="*,auto"  >
+            RowDefinitions="*,50"  >
 
                     <!--<ScrollView
                     HorizontalOptions="FillAndExpand"
@@ -114,7 +116,8 @@
                              Command="{Binding RefreshCommand}"
                           
                              Margin="0"
-                             Padding="0">
+                             Padding="0"
+                                     Grid.Row="0">
 
 
                         <!---->
@@ -136,8 +139,9 @@
 
 
                     <Button x:Name="btn_Close_Window"
-                         HorizontalOptions="FillAndExpand"
-         VerticalOptions="StartAndExpand"
+                   HorizontalOptions="FillAndExpand"
+ VerticalOptions="EndAndExpand"
+           
          HeightRequest="50"
          FontAttributes="Bold"
          CornerRadius="0"

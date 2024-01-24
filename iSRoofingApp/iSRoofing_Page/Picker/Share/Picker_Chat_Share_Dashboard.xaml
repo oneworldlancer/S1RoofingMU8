@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage   x:Name="Page_ChatterPickerDashboard"
+            xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Picker.Share.Picker_Chat_Share_Dashboard"
+                xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+            xmlns:progressbar="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.ProgressBar"
+           xmlns:sroofingHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Header"
+       xmlns:sroofingFooter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer"
+      xmlns:arrowBack="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Back"
+        xmlns:logo="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Logo"
+       xmlns:snackAutoHide="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar"
+       ios:Page.UseSafeArea="False"
+       NavigationPage.HasNavigationBar="False"
+       xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+       xmlns:listHistory="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_Page.Picker.Share"
+       xmlns:snack="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar"
+     BackgroundColor="{StaticResource iAppColor_Black}"
+       Visual="Material"
+               Loaded="Page_ChatterPickerDashboard_Loaded">
+
+
+
+
+
+    <StackLayout HorizontalOptions="FillAndExpand"
+                  VerticalOptions="FillAndExpand"
+                Spacing="0"
+                 Margin="0"
+                 Padding="0"
+                 BackgroundColor="{StaticResource iAppColor_Black}"
+                 Orientation="Vertical">
+
+        <sroofingHeader:SRoofing_PageHeader />
+
+        <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+       ColumnSpacing="0"
+          RowSpacing="0"
+          Margin="0"
+          Padding="0"
+          BackgroundColor="#000000">
+
+            <!--BackgroundColor="{StaticResource iAppColor_SemiGray}"-->
+            <!--Spacing="0"-->
+            <!--Orientation="Vertical"-->
+            <Grid HorizontalOptions="FillAndExpand"
+                  VerticalOptions="FillAndExpand"
+                        RowSpacing="0"
+               ColumnSpacing="0"
+              Margin="0"
+                 Padding="0"
+         BackgroundColor="{StaticResource iAppColor_SemiGray}"
+      RowDefinitions="*,50"    >
+
+                <!--BackgroundColor="{StaticResource iAppColor_SemiGray}"-->
+
+                <!--ColumnSpacing="0"
+                            RowSpacing="0"-->
+
+                <AbsoluteLayout HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                            Margin="0"     
+                                    Padding="0"      
+                    
+                             Grid.Row="0">
+
+                 
+
+                    <listHistory:View_Chat_Share_List x:Name="vw_ShareList"
+                                                HorizontalOptions="FillAndExpand"
+                                                VerticalOptions="FillAndExpand"
+                                                                                                                           AbsoluteLayout.LayoutBounds="0,0,1,1"
+AbsoluteLayout.LayoutFlags="All"     />
+
+
+                </AbsoluteLayout>
+
+                <!---->
+                <Button x:Name="btn_Close_Window"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="EndAndExpand"
+            HeightRequest="50"
+            FontAttributes="Bold"
+            CornerRadius="0"
+            Padding="0"
+            Text="Close"
+            BackgroundColor="{StaticResource iAppColor_Black}"
+            TextColor="{StaticResource iAppColor_White}"
+        Clicked="btn_Close_Window_Clicked" 
+                        Grid.Row="1"></Button>
+
+
+
+
+            </Grid>
+
+
+
+            <Grid x:Name="grd_Loading"
+            HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          Margin="0"
+          Padding="0"
+          BackgroundColor="#000000"
+          IsVisible="true">
+
+                <ActivityIndicator x:Name="ll_ProgressBar_Account"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    IsRunning="true"
+                    IsVisible="true"
+                    Color="#FFFFFF" />
+            </Grid>
+
+            <snack:SnackBar_Command_ConfirmOption x:Name="iSnackBar_ConfirmOption"
+                                   BackgroundColor="Transparent"
+                                   TextColor="Black"
+                                   IsOpen="False"
+                                   VerticalOptions="EndAndExpand"
+                                   Message="I'm a snack bar... I love showing my self."
+                                   ButtonTextColor="Orange"
+                                   CloseButtonText=""
+                                   Margin="0,0,0,0" />
+
+
+            <progressbar:UCView_ProgressBarView
+   x:Name="ll_ProgressBar"
+                   HorizontalOptions="FillAndExpand"
+   VerticalOptions="Start"
+                    
+HeightRequest="5" 
+                 IsVisible="true"/>
+
+
+
+        </Grid>
+
+
+        <sroofingFooter:SRoofing_PageFooter />
+
+    </StackLayout>
+
+
+
+</ContentPage>

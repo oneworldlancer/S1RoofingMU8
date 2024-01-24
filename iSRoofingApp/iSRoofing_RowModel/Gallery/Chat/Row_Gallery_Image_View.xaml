@@ -5,24 +5,8 @@
               xmlns:swipeRight="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Swipe"
                
               x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Gallery.Chat.Row_Gallery_Image_View">
-    <!--<ContentView.Content>
-     
-        <SwipeView  BackgroundColor="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}">
-         
-            <SwipeView.LeftItems>
-                <SwipeItems   Mode="Execute">
-                    -->
-    <!--Command="{Binding 
-											Source={x:Reference cv_UserChatHistoryList},
-											Path=BindingContext.Command_Chat_ByUser}"
-							   CommandParameter="{Binding .}"-->
-    <!--
-                    <SwipeItem BackgroundColor="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}"
-                               Command="{Binding Command_Chat_ByUser, Source={x:Reference vw_GalleryRowView}}"
-                               CommandParameter="{Binding .}" />
-                </SwipeItems>
-            </SwipeView.LeftItems>-->
-
+  
+    
     <VisualStateManager.VisualStateGroups>
         <VisualStateGroup Name="CommonStates">
             <VisualState Name="Selected">
@@ -55,15 +39,6 @@
                                  Margin="0,0,0,0"
                                  Padding="0">
             
-
-            <!--<Image  x:Name="imgBtn_ThumXXXX"
-      
-       HorizontalOptions="FillAndExpand"  
-             VerticalOptions="FillAndExpand"
-                    HeightRequest="100"
-    BackgroundColor="Transparent" 
-       Aspect="AspectFill"
-Source="france.png"   />-->
 
             <Grid  x:Name="grd_Avatar"
               HorizontalOptions="FillAndExpand"
@@ -113,7 +88,8 @@ Grid.Column="0">
 
             <Grid	HorizontalOptions="FillAndExpand"
           ColumnDefinitions="10,*,10,*,10"
-          Padding="0">
+               
+          Padding="0,5,0,5">
 
 
                 <StackLayout   x:Name="sl_Download"
@@ -139,6 +115,7 @@ Grid.Column="0">
                   TextColor="{StaticResource iAppColor_Silver}"
                   Text="DOWNLOAD" />
                 </StackLayout>
+            
                 <StackLayout    x:Name="sl_Share"
                       HorizontalOptions="Center"
                       Padding="0"
@@ -160,6 +137,7 @@ Grid.Column="0">
                   TextColor="{StaticResource iAppColor_Silver}"
                   Text="SHARE" />
                 </StackLayout>
+         
             </Grid>
 
 

@@ -12,11 +12,11 @@ using S1RoofingMU.iSRoofingApp.iSRoofing_Model.Group;
 using S1RoofingMU.iSRoofingApp.iSRoofing_Model.History.Chat;
 using S1RoofingMU.iSRoofingApp.iSRoofing_Model.ScreenChatShow;
 using S1RoofingMU.iSRoofingApp.iSRoofing_Model.User;
- 
+
 using S1RoofingMU.iSRoofingApp.iSRoofing_Page.Chat;
 
- 
- 
+
+
 
 namespace S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.ScreenChatShow
 {
@@ -85,11 +85,23 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.ScreenChatShow
             base.OnPropertyChanged(propertyName);
 
             // if (propertyName == iOwnerModelProperty.PropertyName)
-               if (propertyName == iGroupModelProperty.PropertyName)
+            if (propertyName == iGroupModelProperty.PropertyName)
             {
-    if (iGroupModel != null)
+                if (iGroupModel != null)
                 {
                     // Update ContentView properties and elements.
+                    if (File.Exists(iGroupModel.VideoThumPath))
+                    {
+                        img_Thum.Source = iGroupModel.VideoThumPath;
+
+                    }
+                    else
+                    {
+                        img_Thum.Source = iGroupModel.VideoThumServerURL;
+
+                    }
+
+
 
 
                     grd_Media.WidthRequest = iGroupModel.iScreenChatShow_iMedia_Width;
@@ -223,30 +235,30 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.ScreenChatShow
 
 
 
-        async void bx_MediaContent_Tapped ( object sender , EventArgs e )
+        async void bx_MediaContent_Tapped(object sender, EventArgs e)
         {
             try
             {
 
-                var objService = App.Current.MainPage.Handler.MauiContext.Services.GetService<iSRoofing_DependencyService_SoundClick> ( );
+                var objService = App.Current.MainPage.Handler.MauiContext.Services.GetService<iSRoofing_DependencyService_SoundClick>();
 
-                if ( objService != null )
+                if (objService != null)
                 {
-                    objService.KeyboardClick ( );
+                    objService.KeyboardClick();
                 }
 
 
-                await ( ( Page_ScreenChatShow_Dashboard ) Parent.BindingContext )
-                       .GalleryOpener_ShowMedia (
-                     SRoofingEnum_File_Code.FileCode_Video ,
-                 "view" ,
-                    iGroupModel );
+                await ((Page_ScreenChatShow_Dashboard)Parent.BindingContext)
+                       .GalleryOpener_ShowMedia(
+                     SRoofingEnum_File_Code.FileCode_Video,
+                 "view",
+                    iGroupModel);
 
 
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return;
             }
 
@@ -255,50 +267,50 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.ScreenChatShow
 
 
 
-        async void imgBtn_Gallery_Clicked ( object sender , EventArgs e )
+        async void imgBtn_Gallery_Clicked(object sender, EventArgs e)
         {
             try
             {
 
-                var objService = App.Current.MainPage.Handler.MauiContext.Services.GetService<iSRoofing_DependencyService_SoundClick> ( );
+                var objService = App.Current.MainPage.Handler.MauiContext.Services.GetService<iSRoofing_DependencyService_SoundClick>();
 
-                if ( objService != null )
+                if (objService != null)
                 {
-                    objService.KeyboardClick ( );
+                    objService.KeyboardClick();
                 }
 
 
-                await ( ( Page_ScreenChatShow_Dashboard ) Parent.BindingContext )
-                       .GalleryOpener_ShowMedia (
-                     SRoofingEnum_File_Code.FileCode_Video ,
-                 "list" ,
-                    iGroupModel );
+                await ((Page_ScreenChatShow_Dashboard)Parent.BindingContext)
+                       .GalleryOpener_ShowMedia(
+                     SRoofingEnum_File_Code.FileCode_Video,
+                 "list",
+                    iGroupModel);
 
 
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return;
             }
 
         }
 
 
-        async void imgBtn_Share_Clicked ( object sender , EventArgs e )
+        async void imgBtn_Share_Clicked(object sender, EventArgs e)
         {
             try
             {
 
-                await ( ( Page_ScreenChatShow_Dashboard ) Parent.BindingContext )
-                       .Picker_ShareMedia (
-                    SRoofingEnum_File_Code.FileCode_Video ,
-              "list" ,
-                iGroupModel );
+                await ((Page_ScreenChatShow_Dashboard)Parent.BindingContext)
+                       .Picker_ShareMedia(
+                    SRoofingEnum_File_Code.FileCode_Video,
+              "list",
+                iGroupModel);
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return;
             }
         }
@@ -323,7 +335,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.ScreenChatShow
                 }
 
 
-                await((Page_ScreenChatShow_Dashboard)Parent.BindingContext)
+                await ((Page_ScreenChatShow_Dashboard)Parent.BindingContext)
                        .GalleryOpener_ShowMedia(
                      SRoofingEnum_File_Code.FileCode_Video,
                  "view",
