@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView x:Name="page_ProfileView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:entry="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Entry"
+             x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Account.Page_Profile_List_View"
+             xmlns:snackAutoHide="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:sroofingHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Header"
+             xmlns:arrowBack="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Back"
+             xmlns:sroofingFooter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer"
+             xmlns:grid="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Grid"
+             ios:Page.UseSafeArea="False"
+             NavigationPage.HasNavigationBar="False"
+             Visual="Material"
+             BackgroundColor="Black"
+             SizeChanged="page_ProfileView_SizeChanged"
+             Loaded="page_ProfileView_Loaded">
+   
+    <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand"
+          RowDefinitions="*,50">
+
+
+        <Image	 x:Name="imgBG_Splash"
+						 HorizontalOptions="FillAndExpand"
+						 VerticalOptions="FillAndExpand"
+						 Source="call_bg.png"
+						 Aspect="Fill"
+						 Margin="0" />
+
+        
+        <StackLayout  HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand"
+                      Spacing="0"
+                      Orientation="Vertical"
+                      Margin="0,0,0,50"
+                      Padding="0"
+                      Grid.Row="0">
+        
+            <!--<StackLayout   HorizontalOptions="FillAndExpand"
+                           BackgroundColor="{StaticResource iAppColor_SemiGray}"
+                           Orientation="Horizontal"
+                           Spacing="0"
+                           Margin="0,20,0,0"
+                         
+                           Padding="0">
+                <Image HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       Source="img_my_account.png"
+                       Margin="10"
+                       Aspect="AspectFit"
+                       HeightRequest="35"
+                       WidthRequest="35" />
+                <Label x:Name="lbl_TitleAccount"
+                       Text="Settings"
+                       TextColor="{StaticResource iAppColor_White}"
+                       FontSize="Medium"
+                       Margin="5"
+                  VerticalTextAlignment="Center"/>
+            </StackLayout>-->
+
+
+
+            <Grid		HorizontalOptions="CenterAndExpand"
+										VerticalOptions="Start"
+										RowDefinitions="auto, 20,auto"  >
+
+             
+
+
+                <Grid  x:Name="grd_AvatarName_Splash"
+									   HorizontalOptions="Center"
+									   VerticalOptions="Start"
+									   WidthRequest="250"
+									   HeightRequest="250"
+									   Padding="0"
+									   Margin="0,50,0,0"
+									   IsClippedToBounds="True"
+									   Grid.Row="0">
+
+
+                  
+                    <Grid HorizontalOptions="FillAndExpand"
+										  VerticalOptions="FillAndExpand"
+										  IsVisible="true">
+
+                        <Image Source="img_circle_black.png"
+											   HorizontalOptions="FillAndExpand"
+											   VerticalOptions="FillAndExpand"
+											   Margin="2" />
+
+                        <Label x:Name="lbl_AvatarName_Splash"
+											   HorizontalOptions="FillAndExpand"
+											   VerticalOptions="FillAndExpand"
+											   Text="SH"
+											   VerticalTextAlignment="Center"
+											   HorizontalTextAlignment="Center"
+											   FontSize="50"
+											   TextColor="{StaticResource iAppColor_White}" />
+
+                        <Image x:Name="img_AvatarNameBG2madfdvss"
+											   Source="img_dating_circle_gradient.png"
+											   HorizontalOptions="FillAndExpand"
+											   VerticalOptions="FillAndExpand"
+											   Margin="0" />
+
+                    </Grid>
+
+                </Grid>
+
+                <Label	x:Name="lbl_UserName"
+                                    HorizontalOptions="FillAndExpand"
+											VerticalOptions="FillAndExpand"
+											HorizontalTextAlignment="Center"
+											VerticalTextAlignment="Start"
+											Padding="5"
+											Text="Shaymaa Hafez"
+											FontSize="Medium"
+											TextColor="White"
+											Margin="0"
+											Grid.Row="2" />
+
+             
+
+            </Grid>
+
+
+
+
+ 
+                <StackLayout  x:Name="sl_MobileNumber"
+                    HorizontalOptions="FillAndExpand"
+                           Orientation="Horizontal"
+                           Spacing="0"
+                           Margin="20,20,20,0"
+                           Padding="0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="sl_MobileNumber_Tapped" />
+                </StackLayout.GestureRecognizers>
+                
+                    <Frame    WidthRequest="50"
+                          HeightRequest="40"
+                          HasShadow="True"
+                          BorderColor="{StaticResource iAppColor_SemiOrange}"
+                          Padding="0"
+                          Margin="0,0,10,0"
+                          BackgroundColor="{StaticResource iAppColor_Transparent}">
+                    <Image HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Source="img_dating_phone.png"
+                           Margin="0"
+                           Aspect="AspectFit"
+                           HeightRequest="25"
+                           WidthRequest="25" />
+                </Frame>
+                <Grid HorizontalOptions="FillAndExpand">
+                    <StackLayout   HorizontalOptions="FillAndExpand"
+                                   Orientation="Vertical"
+                                   Spacing="0"
+                                   Margin="0"
+                                   Padding="0">
+                        <Label x:Name="lbl_MobileNumber"
+                               HorizontalOptions="FillAndExpand"
+                               HeightRequest="50"
+                               FontSize="Medium"
+                               TextColor="{StaticResource iAppColor_Silver}"
+                               BackgroundColor="Transparent"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Center"
+                               Text="Mobile Number" />
+                        <BoxView HeightRequest="1"
+                                 BackgroundColor="Silver"
+                                 Opacity="0.5" />
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        
+           
+            <StackLayout  x:Name="sl_EmailAddress"
+                
+                HorizontalOptions="FillAndExpand"
+                           Orientation="Horizontal"
+                           Spacing="0"
+                           Margin="20,20,20,0"
+                           Padding="0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="sl_EmailAddress_Tapped" />
+                </StackLayout.GestureRecognizers>
+                
+                    <Frame    WidthRequest="50"
+                          HeightRequest="40"
+                          HasShadow="True"
+                          BorderColor="{StaticResource iAppColor_SemiOrange}"
+                          Padding="0"
+                          Margin="0,0,10,0"
+                          BackgroundColor="{StaticResource iAppColor_Transparent}">
+                    <Image HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Source="img_theme_profile_mailx.png"
+                           Margin="0"
+                           Aspect="AspectFit"
+                           HeightRequest="25"
+                           WidthRequest="25" />
+                </Frame>
+                <Grid HorizontalOptions="FillAndExpand">
+                    <StackLayout   HorizontalOptions="FillAndExpand"
+                                   Orientation="Vertical"
+                                   Spacing="0"
+                                   Margin="0"
+                                   Padding="0">
+                        <Label x:Name="lbl_EmailAddress"
+                               HorizontalOptions="FillAndExpand"
+                               HeightRequest="50"
+                               FontSize="Medium"
+                               TextColor="{StaticResource iAppColor_Silver}"
+                               BackgroundColor="Transparent"
+                               HorizontalTextAlignment="Start"
+                               VerticalTextAlignment="Center"
+                               Text="E-mail address" />
+                        <BoxView HeightRequest="1"
+                                 BackgroundColor="Silver"
+                                 Opacity="0.5" />
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+
+            <Button x:Name="btn_LogOut"
+            HorizontalOptions="FillAndExpand"
+            HeightRequest="50"
+            FontAttributes="Bold"
+            Text="Log Out"
+            TextColor="{StaticResource iAppColor_White}"
+            FontSize="Medium"
+            Margin="20,50,20,0"
+            CornerRadius="5"
+            BackgroundColor="{StaticResource iAppColor_Red}"
+            Grid.Row="1"
+            Clicked="btn_LogOut_Clicked" />
+
+        </StackLayout>
+   
+    </Grid>
+</ContentView>

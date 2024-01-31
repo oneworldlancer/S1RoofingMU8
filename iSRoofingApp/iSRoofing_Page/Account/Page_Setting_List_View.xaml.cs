@@ -25,9 +25,9 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Account;
 
 
 //[XamlCompilation ( XamlCompilationOptions.Compile )]
-public partial class Page_Account_List_View : ContentView
+public partial class Page_Setting_List_View : ContentView
 {
-    public Page_Account_List_View()
+    public Page_Setting_List_View()
     {
         InitializeComponent();
 
@@ -38,9 +38,7 @@ public partial class Page_Account_List_View : ContentView
     SRoofingUserOwnerModelManager _iOwnerModel;
     SRoofingSpeechModel _iSpeechModel_Incoming;
     SRoofingSpeechModel _iSpeechModel_Outgoing;
-    public async Task Initialize(
-        SRoofingUserOwnerModelManager iOwnerModel, 
-        iSRoofing_Model.Setting.SRoofingUserSettingModelManager _iSettingModel,
+    public async Task Initialize(SRoofingUserOwnerModelManager iOwnerModel, iSRoofing_Model.Setting.SRoofingUserSettingModelManager _iSettingModel,
         iSRoofing_Model.Speech.SRoofingSpeechModel iSpeechModel_Incoming,
         iSRoofing_Model.Speech.SRoofingSpeechModel iSpeechModel_Outgoing)
     {
@@ -56,22 +54,22 @@ public partial class Page_Account_List_View : ContentView
             MainThread.BeginInvokeOnMainThread(async () =>
             {
 
-                lbl_AvatarName.Text = iOwnerModel.AvatarName;
+                //////////lbl_AvatarName.Text = iOwnerModel.AvatarName;
 
-                if (_iOwnerModel.AvatarImageID!= "0")
-                {
+                //////////if (_iOwnerModel.AvatarImageID!= "0")
+                //////////{
 
-                    img_Avatar.Source = ImageSource.FromUri(new Uri(_iOwnerModel.AvatarImageID));// ImageSource.FromStream ( ( ) => stream );
-                    frm_UserAvatarName.IsVisible = false;
-                    frm_CameraImage.IsVisible = true;
-                }
-                else
-                {
+                //////////    img_Avatar.Source = ImageSource.FromUri(new Uri(_iOwnerModel.AvatarImageID));// ImageSource.FromStream ( ( ) => stream );
+                //////////    frm_UserAvatarName.IsVisible = false;
+                //////////    frm_CameraImage.IsVisible = true;
+                //////////}
+                //////////else
+                //////////{
 
-                    img_Avatar.Source = null;// ImageSource.FromStream ( ( ) => stream );
-                    frm_UserAvatarName.IsVisible =true;
-                    frm_CameraImage.IsVisible =  false;
-                }
+                //////////    img_Avatar.Source = null;// ImageSource.FromStream ( ( ) => stream );
+                //////////    frm_UserAvatarName.IsVisible =true;
+                //////////    frm_CameraImage.IsVisible =  false;
+                //////////}
 
 
             });
@@ -471,9 +469,9 @@ public partial class Page_Account_List_View : ContentView
             MainThread.BeginInvokeOnMainThread(() =>
             {
                 // Code to run on the main thread
-                img_Avatar.Source = register_fileResult.FullPath;// ImageSource.FromStream ( ( ) => stream );
-                frm_UserAvatarName.IsVisible = false;
-                frm_CameraImage.IsVisible = true;
+                //////////img_Avatar.Source = register_fileResult.FullPath;// ImageSource.FromStream ( ( ) => stream );
+                //////////frm_UserAvatarName.IsVisible = false;
+                //////////frm_CameraImage.IsVisible = true;
             });
 
 
@@ -605,52 +603,52 @@ public partial class Page_Account_List_View : ContentView
 
             if (_iLanguageModel.LanguageCode == "ar")
             {
-               // lbl_TitleAccount.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_TitleSetting.HorizontalTextAlignment = TextAlignment.Start;
+                //lbl_TitleAccount.HorizontalTextAlignment = TextAlignment.Start;
+               // lbl_TitleSetting.HorizontalTextAlignment = TextAlignment.Start;
 
-                //lbl_About.HorizontalTextAlignment = TextAlignment.Start;
-                lbl_Avatar.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_Calls.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_Chats.HorizontalTextAlignment = TextAlignment.Start;
-                lbl_EmailAddress.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_FAQ.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_Notifictions.HorizontalTextAlignment = TextAlignment.Start;
-                lbl_PersonalInfo.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_Privacy.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_RateUs.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_Sounds.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_TheWorld.HorizontalTextAlignment = TextAlignment.Start;
+                lbl_About.HorizontalTextAlignment = TextAlignment.Start;
+                //lbl_Avatar.HorizontalTextAlignment = TextAlignment.Start;
+                lbl_Calls.HorizontalTextAlignment = TextAlignment.Start;
+                lbl_Chats.HorizontalTextAlignment = TextAlignment.Start;
+                //lbl_EmailAddress.HorizontalTextAlignment = TextAlignment.Start;
+                lbl_FAQ.HorizontalTextAlignment = TextAlignment.Start;
+                lbl_Notifictions.HorizontalTextAlignment = TextAlignment.Start;
+                //lbl_PersonalInfo.HorizontalTextAlignment = TextAlignment.Start;
+                lbl_Privacy.HorizontalTextAlignment = TextAlignment.Start;
+                lbl_RateUs.HorizontalTextAlignment = TextAlignment.Start;
+                lbl_Sounds.HorizontalTextAlignment = TextAlignment.Start;
+                lbl_TheWorld.HorizontalTextAlignment = TextAlignment.Start;
 
-                lbl_MobileNumber.HorizontalTextAlignment = TextAlignment.Start;
-                lbl_Password.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_ContactUs.HorizontalTextAlignment = TextAlignment.Start;
+                //lbl_MobileNumber.HorizontalTextAlignment = TextAlignment.Start;
+                //lbl_Password.HorizontalTextAlignment = TextAlignment.Start;
+                lbl_ContactUs.HorizontalTextAlignment = TextAlignment.Start;
 
             }
             else
             {
 
-              //  lbl_TitleAccount.HorizontalTextAlignment = TextAlignment.Start;
+                //lbl_TitleAccount.HorizontalTextAlignment = TextAlignment.Start;
 
-                //lbl_TitleSetting.HorizontalTextAlignment = TextAlignment.Start;
+               // lbl_TitleSetting.HorizontalTextAlignment = TextAlignment.Start;
 
-                //lbl_About.HorizontalTextAlignment = TextAlignment.Start;
-                lbl_Avatar.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_Calls.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_Chats.HorizontalTextAlignment = TextAlignment.Start;
-                lbl_EmailAddress.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_FAQ.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_Notifictions.HorizontalTextAlignment = TextAlignment.Start;
-                lbl_PersonalInfo.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_Privacy.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_RateUs.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_Sounds.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_TheWorld.HorizontalTextAlignment = TextAlignment.Start;
+                lbl_About.HorizontalTextAlignment = TextAlignment.Start;
+                //lbl_Avatar.HorizontalTextAlignment = TextAlignment.Start;
+                lbl_Calls.HorizontalTextAlignment = TextAlignment.Start;
+                lbl_Chats.HorizontalTextAlignment = TextAlignment.Start;
+                //lbl_EmailAddress.HorizontalTextAlignment = TextAlignment.Start;
+                lbl_FAQ.HorizontalTextAlignment = TextAlignment.Start;
+                lbl_Notifictions.HorizontalTextAlignment = TextAlignment.Start;
+                //lbl_PersonalInfo.HorizontalTextAlignment = TextAlignment.Start;
+                lbl_Privacy.HorizontalTextAlignment = TextAlignment.Start;
+                lbl_RateUs.HorizontalTextAlignment = TextAlignment.Start;
+                lbl_Sounds.HorizontalTextAlignment = TextAlignment.Start;
+                lbl_TheWorld.HorizontalTextAlignment = TextAlignment.Start;
 
 
 
-                lbl_MobileNumber.HorizontalTextAlignment = TextAlignment.Start;
-                lbl_Password.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_ContactUs.HorizontalTextAlignment = TextAlignment.Start;
+                //lbl_MobileNumber.HorizontalTextAlignment = TextAlignment.Start;
+                //lbl_Password.HorizontalTextAlignment = TextAlignment.Start;
+                lbl_ContactUs.HorizontalTextAlignment = TextAlignment.Start;
 
 
 
@@ -663,25 +661,25 @@ public partial class Page_Account_List_View : ContentView
 
 
 
-           // lbl_TitleAccount.Text = _iLanguageModel.lblText_Title_Account;
-            //lbl_TitleSetting.Text = _iLanguageModel.lblText_Title_Settings;
+            //lbl_TitleAccount.Text = _iLanguageModel.lblText_Title_Account;
+          //  lbl_TitleSetting.Text = _iLanguageModel.lblText_Title_Settings;
 
-            //lbl_About.Text = "S1Roofing " + _iLanguageModel.lblText_About;
-            lbl_Avatar.Text = _iLanguageModel.lblText_Avatar;
-            //lbl_Calls.Text = "S1Roofing " + _iLanguageModel.lblText_Tab_Calls;
-            //lbl_Chats.Text = "S1Roofing " + _iLanguageModel.lblText_Tab_Chats;
-            lbl_EmailAddress.Text = _iLanguageModel.lblText_EmailAddress;
-            //lbl_FAQ.Text = "S1Roofing " + _iLanguageModel.lblText_FAQ;
-            //lbl_Notifictions.Text = _iLanguageModel.lblText_Notifications;
-            lbl_PersonalInfo.Text = _iLanguageModel.lblText_PersonalInfo;
-            //lbl_Privacy.Text = _iLanguageModel.lblText_Privacy;
-            //lbl_RateUs.Text = _iLanguageModel.lblText_RateUs;
-            //lbl_Sounds.Text = "S1Roofing " + _iLanguageModel.lblText_Sounds;
-            //lbl_TheWorld.Text = "S1Roofing " + _iLanguageModel.lblText_TheWorld;
+            lbl_About.Text = "S1Roofing " + _iLanguageModel.lblText_About;
+            //lbl_Avatar.Text = _iLanguageModel.lblText_Avatar;
+            lbl_Calls.Text = "S1Roofing " + _iLanguageModel.lblText_Tab_Calls;
+            lbl_Chats.Text = "S1Roofing " + _iLanguageModel.lblText_Tab_Chats;
+            //lbl_EmailAddress.Text = _iLanguageModel.lblText_EmailAddress;
+            lbl_FAQ.Text = "S1Roofing " + _iLanguageModel.lblText_FAQ;
+            lbl_Notifictions.Text = _iLanguageModel.lblText_Notifications;
+            //lbl_PersonalInfo.Text = _iLanguageModel.lblText_PersonalInfo;
+            lbl_Privacy.Text = _iLanguageModel.lblText_Privacy;
+            lbl_RateUs.Text = _iLanguageModel.lblText_RateUs;
+            lbl_Sounds.Text = "S1Roofing " + _iLanguageModel.lblText_Sounds;
+            lbl_TheWorld.Text = "S1Roofing " + _iLanguageModel.lblText_TheWorld;
 
-            lbl_MobileNumber.Text = _iLanguageModel.lblText_MobileNumber;
-            lbl_Password.Text = _iLanguageModel.lblText_Password;
-            //lbl_ContactUs.Text = _iLanguageModel.lblText_ContactUs;
+            //lbl_MobileNumber.Text = _iLanguageModel.lblText_MobileNumber;
+            //lbl_Password.Text = _iLanguageModel.lblText_Password;
+            lbl_ContactUs.Text = _iLanguageModel.lblText_ContactUs;
 
             //btn_LogOut.Text = _iLanguageModel.lblText_LogOut_Message;
 

@@ -324,8 +324,8 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
 
             try
             {
-                _CallType_Owner = _iCallModel.CallType;
-                _CallType_Remote = _iCallModel.CallType;
+                //_CallType_Owner = _iCallModel.CallType;
+                //_CallType_Remote = _iCallModel.CallType;
 
 
                 if (_iCallModel.CallTag == SRoofingEnum_Call_Tag.CallTag_Offer)
@@ -1193,11 +1193,20 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
             try
             {
 
-                _ = Task.Run(async () =>
+
+                MainThread.BeginInvokeOnMainThread(async () =>
                 {
+
+                    // Code to run on the main thread
                     await webViewCall.EvaluateJavaScriptAsync("stop()");
 
-                }).ConfigureAwait(false);
+
+                });
+
+                //_ = Task.Run(async () =>
+                //{
+
+                //}).ConfigureAwait(false);
 
 
 
@@ -1295,10 +1304,83 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
             }
         }
 
+        bool _CallIsMute = false;
+
         private async void imgBtn_CallMute_Voice_Clicked(object sender, EventArgs e)
         {
             try
             {
+
+                await Call_ToggleMute();
+            }
+            catch (Exception ex)
+            {
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                return;
+            }
+        }
+
+
+        async Task Call_ToggleMute()
+        {
+
+            try
+            {
+
+
+                if (_CallIsMute == true)
+                {
+
+                    //_=  Task.Run(async () =>
+                    //{
+
+
+
+                    //})
+                    //                  .ConfigureAwait(false);
+
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                    {
+                        await webViewCall.EvaluateJavaScriptAsync("callUnMute()");
+
+                        imgBtn_CallMute_Voice.Source="img_call_new_mute.png";
+                        imgBtn_CallMute_Video.Source="img_call_new_mute.png";
+
+                        // Code to run on the main thread
+
+                    });
+
+                    _CallIsMute= false;
+
+                }
+                else
+                {
+
+
+                    //_=  Task.Run(async () =>
+                    //{
+
+
+                    //})
+                    //                  .ConfigureAwait(false);
+
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                    {
+                        await webViewCall.EvaluateJavaScriptAsync("callMute()");
+
+                        imgBtn_CallMute_Voice.Source="img_call_new_unmute.png";
+                        imgBtn_CallMute_Video.Source="img_call_new_unmute.png";
+
+                        // Code to run on the main thread
+
+                    });
+
+
+
+                    _CallIsMute= true;
+                }
+
+
 
 
             }
@@ -1314,19 +1396,31 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
             try
             {
 
+                string xCallEndTime = lbl_TimerText.Text;
 
-                _ = Task.Run(async () =>
+
+
+                MainThread.BeginInvokeOnMainThread(async () =>
                 {
+
+                    // Code to run on the main thread
                     await webViewCall.EvaluateJavaScriptAsync("stop()");
 
-                }).ConfigureAwait(false);
+
+                });
+
+
+                //_ = Task.Run(async () =>
+                //{
+
+                //}).ConfigureAwait(false);
 
 
 
                 _=  Task.Run(async () =>
                 {
 
-                    string skt_Message = _iCallModel.CallTokenID + "-" +  _iCallModel.GroupTokenID + "-" + _iOwnerModel.OwnerUserTokenID + "-" + _iOwnerModel.OwnerMobileNumberTokenID + "-"+ SRoofingEnum_Socket_Call.SRoofingSocket_Call_EndTime + "," +lbl_TimerText.Text;
+                    string skt_Message = _iCallModel.CallTokenID + "-" +  _iCallModel.GroupTokenID + "-" + _iOwnerModel.OwnerUserTokenID + "-" + _iOwnerModel.OwnerMobileNumberTokenID + "-"+ SRoofingEnum_Socket_Call.SRoofingSocket_Call_EndTime + "," + xCallEndTime;
 
                     await Send(client, skt_Message, CancellationToken.None);
 
@@ -1353,7 +1447,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
           SRoofingEnum_Call_Type.CallType_Voice,
           _iCallModel.CallDirection,
           SRoofingEnum_Call_State.CallState_ENDTIME,
-          "0",
+          xCallEndTime,
           "0",
           "1");
 
@@ -1389,13 +1483,38 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
             try
             {
 
+
+                MainThread.BeginInvokeOnMainThread(async () =>
+                {
+
+                    // Code to run on the main thread
+                    await webViewCall.EvaluateJavaScriptAsync("owner_ShowCamera()");
+
+
+                    imgBtn_CallCamera_Video.Source="img_call_new_video_on.png";
+
+                });
+
+
+
+                _=  Task.Run(async () =>
+                {
+
+
+                    string skt_Message = _iCallModel.CallTokenID + "-" +  _iCallModel.GroupTokenID + "-" + _iOwnerModel.OwnerUserTokenID + "-" + _iOwnerModel.OwnerMobileNumberTokenID + "-"+ SRoofingEnum_Socket_Call.SRoofingSocket_Call_Resume + ",0";
+
+                    await Send(client, skt_Message, CancellationToken.None);
+
+
+                })
+                    .ConfigureAwait(false);
+
                 await ShowView(ll_SplashBG, ll_ActionVideo);
                 await ShowView(ll_ActionVoice, ll_ActionVideo);
                 await ShowView(grd_CallActionVideo, grd_ToggleCallActionVideo);
 
                 _CallType_Owner=SRoofingEnum_Call_Type.CallType_Video;
-                _CallType_Remote=SRoofingEnum_Call_Type.CallType_Video;
-
+                //_CallType_Remote=SRoofingEnum_Call_Type.CallType_Video;
 
 
             }
@@ -1405,6 +1524,107 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
                 return;
             }
         }
+
+
+        async Task Call_ToggleCamera()
+        {
+
+            try
+            {
+
+                if (_CallType_Owner == SRoofingEnum_Call_Type.CallType_Voice)
+                {
+
+                    // Open owner-camera
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                                 {
+
+                                     // Code to run on the main thread
+                                     await webViewCall.EvaluateJavaScriptAsync("owner_ShowCamera()");
+
+                                     imgBtn_CallCamera_Video.Source="img_call_new_video_on.png";
+
+                                 });
+
+
+
+                    _=  Task.Run(async () =>
+                    {
+
+
+                        string skt_Message = _iCallModel.CallTokenID + "-" +  _iCallModel.GroupTokenID + "-" + _iOwnerModel.OwnerUserTokenID + "-" + _iOwnerModel.OwnerMobileNumberTokenID + "-"+ SRoofingEnum_Socket_Call.SRoofingSocket_Call_Resume + ",0";
+
+                        await Send(client, skt_Message, CancellationToken.None);
+
+
+                    })
+                        .ConfigureAwait(false);
+
+                    if (_CallType_Remote == SRoofingEnum_Call_Type.CallType_Voice)
+                    {
+
+                        await ShowView(ll_SplashBG, ll_ActionVideo);
+                        await ShowView(ll_ActionVoice, ll_ActionVideo);
+                        await ShowView(grd_CallActionVideo, grd_ToggleCallActionVideo);
+
+                    }
+
+                    _CallType_Owner=SRoofingEnum_Call_Type.CallType_Video;
+                    //_CallType_Remote=SRoofingEnum_Call_Type.CallType_Video;
+
+                }
+                else
+                {
+                    // Close owner-camera
+
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                    {
+
+                        // Code to run on the main thread
+                        await webViewCall.EvaluateJavaScriptAsync("owner_HideCamera()");
+
+                        imgBtn_CallCamera_Video.Source="img_call_new_video_off.png";
+
+                    });
+
+                    _=  Task.Run(async () =>
+                    {
+
+
+
+                        string skt_Message = _iCallModel.CallTokenID + "-" +  _iCallModel.GroupTokenID + "-" + _iOwnerModel.OwnerUserTokenID + "-" + _iOwnerModel.OwnerMobileNumberTokenID + "-"+ SRoofingEnum_Socket_Call.SRoofingSocket_Call_Pause + ",0";
+
+                        await Send(client, skt_Message, CancellationToken.None);
+
+
+                    })
+                        .ConfigureAwait(false);
+
+                    //_CallType_Remote=SRoofingEnum_Call_Type.CallType_Voice;
+
+                    if (_CallType_Remote == SRoofingEnum_Call_Type.CallType_Voice)
+                    {
+
+                        await ShowView(ll_ActionVideo, ll_SplashBG);
+                        await ShowView(ll_ActionVideo, ll_ActionVoice);
+
+                    }
+
+                    _CallType_Owner=SRoofingEnum_Call_Type.CallType_Voice;
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                return;
+            }
+
+        }
+
+
 
         private async void imgBtn_CallHold_Voice_Clicked(object sender)
         {
@@ -1485,11 +1705,45 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
             try
             {
 
-                await ShowView(ll_ActionVideo, ll_SplashBG);
-                await ShowView(ll_ActionVideo, ll_ActionVoice);
+                await Call_ToggleCamera();
 
-                _CallType_Owner=SRoofingEnum_Call_Type.CallType_Voice;
-                _CallType_Remote=SRoofingEnum_Call_Type.CallType_Voice;
+
+                ////////MainThread.BeginInvokeOnMainThread(async () =>
+                ////////{
+
+                ////////    // Code to run on the main thread
+                ////////    await webViewCall.EvaluateJavaScriptAsync("owner_HideCamera()");
+
+
+
+                ////////});
+
+                ////////_=  Task.Run(async () =>
+                ////////{
+
+
+
+                ////////    string skt_Message = _iCallModel.CallTokenID + "-" +  _iCallModel.GroupTokenID + "-" + _iOwnerModel.OwnerUserTokenID + "-" + _iOwnerModel.OwnerMobileNumberTokenID + "-"+ SRoofingEnum_Socket_Call.SRoofingSocket_Call_Pause + ",0";
+
+                ////////    await Send(client, skt_Message, CancellationToken.None);
+
+
+                ////////})
+                ////////    .ConfigureAwait(false);
+
+
+
+                ////////_CallType_Owner=SRoofingEnum_Call_Type.CallType_Voice;
+                //////////_CallType_Remote=SRoofingEnum_Call_Type.CallType_Voice;
+
+                ////////if (_CallType_Remote == SRoofingEnum_Call_Type.CallType_Voice)
+                ////////{
+
+                ////////    await ShowView(ll_ActionVideo, ll_SplashBG);
+                ////////    await ShowView(ll_ActionVideo, ll_ActionVoice);
+
+                ////////}
+
 
             }
             catch (Exception ex)
@@ -1507,19 +1761,28 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
             try
             {
 
+                string xCallEndTime = lbl_TimerText.Text;
 
-                _ = Task.Run(async () =>
-                {
-                    await webViewCall.EvaluateJavaScriptAsync("stop()");
+                MainThread.BeginInvokeOnMainThread(async () =>
+                            {
 
-                }).ConfigureAwait(false);
+                                // Code to run on the main thread
+                                await webViewCall.EvaluateJavaScriptAsync("stop()");
+
+
+                            });
+
+                //_ = Task.Run(async () =>
+                //{
+
+                //}).ConfigureAwait(false);
 
 
 
                 _=  Task.Run(async () =>
                 {
 
-                    string skt_Message = _iCallModel.CallTokenID + "-" +  _iCallModel.GroupTokenID + "-" + _iOwnerModel.OwnerUserTokenID + "-" + _iOwnerModel.OwnerMobileNumberTokenID + "-"+ SRoofingEnum_Socket_Call.SRoofingSocket_Call_EndTime + "," +lbl_TimerText.Text;
+                    string skt_Message = _iCallModel.CallTokenID + "-" +  _iCallModel.GroupTokenID + "-" + _iOwnerModel.OwnerUserTokenID + "-" + _iOwnerModel.OwnerMobileNumberTokenID + "-"+ SRoofingEnum_Socket_Call.SRoofingSocket_Call_EndTime + "," + xCallEndTime;
 
                     await Send(client, skt_Message, CancellationToken.None);
 
@@ -1546,7 +1809,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
           SRoofingEnum_Call_Type.CallType_Video,
           _iCallModel.CallDirection,
           SRoofingEnum_Call_State.CallState_ENDTIME,
-          "0",
+          xCallEndTime,
           "0",
           "1");
 
@@ -1577,9 +1840,19 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
             }
         }
 
-        private void imgBtn_CallMute_Video_Clicked(object sender, EventArgs e)
+        async void imgBtn_CallMute_Video_Clicked(object sender, EventArgs e)
         {
 
+            try
+            {
+
+                await Call_ToggleMute();
+            }
+            catch (Exception ex)
+            {
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                return;
+            }
         }
 
         private void imgBtn_CallHold_Video_Clicked(object sender, EventArgs e)
@@ -1638,44 +1911,50 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
         {
             try
             {
-
-                if (!_bln_IsInitialized)
-                {
-
-                    var intWidth = (int)page_CallDashboard.Width;
-                    SRoofing_DebugManager.Debug_ShowSystemMessage("page_CallDashboard Width== " + page_CallDashboard.Width.ToString());
-                    SRoofing_DebugManager.Debug_ShowSystemMessage("page_CallDashboard WidthRequest== " + page_CallDashboard.WidthRequest.ToString());
-
-                    grd_AvatarName_Splash.WidthRequest = intWidth / 3;
-                    grd_AvatarName_Splash.HeightRequest = intWidth / 3;
-
-                    grd_AvatarName_Drop.WidthRequest = intWidth / 3;
-                    grd_AvatarName_Drop.HeightRequest = intWidth / 3;
+                MainThread.BeginInvokeOnMainThread(async () =>
+                            {
 
 
-                    grd_AvatarName_Redial.WidthRequest = intWidth / 3;
-                    grd_AvatarName_Redial.HeightRequest = intWidth / 3;
+                                // Code to run on the main thread
+                                if (!_bln_IsInitialized)
+                                {
+
+                                    var intWidth = (int)page_CallDashboard.Width;
+                                    SRoofing_DebugManager.Debug_ShowSystemMessage("page_CallDashboard Width== " + page_CallDashboard.Width.ToString());
+                                    SRoofing_DebugManager.Debug_ShowSystemMessage("page_CallDashboard WidthRequest== " + page_CallDashboard.WidthRequest.ToString());
+
+                                    grd_AvatarName_Splash.WidthRequest = intWidth / 3;
+                                    grd_AvatarName_Splash.HeightRequest = intWidth / 3;
+
+                                    grd_AvatarName_Drop.WidthRequest = intWidth / 3;
+                                    grd_AvatarName_Drop.HeightRequest = intWidth / 3;
 
 
-                    grd_AvatarName_Ring.WidthRequest = intWidth / 3;
-                    grd_AvatarName_Ring.HeightRequest = intWidth / 3;
+                                    grd_AvatarName_Redial.WidthRequest = intWidth / 3;
+                                    grd_AvatarName_Redial.HeightRequest = intWidth / 3;
 
 
-                    grd_AvatarName_ActionVoice.WidthRequest = intWidth / 3;
-                    grd_AvatarName_ActionVoice.HeightRequest = intWidth / 3;
+                                    grd_AvatarName_Ring.WidthRequest = intWidth / 3;
+                                    grd_AvatarName_Ring.HeightRequest = intWidth / 3;
 
 
-                    //grd_AvatarName_Drop.WidthRequest =intWidth / 2;
-                    //grd_AvatarName_Drop.HeightRequest = intWidth / 2;
+                                    grd_AvatarName_ActionVoice.WidthRequest = intWidth / 3;
+                                    grd_AvatarName_ActionVoice.HeightRequest = intWidth / 3;
 
 
-                    frm_AvatarName_Splash.CornerRadius = intWidth / 6;
-
-                    _bln_IsInitialized = true;
-
-                }
+                                    //grd_AvatarName_Drop.WidthRequest =intWidth / 2;
+                                    //grd_AvatarName_Drop.HeightRequest = intWidth / 2;
 
 
+                                    frm_AvatarName_Splash.CornerRadius = intWidth / 6;
+
+                                    _bln_IsInitialized = true;
+
+                                }
+
+
+
+                            });
             }
             catch (Exception ex)
             {
@@ -2983,6 +3262,32 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
                             {
 
 
+                                MainThread.BeginInvokeOnMainThread(async () =>
+                                {
+
+                                    // Code to run on the main thread
+                                    await webViewCall.EvaluateJavaScriptAsync("remote_VideoPause()");
+
+
+                                    _CallType_Remote=SRoofingEnum_Call_Type.CallType_Voice;
+
+                                    if (_CallType_Owner == SRoofingEnum_Call_Type.CallType_Voice)
+                                    {
+
+                                        await ShowView(ll_ActionVideo, ll_SplashBG);
+                                        await ShowView(ll_ActionVideo, ll_ActionVoice);
+
+                                    }
+                                });
+
+                                //_ = Task.Run(async () =>
+                                //{
+
+                                //})
+                                //    .ConfigureAwait(false);
+
+
+
 
                                 //////////if (_CallStatus != SRoofingEnum_Call_Status.CallStatus_NotApproved
                                 //////////    && ll_Redial.IsVisible == false)
@@ -3012,6 +3317,31 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
 
                             else if (_socket_Code == SRoofingEnum_Socket_Call.SRoofingSocket_Call_Resume)
                             {
+
+
+                                MainThread.BeginInvokeOnMainThread(async () =>
+                                {
+
+                                    // Code to run on the main thread
+                                    await webViewCall.EvaluateJavaScriptAsync("remote_VideoResume()");
+
+                                    _CallType_Remote=SRoofingEnum_Call_Type.CallType_Video;
+
+                                    if (_CallType_Owner == SRoofingEnum_Call_Type.CallType_Voice)
+                                    {
+
+                                        await ShowView(ll_SplashBG, ll_ActionVideo);
+                                        await ShowView(ll_ActionVoice, ll_ActionVideo);
+                                        await ShowView(grd_CallActionVideo, grd_ToggleCallActionVideo);
+
+                                    }
+
+                                });
+
+                                //_ = Task.Run(async () =>
+                                //{
+                                //  })
+                                //    .ConfigureAwait(false);
 
 
 
@@ -3052,9 +3382,18 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
                                    && ll_Redial.IsVisible == false)
                                     {
 
+
+                                        MainThread.BeginInvokeOnMainThread(async () =>
+                                        {
+
+                                            // Code to run on the main thread
+                                            await webViewCall.EvaluateJavaScriptAsync("stop()");
+
+
+                                        });
+
                                         _ = Task.Run(async () =>
                                                         {
-                                                            await webViewCall.EvaluateJavaScriptAsync("stop()");
 
                                                             await CallTimer_Stop();
 
@@ -3290,10 +3629,10 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
                     }
 
                     lbl_TimerText.Text = "00:00:00";
-             
-   });
 
- 
+                });
+
+
 
             }
             catch (Exception ex)
@@ -3484,8 +3823,8 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call
 
                 }
 
-                _CallType_Owner=SRoofingEnum_Call_Type.CallType_Video;
-                _CallType_Remote=SRoofingEnum_Call_Type.CallType_Video;
+                //_CallType_Owner=SRoofingEnum_Call_Type.CallType_Video;
+                //_CallType_Remote=SRoofingEnum_Call_Type.CallType_Video;
 
 
 

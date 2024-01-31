@@ -3,7 +3,7 @@ window.callMute = function () {
     if (localStream) {
         localStream.getAudioTracks()[0].enabled = false;
 
-        peer.socket._socket.send('{"type":"AUDIOMUTE","src":"' + _OwnerPeerUserID + '","dst":"' + _RemotePeerUserID + '","payload":{" type":"audio","action":"mute"}}');
+      /*  peer.socket._socket.send('{"type":"AUDIOMUTE","src":"' + _OwnerPeerUserID + '","dst":"' + _RemotePeerUserID + '","payload":{" type":"audio","action":"mute"}}');*/
 
     }
 }
@@ -12,7 +12,7 @@ window.callUnMute = function () {
     if (localStream) {
         localStream.getAudioTracks()[0].enabled = true;
 
-        peer.socket._socket.send('{"type":"AUDIOUNMUTE","src":"' + _OwnerPeerUserID + '","dst":"' + _RemotePeerUserID + '","payload":{" type":"audio","action":"unmute"}}');
+/*        peer.socket._socket.send('{"type":"AUDIOUNMUTE","src":"' + _OwnerPeerUserID + '","dst":"' + _RemotePeerUserID + '","payload":{" type":"audio","action":"unmute"}}');*/
 
     }
 }
@@ -24,7 +24,7 @@ window.callPause = function () {
         if (localStream) {
             localStream.getVideoTracks()[0].enabled = false;
 
-            peer.socket._socket.send('{"type":"VIDEOPAUSE","src":"' + _OwnerPeerUserID + '","dst":"' + _RemotePeerUserID + '","payload":{" type":"video","action":"pause"}}');
+            //peer.socket._socket.send('{"type":"VIDEOPAUSE","src":"' + _OwnerPeerUserID + '","dst":"' + _RemotePeerUserID + '","payload":{" type":"video","action":"pause"}}');
 
             //peer.socket._socket.send( '{"type":"VIDEOPAUSE","src":"' + OwnerUserID + '","dst":"' + RemoteUserID + '","payload":{" type":"media","connectionId":"mc_yph61qynxncanhfr","browser":"Chrome"}}' );
         }
@@ -39,7 +39,7 @@ window.callResume = function () {
     if (localStream) {
         localStream.getVideoTracks()[0].enabled = true;
 
-        peer.socket._socket.send('{"type":"VIDEORESUME","src":"' + _OwnerPeerUserID + '","dst":"' + _RemotePeerUserID + '","payload":{" type":"video","action":"resume"}}');
+        //peer.socket._socket.send('{"type":"VIDEORESUME","src":"' + _OwnerPeerUserID + '","dst":"' + _RemotePeerUserID + '","payload":{" type":"video","action":"resume"}}');
 
     }
 }
@@ -51,7 +51,7 @@ window.callHold = function () {
         localStream.getAudioTracks()[0].enabled = false;
         localStream.getVideoTracks()[0].enabled = false;
 
-        peer.socket._socket.send('{"type":"CALLHOLD","src":"' + _OwnerPeerUserID + '","dst":"' + _RemotePeerUserID + '","payload":{" type":"call","action":"hold"}}');
+        //peer.socket._socket.send('{"type":"CALLHOLD","src":"' + _OwnerPeerUserID + '","dst":"' + _RemotePeerUserID + '","payload":{" type":"call","action":"hold"}}');
 
     }
 }
@@ -61,7 +61,7 @@ window.callUnHold = function () {
         localStream.getAudioTracks()[0].enabled = true;
         localStream.getVideoTracks()[0].enabled = true;
 
-        peer.socket._socket.send('{"type":"CALLUNHOLD","src":"' + _OwnerPeerUserID + '","dst":"' + _RemotePeerUserID + '","payload":{" type":"call","action":"unhold"}}');
+/*        peer.socket._socket.send('{"type":"CALLUNHOLD","src":"' + _OwnerPeerUserID + '","dst":"' + _RemotePeerUserID + '","payload":{" type":"call","action":"unhold"}}');*/
 
     }
 }
@@ -71,7 +71,7 @@ window.callSwitchCameraXX = function () {
         localStream.getAudioTracks()[0].enabled = true;
         localStream.getVideoTracks()[0].enabled = true;
 
-        peer.socket._socket.send('{"type":"SWITCHCAMERA","src":"' + _OwnerPeerUserID + '","dst":"' + _RemotePeerUserID + '","payload":{" type":"call","action":"unhold"}}');
+/*        peer.socket._socket.send('{"type":"SWITCHCAMERA","src":"' + _OwnerPeerUserID + '","dst":"' + _RemotePeerUserID + '","payload":{" type":"call","action":"unhold"}}');*/
 
     }
 }
@@ -102,7 +102,7 @@ window.SwitchStream = function () {
 
             }
 
-            setTimeout('PeerDial();', 2000);
+            setTimeout('PeerDial();', 3000);
 
         }
     } catch (e) {

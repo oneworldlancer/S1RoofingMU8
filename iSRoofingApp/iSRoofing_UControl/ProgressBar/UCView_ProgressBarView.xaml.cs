@@ -14,10 +14,10 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_UControl.ProgressBar
     //[XamlCompilation ( XamlCompilationOptions.Compile )]
     public partial class UCView_ProgressBarView : ContentView
     {
-        public UCView_ProgressBarView ( )
+        public UCView_ProgressBarView()
         {
-            InitializeComponent ( );
-           
+            InitializeComponent();
+
             try
             {
 
@@ -26,7 +26,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_UControl.ProgressBar
 
                 ////////////lowerAnimation.Commit(this, "lower", length: 1000, easing: Easing.CubicInOut, repeat: () => true);
                 ////////////upperAnimation.Commit(this, "upper", length: 1000, easing: Easing.CubicInOut, repeat: () => true);
-              
+
                 //////////////https://learn.microsoft.com/en-us/dotnet/maui/user-interface/animation/custom
                 ////////////this.AbortAnimation("SimpleAnimation");
 
@@ -36,9 +36,9 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_UControl.ProgressBar
                 //} ).ConfigureAwait ( false );
 
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return;
             }
         }
@@ -49,29 +49,30 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_UControl.ProgressBar
 
 
 
-        public async Task<bool> Progress_Start() { 
-        try
+        public async Task<bool> Progress_Start()
+        {
+            try
             {
 
-               MainThread.BeginInvokeOnMainThread(async () =>
-                               {
-                // Code to run on the main thread
-               
-              
-                ll_ProgressBar.IsVisible=true;
+                MainThread.BeginInvokeOnMainThread(async () =>
+                                {
+                                    // Code to run on the main thread
 
 
-                lowerAnimation = new Animation(v => ll_ProgressBar.LowerRangeValue = (float)v, -0.4, 1.0);
-                upperAnimation = new Animation(v => ll_ProgressBar.UpperRangeValue = (float)v, 0.0, 1.4);
+                                    ll_ProgressBar.IsVisible=true;
 
-                lowerAnimation.Commit(this, "lower", length: 1000, easing: Easing.SinInOut, repeat: () => true);
-                upperAnimation.Commit(this, "upper", length: 1000, easing: Easing.SinInOut, repeat: () => true);
 
-        
-                               
-                               });
+                                    lowerAnimation = new Animation(v => ll_ProgressBar.LowerRangeValue = (float)v, -0.4, 1.0);
+                                    upperAnimation = new Animation(v => ll_ProgressBar.UpperRangeValue = (float)v, 0.0, 1.4);
 
-        return true;
+                                    lowerAnimation.Commit(this, "lower", length: 1000, easing: Easing.SinInOut, repeat: () => true);
+                                    upperAnimation.Commit(this, "upper", length: 1000, easing: Easing.SinInOut, repeat: () => true);
+
+
+
+                                });
+
+                return true;
 
             }
             catch (Exception ex)
@@ -80,24 +81,25 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_UControl.ProgressBar
                 return false;
 
             }
-        
+
         }
 
 
 
-        public async Task<bool> Progress_Stop() { 
-        
-        try
+        public async Task<bool> Progress_Stop()
+        {
+
+            try
             {
 
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     // Code to run on the main thread
 
-                this.AbortAnimation("lower");
-                this.AbortAnimation("upper");
+                    this.AbortAnimation("lower");
+                    this.AbortAnimation("upper");
 
-                ll_ProgressBar.IsVisible=false;
+                    ll_ProgressBar.IsVisible=false;
 
                 });
 
@@ -114,20 +116,20 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_UControl.ProgressBar
 
 
 
-        private Random rnd = new Random ( );
+        private Random rnd = new Random();
 
         bool bln_IsNotFull = false;
         double iProgress = 0.10;
-    public    async Task Initialize ( )
+        public async Task Initialize()
         {
             try
-            { 
-              
-                MainThread.BeginInvokeOnMainThread ( async ( ) =>
+            {
+
+                MainThread.BeginInvokeOnMainThread(async () =>
                 {
 
-                     while ( true )
-                {
+                    while (true)
+                    {
 
                         //  await    ll_ProgressBar.ProgressTo ( 0.75 , 500 , Easing.Linear );
 
@@ -189,12 +191,12 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_UControl.ProgressBar
                     //////}
 
 
-                } );
+                });
 
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return;
             }
 
@@ -203,25 +205,25 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_UControl.ProgressBar
 
 
 
-        async Task animateMe ( BoxView objBoxView )
+        async Task animateMe(BoxView objBoxView)
         {
 
             try
             {
-                MainThread.BeginInvokeOnMainThread ( async ( ) =>
+                MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     // Fade out over 3 seconds
-                    await objBoxView.FadeTo ( 0.5 , 100 );
-                    await Task.Delay ( 100 );
+                    await objBoxView.FadeTo(0.5, 100);
+                    await Task.Delay(100);
                     // Fade in over 1 second
-                    await objBoxView.FadeTo ( 1 , 100 );
+                    await objBoxView.FadeTo(1, 100);
 
-                } );
+                });
 
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return;
             }
         }

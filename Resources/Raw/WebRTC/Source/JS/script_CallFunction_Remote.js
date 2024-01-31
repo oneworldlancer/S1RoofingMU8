@@ -30,7 +30,7 @@ window.remote_VideoPause = function () {
 	try {
 
 		//remote_HideCamera();
-		document.getElementById('divRemoteCamera').style.display = 'none';
+		document.getElementById('div_RemoteVideo').style.display = 'none';
 
 		//Android.jsCall_remote_Pause();
 
@@ -54,7 +54,7 @@ window.remote_VideoResume = function () {
 	try {
 
 		//remote_ShowCamera();
-		document.getElementById('divRemoteCamera').style.display = 'block';
+		document.getElementById('div_RemoteVideo').style.display = 'block';
 
 		//Android.jsCall_remote_Resume();
 
@@ -96,7 +96,7 @@ window.remote_Hold = function () {
 		//remote_HideCamera();
 
 		document.getElementById('divOwnerCamera').style.display = 'none';
-		document.getElementById('divRemoteCamera').style.display = 'none';
+		document.getElementById('div_RemoteVideo').style.display = 'none';
 		//document.getElementById('divOwnerCameraSplash').style.display = 'none';
 
 _CallType = 'voice';
@@ -128,7 +128,7 @@ window.remote_UnHold = function () {
 		//remote_HideCamera();
 
 		document.getElementById('divOwnerCamera').style.display = 'none';
-		document.getElementById('divRemoteCamera').style.display = 'none';
+		document.getElementById('div_RemoteVideo').style.display = 'none';
 		//document.getElementById('divOwnerCameraSplash').style.display = 'none';
 
 		_CallType = 'voice';
@@ -148,7 +148,7 @@ window.remote_ShowCamera = function () {
 
 	try {
 
-		$("#divRemoteCamera").fadeIn('slow');
+		$("#div_RemoteVideo").fadeIn('slow');
 	} catch (e) {
 
 	}
@@ -161,7 +161,7 @@ window.remote_HideCamera = function () {
 
 	try {
 
-		$("#divRemoteCamera").fadeOut('slow');
+		$("#div_RemoteVideo").fadeOut('slow');
 
 	} catch (e) {
 

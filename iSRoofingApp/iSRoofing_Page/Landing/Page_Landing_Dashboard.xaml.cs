@@ -641,7 +641,7 @@ public partial class Page_Landing_Dashboard : ContentPage
                     // No internet available
                     ll_NetConnection.Color = Colors.Red;
                     // SRoofing_ToastMessageManager.ToastMessage_Show_Message ( iSnackBar , SRoofingEnum_Toast_MessageManager.Message_Internet_Connection.PopupMessage_MessageConnectionFalse ( ) );
-                   await SRoofing_ToastMessageManager.ToastMessage_Show_Message(  _iLanguageModel.lblText_Connection_CheckOnline_Message);
+                    await SRoofing_ToastMessageManager.ToastMessage_Show_Message(_iLanguageModel.lblText_Connection_CheckOnline_Message);
 
                     break;
                 case NetworkAccess.Unknown:
@@ -790,7 +790,13 @@ public partial class Page_Landing_Dashboard : ContentPage
             // Code to run on the main thread
             await SRoofing_Page_OpenerManager.Page_Opener(
                 Navigation,
-            new Page_Account_Dashboard(_iLanguageModel),
+            new Page_Account_Dashboard(
+
+                      _iApplicationUtitlityModel,
+_iSettingModel,
+           //_iSpeechModel,
+           _iLanguageModel,
+      _iOwnerModel),
             false,
             true);
 
@@ -897,12 +903,29 @@ public partial class Page_Landing_Dashboard : ContentPage
 
             //  await Task.Delay ( 100 );
 
-            await iSRoofing_Manager.SRoofing_Page_OpenerManager.Page_Opener_WithChecker(
-                 Navigation,
-                 typeof(Page_Account_Dashboard),
-             new Page_Account_Dashboard(_iLanguageModel),
-             false,
-             true);
+            //await iSRoofing_Manager.SRoofing_Page_OpenerManager.Page_Opener_WithChecker(
+            //     Navigation,
+            //     typeof(Page_Account_Dashboard),
+            // new Page_Account_Dashboard(_iLanguageModel),
+            // false,
+            //true);
+
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                // Code to run on the main thread
+
+                await Navigation.PushModalAsync(new Page_Account_Dashboard(
+
+                      _iApplicationUtitlityModel,
+_iSettingModel,
+           //_iSpeechModel,
+           _iLanguageModel,
+      _iOwnerModel), true);
+
+
+            });
+
+
 
 
 
@@ -1077,9 +1100,9 @@ public partial class Page_Landing_Dashboard : ContentPage
     }
 
 
-    
 
-    public async Task Chat_Opener(SRoofingScreenChatShowScreenModel _iChatScreenModel,bool blnLoader)
+
+    public async Task Chat_Opener(SRoofingScreenChatShowScreenModel _iChatScreenModel, bool blnLoader)
     {
 
         try
@@ -1183,8 +1206,8 @@ public partial class Page_Landing_Dashboard : ContentPage
 
     }
 
-  
-    
+
+
     #region ProgressBar
 
 
@@ -1229,6 +1252,7 @@ public partial class Page_Landing_Dashboard : ContentPage
 
         }
     }
+
 
 
 

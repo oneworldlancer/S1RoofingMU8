@@ -35,9 +35,10 @@ window.callMute = function () {
 	try {
 
 		if (localStream) {
+
 			localStream.getAudioTracks()[0].enabled = false;
 
-			peer.socket._socket.send('{"type":"AUDIOMUTE","src":"' + _OwnerPeerUserID + '","dst":"' + _RemotePeerUserID + '","payload":{" type":"audio","action":"mute"}}');
+/*			peer.socket._socket.send('{"type":"AUDIOMUTE","src":"' + _OwnerPeerUserID + '","dst":"' + _RemotePeerUserID + '","payload":{" type":"audio","action":"mute"}}');*/
 
 		}
 	} catch (e) {
@@ -53,9 +54,10 @@ window.callUnMute = function () {
 	try {
 
 		if (localStream) {
+			
 			localStream.getAudioTracks()[0].enabled = true;
 
-			peer.socket._socket.send('{"type":"AUDIOUNMUTE","src":"' + _OwnerPeerUserID + '","dst":"' + _RemotePeerUserID + '","payload":{" type":"audio","action":"unmute"}}');
+/*			peer.socket._socket.send('{"type":"AUDIOUNMUTE","src":"' + _OwnerPeerUserID + '","dst":"' + _RemotePeerUserID + '","payload":{" type":"audio","action":"unmute"}}');*/
 
 		}
 	} catch (e) {
@@ -83,8 +85,8 @@ window.callPause = function () {
 
 			//owner_HideCamera();
 
-			document.getElementById('divOwnerCamera').style.display = 'none';
-			//document.getElementById('divOwnerCameraSplash').style.display = 'none';
+			document.getElementById('div_OwnerVideo').style.display = 'none';
+			//document.getElementById('div_OwnerVideoSplash').style.display = 'none';
 
 			_CallType = 'voice';
 
@@ -108,13 +110,13 @@ window.callResume = function () {
 
 			//owner_ShowCamera();
 
-			document.getElementById('divOwnerCamera').style.display = 'block';
+			document.getElementById('div_OwnerVideo').style.display = 'block';
 
-			//if (document.getElementById('divRemoteCamera').style.display == 'block')
+			//if (document.getElementById('div_RemoteVideo').style.display == 'block')
 			//{
-			//	document.getElementById('divOwnerCameraSplash').style.display = 'none';
+			//	document.getElementById('div_OwnerVideoSplash').style.display = 'none';
 			//} else {
-			//	document.getElementById('divOwnerCameraSplash').style.display = 'block';
+			//	document.getElementById('div_OwnerVideoSplash').style.display = 'block';
 			//}
 
 
@@ -147,9 +149,9 @@ window.callHold = function () {
 			//owner_HideCamera();
 			//remote_HideCamera();
 
-			document.getElementById('divOwnerCamera').style.display = 'none';
-			document.getElementById('divRemoteCamera').style.display = 'none';
-			//document.getElementById('divOwnerCameraSplash').style.display = 'none';
+			document.getElementById('div_OwnerVideo').style.display = 'none';
+			document.getElementById('div_RemoteVideo').style.display = 'none';
+			//document.getElementById('div_OwnerVideoSplash').style.display = 'none';
 
 			_CallType = 'voice';
 
@@ -175,9 +177,9 @@ window.callUnHold = function () {
 			//owner_HideCamera();
 			//remote_HideCamera();
 
-			document.getElementById('divOwnerCamera').style.display = 'none';
-			document.getElementById('divRemoteCamera').style.display = 'none';
-			//document.getElementById('divOwnerCameraSplash').style.display = 'none';
+			document.getElementById('div_OwnerVideo').style.display = 'none';
+			document.getElementById('div_RemoteVideo').style.display = 'none';
+			//document.getElementById('div_OwnerVideoSplash').style.display = 'none';
 
 			_CallType = 'voice';
 
@@ -332,7 +334,7 @@ window.owner_ShowCamera = function () {
 
 	try {
 
-		$("#divOwnerCamera").fadeIn('slow');
+		$("#div_OwnerVideo").fadeIn('slow');
 	} catch (e) {
 
 	}
@@ -345,7 +347,7 @@ window.owner_HideCamera = function () {
 
 	try {
 
-		$("#divOwnerCamera").fadeOut('slow');
+		$("#div_OwnerVideo").fadeOut('slow');
 
 	} catch (e) {
 

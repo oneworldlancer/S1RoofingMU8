@@ -89,8 +89,8 @@ window.SetCallTokenID = function (CallTokenID) {
 			//_OwnerPeerUserID = 'Xcat10';//_CallTokenID + '-' + _OwnerMobileNumberID;
 			//_RemotePeerUserID = 'Xcat3';//_CallTokenID + '-' + _RemoteMobileNumberID;
 
-			document.getElementById('divOwnerCamera').style.display = 'none';
-			document.getElementById('divRemoteCamera').style.display = 'none';
+			document.getElementById('div_OwnerVideo').style.display = 'none';
+			document.getElementById('div_RemoteVideo').style.display = 'none';
 
 
 			_OwnerPeerUserID = _CallTokenID + '-' + _OwnerMobileNumberID;

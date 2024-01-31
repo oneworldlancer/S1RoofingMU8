@@ -25,9 +25,9 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Account;
 
 
 //[XamlCompilation ( XamlCompilationOptions.Compile )]
-public partial class Page_Account_List_View : ContentView
+public partial class Page_Profile_List_View : ContentView
 {
-    public Page_Account_List_View()
+    public Page_Profile_List_View()
     {
         InitializeComponent();
 
@@ -39,52 +39,52 @@ public partial class Page_Account_List_View : ContentView
     SRoofingSpeechModel _iSpeechModel_Incoming;
     SRoofingSpeechModel _iSpeechModel_Outgoing;
     public async Task Initialize(
-        SRoofingUserOwnerModelManager iOwnerModel, 
+        SRoofingUserOwnerModelManager iOwnerModel,
         iSRoofing_Model.Setting.SRoofingUserSettingModelManager _iSettingModel,
         iSRoofing_Model.Speech.SRoofingSpeechModel iSpeechModel_Incoming,
         iSRoofing_Model.Speech.SRoofingSpeechModel iSpeechModel_Outgoing)
     {
 
 
-        try
-        {
-            _iOwnerModel = iOwnerModel;
+        //////////try
+        //////////{
+        //////////    _iOwnerModel = iOwnerModel;
 
-            _iSpeechModel_Incoming =iSpeechModel_Incoming;
-            _iSpeechModel_Outgoing = iSpeechModel_Outgoing;
+        //////////    _iSpeechModel_Incoming =iSpeechModel_Incoming;
+        //////////    _iSpeechModel_Outgoing = iSpeechModel_Outgoing;
 
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
+        //////////    MainThread.BeginInvokeOnMainThread(async () =>
+        //////////    {
 
-                lbl_AvatarName.Text = iOwnerModel.AvatarName;
+        //////////        lbl_AvatarName.Text = iOwnerModel.AvatarName;
 
-                if (_iOwnerModel.AvatarImageID!= "0")
-                {
+        //////////        if (_iOwnerModel.AvatarImageID!= "0")
+        //////////        {
 
-                    img_Avatar.Source = ImageSource.FromUri(new Uri(_iOwnerModel.AvatarImageID));// ImageSource.FromStream ( ( ) => stream );
-                    frm_UserAvatarName.IsVisible = false;
-                    frm_CameraImage.IsVisible = true;
-                }
-                else
-                {
+        //////////            img_Avatar.Source = ImageSource.FromUri(new Uri(_iOwnerModel.AvatarImageID));// ImageSource.FromStream ( ( ) => stream );
+        //////////            frm_UserAvatarName.IsVisible = false;
+        //////////            frm_CameraImage.IsVisible = true;
+        //////////        }
+        //////////        else
+        //////////        {
 
-                    img_Avatar.Source = null;// ImageSource.FromStream ( ( ) => stream );
-                    frm_UserAvatarName.IsVisible =true;
-                    frm_CameraImage.IsVisible =  false;
-                }
-
-
-            });
+        //////////            img_Avatar.Source = null;// ImageSource.FromStream ( ( ) => stream );
+        //////////            frm_UserAvatarName.IsVisible =true;
+        //////////            frm_CameraImage.IsVisible =  false;
+        //////////        }
 
 
-            await((Page_Account_Dashboard)Parent.BindingContext).Hide_Loading();
+        //////////    });
 
-        }
-        catch (Exception ex)
-        {
-            SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
-            return;
-        }
+
+        //////////    await((Page_Account_Dashboard)Parent.BindingContext).Hide_Loading();
+
+        //////////}
+        //////////catch (Exception ex)
+        //////////{
+        //////////    SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+        //////////    return;
+        //////////}
 
     }
 
@@ -102,7 +102,7 @@ public partial class Page_Account_List_View : ContentView
             //}
 
 
-            await Task.Delay(100);
+            await Task.Delay(50);
 
 
 
@@ -461,88 +461,88 @@ public partial class Page_Account_List_View : ContentView
 
     async Task TakePhotoAsync()
     {
-        try
-        {
+        //////////try
+        //////////{
 
-            register_fileResult = await MediaPicker.Default.CapturePhotoAsync();
+        //////////    register_fileResult = await MediaPicker.Default.CapturePhotoAsync();
 
-            await LoadPhotoAsync(register_fileResult);
+        //////////    await LoadPhotoAsync(register_fileResult);
 
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                // Code to run on the main thread
-                img_Avatar.Source = register_fileResult.FullPath;// ImageSource.FromStream ( ( ) => stream );
-                frm_UserAvatarName.IsVisible = false;
-                frm_CameraImage.IsVisible = true;
-            });
-
-
-            /* Avatar */
-
-            _ = Task.Run(async () =>
-            {
-
-                try
-                {
+        //////////    MainThread.BeginInvokeOnMainThread(() =>
+        //////////    {
+        //////////        // Code to run on the main thread
+        //////////        img_Avatar.Source = register_fileResult.FullPath;// ImageSource.FromStream ( ( ) => stream );
+        //////////        frm_UserAvatarName.IsVisible = false;
+        //////////        frm_CameraImage.IsVisible = true;
+        //////////    });
 
 
-                    if (register_fileResult != null)
-                    {
-                        SRoofingUserMediaModel iUserMediaModel = new SRoofingUserMediaModel
-                        {
-                            MediaFile_ServerID = SRoofing_TimeManager.Time_GenerateToken(),
-                            fileResult = register_fileResult
-                        };
+        //////////    /* Avatar */
 
-                        await SRoofing_UploadMediaManager
-                                           .Uploader_MediaFile_AvatarWS(
-                        App.Current,
-                        App.iAccountType,
-                         ((Page_Account_Dashboard)Parent.BindingContext)._iOwnerModel.OwnerUserTokenID,
-                        ((Page_Account_Dashboard)Parent.BindingContext)._iOwnerModel.OwnerMobileNumberTokenID,
-                        null,
-                        iUserMediaModel);
+        //////////    _ = Task.Run(async () =>
+        //////////    {
 
-                        // Update iOwnerModel
-                        _iOwnerModel.AvatarImageID = SRoofing_URLManager.URL_Avatar.Avatar_Get_AvatarURLByImageID(
-                          App.Current, iUserMediaModel.MediaFile_ServerID);
-
-                        await SRoofingSync_User_Owner_Manager.Sync_User_Owner_Update_UserModel(
-                            App.Current, _iOwnerModel);
-                    }
+        //////////        try
+        //////////        {
 
 
+        //////////            if (register_fileResult != null)
+        //////////            {
+        //////////                SRoofingUserMediaModel iUserMediaModel = new SRoofingUserMediaModel
+        //////////                {
+        //////////                    MediaFile_ServerID = SRoofing_TimeManager.Time_GenerateToken(),
+        //////////                    fileResult = register_fileResult
+        //////////                };
 
+        //////////                await SRoofing_UploadMediaManager
+        //////////                                   .Uploader_MediaFile_AvatarWS(
+        //////////                App.Current,
+        //////////                App.iAccountType,
+        //////////                 ((Page_Account_Dashboard)Parent.BindingContext)._iOwnerModel.OwnerUserTokenID,
+        //////////                ((Page_Account_Dashboard)Parent.BindingContext)._iOwnerModel.OwnerMobileNumberTokenID,
+        //////////                null,
+        //////////                iUserMediaModel);
 
-                }
-                catch (Exception ex)
-                {
-                    SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
-                    return;
+        //////////                // Update iOwnerModel
+        //////////                _iOwnerModel.AvatarImageID = SRoofing_URLManager.URL_Avatar.Avatar_Get_AvatarURLByImageID(
+        //////////                  App.Current, iUserMediaModel.MediaFile_ServerID);
 
-                }
-
-            }).ConfigureAwait(false);
+        //////////                await SRoofingSync_User_Owner_Manager.Sync_User_Owner_Update_UserModel(
+        //////////                    App.Current, _iOwnerModel);
+        //////////            }
 
 
 
 
-            SRoofing_DebugManager.Debug_ShowSystemMessage($"CapturePhotoAsync COMPLETED: {str_FilePath}");
+        //////////        }
+        //////////        catch (Exception ex)
+        //////////        {
+        //////////            SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+        //////////            return;
+
+        //////////        }
+
+        //////////    }).ConfigureAwait(false);
 
 
-        }
-        catch (FeatureNotSupportedException fnsEx)
-        {
-            // Feature is not supported on the device
-        }
-        catch (PermissionException pEx)
-        {
-            // Permissions not granted
-        }
-        catch (Exception ex)
-        {
-            SRoofing_DebugManager.Debug_ShowSystemMessage($"CapturePhotoAsync THREW: {ex.Message}");
-        }
+
+
+        //////////    SRoofing_DebugManager.Debug_ShowSystemMessage($"CapturePhotoAsync COMPLETED: {str_FilePath}");
+
+
+        //////////}
+        //////////catch (FeatureNotSupportedException fnsEx)
+        //////////{
+        //////////    // Feature is not supported on the device
+        //////////}
+        //////////catch (PermissionException pEx)
+        //////////{
+        //////////    // Permissions not granted
+        //////////}
+        //////////catch (Exception ex)
+        //////////{
+        //////////    SRoofing_DebugManager.Debug_ShowSystemMessage($"CapturePhotoAsync THREW: {ex.Message}");
+        //////////}
     }
 
     string str_FilePath;
@@ -603,87 +603,87 @@ public partial class Page_Account_List_View : ContentView
 
             if (_iLanguageModel == null) _iLanguageModel = await SRoofingSync_Language_Manager.Sync_Language_Get_LanguageList_All(App.Current);
 
-            if (_iLanguageModel.LanguageCode == "ar")
-            {
-               // lbl_TitleAccount.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_TitleSetting.HorizontalTextAlignment = TextAlignment.Start;
+            //if (_iLanguageModel.LanguageCode == "ar")
+            //{
+            //   // lbl_TitleAccount.HorizontalTextAlignment = TextAlignment.Start;
+            //    //lbl_TitleSetting.HorizontalTextAlignment = TextAlignment.Start;
 
-                //lbl_About.HorizontalTextAlignment = TextAlignment.Start;
-                lbl_Avatar.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_Calls.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_Chats.HorizontalTextAlignment = TextAlignment.Start;
-                lbl_EmailAddress.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_FAQ.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_Notifictions.HorizontalTextAlignment = TextAlignment.Start;
-                lbl_PersonalInfo.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_Privacy.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_RateUs.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_Sounds.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_TheWorld.HorizontalTextAlignment = TextAlignment.Start;
+            //    //lbl_About.HorizontalTextAlignment = TextAlignment.Start;
+            //    lbl_Avatar.HorizontalTextAlignment = TextAlignment.Start;
+            //    //lbl_Calls.HorizontalTextAlignment = TextAlignment.Start;
+            //    //lbl_Chats.HorizontalTextAlignment = TextAlignment.Start;
+            //    lbl_EmailAddress.HorizontalTextAlignment = TextAlignment.Start;
+            //    //lbl_FAQ.HorizontalTextAlignment = TextAlignment.Start;
+            //    //lbl_Notifictions.HorizontalTextAlignment = TextAlignment.Start;
+            //    lbl_PersonalInfo.HorizontalTextAlignment = TextAlignment.Start;
+            //    //lbl_Privacy.HorizontalTextAlignment = TextAlignment.Start;
+            //    //lbl_RateUs.HorizontalTextAlignment = TextAlignment.Start;
+            //    //lbl_Sounds.HorizontalTextAlignment = TextAlignment.Start;
+            //    //lbl_TheWorld.HorizontalTextAlignment = TextAlignment.Start;
 
-                lbl_MobileNumber.HorizontalTextAlignment = TextAlignment.Start;
-                lbl_Password.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_ContactUs.HorizontalTextAlignment = TextAlignment.Start;
+            //    lbl_MobileNumber.HorizontalTextAlignment = TextAlignment.Start;
+            //    lbl_Password.HorizontalTextAlignment = TextAlignment.Start;
+            //    //lbl_ContactUs.HorizontalTextAlignment = TextAlignment.Start;
 
-            }
-            else
-            {
+            //}
+            //else
+            //{
 
-              //  lbl_TitleAccount.HorizontalTextAlignment = TextAlignment.Start;
+            //  //  lbl_TitleAccount.HorizontalTextAlignment = TextAlignment.Start;
 
-                //lbl_TitleSetting.HorizontalTextAlignment = TextAlignment.Start;
+            //    //lbl_TitleSetting.HorizontalTextAlignment = TextAlignment.Start;
 
-                //lbl_About.HorizontalTextAlignment = TextAlignment.Start;
-                lbl_Avatar.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_Calls.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_Chats.HorizontalTextAlignment = TextAlignment.Start;
-                lbl_EmailAddress.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_FAQ.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_Notifictions.HorizontalTextAlignment = TextAlignment.Start;
-                lbl_PersonalInfo.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_Privacy.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_RateUs.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_Sounds.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_TheWorld.HorizontalTextAlignment = TextAlignment.Start;
-
-
-
-                lbl_MobileNumber.HorizontalTextAlignment = TextAlignment.Start;
-                lbl_Password.HorizontalTextAlignment = TextAlignment.Start;
-                //lbl_ContactUs.HorizontalTextAlignment = TextAlignment.Start;
+            //    ////lbl_About.HorizontalTextAlignment = TextAlignment.Start;
+            //    //lbl_Avatar.HorizontalTextAlignment = TextAlignment.Start;
+            //    ////lbl_Calls.HorizontalTextAlignment = TextAlignment.Start;
+            //    ////lbl_Chats.HorizontalTextAlignment = TextAlignment.Start;
+            //    //lbl_EmailAddress.HorizontalTextAlignment = TextAlignment.Start;
+            //    ////lbl_FAQ.HorizontalTextAlignment = TextAlignment.Start;
+            //    ////lbl_Notifictions.HorizontalTextAlignment = TextAlignment.Start;
+            //    //lbl_PersonalInfo.HorizontalTextAlignment = TextAlignment.Start;
+            //    ////lbl_Privacy.HorizontalTextAlignment = TextAlignment.Start;
+            //    ////lbl_RateUs.HorizontalTextAlignment = TextAlignment.Start;
+            //    ////lbl_Sounds.HorizontalTextAlignment = TextAlignment.Start;
+            //    ////lbl_TheWorld.HorizontalTextAlignment = TextAlignment.Start;
 
 
 
-
-
-
-            }
+            //    //lbl_MobileNumber.HorizontalTextAlignment = TextAlignment.Start;
+            //    //lbl_Password.HorizontalTextAlignment = TextAlignment.Start;
+            //    //lbl_ContactUs.HorizontalTextAlignment = TextAlignment.Start;
 
 
 
 
 
-           // lbl_TitleAccount.Text = _iLanguageModel.lblText_Title_Account;
+
+            //}
+
+
+
+
+
+            // lbl_TitleAccount.Text = _iLanguageModel.lblText_Title_Account;
             //lbl_TitleSetting.Text = _iLanguageModel.lblText_Title_Settings;
 
             //lbl_About.Text = "S1Roofing " + _iLanguageModel.lblText_About;
-            lbl_Avatar.Text = _iLanguageModel.lblText_Avatar;
-            //lbl_Calls.Text = "S1Roofing " + _iLanguageModel.lblText_Tab_Calls;
-            //lbl_Chats.Text = "S1Roofing " + _iLanguageModel.lblText_Tab_Chats;
-            lbl_EmailAddress.Text = _iLanguageModel.lblText_EmailAddress;
-            //lbl_FAQ.Text = "S1Roofing " + _iLanguageModel.lblText_FAQ;
-            //lbl_Notifictions.Text = _iLanguageModel.lblText_Notifications;
-            lbl_PersonalInfo.Text = _iLanguageModel.lblText_PersonalInfo;
-            //lbl_Privacy.Text = _iLanguageModel.lblText_Privacy;
-            //lbl_RateUs.Text = _iLanguageModel.lblText_RateUs;
-            //lbl_Sounds.Text = "S1Roofing " + _iLanguageModel.lblText_Sounds;
-            //lbl_TheWorld.Text = "S1Roofing " + _iLanguageModel.lblText_TheWorld;
+            //lbl_Avatar.Text = _iLanguageModel.lblText_Avatar;
+            ////lbl_Calls.Text = "S1Roofing " + _iLanguageModel.lblText_Tab_Calls;
+            ////lbl_Chats.Text = "S1Roofing " + _iLanguageModel.lblText_Tab_Chats;
+            //lbl_EmailAddress.Text = _iLanguageModel.lblText_EmailAddress;
+            ////lbl_FAQ.Text = "S1Roofing " + _iLanguageModel.lblText_FAQ;
+            ////lbl_Notifictions.Text = _iLanguageModel.lblText_Notifications;
+            //lbl_PersonalInfo.Text = _iLanguageModel.lblText_PersonalInfo;
+            ////lbl_Privacy.Text = _iLanguageModel.lblText_Privacy;
+            ////lbl_RateUs.Text = _iLanguageModel.lblText_RateUs;
+            ////lbl_Sounds.Text = "S1Roofing " + _iLanguageModel.lblText_Sounds;
+            ////lbl_TheWorld.Text = "S1Roofing " + _iLanguageModel.lblText_TheWorld;
 
-            lbl_MobileNumber.Text = _iLanguageModel.lblText_MobileNumber;
-            lbl_Password.Text = _iLanguageModel.lblText_Password;
+            //lbl_MobileNumber.Text = _iLanguageModel.lblText_MobileNumber;
+            //lbl_Password.Text = _iLanguageModel.lblText_Password;
             //lbl_ContactUs.Text = _iLanguageModel.lblText_ContactUs;
 
-            //btn_LogOut.Text = _iLanguageModel.lblText_LogOut_Message;
+            btn_LogOut.Text = _iLanguageModel.lblText_LogOut_Message;
 
 
             //lbl_Title.Text = _iLanguageModel.lblText_Title_SignIn;
@@ -717,5 +717,92 @@ public partial class Page_Account_List_View : ContentView
 
 
     #endregion
+
+    private async void page_ProfileView_Loaded(object sender, EventArgs e)
+    {
+        try
+        {
+
+            await Initialize_AppTranslation(((Page_Account_Dashboard)Parent.BindingContext)._iLanguageModel);
+
+            MainThread.BeginInvokeOnMainThread(async () =>
+             {
+                 // Code to run on the main thread
+
+
+
+                 lbl_AvatarName_Splash.Text=((Page_Account_Dashboard)Parent.BindingContext)._iOwnerModel.AvatarName;
+                 lbl_MobileNumber.Text=((Page_Account_Dashboard)Parent.BindingContext)._iOwnerModel.MobileNumberE164;
+                 lbl_EmailAddress.Text=((Page_Account_Dashboard)Parent.BindingContext)._iOwnerModel.EmailAddress;
+             });
+
+
+
+        }
+        catch (Exception ex)
+        {
+            SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+            return;
+        }
+    }
+
+    bool _bln_IsInitialized;
+
+    private void page_ProfileView_SizeChanged(object sender, EventArgs e)
+    {
+        try
+        {
+            MainThread.BeginInvokeOnMainThread(async () =>
+                        {
+
+
+                            // Code to run on the main thread
+                            if (!_bln_IsInitialized)
+                            {
+
+                                var intWidth = (int)page_ProfileView.Width;
+                                //SRoofing_DebugManager.Debug_ShowSystemMessage("page_CallDashboard Width== " + page_CallDashboard.Width.ToString());
+                                //SRoofing_DebugManager.Debug_ShowSystemMessage("page_CallDashboard WidthRequest== " + page_CallDashboard.WidthRequest.ToString());
+
+                                grd_AvatarName_Splash.WidthRequest = intWidth / 3;
+                                grd_AvatarName_Splash.HeightRequest = intWidth / 3;
+
+                                //grd_AvatarName_Drop.WidthRequest = intWidth / 3;
+                                //grd_AvatarName_Drop.HeightRequest = intWidth / 3;
+
+
+                                //grd_AvatarName_Redial.WidthRequest = intWidth / 3;
+                                //grd_AvatarName_Redial.HeightRequest = intWidth / 3;
+
+
+                                //grd_AvatarName_Ring.WidthRequest = intWidth / 3;
+                                //grd_AvatarName_Ring.HeightRequest = intWidth / 3;
+
+
+                                //grd_AvatarName_ActionVoice.WidthRequest = intWidth / 3;
+                                //grd_AvatarName_ActionVoice.HeightRequest = intWidth / 3;
+
+
+                                ////grd_AvatarName_Drop.WidthRequest =intWidth / 2;
+                                ////grd_AvatarName_Drop.HeightRequest = intWidth / 2;
+
+
+                                //frm_AvatarName_Splash.CornerRadius = intWidth / 6;
+
+                                _bln_IsInitialized = true;
+
+                            }
+
+
+                        });
+
+        }
+        catch (Exception ex)
+        {
+            SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+            return;
+        }
+    }
+
 
 }

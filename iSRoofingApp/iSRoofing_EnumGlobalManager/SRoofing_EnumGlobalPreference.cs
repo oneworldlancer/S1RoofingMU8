@@ -7,7 +7,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_EnumGlobalManager
     class SRoofing_EnumGlobalPreference
     {
 
-       public static  int Global_SCREEN_LOAD_DELAY = 7000;
+       public static  int Global_SCREEN_LOAD_DELAY = 8000;
        public static  int Global_ROW_LIST_DELAY = 10;
        //public static  int Global_ROW_LIST_DELAY = 30;
   

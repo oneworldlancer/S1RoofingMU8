@@ -68,6 +68,7 @@
 	  <MauiCss Remove="Resources\Raw\WebRTC\Landing_Chat\jquery.mobile.structure-1.4.5.min.css" />
 	  <MauiCss Remove="Resources\Raw\WebRTC\Landing_Chat\jquery.mobile.theme-1.4.5.min.css" />
 	  <MauiCss Remove="Resources\Raw\WebRTC\Landing_Chat\JS\bootsrap_css.css" />
+	  <MauiCss Remove="Resources\Raw\WebRTC\Source\JS\bootsrap_css.css" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -148,7 +149,12 @@
 	  <None Remove="Resources\Raw\WebRTC\Source\Index - Copy (7).html" />
 	  <None Remove="Resources\Raw\WebRTC\Source\Index - Copy (8).html" />
 	  <None Remove="Resources\Raw\WebRTC\Source\Index - Copy.html" />
+	  <None Remove="Resources\Raw\WebRTC\Source\Index_27Jan2024.html" />
 	  <None Remove="Resources\Raw\WebRTC\Source\jquery.mobile-1.4.5.min.js" />
+	  <None Remove="Resources\Raw\WebRTC\Source\JS\bootstrap_bundle.js" />
+	  <None Remove="Resources\Raw\WebRTC\Source\JS\jquery.js" />
+	  <None Remove="Resources\Raw\WebRTC\Source\JS\jquery_ajax.js" />
+	  <None Remove="Resources\Raw\WebRTC\Source\JS\jquery_ui.js" />
 	  <None Remove="Resources\Raw\WebRTC\Source_X1\index (2).html" />
 	  <None Remove="Resources\Raw\WebRTC\Source_X1\Index.html" />
 	  <None Remove="Resources\Raw\WebRTC\Source_X1\main (3).js" />
@@ -202,6 +208,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="iSRoofingApp\iSRoofing_Page\Account\Page_Profile_List_View.xaml.cs">
+	    <DependentUpon>Page_Profile_List_View.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="iSRoofingApp\iSRoofing_Page\Account\Page_Setting_List_View.xaml.cs">
+	    <DependentUpon>Page_Setting_List_View.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="iSRoofingApp\iSRoofing_Page\Landing\Page_Landing_Chat_List_X1.xaml.cs">
 	    <DependentUpon>Page_Landing_Chat_List_X1.xaml</DependentUpon>
 	  </Compile>
@@ -242,6 +254,12 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="iSRoofingApp\iSRoofing_Page\Account\Page_Account_FAQ.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="iSRoofingApp\iSRoofing_Page\Account\Page_Profile_List_View.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="iSRoofingApp\iSRoofing_Page\Account\Page_Setting_List_View.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="iSRoofingApp\iSRoofing_Page\Account\Page_Account_List_View.xaml">
@@ -869,7 +887,25 @@
 	  <MauiAsset Update="Resources\Raw\WebRTC\Source\Index - Copy %288%29.html">
 	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
 	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Source\Index_27Jan2024.html">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
 	  <MauiAsset Update="Resources\Raw\WebRTC\Source\Index - Copy.html">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Source\JS\bootsrap_css.css">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Source\JS\bootstrap_bundle.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Source\JS\jquery.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Source\JS\jquery_ajax.js">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\WebRTC\Source\JS\jquery_ui.js">
 	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
 	  </MauiAsset>
 	  <MauiAsset Update="Resources\Raw\WebRTC\Source_X1\index (2).html">

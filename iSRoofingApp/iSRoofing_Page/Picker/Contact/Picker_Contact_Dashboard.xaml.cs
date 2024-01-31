@@ -756,11 +756,11 @@ public partial class Picker_Contact_Dashboard : ContentPage
             //MainThread.BeginInvokeOnMainThread(async () =>
             //                {
             // Code to run on the main thread
-            await SRoofing_Page_OpenerManager.Page_Opener(
-                Navigation,
-            new Page_Account_Dashboard(_iLanguageModel),
-            false,
-            true);
+            //await SRoofing_Page_OpenerManager.Page_Opener(
+            //    Navigation,
+            //new Page_Account_Dashboard(_iLanguageModel),
+            //false,
+            //true);
 
             //});
 
@@ -783,11 +783,11 @@ public partial class Picker_Contact_Dashboard : ContentPage
     {
         try
         {
-            await SRoofing_Page_OpenerManager.Page_Opener(
-                                     Navigation,
-                                 new Page_Account_Dashboard(_iLanguageModel),
-                                 false,
-                                 true);
+            //await SRoofing_Page_OpenerManager.Page_Opener(
+            //                         Navigation,
+            //                     new Page_Account_Dashboard(_iLanguageModel),
+            //                     false,
+            //                     true);
         }
         catch (Exception ex)
         {
