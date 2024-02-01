@@ -211,6 +211,8 @@ public partial class Page_Account_Dashboard : ContentPage
                 if (!load_ProfileList.HasLazyViewLoaded)
                 {
                     await load_ProfileList.LoadViewAsync();
+
+
                 }
 
 
@@ -222,7 +224,11 @@ public partial class Page_Account_Dashboard : ContentPage
                 load_ProfileList.IsVisible=true;
                 grd_Loading.IsVisible=false;
 
-            });
+                //img_TabAccount.Opacity = 0;
+                //img_TabSetting.Opacity = 0;
+
+
+            } );
             //////////MainThread.BeginInvokeOnMainThread(async () =>
             //////////{
             //////////    // Code to run on the main thread
@@ -266,7 +272,7 @@ public partial class Page_Account_Dashboard : ContentPage
 
 
             //   await Navigation.PopModalAsync ( );
-            await Navigation.PopModalAsync();
+            await Navigation.PopAsync();
 
         }
         catch (Exception ex)
@@ -937,19 +943,22 @@ public partial class Page_Account_Dashboard : ContentPage
                    load_SettingList.IsVisible= false;
                    load_ProfileList.IsVisible= true;
 
-               });
+                   //img_TabAccount.Opacity = 0;
+                   //img_TabSetting.Opacity = 0;
+
+
+               } );
                 return true;
             }
 
 
+             MainThread.BeginInvokeOnMainThread(async () =>
+               {
 
-            Task.Run(async () =>
-            {
-                await Navigation.PopModalAsync();
-
-
-            }).Wait();
-
+                   // Code to run on the main thread
+                     await Navigation.PopAsync();
+               });
+        
             return false;
  
         }
@@ -1128,7 +1137,7 @@ public partial class Page_Account_Dashboard : ContentPage
         try
         {
 
-            await iProgress_Start();
+           // await iProgress_Start();
 
             MainThread.BeginInvokeOnMainThread(async () =>
             {
@@ -1138,7 +1147,9 @@ public partial class Page_Account_Dashboard : ContentPage
                 {
 
                     await load_AccountList.LoadViewAsync();
-
+              
+                    //img_TabAccount.Opacity = 1;
+                    //img_TabSetting.Opacity = 0;
 
                 }
 
@@ -1152,7 +1163,13 @@ public partial class Page_Account_Dashboard : ContentPage
                 load_AccountList.IsVisible = true;
 
 
-                await iProgress_Stop();
+                          //img_TabAccount.Opacity = 0;
+                    //img_TabSetting.Opacity = 0;
+
+
+
+
+               // await iProgress_Stop();
             });
 
 
@@ -1169,7 +1186,7 @@ public partial class Page_Account_Dashboard : ContentPage
         try
         {
 
-            await iProgress_Start();
+           // await iProgress_Start();
 
             MainThread.BeginInvokeOnMainThread(async () =>
             {
@@ -1179,7 +1196,12 @@ public partial class Page_Account_Dashboard : ContentPage
                 {
 
                     await load_SettingList.LoadViewAsync();
-   }
+
+                    //img_TabAccount.Opacity = 0;
+                    //img_TabSetting.Opacity = 11;
+
+
+                }
 
                 ll_TabChat.IsVisible = false;
                 ll_TabCall.IsVisible = true;
@@ -1188,9 +1210,13 @@ public partial class Page_Account_Dashboard : ContentPage
                 load_AccountList.IsVisible = false;
                 load_SettingList.IsVisible = true;
 
-                await iProgress_Stop();
+                //img_TabAccount.Opacity = 0;
+                //img_TabSetting.Opacity = 0;
 
-            });
+
+                // await iProgress_Stop();
+
+            } );
 
             //_ = Task.Run(async () =>
             //{

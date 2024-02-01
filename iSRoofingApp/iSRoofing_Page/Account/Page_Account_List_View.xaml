@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentView  x:Name="page_AccountList"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:entry="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Entry"
              x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Account.Page_Account_List_View"
@@ -12,7 +13,8 @@
              ios:Page.UseSafeArea="False"
              NavigationPage.HasNavigationBar="False"
              Visual="Material"
-             BackgroundColor="Black">
+             BackgroundColor="Black"
+              Loaded="page_AccountList_Loaded">
    
     <Grid HorizontalOptions="FillAndExpand"
           VerticalOptions="FillAndExpand"

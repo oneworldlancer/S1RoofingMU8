@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage x:Name="page_AccountDashboard"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Account.Page_Account_Dashboard"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-                  xmlns:progressbar="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.ProgressBar"
-         xmlns:sroofingHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Header"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:progressbar="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.ProgressBar"
+             xmlns:sroofingHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Header"
              xmlns:arrowBack="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Back"
              xmlns:sroofingFooter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer"
              xmlns:logo="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Logo"
@@ -16,13 +16,11 @@
              NavigationPage.HasNavigationBar="False"
              Loaded="page_AccountDashboard_Loaded"
              Unloaded="page_AccountDashboard_Unloaded">
-
     <Grid HorizontalOptions="FillAndExpand"
           VerticalOptions="FillAndExpand"
           Margin="0"
           Padding="0"
           BackgroundColor="#000000">
-
         <StackLayout HorizontalOptions="FillAndExpand"
                      VerticalOptions="FillAndExpand"
                      BackgroundColor="#000000"
@@ -31,27 +29,22 @@
                      Padding="0"
                      Orientation="Vertical">
             <sroofingHeader:SRoofing_PageHeader />
-
             <Grid  VerticalOptions="FillAndExpand"
-                      HorizontalOptions="FillAndExpand"
-                      BackgroundColor="#000000"
+                   HorizontalOptions="FillAndExpand"
+                   BackgroundColor="#000000"
                    ColumnSpacing="0"
                    RowSpacing="0"
                    RowDefinitions="*,50">
-
-
                 <StackLayout HorizontalOptions="FillAndExpand"
-                        VerticalOptions="FillAndExpand"
-                    
-                                 Spacing="0"
-                     Margin="0"
-                     Padding="0"
-                     Orientation="Vertical" 
+                             VerticalOptions="FillAndExpand"
+                             Spacing="0"
+                             Margin="0"
+                             Padding="0"
+                             Orientation="Vertical"
                              Grid.Row="0">
-
                     <Grid VerticalOptions="FillAndExpand"
-                      HorizontalOptions="FillAndExpand"
-                      BackgroundColor="#000000">
+                          HorizontalOptions="FillAndExpand"
+                          BackgroundColor="#000000">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="100" />
                             <RowDefinition   Height="50" />
@@ -60,206 +53,245 @@
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
-
                         </Grid.ColumnDefinitions>
-
                         <StackLayout HorizontalOptions="CenterAndExpand"
-                                 VerticalOptions="CenterAndExpand"
-                                 Orientation="Vertical"
-                                 Spacing="0"
-                                 Margin="0"
-                                 Padding="0"
-                                 Grid.Row="0"
-                                 Grid.Column="0">
+                                     VerticalOptions="CenterAndExpand"
+                                     Orientation="Vertical"
+                                     Spacing="0"
+                                     Margin="0"
+                                     Padding="0"
+                                     Grid.Row="0"
+                                     Grid.Column="0">
                             <Image HorizontalOptions="Center"
-                               VerticalOptions="Center"
-                               Source="logo_text.png"
-                               Margin="0"
-                               HeightRequest="50"
-                               WidthRequest="50" />
+                                   VerticalOptions="Center"
+                                   Source="logo_text.png"
+                                   Margin="0"
+                                   HeightRequest="50"
+                                   WidthRequest="50" />
                         </StackLayout>
-
                         <StackLayout HorizontalOptions="FillAndExpand"
-                                VerticalOptions="StartAndExpand"
-                     HeightRequest="65"
-                Orientation="Vertical"
-                                 Spacing="0"
-                                 Margin="0"
-                                 Padding="0"
-                                 Grid.Row="1"
-                                 Grid.Column="0">
-
+                                     VerticalOptions="StartAndExpand"
+                                     HeightRequest="65"
+                                     Orientation="Vertical"
+                                     Spacing="0"
+                                     Margin="0"
+                                     Padding="0"
+                                     Grid.Row="1"
+                                     Grid.Column="0">
                             <Grid  HorizontalOptions="FillAndExpand"
-               VerticalOptions="FillAndExpand"
-               HeightRequest="60"
-               ColumnDefinitions="*,1,*" >
+                                   VerticalOptions="FillAndExpand"
+                                   HeightRequest="60"
+                                   ColumnDefinitions="*,1,*">
                                 <!--     Text="{Binding iLng_Chats}"-->
-                                <Label   x:Name="lbl_TabAccount"
-                     HorizontalOptions="FillAndExpand"
-                     VerticalOptions="FillAndExpand"
-                      HeightRequest="60"
-               FontSize="Header"
-                     TextColor="{StaticResource iAppColor_White}"
-                     FontAttributes="Bold"
-                     HorizontalTextAlignment="Center"
-                     VerticalTextAlignment="Center"
-                       Text="CHATS" 
-                     Grid.Row="0"   Grid.Column="0">
+                                <HorizontalStackLayout HorizontalOptions="CenterAndExpand"
+                                                       VerticalOptions="FillAndExpand"
+                                                       Spacing="0"
+                                                       Margin="0"
+                                                       Padding="0"
+                                                       Grid.Row="0"
+                                                       Grid.Column="0">
+                                
+                                    <!--<Image   x:Name="img_TabAccount"
+                                             Source="loading.gif"
+                                             WidthRequest="30"
+                                             HeightRequest="30"
+                                             HorizontalOptions="Center"
+                                             VerticalOptions="Center"
+                                             IsAnimationPlaying="True" 
+                                             Margin="0,0,10,0"
+                                             Opacity="0"/>-->
+                                  
+                                    <Label   x:Name="lbl_TabAccount"
+                                             HorizontalOptions="Center"
+                                             VerticalOptions="Center"
+                                             HeightRequest="60"
+                                             FontSize="Header"
+                                             TextColor="{StaticResource iAppColor_White}"
+                                             FontAttributes="Bold"
+                                             HorizontalTextAlignment="Center"
+                                             VerticalTextAlignment="Center"
+                                             Text="CHATS">
+                                      
+                                        <!--<Label.GestureRecognizers>
+                                        <TapGestureRecognizer	Tapped="lbl_TabAccount_Tapped" />
+                                    </Label.GestureRecognizers>-->
+                                    </Label>
+                                    <HorizontalStackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer	Tapped="lbl_TabAccount_Tapped" />
+                                    </HorizontalStackLayout.GestureRecognizers>
+                                </HorizontalStackLayout>
+                             
+                                
+                                <!--<Label   x:Name="lbl_TabAccount"
+                                         HorizontalOptions="FillAndExpand"
+                                         VerticalOptions="FillAndExpand"
+                                         HeightRequest="60"
+                                         FontSize="Header"
+                                         TextColor="{StaticResource iAppColor_White}"
+                                         FontAttributes="Bold"
+                                         HorizontalTextAlignment="Center"
+                                         VerticalTextAlignment="Center"
+                                         Text="CHATS"
+                                         Grid.Row="0"
+                                         Grid.Column="0">
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer	Tapped="lbl_TabAccount_Tapped" />
                                     </Label.GestureRecognizers>
-                                </Label>
+                                </Label>-->
+                             
                                 <Label HorizontalOptions="FillAndExpand"
-                   VerticalOptions="FillAndExpand"
-                   FontSize="Header"
-                   TextColor="{StaticResource iAppColor_White}"
-                   FontAttributes="Bold"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   Text="|"
-                 Grid.Row="0"      Grid.Column="1"></Label>
-                                <Label  x:Name="lbl_TabSetting"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand"
-                    FontSize="Header"
-                  HeightRequest="60"
-                  TextColor="{StaticResource iAppColor_White}"
-                    FontAttributes="Bold"
-                    HorizontalTextAlignment="Center"
-                    VerticalTextAlignment="Center"
-                    Text="CALLS"
-                   Grid.Row="0"     Grid.Column="2">
-                                    <Label.GestureRecognizers>
+                                       VerticalOptions="FillAndExpand"
+                                       FontSize="Header"
+                                       TextColor="{StaticResource iAppColor_White}"
+                                       FontAttributes="Bold"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"
+                                       Text="|"
+                                       Grid.Row="0"
+                                       Grid.Column="1"></Label>
+                              
+                                <HorizontalStackLayout HorizontalOptions="CenterAndExpand"
+                                                       VerticalOptions="FillAndExpand"
+                                                       Spacing="0"
+                                                       Margin="0"
+                                                       Padding="0"
+                                                    
+                                                       Grid.Row="0"
+                                        Grid.Column="2">
+                                 
+                                         <Label  x:Name="lbl_TabSetting"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="FillAndExpand"
+                                        FontSize="Header"
+                                        HeightRequest="60"
+                                        TextColor="{StaticResource iAppColor_White}"
+                                        FontAttributes="Bold"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center"
+                                        Text="CALLS"        >  
+                                          
+                                                  
+                                    <!--<Label.GestureRecognizers>
                                         <TapGestureRecognizer	Tapped="lbl_TabSetting_Tapped" />
-                                    </Label.GestureRecognizers>
+                                    </Label.GestureRecognizers>-->
                                 </Label>
+                                    
+                                    <!--<Image   x:Name="img_TabSetting"
+                                             Source="loading.gif"
+                                             WidthRequest="30"
+                                             HeightRequest="30"
+                                             HorizontalOptions="Center"
+                                             VerticalOptions="Center"
+                                             IsAnimationPlaying="True"
+                                             Margin="10,0,0,0" 
+                                             Opacity="0"/>-->
+                             
+                                  
+                                    <HorizontalStackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer	Tapped="lbl_TabSetting_Tapped" />
+                                    </HorizontalStackLayout.GestureRecognizers>
+                                </HorizontalStackLayout>
+                             
                             </Grid>
-
                             <StackLayout HorizontalOptions="FillAndExpand"
-                VerticalOptions="StartAndExpand"
-                   Orientation="Vertical"
-                   HeightRequest="3"
-                   Spacing="0"
-                   Margin="0"
-                   Padding="0" >
-
+                                         VerticalOptions="StartAndExpand"
+                                         Orientation="Vertical"
+                                         HeightRequest="3"
+                                         Spacing="0"
+                                         Margin="0"
+                                         Padding="0">
                                 <Grid  HorizontalOptions="FillAndExpand"
-                 VerticalOptions="FillAndExpand"
-                 HeightRequest="3"
-                 ColumnDefinitions="*,1,*" >
+                                       VerticalOptions="FillAndExpand"
+                                       HeightRequest="3"
+                                       ColumnDefinitions="*,1,*">
                                     <!--     BackgroundColor="#ff0000" -->
                                     <BoxView   x:Name="ll_TabChatX"
-                         HorizontalOptions="FillAndExpand"
-                         HeightRequest="3"
-                Color="{StaticResource iAppColor_SemiGray}"
+                                               HorizontalOptions="FillAndExpand"
+                                               HeightRequest="3"
+                                               Color="{StaticResource iAppColor_SemiGray}"
                                                Opacity=".5"
-                         Margin="0"
-                         Grid.Row="0"    Grid.Column="0" 
-                         />
+                                               Margin="0"
+                                               Grid.Row="0"
+                                               Grid.Column="0" />
                                     <BoxView   x:Name="ll_TabChat"
-                         HorizontalOptions="FillAndExpand"
-                         HeightRequest="3"
-                Color="{StaticResource iAppColor_System_Text_TitleColor_Primary}"
-                         Margin="0"
-                         Grid.Row="0"    Grid.Column="0" 
-                         IsVisible="false" />
-
+                                               HorizontalOptions="FillAndExpand"
+                                               HeightRequest="3"
+                                               Color="{StaticResource iAppColor_System_Text_TitleColor_Primary}"
+                                               Margin="0"
+                                               Grid.Row="0"
+                                               Grid.Column="0"
+                                               IsVisible="false" />
                                     <BoxView     x:Name="ll_TabCallX"
-                           HorizontalOptions="FillAndExpand"
-                         HeightRequest="3"
-                   Color="{StaticResource iAppColor_SemiGray}"
-                       Opacity=".5"      Margin="0"
-                       Grid.Row="0"        Grid.Column="2"
-                         />
+                                                 HorizontalOptions="FillAndExpand"
+                                                 HeightRequest="3"
+                                                 Color="{StaticResource iAppColor_SemiGray}"
+                                                 Opacity=".5"
+                                                 Margin="0"
+                                                 Grid.Row="0"
+                                                 Grid.Column="2" />
                                     <BoxView     x:Name="ll_TabCall"
-                           HorizontalOptions="FillAndExpand"
-                         HeightRequest="3"
-                   Color="{StaticResource iAppColor_System_Text_TitleColor_Primary}"
-                           Margin="0"
-                       Grid.Row="0"        Grid.Column="2"
-                           IsVisible="false" />
+                                                 HorizontalOptions="FillAndExpand"
+                                                 HeightRequest="3"
+                                                 Color="{StaticResource iAppColor_System_Text_TitleColor_Primary}"
+                                                 Margin="0"
+                                                 Grid.Row="0"
+                                                 Grid.Column="2"
+                                                 IsVisible="false" />
                                 </Grid>
                             </StackLayout>
-
-
                         </StackLayout>
-
                         <ScrollView HorizontalOptions="FillAndExpand"
-                        VerticalOptions="FillAndExpand"
-                    
-                           VerticalScrollBarVisibility="Never"
-                     Margin="0"
-                     Padding="0"
-                     Orientation="Vertical" 
+                                    VerticalOptions="FillAndExpand"
+                                    VerticalScrollBarVisibility="Never"
+                                    Margin="0"
+                                    Padding="0"
+                                    Orientation="Vertical"
                                     Grid.Column="0"
-                          Grid.Row="2">
-
+                                    Grid.Row="2">
                             <Grid HorizontalOptions="FillAndExpand"
-                          VerticalOptions="FillAndExpand"
-                          Margin="0"
-                          Padding="0"
-                       >
-
+                                  VerticalOptions="FillAndExpand"
+                                  Margin="0"
+                                  Padding="0">
                                 <!--Loaded="load_ProfileList_Loaded"-->
-                                <toolkit:LazyView x:Name="load_ProfileList" 
-                                                  x:TypeArguments="vwAccount:Page_Profile_List_View" 
-                                                 IsVisible="false"/>
-
-
-                                <toolkit:LazyView x:Name="load_AccountList" 
-                                                  x:TypeArguments="vwAccount:Page_Account_List_View" 
-                                                  IsVisible="false"/>
-
-
-                                <toolkit:LazyView x:Name="load_SettingList" 
-                                                   x:TypeArguments="vwAccount:Page_Setting_List_View" 
-                                                     IsVisible="false" />
-
+                                <toolkit:LazyView x:Name="load_ProfileList"
+                                                  x:TypeArguments="vwAccount:Page_Profile_List_View"
+                                                  IsVisible="false" />
+                                <toolkit:LazyView x:Name="load_AccountList"
+                                                  x:TypeArguments="vwAccount:Page_Account_List_View"
+                                                  IsVisible="false" />
+                                <toolkit:LazyView x:Name="load_SettingList"
+                                                  x:TypeArguments="vwAccount:Page_Setting_List_View"
+                                                  IsVisible="false" />
                                 <!--<vwAccount:Page_Account_List_View x:Name="vw_AccountList"
                                                           HorizontalOptions="FillAndExpand"
                                                           VerticalOptions="FillAndExpand"
                                                           IsVisible="true" />-->
-
                                 <!--<vwAccount:Page_Settingt_List_View x:Name="vw_SettingList"
                                                           HorizontalOptions="FillAndExpand"
                                                           VerticalOptions="FillAndExpand"
                                                           IsVisible="false" />-->
-
-
                                 <!--<vw:Page_Register_Step2 HorizontalOptions="FillAndExpand"
 							 VerticalOptions="FillAndExpand"
 									IsVisible="false"  />-->
                             </Grid>
-
                         </ScrollView>
-
                     </Grid>
-
                 </StackLayout>
-
-
-
                 <Button x:Name="btn_Close_Window"
-    HorizontalOptions="FillAndExpand"
-    VerticalOptions="EndAndExpand"
-    HeightRequest="50"
-    FontAttributes="Bold"
-    CornerRadius="0"
-    Padding="0"
-    Text="Close"
-    BackgroundColor="{StaticResource iAppColor_Black}"
-    TextColor="{StaticResource iAppColor_White}"
-Clicked="btn_Close_Window_Clicked" 
-                Grid.Row="1"></Button>
-
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="EndAndExpand"
+                        HeightRequest="50"
+                        FontAttributes="Bold"
+                        CornerRadius="0"
+                        Padding="0"
+                        Text="Close"
+                        BackgroundColor="{StaticResource iAppColor_Black}"
+                        TextColor="{StaticResource iAppColor_White}"
+                        Clicked="btn_Close_Window_Clicked"
+                        Grid.Row="1"></Button>
             </Grid>
-
-
             <sroofingFooter:SRoofing_PageFooter />
         </StackLayout>
-
-
-
         <Frame x:Name="BottomToolbar"
                HorizontalOptions="FillAndExpand"
                VerticalOptions="FillAndExpand"
@@ -269,7 +301,6 @@ Clicked="btn_Close_Window_Clicked"
                BackgroundColor="#000000"
                BorderColor="#000000"
                IsVisible="false">
-
             <Frame.Padding>
                 <OnPlatform x:TypeArguments="Thickness">
                     <OnPlatform.Platforms>
@@ -282,7 +313,6 @@ Clicked="btn_Close_Window_Clicked"
                     </OnPlatform.Platforms>
                 </OnPlatform>
             </Frame.Padding>
-
             <Grid x:Name="BottomSheet"
                   HorizontalOptions="FillAndExpand"
                   VerticalOptions="FillAndExpand"
@@ -290,8 +320,6 @@ Clicked="btn_Close_Window_Clicked"
                   Padding="0"
                   BackgroundColor="#00000000"
                   RowDefinitions="*,20">
-
-
                 <StackLayout HorizontalOptions="FillAndExpand"
                              VerticalOptions="FillAndExpand"
                              Orientation="Vertical"
@@ -301,12 +329,10 @@ Clicked="btn_Close_Window_Clicked"
                              BackgroundColor="{StaticResource iAppColor_Transparent}"
                              Grid.Row="0">
                     <sroofingHeader:SRoofing_PageHeader />
-
                     <ScrollView HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand"
                                 BackgroundColor="#000000"
                                 VerticalScrollBarVisibility="Never">
-
                         <StackLayout x:Name="sl_AccountContentOverlay"
                                      HorizontalOptions="FillAndExpand"
                                      VerticalOptions="FillAndExpand"
@@ -314,15 +340,10 @@ Clicked="btn_Close_Window_Clicked"
                                      Spacing="0"
                                      Padding="0"
                                      Margin="0"
-                                     BackgroundColor="{StaticResource iAppColor_White}">
-
-
-
-                        </StackLayout>
+                                     BackgroundColor="{StaticResource iAppColor_White}"></StackLayout>
                     </ScrollView>
                     <sroofingFooter:SRoofing_PageFooter />
                 </StackLayout>
-
                 <ImageButton  x:Name="imgBtn_AccountOverlay_Close"
                               Source="img_circle_close_black.png"
                               WidthRequest="50"
@@ -334,7 +355,6 @@ Clicked="btn_Close_Window_Clicked"
                               Clicked="imgBtn_AccountOverlay_Close_Clicked" />
             </Grid>
         </Frame>
-
         <!--<BoxView x:Name="ll_NetConnection"
                  HorizontalOptions="FillAndExpand"
                  VerticalOptions="StartAndExpand"
@@ -361,34 +381,26 @@ Clicked="btn_Close_Window_Clicked"
                                                    CloseButtonText=""
                                                    Margin="0,0,0,10"
                                                    MyString="shaymaa 2023" />-->
-
-
-        <progressbar:UCView_ProgressBarView
-   x:Name="ll_ProgressBar"
-                   HorizontalOptions="FillAndExpand"
-   VerticalOptions="Start"
-                    
-HeightRequest="5" 
-                 IsVisible="true"/>
-
-
+        <progressbar:UCView_ProgressBarView x:Name="ll_ProgressBar"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="Start"
+                                            HeightRequest="5"
+                                            IsVisible="true" />
         <Grid x:Name="grd_Loading"
-            HorizontalOptions="FillAndExpand"
-          VerticalOptions="FillAndExpand"
-          Margin="0"
-          Padding="0"
-          BackgroundColor="#000000"
+              HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand"
+              Margin="0"
+              Padding="0"
+              BackgroundColor="#000000"
               IsVisible="true">
-
             <ActivityIndicator x:Name="ll_ProgressBar_Account"
-                    WidthRequest="50"
-                    HeightRequest="50"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    IsRunning="true"
-                    IsVisible="true"
-                    Color="#FFFFFF" />
+                               WidthRequest="50"
+                               HeightRequest="50"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               IsRunning="true"
+                               IsVisible="true"
+                               Color="#FFFFFF" />
         </Grid>
-
     </Grid>
 </ContentPage>

@@ -2215,13 +2215,13 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Account
                       await Task.Delay(SRoofing_EnumGlobalPreference.Global_ROW_LIST_DELAY);
 
                   }
-
+                   
+                grd_PickerGallery.IsVisible = true;
+          
 
               });
 
-
-                grd_PickerGallery.IsVisible = true;
-            }
+  }
             catch (Exception ex)
             {
                 SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());

@@ -126,7 +126,7 @@
 
                         <CollectionView x:Name="cv_AlphabetList_Initialize"
                   HorizontalOptions="StartAndExpand"
-                  VerticalOptions="Start"
+                                        VerticalOptions="StartAndExpand"
                   EmptyView=""
                   Margin="0"
                                     	SelectionChanged="cv_AlphabetList_Initialize_SelectionChanged"

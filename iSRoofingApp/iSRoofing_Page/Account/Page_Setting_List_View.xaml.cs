@@ -601,6 +601,13 @@ public partial class Page_Setting_List_View : ContentView
 
             if (_iLanguageModel == null) _iLanguageModel = await SRoofingSync_Language_Manager.Sync_Language_Get_LanguageList_All(App.Current);
 
+          
+                          MainThread.BeginInvokeOnMainThread(async () =>
+            {
+
+
+                // Code to run on the main thread
+                   
             if (_iLanguageModel.LanguageCode == "ar")
             {
                 //lbl_TitleAccount.HorizontalTextAlignment = TextAlignment.Start;
@@ -700,6 +707,10 @@ public partial class Page_Setting_List_View : ContentView
 
             //await vw_LogIn_View.Initialize_AppTranslation ( _iLanguageModel );
 
+
+            });
+          
+         
         }
         catch (Exception ex)
         {
@@ -715,5 +726,52 @@ public partial class Page_Setting_List_View : ContentView
 
 
     #endregion
+
+
+
+
+
+
+
+    async void page_SettingList_Loaded ( object sender , EventArgs e )
+    {
+
+        try
+        {
+
+            //((Page_Account_Dashboard)Parent.BindingContext).
+            await Initialize (
+                 ( ( Page_Account_Dashboard ) Parent.BindingContext )._iOwnerModel ,
+         ( ( Page_Account_Dashboard ) Parent.BindingContext )._iSettingModel ,
+( ( Page_Account_Dashboard ) Parent.BindingContext )._iSpeechModel_Incoming ,
+( ( Page_Account_Dashboard ) Parent.BindingContext )._iSpeechModel_Outgoing );
+
+
+            await Initialize_AppTranslation ( ( ( Page_Account_Dashboard ) Parent.BindingContext )._iLanguageModel );
+
+
+
+        }
+        catch ( Exception ex )
+        {
+            SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
+            return;
+
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

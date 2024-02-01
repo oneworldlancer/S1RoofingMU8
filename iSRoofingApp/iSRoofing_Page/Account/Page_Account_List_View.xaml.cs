@@ -77,7 +77,7 @@ public partial class Page_Account_List_View : ContentView
             });
 
 
-            await((Page_Account_Dashboard)Parent.BindingContext).Hide_Loading();
+            //await((Page_Account_Dashboard)Parent.BindingContext).Hide_Loading();
 
         }
         catch (Exception ex)
@@ -602,8 +602,14 @@ public partial class Page_Account_List_View : ContentView
         {
 
             if (_iLanguageModel == null) _iLanguageModel = await SRoofingSync_Language_Manager.Sync_Language_Get_LanguageList_All(App.Current);
+                           
+            
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
 
-            if (_iLanguageModel.LanguageCode == "ar")
+
+                // Code to run on the main thread
+                     if (_iLanguageModel.LanguageCode == "ar")
             {
                // lbl_TitleAccount.HorizontalTextAlignment = TextAlignment.Start;
                 //lbl_TitleSetting.HorizontalTextAlignment = TextAlignment.Start;
@@ -659,9 +665,7 @@ public partial class Page_Account_List_View : ContentView
 
             }
 
-
-
-
+              
 
            // lbl_TitleAccount.Text = _iLanguageModel.lblText_Title_Account;
             //lbl_TitleSetting.Text = _iLanguageModel.lblText_Title_Settings;
@@ -702,6 +706,10 @@ public partial class Page_Account_List_View : ContentView
 
             //await vw_LogIn_View.Initialize_AppTranslation ( _iLanguageModel );
 
+            });
+        
+
+
         }
         catch (Exception ex)
         {
@@ -717,5 +725,37 @@ public partial class Page_Account_List_View : ContentView
 
 
     #endregion
+
+    async void page_AccountList_Loaded ( object sender , EventArgs e )
+    {
+
+       try
+            {
+
+            //((Page_Account_Dashboard)Parent.BindingContext).
+            await Initialize (
+                 ( ( Page_Account_Dashboard ) Parent.BindingContext )._iOwnerModel ,
+         ( ( Page_Account_Dashboard ) Parent.BindingContext )._iSettingModel ,
+( ( Page_Account_Dashboard ) Parent.BindingContext )._iSpeechModel_Incoming ,
+( ( Page_Account_Dashboard ) Parent.BindingContext )._iSpeechModel_Outgoing );
+
+          
+            await Initialize_AppTranslation( ( ( Page_Account_Dashboard ) Parent.BindingContext )._iLanguageModel);
+
+
+
+        }
+            catch (Exception ex)
+            {
+                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                return;
+
+            }
+
+
+    }
+
+
+
 
 }
