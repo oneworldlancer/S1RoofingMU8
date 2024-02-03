@@ -11,7 +11,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Model.Language
 
 
         public
-        SRoofingLanguageTranslateModel()
+        SRoofingLanguageTranslateModel ( )
         {
         }
 
@@ -285,12 +285,24 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Model.Language
         public string lblText_Permission_Photo_Message { get; set; } = "0";
         public string lblText_Permission_Storage_Message { get; set; } = "0";
         public string lblText_Permission_SMS_Message { get; set; } = "0";
-      
+
         public string lblText_AppError_TryAgainLater { get; set; } = "0";
 
 
 
-     public string lblText_Title_Password { get; set; } = "0";
+        public string lblText_Title_Password { get; set; } = "0";
+
+
+        public string lblText_Call_Calling { get; set; } = "0";
+        public string lblText_Call_Ringing { get; set; } = "0";
+        public string lblText_Call_Drop { get; set; } = "0";
+        public string lblText_Call_Decline { get; set; } = "0";
+        public string lblText_Call_Answer { get; set; } = "0";
+        public string lblText_Call_Cancel { get; set; } = "0";
+        public string lblText_Call_EndClose { get; set; } = "0";
+        public string lblText_Call_Redial { get; set; } = "0";
+        public string lblText_Call_Mute { get; set; } = "0";
+        public string lblText_Call_Camera { get; set; } = "0";
 
         //public string lblText__Message { get; set; } = "0";
         //public string lblText__Message { get; set; } = "0";

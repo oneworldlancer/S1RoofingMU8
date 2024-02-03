@@ -288,7 +288,9 @@ public partial class Page_ScreenChatShow_Dashboard : ContentPage
             _ = Task.Run(async () =>
             {
                 // some long running task
-                await IsNewMessage();
+                await Task.Delay ( 500 );
+
+                await IsNewMessage ();
             }).ConfigureAwait(false);
 
 
@@ -1272,7 +1274,9 @@ arr_ChatMessageList.Last().MessageTokenID);
                     _ = Task.Run(async () =>
                     {
                         // some long running task
-                        await IsNewMessage();
+                        await Task.Delay ( 500 );
+
+                        await IsNewMessage ();
                     }).ConfigureAwait(false);
 
 
@@ -2907,7 +2911,9 @@ _iChatScreenModel.RemoteMobileNumberID);
                             _ = Task.Run(async () =>
                             {
                                 // some long running task
-                                await IsNewMessage();
+                                await Task.Delay ( 500 );
+
+                                await IsNewMessage ();
                             }).ConfigureAwait(false);
 
 

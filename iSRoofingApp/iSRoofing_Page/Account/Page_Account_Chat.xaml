@@ -10,7 +10,6 @@
              xmlns:sroofingFooter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer"
              xmlns:grid="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Grid"
              xmlns:gallery="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Gallery.ChatBackground"
-              
              ios:Page.UseSafeArea="False"
              NavigationPage.HasNavigationBar="False"
              Visual="Material"
@@ -19,7 +18,6 @@
              VerticalOptions="FillAndExpand">
     <Grid HorizontalOptions="FillAndExpand"
           VerticalOptions="FillAndExpand">
-
         <Grid HorizontalOptions="FillAndExpand"
               VerticalOptions="FillAndExpand"
               RowDefinitions="*,50">
@@ -47,23 +45,20 @@
                        BackgroundColor="Transparent"
                        Margin="20,20,20,10"
                        TextColor="{StaticResource iAppColor_White}" />
-
                 <Frame          x:Name="frm_CountryNamexx"
                                 HorizontalOptions="FillAndExpand"
-                                                            CornerRadius="5"
+                                CornerRadius="5"
                                 HasShadow="True"
                                 BorderColor="{StaticResource iAppColor_SemiOrange}"
                                 Padding="1"
                                 Margin="20,0,20,0"
                                 BackgroundColor="{StaticResource iAppColor_White}">
-
                     <StackLayout  x:Name="sl_CountryNamesxs"
                                   Orientation="Vertical"
                                   BackgroundColor="{StaticResource iAppColor_White}"
                                   Spacing="0"
                                   Margin="0"
                                   Padding="0,10,0,10">
-
                         <StackLayout  x:Name="sl_Chat_SortByRecent"
                                       Orientation="Horizontal"
                                       BackgroundColor="{StaticResource iAppColor_White}"
@@ -85,7 +80,8 @@
                                        Text="By recent"
                                        FontSize="Medium"
                                        BackgroundColor="Transparent"
-                                     Margin="10,0,0,0"    TextColor="{StaticResource iAppColor_SemiGray}"
+                                       Margin="10,0,0,0"
+                                       TextColor="{StaticResource iAppColor_SemiGray}"
                                        Grid.Column="0">
                                     <!--<Label.GestureRecognizers>
                             <TapGestureRecognizer
@@ -100,7 +96,6 @@
                                              CheckedChanged="rdio_ByRecent_CheckedChanged" />
                             </Grid>
                         </StackLayout>
-
                         <StackLayout  x:Name="sl_Chat_SortByName"
                                       Orientation="Horizontal"
                                       BackgroundColor="{StaticResource iAppColor_White}"
@@ -117,7 +112,8 @@
                                        HorizontalOptions="FillAndExpand"
                                        HeightRequest="50"
                                        VerticalOptions="Center"
-                                     Margin="10,0,0,0"    VerticalTextAlignment="Center"
+                                       Margin="10,0,0,0"
+                                       VerticalTextAlignment="Center"
                                        HorizontalTextAlignment="Start"
                                        Text="By Name"
                                        FontSize="Medium"
@@ -176,7 +172,8 @@
                                    FontSize="Medium"
                                    BackgroundColor="Transparent"
                                    TextColor="{StaticResource iAppColor_SemiGray}"
-                                   Grid.Column="0"        Padding="10,0,0,0">
+                                   Grid.Column="0"
+                                   Padding="10,0,0,0">
                                 <!--<Label.GestureRecognizers>
                             <TapGestureRecognizer
                                                 Tapped="lblCountryList_Clicked" />
@@ -197,7 +194,8 @@
                        Text="lbl_Title_Chat_BackgroundImage"
                        BackgroundColor="Transparent"
                        Margin="20,20,20,10"
-                       TextColor="{StaticResource iAppColor_White}" />
+                       TextColor="{StaticResource iAppColor_White}"
+                       IsVisible="false" />
                 <Frame          x:Name="frm_CountryNameaa"
                                 HorizontalOptions="FillAndExpand"
                                 CornerRadius="5"
@@ -207,7 +205,8 @@
                                 Margin="20,0,20,0"
                                 BackgroundColor="{StaticResource iAppColor_White}"
                                 Grid.Row="1"
-                                Grid.Column="0">
+                                Grid.Column="0"
+                                IsVisible="false">
                     <StackLayout  x:Name="sl_CountryNamesfdfds"
                                   Orientation="Vertical"
                                   HorizontalOptions="FillAndExpand"
@@ -244,23 +243,22 @@
                                     VerticalOptions="FillAndExpand" Color="Silver"
                                      Margin="3"/>-->
                             <ImageButton x:Name="imgBtn_Chat_BackgroundImageURL"
-                                     WidthRequest="45"
-                                     HeightRequest="45"
-                                     BackgroundColor="Transparent"
-                                     HorizontalOptions="End"
-                                     VerticalOptions="Start"
-                                     Margin="0"
+                                         WidthRequest="45"
+                                         HeightRequest="45"
+                                         BackgroundColor="Transparent"
+                                         HorizontalOptions="End"
+                                         VerticalOptions="Start"
+                                         Margin="0"
                                          Source="img_menu_orange.png"
-                                     Clicked="imgBtn_Chat_BackgroundImageURL_Clicked" />
+                                         Clicked="imgBtn_Chat_BackgroundImageURL_Clicked" />
                         </StackLayout>
-
                         <ImageButton x:Name="img_Thum"
-                                                    HorizontalOptions="FillAndExpand"
-                                                    VerticalOptions="FillAndExpand"
-                                                    BackgroundColor="Transparent"
-                                                    HeightRequest="150"
-                                                    Aspect="AspectFill"    
-                                     Clicked="imgBtn_Chat_BackgroundImageURL_Clicked" ></ImageButton>
+                                     HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="FillAndExpand"
+                                     BackgroundColor="Transparent"
+                                     HeightRequest="150"
+                                     Aspect="AspectFill"
+                                     Clicked="imgBtn_Chat_BackgroundImageURL_Clicked"></ImageButton>
                         <!--<Grid   HorizontalOptions="FillAndExpand"
                             ColumnDefinitions="*,*"
                            >
@@ -328,7 +326,6 @@
                        BackgroundColor="Transparent"
                        Margin="20,20,20,10"
                        TextColor="{StaticResource iAppColor_White}" />
-
                 <Frame          x:Name="frm_MediaImage"
                                 HorizontalOptions="FillAndExpand"
                                 CornerRadius="5"
@@ -340,7 +337,6 @@
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Tapped="frm_MediaImage_Tapped" />
                     </Frame.GestureRecognizers>
-
                     <StackLayout  x:Name="sl_CountryName22"
                                   Orientation="Horizontal"
                                   BackgroundColor="{StaticResource iAppColor_White}"
@@ -360,7 +356,7 @@
                                    FontSize="Medium"
                                    BackgroundColor="Transparent"
                                    TextColor="{StaticResource iAppColor_SemiGray}"
-                                   Grid.Column="0"   
+                                   Grid.Column="0"
                                    Padding="10,0,0,0">
                                 <!--<Label.GestureRecognizers>
                             <TapGestureRecognizer
@@ -405,7 +401,8 @@
                                    FontSize="Medium"
                                    BackgroundColor="Transparent"
                                    TextColor="{StaticResource iAppColor_SemiGray}"
-                                   Grid.Column="0"        Padding="10,0,0,0">
+                                   Grid.Column="0"
+                                   Padding="10,0,0,0">
                                 <!--<Label.GestureRecognizers>
                             <TapGestureRecognizer
                                                 Tapped="lblCountryList_Clicked" />
@@ -449,7 +446,8 @@
                                    FontSize="Medium"
                                    BackgroundColor="Transparent"
                                    TextColor="{StaticResource iAppColor_SemiGray}"
-                                   Grid.Column="0"        Padding="10,0,0,0">
+                                   Grid.Column="0"
+                                   Padding="10,0,0,0">
                                 <!--<Label.GestureRecognizers>
                             <TapGestureRecognizer
                                                 Tapped="lblCountryList_Clicked" />
@@ -469,7 +467,6 @@
                     HeightRequest="50"
                     FontAttributes="Bold"
                     Text="Continue"
-                     
                     TextColor="{StaticResource iAppColor_White}"
                     FontSize="Medium"
                     Margin="20,0,20,0"
@@ -479,51 +476,47 @@
                     Clicked="btn_Submit_Clicked" />
             <!---->
         </Grid>
-
-
         <Grid  x:Name="grd_PickerGallery"
-                HorizontalOptions="FillAndExpand"
-               VerticalOptions="FillAndExpand" 
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="FillAndExpand"
                ColumnSpacing="0"
                RowSpacing="0"
                Margin="0"
                Padding="0"
-                                 BackgroundColor="Black"
+               BackgroundColor="Black"
                IsVisible="false">
-
             <VerticalStackLayout HorizontalOptions="FillAndExpand"
-               VerticalOptions="FillAndExpand" 
+                                 VerticalOptions="FillAndExpand"
                                  BackgroundColor="Black"
                                  Margin="0"
                                  Padding="0"
                                  Spacing="0">
-
                 <HorizontalStackLayout HorizontalOptions="CenterAndExpand"
-               VerticalOptions="StartAndExpand" 
-                                 BackgroundColor="Black"
-                                 Margin="0"
-                                 Padding="0"
-                                 Spacing="0">
-                    <Button x:Name="btn_ImageLightList" 
+                                       VerticalOptions="StartAndExpand"
+                                       BackgroundColor="Black"
+                                       Margin="0"
+                                       Padding="0"
+                                       Spacing="0">
+                    <Button x:Name="btn_ImageLightList"
                             HorizontalOptions="StartAndExpand"
                             Text="Light"
                             TextColor="White"
                             Clicked="btn_ImageLightList_Clicked"
-                            Margin="20"/>
-                    <Button  x:Name="btn_ImageDarkList" 
+                            Margin="20" />
+                    <Button  x:Name="btn_ImageDarkList"
                              HorizontalOptions="EndAndExpand"
-                             Text="Dark"  
+                             Text="Dark"
                              TextColor="White"
-                             Clicked="btn_ImageDarkList_Clicked"      Margin="20"/>
+                             Clicked="btn_ImageDarkList_Clicked"
+                             Margin="20" />
                 </HorizontalStackLayout>
-
                 <CollectionView x:Name="cv_ChatBackgroundImageList"
-                    SelectionMode="Single"
+                                SelectionMode="Single"
                                 SelectionChanged="cv_ChatBackgroundImageList_SelectionChanged"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand"
-                    EmptyView=""
-                   Margin="0">
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                EmptyView=""
+                                Margin="0">
                     <!--<VisualStateManager.VisualStateGroups>
             <VisualStateGroup Name="CommonStates">
                 <VisualState Name="Selected">
@@ -537,63 +530,51 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <!--<gallery:Row_Gallery_Image_View iGroupModel="{Binding .}" />-->
-
-
-
-
                             <Border 	x:Name="frm_RowContent"
-           HorizontalOptions="FillAndExpand"
-			   VerticalOptions="StartAndExpand"
-			   Padding="0"
- 
-				 	   Margin="0"
-			 
-			   BackgroundColor="{StaticResource iAppColor_Transparent}"
-                  Stroke="{StaticResource iAppColor_Black}"
-                                        StrokeThickness="0" >
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="StartAndExpand"
+                                        Padding="0"
+                                        Margin="0"
+                                        BackgroundColor="{StaticResource iAppColor_Transparent}"
+                                        Stroke="{StaticResource iAppColor_Black}"
+                                        StrokeThickness="0">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="0" />
                                 </Border.StrokeShape>
-
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroup Name="CommonStates">
                                         <VisualState Name="Selected">
                                             <VisualState.Setters>
                                                 <Setter Property="BackgroundColor"
-										Value="Transparent" />
+                                                        Value="Transparent" />
                                             </VisualState.Setters>
                                         </VisualState>
                                     </VisualStateGroup>
                                 </VisualStateManager.VisualStateGroups>
-                               
-                                 <!--BorderColor="Transparent"       
-                       CornerRadius="0"-->  
-                                
+                                <!--BorderColor="Transparent"       
+                       CornerRadius="0"-->
                                 <Border HorizontalOptions="FillAndExpand"
-                       VerticalOptions="StartAndExpand"
-                       Padding="0,20,0,0"
- 
-                       Margin="0"    BackgroundColor="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}"
-                                        
+                                        VerticalOptions="StartAndExpand"
+                                        Padding="0,20,0,0"
+                                        Margin="0"
+                                        BackgroundColor="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}"
                                         Stroke="{StaticResource iAppColor_System_Page_BackgrondColor_Primary}">
-                                  
                                     <StackLayout HorizontalOptions="FillAndExpand"
-                                 VerticalOptions="StartAndExpand"
-                                 Orientation="Vertical"
-                                 Spacing="0"
-                                 Margin="0"
-                                 Padding="0">
+                                                 VerticalOptions="StartAndExpand"
+                                                 Orientation="Vertical"
+                                                 Spacing="0"
+                                                 Margin="0"
+                                                 Padding="0">
                                         <StackLayout   HorizontalOptions="FillAndExpand"
-                                       VerticalOptions="StartAndExpand"
-                                       Orientation="Vertical"
-                                       Spacing="0"
-                                       Margin="0"
-                                       Padding="0">
+                                                       VerticalOptions="StartAndExpand"
+                                                       Orientation="Vertical"
+                                                       Spacing="0"
+                                                       Margin="0"
+                                                       Padding="0">
                                             <Grid   HorizontalOptions="FillAndExpand"
-                                    VerticalOptions="StartAndExpand"
-                                    Margin="0"
-                                    Padding="0">
-
+                                                    VerticalOptions="StartAndExpand"
+                                                    Margin="0"
+                                                    Padding="0">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="auto" />
                                                     <!--<RowDefinition Height="auto" />
@@ -605,58 +586,48 @@
                                                     <!--<ColumnDefinition Width="420" />
                                     <ColumnDefinition Width="*" />-->
                                                 </Grid.ColumnDefinitions>
-
                                                 <Grid HorizontalOptions="FillAndExpand"
-                                      ColumnDefinitions="*,auto,*"
-                                      Grid.Row="0"  Grid.Column="0">
-  <!--CornerRadius="5"-->
+                                                      ColumnDefinitions="*,auto,*"
+                                                      Grid.Row="0"
+                                                      Grid.Column="0">
+                                                    <!--CornerRadius="5"-->
                                                     <Border x:Name="frm_Avatar"
-                                       HorizontalOptions="FillAndExpand"
-                                      StrokeShape="RoundRectangle 40,0,0,40"
-                                     
-                                       Padding="1"
-                                       Margin="10"
-                                        VerticalOptions="StartAndExpand"
-                                       BackgroundColor="{StaticResource iAppColor_Opacity_Black}"
-                                       Grid.Row="0"
-                                       Grid.Column="1">
+                                                            HorizontalOptions="FillAndExpand"
+                                                            StrokeShape="RoundRectangle 40,0,0,40"
+                                                            Padding="1"
+                                                            Margin="10"
+                                                            VerticalOptions="StartAndExpand"
+                                                            BackgroundColor="{StaticResource iAppColor_Opacity_Black}"
+                                                            Grid.Row="0"
+                                                            Grid.Column="1">
                                                         <!--          Source="{Binding ImageThumServerURL}"     Source="https://assets.codepen.io/32795/poster.png"Text="{Binding AvatarName}"
 										Text="{Binding AvatarName}"-->
                                                         <!--Clicked="imgBtn_Thum_Tapped"-->
-
                                                         <Image   x:Name="imgBtn_Thum"
-                                              HorizontalOptions="FillAndExpand"
-                                              VerticalOptions="FillAndExpand"
-                                              BackgroundColor="Transparent"
-                                              Aspect="AspectFill"
-                                WidthRequest="{Binding ItemWidth}"
-                                   HeightRequest="{Binding ItemHeight}"
-                                     Source="{Binding ItemValue}"         />
+                                                                 HorizontalOptions="FillAndExpand"
+                                                                 VerticalOptions="FillAndExpand"
+                                                                 BackgroundColor="Transparent"
+                                                                 Aspect="AspectFill"
+                                                                 WidthRequest="{Binding ItemWidth}"
+                                                                 HeightRequest="{Binding ItemHeight}"
+                                                                 Source="{Binding ItemValue}" />
                                                     </Border>
                                                 </Grid>
-
                                             </Grid>
                                             <!--<swipeRight:UCView_Swipe_Right />-->
                                             <BoxView  HorizontalOptions="FillAndExpand"
-                              HeightRequest="1"
-                              Margin="5,5,10,5"
-                              Color="{StaticResource iAppColor_Transparent}"
-                              Opacity=".5" />
+                                                      HeightRequest="1"
+                                                      Margin="5,5,10,5"
+                                                      Color="{StaticResource iAppColor_Transparent}"
+                                                      Opacity=".5" />
                                         </StackLayout>
                                     </StackLayout>
                                 </Border>
                             </Border>
-
-
-
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-
-
             </VerticalStackLayout>
-
         </Grid>
-
     </Grid>
 </ContentView>

@@ -25,27 +25,27 @@ namespace S1RoofingMU
     {
 
         IFileSaver fileSaver;
-        public App()
+        public App ( )
         {
-            InitializeComponent();
+            InitializeComponent ( );
 
             //MainPage = new AppShell();
             //   MainPage =new NavigationPage(new MainPage(   ));
-           MainPage =new NavigationPage(new Page_Launcher());
+            MainPage = new NavigationPage ( new Page_Launcher ( ) );
 
             ////////// ///
 
 
-            CrossFirebasePushNotification.Current.OnTokenRefresh += async (s, p) =>
+            CrossFirebasePushNotification.Current.OnTokenRefresh += async ( s , p ) =>
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage($"********** S1RoofingMU ********** TOKEN : {p.Token}");
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( $"********** S1RoofingMU ********** TOKEN : {p.Token}" );
 
                 try
                 {
 
                     //WeakReferenceMessenger.Default.Send(new OpenWindowMessage(p.Token.ToString()));
 
-                    if (!_bln_IsFCM_IsSaved)
+                    if ( !_bln_IsFCM_IsSaved )
                     {
 
                         _bln_IsFCM_IsSaved = true;
@@ -68,10 +68,10 @@ namespace S1RoofingMU
                         //////////}
 
 
-                        Preferences.Set("GCMID", p.Token);
+                        Preferences.Set ( "GCMID" , p.Token );
 
-                        string dev_id = Preferences.Get("DeviceGlobalID", "0");
-                        string dev_os = Preferences.Get("PlatformOS", "0");
+                        string dev_id = Preferences.Get ( "DeviceGlobalID" , "0" );
+                        string dev_os = Preferences.Get ( "PlatformOS" , "0" );
 
                         //////////await SRoofing_HandlerManager.Handler_GetResponse(
                         //////////  App.SiteDomainURL + "_iWebHandler"
@@ -83,7 +83,7 @@ namespace S1RoofingMU
                         //////////        + "&gcmid=" + p.Token
                         //////////        + "&req=" + SRoofingEnumHandler_UserDeviceHandler.UserDevice_Register_GlobalDeviceID);
 
-                        SRoofing_DebugManager.Debug_ShowSystemMessage($"GCMID_Token: {p.Token}");
+                        SRoofing_DebugManager.Debug_ShowSystemMessage ( $"GCMID_Token: {p.Token}" );
 
                         //////////_bln_IsFCM_IsSaved = true;
 
@@ -96,29 +96,29 @@ namespace S1RoofingMU
 
                     //          SRoofing_DebugManager.Debug_ShowSystemMessage($"GCMID_Token: {e.Token}");   
                 }
-                catch (Exception ex)
+                catch ( Exception ex )
                 {
-                    SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                    SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                     return;
                 }
 
             };
 
             // Push message received event  
-            CrossFirebasePushNotification.Current.OnNotificationReceived += (s, p) =>
+            CrossFirebasePushNotification.Current.OnNotificationReceived += ( s , p ) =>
             {
 
-                SRoofing_DebugManager.Debug_ShowSystemMessage("Received");
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( "Received" );
 
             };
 
             //Push message received event  
-            CrossFirebasePushNotification.Current.OnNotificationOpened += (s, p) =>
+            CrossFirebasePushNotification.Current.OnNotificationOpened += ( s , p ) =>
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage("Opened");
-                foreach (var data in p.Data)
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( "Opened" );
+                foreach ( var data in p.Data )
                 {
-                    SRoofing_DebugManager.Debug_ShowSystemMessage($"{data.Key} : {data.Value}");
+                    SRoofing_DebugManager.Debug_ShowSystemMessage ( $"{data.Key} : {data.Value}" );
                 }
 
             };
@@ -133,7 +133,7 @@ namespace S1RoofingMU
         #region Firebase
 
         bool _bln_IsFCM_IsSaved = false;
-        async private void Current_OnTokenRefresh(object source, FirebasePushNotificationTokenEventArgs e)
+        async private void Current_OnTokenRefresh ( object source , FirebasePushNotificationTokenEventArgs e )
         {
 
             //////////try
@@ -200,7 +200,7 @@ namespace S1RoofingMU
 
         #region Database
 
-        public static string iDatabasePath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "SRoofingDatabase.db3");
+        public static string iDatabasePath = Path.Combine ( System.Environment.GetFolderPath ( System.Environment.SpecialFolder.LocalApplicationData ) , "SRoofingDatabase.db3" );
         //public static string iDatabasePath = Path.Combine ( System.Environment.GetFolderPath ( System.Environment.SpecialFolder.LocalApplicationData ) , "SRoofingDatabase.db3" );
 
         private static SRoofingDatabase _database;
@@ -212,10 +212,10 @@ namespace S1RoofingMU
             get
             {
 
-                if (_database == null)
+                if ( _database == null )
                 {
 
-                    _database = new SRoofingDatabase(Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "SRoofingDatabase.db3"));
+                    _database = new SRoofingDatabase ( Path.Combine ( System.Environment.GetFolderPath ( System.Environment.SpecialFolder.LocalApplicationData ) , "SRoofingDatabase.db3" ) );
                     //      _database = new SRoofingDatabase ( Path.Combine ( System.Environment.GetFolderPath ( System.Environment.SpecialFolder.LocalApplicationData ) , "SRoofingDatabase.db3" ) );
                 }
                 return _database;
@@ -232,19 +232,19 @@ namespace S1RoofingMU
 
 
 
-        ////////////Server
-        //////////public static string SiteDomainURL = "https://www.s1r.chat/";
-        //////////public static string SiteDomainAPIWSURL = "https://s1r.chat/api/";
-        //////////public static string SiteDomainURL_Socket = "160.153.251.219";
-        //////////public static string SiteDomainURL_WOWZAServer = "160.153.251.219";
+        //Server
+        public static string SiteDomainURL = "https://www.s1r.chat/";
+        public static string SiteDomainAPIWSURL = "https://s1r.chat/api/";
+        public static string SiteDomainURL_Socket = "160.153.251.219";
+        public static string SiteDomainURL_WOWZAServer = "160.153.251.219";
 
 
 
-        //Localhost
-        public static string SiteDomainURL = "https://oneworldlancer.ddns.net/S1Roofing/";
-        public static string SiteDomainAPIWSURL = "http://oneworldlancer.ddns.net:8090/";
-        public static string SiteDomainURL_Socket = "oneworldlancer.ddns.net";
-        public static string SiteDomainURL_WOWZAServer = "41.205.116.6";
+        ////////////Localhost
+        //////////public static string SiteDomainURL = "https://oneworldlancer.ddns.net/S1Roofing/";
+        //////////public static string SiteDomainAPIWSURL = "http://oneworldlancer.ddns.net:8090/";
+        //////////public static string SiteDomainURL_Socket = "oneworldlancer.ddns.net";
+        //////////public static string SiteDomainURL_WOWZAServer = "41.205.116.6";
 
 
 
@@ -285,7 +285,7 @@ namespace S1RoofingMU
         public static string iAccountType = SRoofingEnum_UserAccountManager.UserAccount_PERSONAL;
 
         public static string iDatabaseServerTokenID = SRoofingEnum_DatabaseServer.DatabaseServer_UK;
-        public static string iPlatformOS = DeviceInfo.Current.Platform.ToString().ToLower();
+        public static string iPlatformOS = DeviceInfo.Current.Platform.ToString ( ).ToLower ( );
 
         public static string iGMapKey = "AIzaSyB6CeZQeM-FbHBXA5RUKvHj9mHVrz7Fdjw";
 
@@ -321,7 +321,7 @@ namespace S1RoofingMU
         public static bool _blnSyncHistory_ScreenCallShow_CALL_Landing_List = false;
 
 
- 
+
 
         public static bool _blnSyncHistory_Dating_ChatContactList = false;
         public static bool _blnSync_Chat_IsRefreshNewMessage = false;
@@ -341,7 +341,7 @@ namespace S1RoofingMU
         #region Globals-Initialize
 
         //public static List<string> myList { get; set; }
-        public static void Initilalize()
+        public static void Initilalize ( )
         {
 
             try
@@ -349,12 +349,12 @@ namespace S1RoofingMU
 
                 //Initilalize_ByDevice();
 
-                Initilalize_ByVersion();
+                Initilalize_ByVersion ( );
 
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
 
                 return;
             }
@@ -362,7 +362,7 @@ namespace S1RoofingMU
         }
 
 
-        public static void Initilalize_ByDevice()
+        public static void Initilalize_ByDevice ( )
         {
 
             ////////////try
@@ -389,52 +389,52 @@ namespace S1RoofingMU
         }
 
 
-        public static void Initilalize_ByVersion()
+        public static void Initilalize_ByVersion ( )
         {
             // https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/appmodel/version-tracking
             try
             {
                 //if (VersionTracking.IsFirstLaunchEver)
 
-                if (VersionTracking.Default.IsFirstLaunchEver)
+                if ( VersionTracking.Default.IsFirstLaunchEver )
 
                 {
 
                     // Display pop-up alert for first launch
-                    SRoofing_DebugManager.Debug_ShowSystemMessage("Initilalize_ByVersion == IsFirstLaunchEver");
+                    SRoofing_DebugManager.Debug_ShowSystemMessage ( "Initilalize_ByVersion == IsFirstLaunchEver" );
                     //	SRoofing_DebugManager.Debug_ShowSystemMessage("Initilalize_ByVersion == IsFirstLaunchEver");
-                    Initilalize_FirstRun();
+                    Initilalize_FirstRun ( );
 
                 }
-                else if (VersionTracking.Default.IsFirstLaunchForCurrentVersion)
+                else if ( VersionTracking.Default.IsFirstLaunchForCurrentVersion )
                 {
                     // Display update notification for current version (1.0.0)
-                    SRoofing_DebugManager.Debug_ShowSystemMessage("Initilalize_ByVersion == IsFirstLaunchForCurrentVersion");
+                    SRoofing_DebugManager.Debug_ShowSystemMessage ( "Initilalize_ByVersion == IsFirstLaunchForCurrentVersion" );
                     //	SRoofing_DebugManager.Debug_ShowSystemMessage("Initilalize_ByVersion == IsFirstLaunchForCurrentVersion");
                 }
-                else if (VersionTracking.Default.IsFirstLaunchForCurrentBuild)
+                else if ( VersionTracking.Default.IsFirstLaunchForCurrentBuild )
                 {
                     // Display update notification for current build number (2)
-                    SRoofing_DebugManager.Debug_ShowSystemMessage("Initilalize_ByVersion == IsFirstLaunchForCurrentBuild");
+                    SRoofing_DebugManager.Debug_ShowSystemMessage ( "Initilalize_ByVersion == IsFirstLaunchForCurrentBuild" );
                     //	SRoofing_DebugManager.Debug_ShowSystemMessage("Initilalize_ByVersion == IsFirstLaunchForCurrentBuild");
                 }
                 else
                 {
-                    SRoofing_DebugManager.Debug_ShowSystemMessage("Initilalize_ByVersion == CurrentBuild:" + VersionTracking.CurrentBuild + "  CurrentVersion: " + VersionTracking.CurrentVersion);
+                    SRoofing_DebugManager.Debug_ShowSystemMessage ( "Initilalize_ByVersion == CurrentBuild:" + VersionTracking.CurrentBuild + "  CurrentVersion: " + VersionTracking.CurrentVersion );
                     //	SRoofing_DebugManager.Debug_ShowSystemMessage();
                 }
             }
 
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
             }
 
         }
 
 
-        public static void Initilalize_FirstRun()
+        public static void Initilalize_FirstRun ( )
         {
 
             try
@@ -443,18 +443,18 @@ namespace S1RoofingMU
                 //SRoofing_DebugManager.Debug_ShowSystemMessage ( "Initilalize_FirstRun()" );
 
 
-                if (!Preferences.ContainsKey("app_IsFirstRun"))
+                if ( !Preferences.ContainsKey ( "app_IsFirstRun" ) )
                 {
 
-                    Preferences.Set("app_IsFirstRun", true);
+                    Preferences.Set ( "app_IsFirstRun" , true );
 
 
-                    Preferences.Set("user_IsLogin", false);
+                    Preferences.Set ( "user_IsLogin" , false );
 
-                    Task.Run(async () =>
+                    Task.Run ( async ( ) =>
                     {
 
-                        await Initialize_Globals();
+                        await Initialize_Globals ( );
 
                         //    await Initilalize_CountryList ( );
 
@@ -464,7 +464,7 @@ namespace S1RoofingMU
 
                         //    await Initialize_EmotionList ( );
 
-                    }).Wait();
+                    } ).Wait ( );
 
 
 
@@ -486,9 +486,9 @@ namespace S1RoofingMU
                 //Preferences.Set ( "app_IsFirstRun" , false );
 
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 // 	SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return;
             }
@@ -497,7 +497,7 @@ namespace S1RoofingMU
 
 
 
-        public static async Task Initialize_ApplicationUtility()
+        public static async Task Initialize_ApplicationUtility ( )
         {
 
             //////////try
@@ -571,7 +571,7 @@ namespace S1RoofingMU
         }
 
 
-        public static async Task Initialize_AlphabetList()
+        public static async Task Initialize_AlphabetList ( )
         {
 
             //////////try
@@ -613,7 +613,7 @@ namespace S1RoofingMU
         }
 
 
-        public static async Task Initialize_EmotionList()
+        public static async Task Initialize_EmotionList ( )
         {
 
             //////////try
@@ -647,7 +647,7 @@ namespace S1RoofingMU
 
 
 
-        public static async Task Initilalize_CountryList()
+        public static async Task Initilalize_CountryList ( )
         {
 
             //////////try
@@ -668,36 +668,36 @@ namespace S1RoofingMU
 
 
 
-        public static async Task Initialize_Globals()
+        public static async Task Initialize_Globals ( )
         {
 
             try
             {
 
-                var objService = App.Current.MainPage.Handler.MauiContext.Services.GetService<iSRoofing_DependencyService_DeviceModel>();
+                var objService = App.Current.MainPage.Handler.MauiContext.Services.GetService<iSRoofing_DependencyService_DeviceModel> ( );
 
-                if (objService != null)
+                if ( objService != null )
                 {
 
-                    Preferences.Set("DeviceGlobalID", objService.GetGlobalDeviceID());
+                    Preferences.Set ( "DeviceGlobalID" , objService.GetGlobalDeviceID ( ) );
 
-                    SRoofing_DebugManager.Debug_ShowSystemMessage("DeviceGlobalID  == "
-                        + Preferences.Get("DeviceGlobalID", "0"));
+                    SRoofing_DebugManager.Debug_ShowSystemMessage ( "DeviceGlobalID  == "
+                        + Preferences.Get ( "DeviceGlobalID" , "0" ) );
 
                 }
 
-                Preferences.Set("PlatformOS", DeviceInfo.Current.Platform.ToString().ToLower());
-                SRoofing_DebugManager.Debug_ShowSystemMessage("PlatformOS  == "
-                + Preferences.Get("PlatformOS", "0"));
+                Preferences.Set ( "PlatformOS" , DeviceInfo.Current.Platform.ToString ( ).ToLower ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( "PlatformOS  == "
+                + Preferences.Get ( "PlatformOS" , "0" ) );
 
 
                 //  App.Current. UIDevice.CurrentDevice.IdentifierForVendor.AsString(), "0");  
 
 
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 //	SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return;
             }

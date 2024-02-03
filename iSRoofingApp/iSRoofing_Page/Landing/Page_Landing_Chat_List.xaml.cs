@@ -53,17 +53,17 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
         bool _blnIsInitialized_BroadcastReceiver = false;
         bool _bln_IsInitialized_History_ChatList = false;
 
-        public Page_Landing_Chat_List()
+        public Page_Landing_Chat_List ( )
         {
 
-            InitializeComponent();
+            InitializeComponent ( );
 
 
-            RefreshCommand = new Command(Refresh_List);
+            RefreshCommand_Chat = new Command ( Refresh_List );
 
-            CustomizeWebViewHandler();
+            CustomizeWebViewHandler ( );
 
-            if (!_blnIsInitialized_BroadcastReceiver)
+            if ( !_blnIsInitialized_BroadcastReceiver )
             {
 
                 _blnIsInitialized_BroadcastReceiver = true;
@@ -73,7 +73,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
 
 
 
-                MessagingCenter.Subscribe<App, object>(App.Current, SRoofingEnum_MessageCenter.MessageCenter_GROUP_NEW_LANDING_CHAT, async (snd, arg) =>
+                MessagingCenter.Subscribe<App , object> ( App.Current , SRoofingEnum_MessageCenter.MessageCenter_GROUP_NEW_LANDING_CHAT , async ( snd , arg ) =>
                 {
 
                     try
@@ -82,7 +82,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
 
 
 
-                        await Task.Delay(1000);
+                        await Task.Delay ( 1000 );
 
                         //_iParent._bln_IsBusyOnProgress= true;
 
@@ -90,21 +90,21 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
 
                         //await Task.Delay(100);
 
-                        _ = Task.Run(async () =>
+                        _ = Task.Run ( async ( ) =>
                         {
 
 
-                            SRoofingScreenChatShowHistoryMessageModelManager _iNew_HistoryChatMessageModel = new SRoofingScreenChatShowHistoryMessageModelManager();
+                            SRoofingScreenChatShowHistoryMessageModelManager _iNew_HistoryChatMessageModel = new SRoofingScreenChatShowHistoryMessageModelManager ( );
                             _iNew_HistoryChatMessageModel = arg as SRoofingScreenChatShowHistoryMessageModelManager;
 
 
 
 
-                            await _iParent.Chat_Opener(_iNew_HistoryChatMessageModel);
+                            await _iParent.Chat_Opener ( _iNew_HistoryChatMessageModel );
 
 
 
-                        }).ConfigureAwait(false);
+                        } ).ConfigureAwait ( false );
 
 
 
@@ -128,12 +128,12 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
 
                         //   _bln_IsCountryName = true;
                     }
-                    catch (Exception ex)
+                    catch ( Exception ex )
                     {
-                        SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                        SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                     }
 
-                });
+                } );
 
 
 
@@ -153,8 +153,8 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
         #region Initialize
 
         //public SRoofingUserOwnerModelManager _iOwnerModel { get; set; }
-        public static ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager> arr_History_ChatList { get; set; } = new ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager>();
-        public static ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager> arr_History_ChatList_Temp { get; set; } = new ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager>();
+        public static ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager> arr_History_ChatList { get; set; } = new ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager> ( );
+        public static ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager> arr_History_ChatList_Temp { get; set; } = new ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager> ( );
 
         public static Page_Landing_Dashboard _iParent;
 
@@ -162,17 +162,17 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
 
 
 
-        public async Task Preload(Page_Landing_Dashboard iParent)
+        public async Task Preload ( Page_Landing_Dashboard iParent )
         {
             try
             {
-                if (iParent != null)
+                if ( iParent != null )
                 {
                     _iParent = iParent;
                     //_iOwnerModel = _iParent._iOwnerModel;
                 }
 
-                MainThread.BeginInvokeOnMainThread(() =>
+                MainThread.BeginInvokeOnMainThread ( ( ) =>
       {
 
           btn_New_Group.Text = _iParent._iLanguageModel.lblText_Group_New_Message;
@@ -181,14 +181,14 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
 
           //web_HistotyChat.Source="WebRTC/Landing_Chat/Index.html";
 
-      });
+      } );
 
 
 
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
             }
 
@@ -200,13 +200,13 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
 
 
 
-        public async Task Initialize(Page_Landing_Dashboard iParent,
-            bool bln_IsRefresh)
+        public async Task Initialize ( Page_Landing_Dashboard iParent ,
+            bool bln_IsRefresh )
         {
             try
             {
 
-                if (iParent != null)
+                if ( iParent != null )
                 {
                     _iParent = iParent;
                     //_iOwnerModel = _iParent._iOwnerModel;
@@ -222,37 +222,37 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
                 //btn_New_Group.Text = _iParent._iLanguageModel.lblText_Group_New_Message;
 
 
-                arr_History_ChatList_Temp = new ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager>();
+                arr_History_ChatList_Temp = new ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager> ( );
 
-                arr_History_ChatList_Temp = await App.Database.Get_List_History_Chat_Message_ByOwnerUserTokenID(_iParent._iOwnerModel, _iParent._iSettingModel);
+                arr_History_ChatList_Temp = await App.Database.Get_List_History_Chat_Message_ByOwnerUserTokenID ( _iParent._iOwnerModel , _iParent._iSettingModel );
 
 
 
-                if (arr_History_ChatList_Temp == null || arr_History_ChatList_Temp.Count == 0)
+                if ( arr_History_ChatList_Temp == null || arr_History_ChatList_Temp.Count == 0 )
                 {
 
 
-                    await Task.Run(async () =>
+                    await Task.Run ( async ( ) =>
                        {
 
-                           await Initialize_FirstLoad();
+                           await Initialize_FirstLoad ( );
 
 
-                           await SRoofingSync_ScreenChatShowManager.Sync_ScreenChatShow_Reset_ChatSessionListModel(
+                           await SRoofingSync_ScreenChatShowManager.Sync_ScreenChatShow_Reset_ChatSessionListModel (
 
-           App.Current,
-                                    App.iAccountType,
-                            _iParent._iOwnerModel);
+           App.Current ,
+                                    App.iAccountType ,
+                            _iParent._iOwnerModel );
 
 
 
-                       }).ConfigureAwait(continueOnCapturedContext: false);
+                       } ).ConfigureAwait ( continueOnCapturedContext: false );
 
                 }
                 else
                 {
 
-                    await ShowList();
+                    await ShowList ( );
                     //////////   MessagingCenter.Send<App , string> ( App.Current as App ,
                     //////////SRoofingEnum_MessageCenter.MessageCenter_HISTORY_CHAT_LIST ,
                     //////////SRoofingEnum_MessageCenter.MessageCenter_HISTORY_CHAT_LIST );
@@ -265,34 +265,34 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
                 }
 
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
             }
 
 
         }
 
-        public async Task Initialize_FirstLoad()
+        public async Task Initialize_FirstLoad ( )
         {
 
 
             try
             {
-                if (!_bln_IsInitialized_History_ChatList)
+                if ( !_bln_IsInitialized_History_ChatList )
                 {
 
-                    if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                    if ( Connectivity.NetworkAccess == NetworkAccess.Internet )
                     {
-                        arr_History_ChatList_Temp = new ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager>();
+                        arr_History_ChatList_Temp = new ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager> ( );
 
                         arr_History_ChatList_Temp = await SRoofing_History_ScreenChatShowManager
-                             .SRoofing_ScreenChatShow_Get_List_All_Chat_ByOwnerUserTokenIDWS(
-                             App.Current, _iParent._iOwnerModel, _iParent._iLanguageModel);
+                             .SRoofing_ScreenChatShow_Get_List_All_Chat_ByOwnerUserTokenIDWS (
+                             App.Current , _iParent._iOwnerModel , _iParent._iLanguageModel );
 
 
-                        await ShowList();
+                        await ShowList ( );
                         //////////MessagingCenter.Send<App , string> (
                         //////////App.Current as App ,
                         //////////SRoofingEnum_MessageCenter.MessageCenter_HISTORY_CHAT_LIST ,
@@ -307,9 +307,9 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
                 }
 
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
             }
 
@@ -372,22 +372,22 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
 
         #region RefreshView
 
-        public ICommand RefreshCommand { get; }
+        public ICommand RefreshCommand_Chat { get; }
 
 
-        async Task Fetch_List()
+        async Task Fetch_List ( )
         {
             try
             {
                 // refresh your data here
-                arr_History_ChatList_Temp = new ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager>();
+                arr_History_ChatList_Temp = new ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager> ( );
 
                 arr_History_ChatList_Temp = await SRoofing_History_ScreenChatShowManager
-              .SRoofing_ScreenChatShow_Get_List_All_Chat_ByOwnerUserTokenIDWS(
-              App.Current, _iParent._iOwnerModel, _iParent._iLanguageModel);
+              .SRoofing_ScreenChatShow_Get_List_All_Chat_ByOwnerUserTokenIDWS (
+              App.Current , _iParent._iOwnerModel , _iParent._iLanguageModel );
 
 
-                await ShowList();
+                await ShowList ( );
                 //////////  MessagingCenter.Send<App , string> (
                 //////////App.Current as App ,
                 //////////SRoofingEnum_MessageCenter.MessageCenter_HISTORY_CHAT_LIST ,
@@ -400,24 +400,24 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
 
 
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
             }
 
         }
 
 
-        async Task ReLoad_List()
+        async Task ReLoad_List ( )
         {
             try
             {
                 // refresh your data here
 
-                arr_History_ChatList_Temp = new ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager>();
+                arr_History_ChatList_Temp = new ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager> ( );
 
-                arr_History_ChatList_Temp = await App.Database.Get_List_History_Chat_Message_ByOwnerUserTokenID(_iParent._iOwnerModel, _iParent._iSettingModel);
+                arr_History_ChatList_Temp = await App.Database.Get_List_History_Chat_Message_ByOwnerUserTokenID ( _iParent._iOwnerModel , _iParent._iSettingModel );
 
                 //await SRoofingSync_History_ScreenChatShowManager
                 //               .Sync_History_ScreenChatShow_Get_ChatList (
@@ -425,7 +425,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
                 //            App.iAccountType ,
                 //            _iOwnerModel );
 
-                await ShowList();
+                await ShowList ( );
                 //////////   MessagingCenter.Send<App , string> ( App.Current as App ,
                 //////////SRoofingEnum_MessageCenter.MessageCenter_HISTORY_CHAT_LIST ,
                 //////////SRoofingEnum_MessageCenter.MessageCenter_HISTORY_CHAT_LIST );
@@ -436,16 +436,16 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
                 App._blnSyncHistory_ScreenChatShow_CHAT_Landing_List = false;
 
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
             }
 
         }
 
 
-        async void Refresh_List()
+        async void Refresh_List ( )
         {
 
             try
@@ -460,31 +460,31 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
                 //    } );
 
 
-                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                if ( Connectivity.NetworkAccess == NetworkAccess.Internet )
                 {
 
-                    _ = Task.Run(async () =>
+                    _ = Task.Run ( async ( ) =>
                          {
-                             await Fetch_List();
+                             await Fetch_List ( );
 
-                         }).ConfigureAwait(false);//.Wait ( );
+                         } ).ConfigureAwait ( false );//.Wait ( );
                 }
                 else
                 {
-                    _ = Task.Run(async () =>
+                    _ = Task.Run ( async ( ) =>
                     {
-                        await ReLoad_List();
+                        await ReLoad_List ( );
 
-                    }).ConfigureAwait(false);//.Wait ( );
+                    } ).ConfigureAwait ( false );//.Wait ( );
 
 
 
                 }
 
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
             }
 
@@ -492,20 +492,20 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
         }
 
 
-        public async Task Sync_IsExist_NewList()
+        public async Task Sync_IsExist_NewList ( )
         {
             try
             {
 
-                _ = Task.Run(async () =>
+                _ = Task.Run ( async ( ) =>
                             {
-                                await ReLoad_List();
+                                await ReLoad_List ( );
 
-                            }).ConfigureAwait(false);
+                            } ).ConfigureAwait ( false );
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
             }
 
@@ -518,7 +518,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
         #region Group_New
 
 
-        async void btn_New_Group_Clicked(object sender, EventArgs e)
+        async void btn_New_Group_Clicked ( object sender , EventArgs e )
         {
             try
             {
@@ -535,17 +535,17 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
                 ////////////////////      await Navigation.PopAllPopupAsync ( );
                 ////////////////////  }
 
-                await MauiPopup.PopupAction.DisplayPopup(
-                  new iSRoofing_Popup.Popup_Group_New(
-              _iParent._iApplicationUtitlityModel,
-              SRoofingEnum_MessageCenter.MessageCenter_GROUP_NEW_LANDING_CHAT,
-                      SRoofingEnum_PopupByCodeManager.PopupByCode_GROUP_NEW));
+                await MauiPopup.PopupAction.DisplayPopup (
+                  new iSRoofing_Popup.Popup_Group_New (
+              _iParent._iApplicationUtitlityModel ,
+              SRoofingEnum_MessageCenter.MessageCenter_GROUP_NEW_LANDING_CHAT ,
+                      SRoofingEnum_PopupByCodeManager.PopupByCode_GROUP_NEW ) );
 
 
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
             }
         }
@@ -560,7 +560,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
         #region OpenChat
 
 
-        public async Task open_ChatDashboard(iSRoofing_Model.Chat.SRoofingScreenChatShowScreenModel _iChatScreenModel)
+        public async Task open_ChatDashboard ( iSRoofing_Model.Chat.SRoofingScreenChatShowScreenModel _iChatScreenModel )
         {
 
             try
@@ -572,9 +572,9 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
 
 
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
             }
 
@@ -583,26 +583,26 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
 
 
 
-        public async Task Add_NewGroup(SRoofingScreenChatShowHistoryMessageModelManager _iNew_HistoryChatMessageModel)
+        public async Task Add_NewGroup ( SRoofingScreenChatShowHistoryMessageModelManager _iNew_HistoryChatMessageModel )
         {
 
             try
             {
-                MainThread.BeginInvokeOnMainThread(() =>
+                MainThread.BeginInvokeOnMainThread ( ( ) =>
       {
-          if (_iNew_HistoryChatMessageModel != null)
+          if ( _iNew_HistoryChatMessageModel != null )
           {
-              arr_History_ChatList.Insert(0, _iNew_HistoryChatMessageModel);
+              arr_History_ChatList.Insert ( 0 , _iNew_HistoryChatMessageModel );
           }
 
-      });
+      } );
 
 
 
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
             }
 
@@ -615,7 +615,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
 
         #region Show-List
 
-        async Task ShowList()
+        async Task ShowList ( )
         {
             try
             {
@@ -626,41 +626,41 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
 
                 //                    }).ConfigureAwait(false);
 
-                MainThread.BeginInvokeOnMainThread(async () =>
+                MainThread.BeginInvokeOnMainThread ( async ( ) =>
                {
 
 
                    // Code to run on the main thread
-                   var jsonChatList = JsonConvert.SerializeObject(arr_History_ChatList_Temp, Formatting.None);
+                   //var jsonChatList = JsonConvert.SerializeObject(arr_History_ChatList_Temp, Formatting.None);
 
-                    //////////await web_HistotyChat.EvaluateJavaScriptAsync("loadJsonList('" + jsonChatList + "')");
+                   //////////await web_HistotyChat.EvaluateJavaScriptAsync("loadJsonList('" + jsonChatList + "')");
 
-                   if (refresh_ChatList.IsRefreshing)
+                   if ( refresh_ChatList.IsRefreshing )
                    {
                        refresh_ChatList.IsRefreshing = false;
                    }
 
                    ll_ProgressBar_Chat.IsVisible = false;
 
-                   if (cv_UserChatHistoryList.ItemsSource == null)
+                   if ( cv_UserChatHistoryList.ItemsSource == null )
                    {
                        cv_UserChatHistoryList.ItemsSource = arr_History_ChatList;
                    }
 
-                   if (arr_History_ChatList_Temp != null)
+                   if ( arr_History_ChatList_Temp != null )
                    {
-                       arr_History_ChatList.Clear();
+                       arr_History_ChatList.Clear ( );
 
-                       for (int i = 0; i < arr_History_ChatList_Temp.Count; i++)
+                       for ( int i = 0 ; i < arr_History_ChatList_Temp.Count ; i++ )
                        {
-                           arr_History_ChatList.Add(arr_History_ChatList_Temp[i]);
+                           arr_History_ChatList.Add ( arr_History_ChatList_Temp[ i ] );
 
-                           await Task.Delay(SRoofing_EnumGlobalPreference.Global_ROW_LIST_DELAY);
+                           await Task.Delay ( SRoofing_EnumGlobalPreference.Global_ROW_LIST_DELAY );
                        }
 
                    }
 
-                   _iParent.llProgress_ToggleVisible_ChatList(true, false);
+                   _iParent.llProgress_ToggleVisible_ChatList ( true , false );
 
                    _bln_IsInitialized_History_ChatList = true;
 
@@ -669,13 +669,13 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
 
 
 
-               });
+               } );
 
 
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
 
             }
@@ -692,18 +692,18 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
 
         #endregion
 
-        async void cv_UserChatHistoryList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        async void cv_UserChatHistoryList_SelectionChanged ( object sender , SelectionChangedEventArgs e )
         {
 
             try
             {
 
 
-                if (!_iParent._bln_IsBusyOnProgress)
+                if ( !_iParent._bln_IsBusyOnProgress )
                 {
-                    _iParent._bln_IsBusyOnProgress= true;
+                    _iParent._bln_IsBusyOnProgress = true;
 
-                    await _iParent.iProgress_Start();
+                    await _iParent.iProgress_Start ( );
 
                     //var objService = App.Current.MainPage.Handler.MauiContext.Services.GetService<iSRoofing_DependencyService_SoundClick>();
 
@@ -723,70 +723,70 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
 
                     //  await Task.Delay ( 100 );
 
-                    _ = Task.Run(async () =>
+                    _ = Task.Run ( async ( ) =>
                     {
 
 
-                        SRoofingScreenChatShowHistoryMessageModelManager _iHistoryChatModel = (SRoofingScreenChatShowHistoryMessageModelManager)e.CurrentSelection.FirstOrDefault();//(SRoofingScreenChatShowHistoryMessageModelManager)iObjectModel;
+                        SRoofingScreenChatShowHistoryMessageModelManager _iHistoryChatModel = ( SRoofingScreenChatShowHistoryMessageModelManager ) e.CurrentSelection.FirstOrDefault ( );//(SRoofingScreenChatShowHistoryMessageModelManager)iObjectModel;
 
                         SRoofingUserRemoteModelManager _iRemoteModel = null;
                         SRoofingUserGroupModelManager _iGroupModel = null;
 
-                        if (_iHistoryChatModel.GroupType == (SRoofingEnum_GroupType.GroupType_PRIVATE))
+                        if ( _iHistoryChatModel.GroupType == ( SRoofingEnum_GroupType.GroupType_PRIVATE ) )
                         {
 
-                            _iRemoteModel = new SRoofingUserRemoteModelManager();
+                            _iRemoteModel = new SRoofingUserRemoteModelManager ( );
 
                             _iRemoteModel = await SRoofingSync_User_RemoteManager
-                           .Sync_User_Remote_Get_UserModel(
-                 App.Current,
-            _iParent._iOwnerModel,
-    _iHistoryChatModel.RemoteUserTokenID,
-    _iHistoryChatModel.RemoteMobileNumberTokenID);
+                           .Sync_User_Remote_Get_UserModel (
+                 App.Current ,
+            _iParent._iOwnerModel ,
+    _iHistoryChatModel.RemoteUserTokenID ,
+    _iHistoryChatModel.RemoteMobileNumberTokenID );
 
-                            if (_iRemoteModel == null)
+                            if ( _iRemoteModel == null )
                             {
-                                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                                if ( Connectivity.NetworkAccess == NetworkAccess.Internet )
                                 {
                                     _iRemoteModel =
-                               await SRoofing_UserProfileRemoteManager.SRoofing_User_Get_Remote_Model_ByRemoteUserTokenID(
-                                         App.Current,
-                                         _iParent._iOwnerModel,
-                                         _iHistoryChatModel.RemoteUserTokenID,
-                                         _iHistoryChatModel.RemoteMobileNumberTokenID);
+                               await SRoofing_UserProfileRemoteManager.SRoofing_User_Get_Remote_Model_ByRemoteUserTokenID (
+                                         App.Current ,
+                                         _iParent._iOwnerModel ,
+                                         _iHistoryChatModel.RemoteUserTokenID ,
+                                         _iHistoryChatModel.RemoteMobileNumberTokenID );
                                 }
 
                             }
                         }
 
-                        else if (_iHistoryChatModel.GroupType == (SRoofingEnum_GroupType.GroupType_GROUP))
+                        else if ( _iHistoryChatModel.GroupType == ( SRoofingEnum_GroupType.GroupType_GROUP ) )
                         {
 
                             _iRemoteModel = null;
                         }
 
-                        _iGroupModel = new SRoofingUserGroupModelManager();
+                        _iGroupModel = new SRoofingUserGroupModelManager ( );
 
 
-                        _iGroupModel = await SRoofingSync_UserGroupManager.Sync_User_Group_Get_UserModel(
-                             App.Current,
-                             _iParent._iOwnerModel,
-                             _iHistoryChatModel.GroupTokenID);
+                        _iGroupModel = await SRoofingSync_UserGroupManager.Sync_User_Group_Get_UserModel (
+                             App.Current ,
+                             _iParent._iOwnerModel ,
+                             _iHistoryChatModel.GroupTokenID );
 
 
-                        if (_iGroupModel == null)
+                        if ( _iGroupModel == null )
                         {
-                            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                            if ( Connectivity.NetworkAccess == NetworkAccess.Internet )
                             {
 
-                                _iGroupModel = new SRoofingUserGroupModelManager();
+                                _iGroupModel = new SRoofingUserGroupModelManager ( );
 
                                 _iGroupModel =
-                               await SRoofing_UserGroupManager.SRoofing_UserGroup_Get_Group_Model_ByGroupTokenID(
+                               await SRoofing_UserGroupManager.SRoofing_UserGroup_Get_Group_Model_ByGroupTokenID (
 
-                                           App.Current,
-                                               _iParent._iOwnerModel,
-                                                _iHistoryChatModel.GroupTokenID);
+                                           App.Current ,
+                                               _iParent._iOwnerModel ,
+                                                _iHistoryChatModel.GroupTokenID );
                             }
 
                         }
@@ -796,30 +796,30 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
 
 
 
-                        SRoofingScreenChatShowScreenModel _iChatScreenModel = new SRoofingScreenChatShowScreenModel();
+                        SRoofingScreenChatShowScreenModel _iChatScreenModel = new SRoofingScreenChatShowScreenModel ( );
                         _iChatScreenModel = await SRoofing_ScreenChatShowManager
-                      .Chat_Initialize_Chat_Show(
-                           App.Current,
-                           _iParent._iOwnerModel,
-                           _iRemoteModel,
-                           _iGroupModel);
+                      .Chat_Initialize_Chat_Show (
+                           App.Current ,
+                           _iParent._iOwnerModel ,
+                           _iRemoteModel ,
+                           _iGroupModel );
 
 
                         //await open_ChatDashboard(_iChatScreenModel);
 
-                        await _iParent.Chat_Opener(_iChatScreenModel, true);
+                        await _iParent.Chat_Opener ( _iChatScreenModel , true );
 
 
-                    })
-                     .ConfigureAwait(false);
+                    } )
+                     .ConfigureAwait ( false );
 
 
 
                 }
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
             }
 
@@ -829,20 +829,20 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
 
 
         // Define a C# method that you want to invoke from JavaScript
-        public static async Task MyCSharpMethod(string jsonObject)
+        public static async Task MyCSharpMethod ( string jsonObject )
         {
             // Your C# code here
-            Console.WriteLine("MyCSharpMethod-WS ::: ");
+            Console.WriteLine ( "MyCSharpMethod-WS ::: " );
             ///   DisplayAlert("titleX", "msg-MyCSharpMethod", "OK");
             ///   
 
             try
             {
-                if (!_iParent._bln_IsBusyOnProgress)
+                if ( !_iParent._bln_IsBusyOnProgress )
                 {
-                    _iParent._bln_IsBusyOnProgress= true;
+                    _iParent._bln_IsBusyOnProgress = true;
 
-                    await _iParent.iProgress_Start();
+                    await _iParent.iProgress_Start ( );
 
                     //var objService = App.Current.MainPage.Handler.MauiContext.Services.GetService<iSRoofing_DependencyService_SoundClick>();
 
@@ -862,70 +862,70 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
 
                     //  await Task.Delay ( 100 );
 
-                    _ = Task.Run(async () =>
+                    _ = Task.Run ( async ( ) =>
                     {
 
-                        SRoofingScreenChatShowHistoryMessageModelManager _iHistoryChatModel = JsonConvert.DeserializeObject<SRoofingScreenChatShowHistoryMessageModelManager>(jsonObject);
+                        SRoofingScreenChatShowHistoryMessageModelManager _iHistoryChatModel = JsonConvert.DeserializeObject<SRoofingScreenChatShowHistoryMessageModelManager> ( jsonObject );
                         //SRoofingScreenChatShowHistoryMessageModelManager _iHistoryChatModel = (SRoofingScreenChatShowHistoryMessageModelManager)e.CurrentSelection.FirstOrDefault();//(SRoofingScreenChatShowHistoryMessageModelManager)iObjectModel;
 
                         SRoofingUserRemoteModelManager _iRemoteModel = null;
                         SRoofingUserGroupModelManager _iGroupModel = null;
 
-                        if (_iHistoryChatModel.GroupType == (SRoofingEnum_GroupType.GroupType_PRIVATE))
+                        if ( _iHistoryChatModel.GroupType == ( SRoofingEnum_GroupType.GroupType_PRIVATE ) )
                         {
 
-                            _iRemoteModel = new SRoofingUserRemoteModelManager();
+                            _iRemoteModel = new SRoofingUserRemoteModelManager ( );
 
                             _iRemoteModel = await SRoofingSync_User_RemoteManager
-                           .Sync_User_Remote_Get_UserModel(
-                 App.Current,
-            _iParent._iOwnerModel,
-    _iHistoryChatModel.RemoteUserTokenID,
-    _iHistoryChatModel.RemoteMobileNumberTokenID);
+                           .Sync_User_Remote_Get_UserModel (
+                 App.Current ,
+            _iParent._iOwnerModel ,
+    _iHistoryChatModel.RemoteUserTokenID ,
+    _iHistoryChatModel.RemoteMobileNumberTokenID );
 
-                            if (_iRemoteModel == null)
+                            if ( _iRemoteModel == null )
                             {
-                                if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                                if ( Connectivity.NetworkAccess == NetworkAccess.Internet )
                                 {
                                     _iRemoteModel =
-                               await SRoofing_UserProfileRemoteManager.SRoofing_User_Get_Remote_Model_ByRemoteUserTokenID(
-                                         App.Current,
-                                         _iParent._iOwnerModel,
-                                         _iHistoryChatModel.RemoteUserTokenID,
-                                         _iHistoryChatModel.RemoteMobileNumberTokenID);
+                               await SRoofing_UserProfileRemoteManager.SRoofing_User_Get_Remote_Model_ByRemoteUserTokenID (
+                                         App.Current ,
+                                         _iParent._iOwnerModel ,
+                                         _iHistoryChatModel.RemoteUserTokenID ,
+                                         _iHistoryChatModel.RemoteMobileNumberTokenID );
                                 }
 
                             }
                         }
 
-                        else if (_iHistoryChatModel.GroupType == (SRoofingEnum_GroupType.GroupType_GROUP))
+                        else if ( _iHistoryChatModel.GroupType == ( SRoofingEnum_GroupType.GroupType_GROUP ) )
                         {
 
                             _iRemoteModel = null;
                         }
 
-                        _iGroupModel = new SRoofingUserGroupModelManager();
+                        _iGroupModel = new SRoofingUserGroupModelManager ( );
 
 
-                        _iGroupModel = await SRoofingSync_UserGroupManager.Sync_User_Group_Get_UserModel(
-                             App.Current,
-                             _iParent._iOwnerModel,
-                             _iHistoryChatModel.GroupTokenID);
+                        _iGroupModel = await SRoofingSync_UserGroupManager.Sync_User_Group_Get_UserModel (
+                             App.Current ,
+                             _iParent._iOwnerModel ,
+                             _iHistoryChatModel.GroupTokenID );
 
 
-                        if (_iGroupModel == null)
+                        if ( _iGroupModel == null )
                         {
-                            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                            if ( Connectivity.NetworkAccess == NetworkAccess.Internet )
                             {
 
-                                _iGroupModel = new SRoofingUserGroupModelManager();
+                                _iGroupModel = new SRoofingUserGroupModelManager ( );
 
                                 _iGroupModel =
-                               await SRoofing_UserGroupManager.SRoofing_UserGroup_Get_Group_Model_ByGroupTokenID(
+                               await SRoofing_UserGroupManager.SRoofing_UserGroup_Get_Group_Model_ByGroupTokenID (
 
-                                           App.Current,
-                                               _iParent._iOwnerModel,
-                                                _iHistoryChatModel.GroupTokenID);
+                                           App.Current ,
+                                               _iParent._iOwnerModel ,
+                                                _iHistoryChatModel.GroupTokenID );
                             }
 
                         }
@@ -935,30 +935,30 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
 
 
 
-                        SRoofingScreenChatShowScreenModel _iChatScreenModel = new SRoofingScreenChatShowScreenModel();
+                        SRoofingScreenChatShowScreenModel _iChatScreenModel = new SRoofingScreenChatShowScreenModel ( );
                         _iChatScreenModel = await SRoofing_ScreenChatShowManager
-                      .Chat_Initialize_Chat_Show(
-                           App.Current,
-                           _iParent._iOwnerModel,
-                           _iRemoteModel,
-                           _iGroupModel);
+                      .Chat_Initialize_Chat_Show (
+                           App.Current ,
+                           _iParent._iOwnerModel ,
+                           _iRemoteModel ,
+                           _iGroupModel );
 
 
                         //await open_ChatDashboard(_iChatScreenModel);
 
-                        await _iParent.Chat_Opener(_iChatScreenModel, true);
+                        await _iParent.Chat_Opener ( _iChatScreenModel , true );
 
 
-                    })
-                     .ConfigureAwait(false);
+                    } )
+                     .ConfigureAwait ( false );
 
 
 
                 }
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
             }
 
@@ -966,11 +966,11 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
         }
 
 
-        void CustomizeWebViewHandler()
+        void CustomizeWebViewHandler ( )
         {
 #if ANDROID
 
-            Microsoft.Maui.Handlers.WebViewHandler.Mapper.Add("WebChromeClientXXX", (handler, view) =>
+            Microsoft.Maui.Handlers.WebViewHandler.Mapper.Add ( "WebChromeClientXXX" , ( handler , view ) =>
             {
 
                 //Android.Webkit.WebView.SetWebContentsDebuggingEnabled(true);
@@ -994,9 +994,9 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
                 ////////////////////////////////////
 
                 //////////handler.PlatformView.SetWebViewClient(new JavascriptWebViewClient($"javascript: {JavascriptFunction}"));
-                handler.PlatformView.AddJavascriptInterface(new JsBridge(), "jsBridge");
+                handler.PlatformView.AddJavascriptInterface ( new JsBridge ( ) , "jsBridge" );
 
-            });
+            } );
 #elif WINDOWS
 #elif IOS
 #endif
@@ -1022,29 +1022,29 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Landing
             //}
 
             [JavascriptInterface]
-            [Export("invokeAction")]
+            [Export ( "invokeAction" )]
             //[Export()]
-            public void InvokeAction(string data)
+            public void InvokeAction ( string data )
             {
 
-                MainThread.BeginInvokeOnMainThread(() =>
+                MainThread.BeginInvokeOnMainThread ( ( ) =>
                 {
 
                     //Toast.MakeText(Android.App.Application.Context, "InvokeAction :: " + data, ToastLength.Long).Show();
 
-                    Task.Run(async () =>
+                    Task.Run ( async ( ) =>
                          {
 
-                             await MyCSharpMethod(data);
-                         });
+                             await MyCSharpMethod ( data );
+                         } );
 
                     //DisplayAlert("titleX", "msg-JsBridge", "OK");
 
                     // Code to run on the main thread
 
-                    Console.WriteLine("JavascriptInterface :: " + data);
+                    Console.WriteLine ( "JavascriptInterface :: " + data );
 
-                });
+                } );
                 //if (HybridWebViewMainRenderer != null && HybridWebViewMainRenderer.TryGetTarget(out var hybridRenderer))
                 //{
                 //    ((UCView_HybridWebView)hybridRenderer.Element).InvokeAction(data);

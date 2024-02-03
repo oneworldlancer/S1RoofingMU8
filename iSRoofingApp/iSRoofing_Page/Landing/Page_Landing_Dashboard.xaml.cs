@@ -788,9 +788,10 @@ public partial class Page_Landing_Dashboard : ContentPage
             //MainThread.BeginInvokeOnMainThread(async () =>
             //                {
             // Code to run on the main thread
-            await SRoofing_Page_OpenerManager.Page_Opener(
+            await SRoofing_Page_OpenerManager.Page_Opener_WithChecker (
                 Navigation,
-            new Page_Account_Dashboard(
+          typeof ( Page_Account_Dashboard ) ,
+          new Page_Account_Dashboard(
 
                       _iApplicationUtitlityModel,
 _iSettingModel,
@@ -901,7 +902,7 @@ _iSettingModel,
             }
 
 
-            //  await Task.Delay ( 100 );
+           //await Task.Delay ( 100 );
 
             await iSRoofing_Manager.SRoofing_Page_OpenerManager.Page_Opener_WithChecker (
                  Navigation ,
@@ -1144,7 +1145,7 @@ _iSettingModel ,
 
                 await SRoofing_Page_OpenerManager.Page_Opener_WithChecker(
                    Navigation,
-               typeof(Page_ScreenChatShow_Dashboard),
+             typeof (Page_ScreenChatShow_Dashboard),
                new Page_ScreenChatShow_Dashboard(), false, true);
 
 

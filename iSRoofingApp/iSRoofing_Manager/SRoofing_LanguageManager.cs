@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
- 
+
 using System.Threading.Tasks;
 using S1RoofingMU.iSRoofingApp.iSRoofing_Model.Language;
 
@@ -121,14 +121,14 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Manager
 
                     lblText_Command_Save = "Save" ,
                     lblText_Command_Reset = "Reset" ,
-                 
+
                     lblText_Command_Yes = "Yes" ,
                     lblText_Command_No = "No" ,
-                
-                    
+
+
                     lblText_Message_AreYouSure = "Are you sure ?" ,
 
-                
+
                     lblText_Pick_FromTheList_Message = "Pick from the list" ,
 
                     lblText_File_NotFound_Message = "File not found" ,
@@ -342,7 +342,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Manager
 
 
                     lblText_Permission_Camera_Message = "Camera" ,
-                    lblText_Permission_Contact_Message  = "Contact" ,
+                    lblText_Permission_Contact_Message = "Contact" ,
                     lblText_Permission_Location_Message = "Location" ,
                     lblText_Permission_Microphone_Message = "Microphone" ,
                     lblText_Permission_Photo_Message = "Photo" ,
@@ -352,13 +352,23 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Manager
                     lblText_AppError_TryAgainLater = "App error, try again later" ,
 
 
-                    lblText_Title_Password = "Password",
+                    lblText_Title_Password = "Password" ,
 
 
 
+                    lblText_Call_Calling = "CALLING" ,
+                    lblText_Call_Ringing = "RINGING" ,
+                    lblText_Call_Drop = "DROP" ,
+                    lblText_Call_Decline = "DECLINE" ,
+                    lblText_Call_Answer = "ANSWER" ,
+                    lblText_Call_Cancel = "CANCEL" ,
+                    lblText_Call_EndClose = "END" ,
+                    lblText_Call_Redial = "REDIAL" ,
+                    lblText_Call_Mute = "MUTE" ,
+                    lblText_Call_Camera = "CAMERA" ,
 
 
-                });
+                } );
 
 
 
@@ -367,8 +377,8 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Manager
 
                 await SRoofingSync_Language_Manager.Sync_Language_Set_LanguageList_All ( App.Current , _arrLanguageModelList );
 
-                await SRoofing_AutoMessageManager.Initilalize_Call_AutoMessage_ByLanguageCode ( _arrLanguageModelList[0] );
-                
+                await SRoofing_AutoMessageManager.Initilalize_Call_AutoMessage_ByLanguageCode ( _arrLanguageModelList[ 0 ] );
+
                 SRoofing_DebugManager.Debug_ShowSystemMessage ( "_arrLanguageModelList == " + _arrLanguageModelList.Count.ToString ( ) );
 
 
@@ -447,7 +457,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Manager
                     lblText_Command_Next = "Suivante" ,
                     lblText_Command_Send = "Envoyer" ,
                     lblText_Command_Cancel = "Annuler" ,
-               
+
 
 
                     lblText_Command_Save = "Sauvegarder" ,
@@ -691,26 +701,38 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Manager
 
 
 
-                    lblText_Permission_Camera_Message = "Caméra",
-                    lblText_Permission_Contact_Message  = "Contact",
-                    lblText_Permission_Location_Message = "Emplacement",
-                    lblText_Permission_Microphone_Message = "Microphone",
-                    lblText_Permission_Photo_Message = "Photo",
-                    lblText_Permission_SMS_Message = "SMS",
-                    lblText_Permission_Storage_Message = "Stockage",
+                    lblText_Permission_Camera_Message = "Caméra" ,
+                    lblText_Permission_Contact_Message = "Contact" ,
+                    lblText_Permission_Location_Message = "Emplacement" ,
+                    lblText_Permission_Microphone_Message = "Microphone" ,
+                    lblText_Permission_Photo_Message = "Photo" ,
+                    lblText_Permission_SMS_Message = "SMS" ,
+                    lblText_Permission_Storage_Message = "Stockage" ,
 
 
-                    lblText_AppError_TryAgainLater = "Erreur d'application, réessayez plus tard",
-
-
-
-                    lblText_Title_Password = "Mot de passe",
+                    lblText_AppError_TryAgainLater = "Erreur d'application, réessayez plus tard" ,
 
 
 
+                    lblText_Title_Password = "Mot de passe" ,
 
 
-                });
+
+                 
+                    lblText_Call_Calling = "APPEL" ,
+                    lblText_Call_Ringing = "SONNERIE" ,
+                    lblText_Call_Drop = "BAISSE" ,
+                    lblText_Call_Decline = "D'ECLIN" ,
+                    lblText_Call_Answer = "R'EPINDRE" ,
+                    lblText_Call_Cancel = "ANNULER" ,
+                    lblText_Call_EndClose = "FIN" ,
+                    lblText_Call_Redial = "RECOMPOSER" ,
+                    lblText_Call_Mute = "MUTTE" ,
+                    lblText_Call_Camera = "CAM'ERA" ,
+
+
+
+                } );
 
 
                 #endregion
@@ -781,7 +803,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Manager
                     lblText_Splash_SignOut = "تسجيل الخروج" ,
 
 
-                    lblText_ForgotPassword = "هل نسيت كلمة السر" ,
+                    lblText_ForgotPassword = "هل نسيت كلمه السر" ,
 
                     lblText_YourCountry = "بلدك" ,
                     lblText_MobileNumber = "رقم الهاتف المحمول" ,
@@ -794,7 +816,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Manager
                     lblText_Agreement = "من خلال إنشاء حساب فإنك توافق على" ,
                     lblText_AND = "و" ,
                     lblText_TermsCondition = "البنود و الظروف" ,
-                    lblText_PrivacyPolicy = "سياسة الخصوصيه" ,
+                    lblText_PrivacyPolicy = "سياسه الخصوصيه" ,
 
 
 
@@ -819,7 +841,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Manager
                     lblText_Message_AreYouSure = "هل أنت متأكد ؟" ,
 
 
-                    lblText_Pick_FromTheList_Message = "إختر من القائمة" ,
+                    lblText_Pick_FromTheList_Message = "إختر من القائمه" ,
 
 
                     lblText_File_NotFound_Message = "الملف غير موجود" ,
@@ -827,7 +849,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Manager
 
 
                     lblText_PersonalInfo = "معلومات شخصيه" ,
-                    lblText_Avatar = "الصورة الرمزيه" ,
+                    lblText_Avatar = "الصوره الرمزيه" ,
                     //public string lblText_Account_Send   =   ,
 
 
@@ -836,7 +858,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Manager
                     lblText_Sounds = "اصوات" ,
                     lblText_Notifications = "إشعارات" ,
                     lblText_RateUs = "قيمنا" ,
-                    lblText_FAQ = "الأسئلة الشائعه" ,
+                    lblText_FAQ = "الأسئله الشائعه" ,
                     lblText_About = "عن" ,
 
 
@@ -895,7 +917,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Manager
 
 
 
-                    lblText_TryAgainLater_Message = "حاول مرة أخرى في وقت لاحق" ,
+                    lblText_TryAgainLater_Message = "حاول مره أخرى في وقت لاحق" ,
 
                     lblText_Wait_RegisterAccount_Message = "انتظر ، سجل حساب" ,
                     lblText_Wait_SetupAccount_Message = "انتظر ، حساب الإعداد" ,
@@ -909,7 +931,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Manager
                     lblText_Fill_Password_Message = "إملأ رمز المرور" ,
                     lblText_Fill_BirthDate_Message = "أدخل تاريخ الميلاد" ,
                     lblText_Fill_EmailAddress_Message = "إملأ عنوان البريد الإلكتروني" ,
-                    lblText_Fill_CountryName_Message = "املأ اسم الدولة" ,
+                    lblText_Fill_CountryName_Message = "املأ اسم الدوله" ,
 
                     lblText_Fill_Data_Message = "املأ البيانات" ,
                     lblText_Check_Data_Message = "تأكد من البيانات" ,
@@ -936,91 +958,91 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Manager
                     lblText_Command_PICKUP_Message = "إلتقاط" ,
                     lblText_Command_RECORD_Message = "تسجبل" ,
                     lblText_Command_SHOW_Message = "يعرض" ,
-                    lblText_Command_PREVIEW_Message = "معاينة" ,
+                    lblText_Command_PREVIEW_Message = "معاينه" ,
                     lblText_Command_CAPTURE_Message = "يلتقط" ,
 
 
                     lblText_LogOut_Message = "تسجيل الخروج" ,
 
 
-                    lblText_Setting_Privacy_ShowOnlineSttus_Message = "إظهار حالة الاتصال الخاصة بي" ,
+                    lblText_Setting_Privacy_ShowOnlineSttus_Message = "إظهار حاله الاتصال الخاصه بي" ,
 
                     lblText_Setting_Speech_IsEnable_Message = "تمكين الكلام" ,
 
-                    lblText_Setting_Speech_Incoming_Message = "الكلام لرسالة الدردشة الواردة" ,
-                    lblText_Setting_Speech_Outgoing_Message = "الكلام لرسالة الدردشة الصادرة" ,
+                    lblText_Setting_Speech_Incoming_Message = "الكلام لرساله الدردشه الوارده" ,
+                    lblText_Setting_Speech_Outgoing_Message = "الكلام لرساله الدردشه الصادره" ,
 
 
 
                     lblText_Setting_Sound_IsEnable_Message = "قم بتمكين كل الأصوات" ,
 
-                    lblText_Setting_Sound_Chat_Incoming_Message = "صوت للدردشة الواردة" ,
-                    lblText_Setting_Sound_Chat_Outgoing_Message = "صوت للدردشة الصادرة" ,
+                    lblText_Setting_Sound_Chat_Incoming_Message = "صوت للدردشه الوارده" ,
+                    lblText_Setting_Sound_Chat_Outgoing_Message = "صوت للدردشه الصادره" ,
 
-                    lblText_Setting_Sound_Call_Incoming_Message = "صوت للمكالمات الواردة" ,
-                    lblText_Setting_Sound_Call_Outgoing_Message = "صوت للمكالمات الصادرة" ,
+                    lblText_Setting_Sound_Call_Incoming_Message = "صوت للمكالمات الوارده" ,
+                    lblText_Setting_Sound_Call_Outgoing_Message = "صوت للمكالمات الصادره" ,
 
-                    lblText_Setting_SortBy_Message = "طريقة العرض" ,
+                    lblText_Setting_SortBy_Message = "طريقه العرض" ,
                     lblText_Setting_ByRecent_Message = "بالأحدث" ,
                     lblText_Setting_ByName_Message = "بالاسم" ,
 
-                    lblText_Setting_SaveHistory_Message = "حفظ محفوظات رسائل الدردشة" ,
-                    lblText_Setting_Chat_BackgroundImageURL_Message = "صورة خلفية الدردشة" ,
+                    lblText_Setting_SaveHistory_Message = "حفظ محفوظات رسائل الدردشه" ,
+                    lblText_Setting_Chat_BackgroundImageURL_Message = "صوره خلفيه الدردشه" ,
                     lblText_Setting_Chat_MediaDownload_Image_Message = "تنزيل الصور تلقائيًا" ,
                     lblText_Setting_Chat_MediaDownload_Video_Message = "تنزيل ملفات الفيديو تلقائيًا" ,
                     lblText_Setting_Chat_MediaDownload_Document_Message = "مستندات التحميل التلقائي" ,
 
-                    lblText_Setting_Call_VoiceCommand_Message = "قم بتمكين الأوامر الصوتية" ,
+                    lblText_Setting_Call_VoiceCommand_Message = "قم بتمكين الأوامر الصوتيه" ,
                     lblText_Setting_Call_AutoAnswer_Message = "الرد الالي على المكالمات" ,
-                    lblText_Setting_Call_AutoRedial_Message = "إعادة الطلب تلقائيًا عند الانشغال" ,
-                    lblText_Setting_Call_AutoDecline_Message = "رسالة مكالمة تلقائية" ,
+                    lblText_Setting_Call_AutoRedial_Message = "إعاده الطلب تلقائيًا عند الانشغال" ,
+                    lblText_Setting_Call_AutoDecline_Message = "رساله مكالمه تلقائيه" ,
 
                     lblText_Setting_Notification_AutoUpdate_Message = "أعلمني عند توفر تحديث جديد" ,
                     lblText_Setting_Notification_AutoWIFIf_Message = "قم بتمكين التحديث التلقائي عبر WIFI فقط" ,
 
-                    lblText_Group_Title_Message = "مجموعة" ,
-                    lblText_Group_New_Message = "مجموعة جديدة" ,
-                    lblText_Group_Edit_Message = "تحرير المجموعة" ,
-                    lblText_Group_AddUser_Message = "إضافة جهة اتصال" ,
+                    lblText_Group_Title_Message = "مجموعه" ,
+                    lblText_Group_New_Message = "مجموعه جديده" ,
+                    lblText_Group_Edit_Message = "تحرير المجموعه" ,
+                    lblText_Group_AddUser_Message = "إضافه جهه اتصال" ,
                     lblText_Group_RemoveUser_Message = "حذف بيانات الاتصال بالشخص" ,
 
-                    lblText_Screen_Title_PickContact_Message = "اختر جهة اتصال" ,
-                    lblText_Screen_Title_PickChat_Message = "اختر الدردشة" ,
-                    lblText_Screen_Title_PickCall_Message = "اختر جهة اتصال" ,
-                    lblText_Screen_Title_PickGroup_Message = "اختر مجموعة" ,
+                    lblText_Screen_Title_PickContact_Message = "اختر جهه اتصال" ,
+                    lblText_Screen_Title_PickChat_Message = "اختر الدردشه" ,
+                    lblText_Screen_Title_PickCall_Message = "اختر جهه اتصال" ,
+                    lblText_Screen_Title_PickGroup_Message = "اختر مجموعه" ,
 
 
-                    lblText_Popup_Title_GroupNew_Message = "مجموعة جديدة" ,
+                    lblText_Popup_Title_GroupNew_Message = "مجموعه جديده" ,
 
 
                     lblText_Gallery_Message = "معرض الصور" ,
 
-                    lblText_Call_Outgoing_Offline_Message = "مكالمة صادرة حاليا" ,
-                    lblText_Call_Outgoing_Dropped_Message = "تم إسقاط المكالمة الصادرة" ,
-                    lblText_Call_Incoming_Missed_Message = "مكالمة واردة فائتة" ,
-                    lblText_Call_Ended_Duration_Message = "المكالمة انتهت" ,
+                    lblText_Call_Outgoing_Offline_Message = "مكالمه صادره حاليا" ,
+                    lblText_Call_Outgoing_Dropped_Message = "تم إسقاط المكالمه الصادره" ,
+                    lblText_Call_Incoming_Missed_Message = "مكالمه وارده فائته" ,
+                    lblText_Call_Ended_Duration_Message = "المكالمه انتهت" ,
 
-                    lblText_Chat_StartNew_Message = "إبدأ محادثة جديدة" ,
+                    lblText_Chat_StartNew_Message = "إبدأ محادثه جديده" ,
 
 
 
-                    lblText_ScreenChatShow_ShareLocation_Message = "مشاركة موقع" ,
-                    lblText_ScreenChatShow_ShareImage_Message = "مشاركة صوره" ,
-                    lblText_ScreenChatShow_ShareVideo_Message = "مشاركة فيديو" ,
-                    lblText_ScreenChatShow_ShareDocument_Message = "مشاركة مستند" ,
-                    lblText_ScreenChatShow_ShareAudio_Message = "مشاركة صوت" ,
-                    lblText_ScreenChatShow_ShareContact_Message = "جهة اتصال مشتركة" ,
+                    lblText_ScreenChatShow_ShareLocation_Message = "مشاركه موقع" ,
+                    lblText_ScreenChatShow_ShareImage_Message = "مشاركه صوره" ,
+                    lblText_ScreenChatShow_ShareVideo_Message = "مشاركه فيديو" ,
+                    lblText_ScreenChatShow_ShareDocument_Message = "مشاركه مستند" ,
+                    lblText_ScreenChatShow_ShareAudio_Message = "مشاركه صوت" ,
+                    lblText_ScreenChatShow_ShareContact_Message = "جهه اتصال مشتركه" ,
 
-                    lblText_ScreenChatShow_StartNew_Message = "ابدأ محادثة جديدة" ,
-                    lblText_ScreenCallShow_StartNew_Message = "ابدأ مكالمة جديدة" ,
+                    lblText_ScreenChatShow_StartNew_Message = "ابدأ محادثه جديده" ,
+                    lblText_ScreenCallShow_StartNew_Message = "ابدأ مكالمه جديده" ,
 
-                    lblText_Picker_Image_Message = "إختر صورة" ,
+                    lblText_Picker_Image_Message = "إختر صوره" ,
                     lblText_Picker_Video_Message = "إختر مقطع فيديو" ,
                     lblText_Picker_Camera_Message = "كميرا" ,
                     lblText_Picker_Gallery_Message = "معرض الصور" ,
                     lblText_Picker_Document_Message = "إختر مستندآ" ,
 
-                    lblText_Connection_CheckOnline_Message = "خطأ في الشبكة" ,
+                    lblText_Connection_CheckOnline_Message = "خطأ في الشبكه" ,
 
 
 
@@ -1042,39 +1064,51 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Manager
 
 
 
-                    lblText_Gallery_PickImage = "اختر صورة" ,
+                    lblText_Gallery_PickImage = "اختر صوره" ,
                     lblText_Gallery_PickVideo = "اختر فيديو" ,
-                    lblText_Gallery_CaptureImage = "التقاط الصورة" ,
+                    lblText_Gallery_CaptureImage = "التقاط الصوره" ,
                     lblText_Gallery_CaptureVideo = "التقاط الفيديو" ,
 
 
 
-                    lblText_Permission_Camera_Message = "الكميرا",
-                    lblText_Permission_Contact_Message  = "جهات الإتصال",
-                    lblText_Permission_Location_Message = "الموقع",
-                    lblText_Permission_Microphone_Message = "الميكروفون",
-                    lblText_Permission_Photo_Message = "الصور",
-                    lblText_Permission_SMS_Message = "الرسائل الهاتفيه",
-                    lblText_Permission_Storage_Message = "الملفات",
+                    lblText_Permission_Camera_Message = "الكميرا" ,
+                    lblText_Permission_Contact_Message = "جهات الإتصال" ,
+                    lblText_Permission_Location_Message = "الموقع" ,
+                    lblText_Permission_Microphone_Message = "الميكروفون" ,
+                    lblText_Permission_Photo_Message = "الصور" ,
+                    lblText_Permission_SMS_Message = "الرسائل الهاتفيه" ,
+                    lblText_Permission_Storage_Message = "الملفات" ,
 
 
 
-                    lblText_AppError_TryAgainLater = "حاول في وقت لاحق",
+                    lblText_AppError_TryAgainLater = "حاول في وقت لاحق" ,
 
-                    lblText_Title_Password = "الرقم السري",
-
-
-
-
+                    lblText_Title_Password = "الرقم السري" ,
 
 
 
 
 
+                    lblText_Call_Calling = "مكالمه صادره" ,
+                    lblText_Call_Ringing = "مكالمه وارده" ,
+                    lblText_Call_Drop = "إلغاء" ,
+                    lblText_Call_Decline = "رفض" ,
+                    lblText_Call_Answer = "رد" ,
+                    lblText_Call_Cancel = "إقفل" ,
+                    lblText_Call_EndClose = "إنهاء" ,
+                    lblText_Call_Redial = "عاود الإتصال" ,
+                    lblText_Call_Mute = "كتم الصوت" ,
+                    lblText_Call_Camera = "كميرا" ,
 
 
 
-                });
+
+
+
+
+
+
+                } );
 
 
 
@@ -1086,7 +1120,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Manager
 
                 await SRoofing_AutoMessageManager.Initilalize_Call_AutoMessage_ByLanguageCode ( _arrLanguageModelList[ 0 ] );
 
-                
+
                 SRoofing_DebugManager.Debug_ShowSystemMessage ( "_arrLanguageModelList == " + _arrLanguageModelList.Count.ToString ( ) );
 
 

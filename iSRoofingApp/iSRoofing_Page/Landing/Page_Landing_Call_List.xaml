@@ -52,7 +52,7 @@
                      HorizontalOptions="FillAndExpand"
                      VerticalOptions="FillAndExpand"
                      RefreshColor="{StaticResource iAppColor_LightOrange}"
-                     Command="{Binding RefreshCommand}">
+                     Command="{Binding RefreshCommand_Call}">
             <!--ItemsSource="{Binding Employees}"    SelectionChanged="OnCollectionViewSelectionChanged" -->
             <StackLayout HorizontalOptions="FillAndExpand"
                          VerticalOptions="StartAndExpand"

@@ -202,25 +202,25 @@
                   Opacity=".5"
                   Grid.Column="1" />
                 <!--Orientation="Vertical"-->
-
-                <Frame HorizontalOptions="FillAndExpand"
+                  <!--HasShadow="False"
+                CornerRadius="0"-->
+                <StackLayout HorizontalOptions="FillAndExpand"
                 VerticalOptions="FillAndExpand"
-                CornerRadius="0"
-                BackgroundColor="{StaticResource iAppColor_Silver}"
-                HasShadow="False"
-                Margin="0"
+                            Orientation="Vertical"
+                             BackgroundColor="{StaticResource iAppColor_Silver}"
+             Spacing="0"    Margin="0"
                 Padding="0"
                 Grid.Column="2">
 
-
+                         	<!--Grid.Row="0"
+						Grid.Column="0"-->  
                     <CollectionView x:Name="MyCollection"
 						HorizontalOptions="FillAndExpand"
 						VerticalOptions="StartAndExpand"
-						EmptyView=""
+                                    EmptyView=""
 						SelectionMode="Single"
 						SelectionChanged="OnCollectionViewSelectionChanged"
-						Grid.Row="0"
-						Grid.Column="0"    >
+					  >
 
 
                         <CollectionView.ItemTemplate>
@@ -421,7 +421,7 @@
                         </CollectionView.ItemTemplate>
                     </CollectionView>
 
-                </Frame>
+                </StackLayout>
 
 
             </Grid>

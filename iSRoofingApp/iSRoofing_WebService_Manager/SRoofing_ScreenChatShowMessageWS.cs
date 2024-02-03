@@ -29,20 +29,20 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_WebService_Manager
         #region Get_List
 
 
-        public static async Task<ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager>> SRoofing_ScreenChatShow_Get_List_All_Chat_ByOwnerUserTokenIDWSAsync(
-                         S1RoofingMU.iSRoofingApp.iSRoofing_Model.User.SRoofingUserOwnerModelManager iOwnerModel,
-                         string PlatformOSIDWS,
-                      string DatabaseServerTokenIDWS,
-                              string DeviceGlobalIDWS,
-                     string AccountTypeWS,
-                      string OwnerUserTokenIDWS,
-                         string OwnerMobileNumberTokenIDWS,
-                      string ApplicationRoleCodeWS,
-                       string ProjectTokenIDWS,
-                        string iTodayDayWS,
-                      string iTodayMonthWS,
-                        string iTodayYearWS,
-                      string IsHistoryMessageLineWS)
+        public static async Task<ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager>> SRoofing_ScreenChatShow_Get_List_All_Chat_ByOwnerUserTokenIDWSAsync (
+                         S1RoofingMU.iSRoofingApp.iSRoofing_Model.User.SRoofingUserOwnerModelManager iOwnerModel ,
+                         string PlatformOSIDWS ,
+                      string DatabaseServerTokenIDWS ,
+                              string DeviceGlobalIDWS ,
+                     string AccountTypeWS ,
+                      string OwnerUserTokenIDWS ,
+                         string OwnerMobileNumberTokenIDWS ,
+                      string ApplicationRoleCodeWS ,
+                       string ProjectTokenIDWS ,
+                        string iTodayDayWS ,
+                      string iTodayMonthWS ,
+                        string iTodayYearWS ,
+                      string IsHistoryMessageLineWS )
         {
 
 
@@ -50,42 +50,42 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_WebService_Manager
             {
 
 
-                ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager> arr_ItemListWS = new ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager>();
+                ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager> arr_ItemListWS = new ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager> ( );
 
 
 
-                using (var _iClient = SRoofing_HTTPManager.HTTP_Get_HttpClientInstance())
+                using ( var _iClient = SRoofing_HTTPManager.HTTP_Get_HttpClientInstance ( ) )
                 {
 
-                    string _iWebURLWS = App.SiteDomainAPIWSURL +  SRoofingWS_SRoofingUserScreenChatShowMessageWS.History_Chat_ByOwnerUserTokenIDWS;
+                    string _iWebURLWS = App.SiteDomainAPIWSURL + SRoofingWS_SRoofingUserScreenChatShowMessageWS.History_Chat_ByOwnerUserTokenIDWS;
 
                     string _iWebParamWS =
-             "PlatformOSIDWS=" + App.iPlatformOS +"&" +
-             "DatabaseServerTokenIDWS=" + App.iDatabaseServerTokenID +"&" +
-             "DeviceGlobalIDWS=" + Preferences.Get("DeviceGlobalID", "0") +"&" +
-             "AccountTypeWS=" + App.iAccountType +"&" +
-             "OwnerUserTokenIDWS=" + iOwnerModel.OwnerUserTokenID +"&" +
-             "OwnerMobileNumberTokenIDWS=" + iOwnerModel.OwnerMobileNumberTokenID +"&" +
+             "PlatformOSIDWS=" + App.iPlatformOS + "&" +
+             "DatabaseServerTokenIDWS=" + App.iDatabaseServerTokenID + "&" +
+             "DeviceGlobalIDWS=" + Preferences.Get ( "DeviceGlobalID" , "0" ) + "&" +
+             "AccountTypeWS=" + App.iAccountType + "&" +
+             "OwnerUserTokenIDWS=" + iOwnerModel.OwnerUserTokenID + "&" +
+             "OwnerMobileNumberTokenIDWS=" + iOwnerModel.OwnerMobileNumberTokenID + "&" +
 
 
-             "ApplicationRoleCodeWS=" + "0" +"&" +
-             "ProjectTokenIDWS=" + "0" +"&" +
-             "iTodayDayWS=" + DateTime.Now.Day.ToString() +"&" +
-             "iTodayMonthWS=" +    DateTime.Now.Month.ToString() +"&" +
-             "iTodayYearWS=" + DateTime.Now.Year.ToString() +"&" +
-             "IsHistoryMessageLineWS=" + "1" +"&" +
+             "ApplicationRoleCodeWS=" + "0" + "&" +
+             "ProjectTokenIDWS=" + "0" + "&" +
+             "iTodayDayWS=" + DateTime.Now.Day.ToString ( ) + "&" +
+             "iTodayMonthWS=" + DateTime.Now.Month.ToString ( ) + "&" +
+             "iTodayYearWS=" + DateTime.Now.Year.ToString ( ) + "&" +
+             "IsHistoryMessageLineWS=" + "1" + "&" +
              "IRowIndexWS=0";
 
-                    Uri uri = new Uri(_iWebURLWS + _iWebParamWS);
+                    Uri uri = new Uri ( _iWebURLWS + _iWebParamWS );
 
-                    _iClient.BaseAddress=  uri;
+                    _iClient.BaseAddress = uri;
 
-                    HttpResponseMessage response = await _iClient.GetAsync("");
-                    if (response.IsSuccessStatusCode)
+                    HttpResponseMessage response = await _iClient.GetAsync ( "" );
+                    if ( response.IsSuccessStatusCode )
                     {
 
                         //SRoofing_DebugManager.Debug_ShowSystemMessage("IsSuccessStatusCode == "+ response.Content.ToString());
-                        arr_ItemListWS= await response.Content.ReadFromJsonAsync<ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager>>();
+                        arr_ItemListWS = await response.Content.ReadFromJsonAsync<ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager>> ( );
 
                     }
 
@@ -93,12 +93,12 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_WebService_Manager
                 }
 
 
-                if (arr_ItemListWS != null)
+                if ( arr_ItemListWS != null )
                 {
-                    foreach (SRoofingScreenChatShowHistoryMessageModelManager iOneItem in arr_ItemListWS)
+                    foreach ( SRoofingScreenChatShowHistoryMessageModelManager iOneItem in arr_ItemListWS )
                     {
                         // code block to be executed
-                        iOneItem.MessageText = WebUtility.UrlDecode(iOneItem.MessageText);
+                        iOneItem.MessageText = WebUtility.UrlDecode ( iOneItem.MessageText );
 
                         iOneItem.IsVisible = true;
 
@@ -372,7 +372,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_WebService_Manager
                 //////    ////////////////////}
                 //////}
 
-                if (arr_ItemListWS != null)
+                if ( arr_ItemListWS != null )
                 {
                     return arr_ItemListWS;
                 }
@@ -384,9 +384,9 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_WebService_Manager
                 //   SRoofing_DebugManager.Debug_ShowSystemMessage("***************SRoofing_UserRegisterWSSoapClient***************"+ xxx2[0].FullName.ToString());
 
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return null;
 
             }

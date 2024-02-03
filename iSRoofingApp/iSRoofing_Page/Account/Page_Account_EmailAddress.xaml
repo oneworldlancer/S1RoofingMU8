@@ -563,7 +563,7 @@
                                         VerticalTextAlignment="Center"  
                                         BackgroundColor="Transparent"
                                         HorizontalTextAlignment="Center"
-                                        Keyboard="Numeric"
+                                         
                                         IsPassword="true" 
                                         ReturnType="Next"
                                                      
@@ -603,7 +603,7 @@
                                         VerticalTextAlignment="Center"  
                                         BackgroundColor="Transparent"
                                         HorizontalTextAlignment="Center"
-                                        Keyboard="Numeric"
+                                         
                                         IsPassword="true" 
                                         ReturnType="Next"
                                                      
@@ -642,7 +642,7 @@
                                         PlaceholderColor="{StaticResource iAppColor_OpacityOrange}"
                                         BackgroundColor="Transparent"
                                   VerticalTextAlignment="Center"           HorizontalTextAlignment="Center"
-                                       Keyboard="Numeric"
+                                        
                                         IsPassword="true" 
                                        ReturnType="Next"
                                               
@@ -682,7 +682,7 @@
                                         PlaceholderColor="{StaticResource iAppColor_OpacityOrange}"
                                       
                                      VerticalTextAlignment="Center"        HorizontalTextAlignment="Center"
-                                      Keyboard="Numeric"
+                                       
                                         IsPassword="true" 
                                      ReturnType="Next"
                                               
@@ -723,7 +723,7 @@
                                         VerticalTextAlignment="Center"
                                                     HorizontalTextAlignment="Center"
                                           
-                                      Keyboard="Numeric"
+                                       
                                         IsPassword="true" 
                                       ReturnType="Done"
                                              

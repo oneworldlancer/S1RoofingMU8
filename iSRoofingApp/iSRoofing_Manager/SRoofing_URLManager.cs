@@ -159,7 +159,9 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Manager
                 try
                 {
 
-                    return App.SiteDomainURL + "_iUAvatar/avt_" + ImageID + ".jpg";
+                    return App.SiteDomainAPIWSURL + "SRoofingStreamAvatarWS/GetAvatar_UserMedia?id=" + ImageID;
+
+                    //return App.SiteDomainURL + "_iUAvatar/avt_" + ImageID + ".jpg";
                     //return ImageID;
 
 
@@ -370,7 +372,10 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Manager
                 try
                 {
 
-                    return App.SiteDomainURL + "_iUMedia/_iUImage/img_" + ImageID + ".jpg";
+
+                    //"http://oneworldlancer.ddns.net:8090/SRoofingStreamImageWS/GetImage"
+                    //https://localhost:7139/SRoofingStreamImageWS/GetImage_ChatMedia?id=1573439740097
+                    return App.SiteDomainAPIWSURL + "SRoofingStreamImageWS/GetImage_ChatMedia?id=" + ImageID  ;
 
                     //return   App.SiteDomainURL + "_iUAvatar/avt_0.png";
 
@@ -572,11 +577,13 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Manager
                 try
                 {
 
+                    return App.SiteDomainAPIWSURL + "SRoofingStreamVideoWS/GetVideo_ChatMedia?id=" + VideoID;
 
-                    return App.SiteDomainURL + "_iUMedia/_iUVideo/vid_" + VideoID +
-                           ".mp4";
 
-                    ////return "http://tlknstreamvideo.tlkn2.com/Video/Index.html?vidid=" +
+                    //return App.SiteDomainURL + "_iUMedia/_iUVideo/vid_" + VideoID +
+                    //       ".mp4";
+
+                    //////return "http://tlknstreamvideo.tlkn2.com/Video/Index.html?vidid=" +
                     ////       VideoID + "&cod=2&url=3";
 
 
@@ -607,7 +614,12 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Manager
                 try
                 {
 
-                    return App.SiteDomainURL + "_iUMedia/_iUVideo/thm_" + VideoID + ".jpg";
+                    return App.SiteDomainAPIWSURL + "SRoofingStreamVideoWS/GetVideoThm_ChatMedia?id=" + VideoID;
+
+
+
+
+                    //return App.SiteDomainURL + "_iUMedia/_iUVideo/thm_" + VideoID + ".jpg";
 
                     //return   App.SiteDomainURL + "_iUAvatar/avt_0.png";
 

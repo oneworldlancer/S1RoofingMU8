@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
- using WebView = Android.Webkit.WebView;
+ using WebViewX = Android.Webkit.WebView;
 
 
 namespace S1RoofingMU.Platforms
@@ -28,7 +28,7 @@ namespace S1RoofingMU.Platforms
         //    this.javascript = javascript;
         //}
 
-        public override void OnPageFinished(WebView view, string url)
+        public override void OnPageFinished(WebViewX view, string url)
         {
             base.OnPageFinished(view, url);
             //view.EvaluateJavascript(javascript, null);
@@ -36,7 +36,7 @@ namespace S1RoofingMU.Platforms
 
 
 
-        public override bool ShouldOverrideUrlLoading(Android.Webkit.WebView view, IWebResourceRequest request)
+        public override bool ShouldOverrideUrlLoading( WebViewX view, IWebResourceRequest request)
         {
             var url = request.Url.ToString();
             if (url.StartsWith("https://mywebsite.com"))
@@ -71,7 +71,7 @@ namespace S1RoofingMU.Platforms
         //    // Your Logic comes here
         //}
 
-        public override void OnReceivedHttpError(WebView view, IWebResourceRequest request, WebResourceResponse errorResponse)
+        public override void OnReceivedHttpError(WebViewX view, IWebResourceRequest request, WebResourceResponse errorResponse)
         {
             //get error from errorResponse  
             base.OnReceivedHttpError(view, request, errorResponse);

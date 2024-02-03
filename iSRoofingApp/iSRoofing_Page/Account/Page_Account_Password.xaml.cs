@@ -405,7 +405,8 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Account
 
 
 
-        bool _bln_IsPasswordVisible = false;
+        bool _bln_IsPasswordVisible_Current = false;
+        bool _bln_IsPasswordVisible_New = false;
         int iTxtFocused = 0;
 
 
@@ -505,7 +506,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Account
             try
             {
 
-                if ( _bln_IsPasswordVisible )
+                if ( _bln_IsPasswordVisible_Current )
                 {
 
                     img_VisibleCurrent.Source = "img_dating_eye_close.png";
@@ -516,28 +517,28 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Account
                     txt_PswdCurrent4.IsPassword = true;
                     txt_PswdCurrent5.IsPassword = true;
 
-                    if ( iTxtFocused == 1 )
-                    {
-                        txt_PswdCurrent1.Focus ( );
-                    }
-                    else if ( iTxtFocused == 2 )
-                    {
-                        txt_PswdCurrent2.Focus ( );
-                    }
-                    else if ( iTxtFocused == 3 )
-                    {
-                        txt_PswdCurrent3.Focus ( );
-                    }
-                    else if ( iTxtFocused == 4 )
-                    {
-                        txt_PswdCurrent4.Focus ( );
-                    }
-                    else if ( iTxtFocused == 5 )
-                    {
-                        txt_PswdCurrent5.Focus ( );
-                    }
+                    //if ( iTxtFocused == 1 )
+                    //{
+                    //    txt_PswdCurrent1.Focus ( );
+                    //}
+                    //else if ( iTxtFocused == 2 )
+                    //{
+                    //    txt_PswdCurrent2.Focus ( );
+                    //}
+                    //else if ( iTxtFocused == 3 )
+                    //{
+                    //    txt_PswdCurrent3.Focus ( );
+                    //}
+                    //else if ( iTxtFocused == 4 )
+                    //{
+                    //    txt_PswdCurrent4.Focus ( );
+                    //}
+                    //else if ( iTxtFocused == 5 )
+                    //{
+                    //    txt_PswdCurrent5.Focus ( );
+                    //}
 
-                    _bln_IsPasswordVisible = false;
+                    _bln_IsPasswordVisible_Current = false;
                 }
                 else
                 {
@@ -551,28 +552,28 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Account
                     txt_PswdCurrent5.IsPassword = false;
 
 
-                    if ( iTxtFocused == 1 )
-                    {
-                        txt_PswdCurrent1.Focus ( );
-                    }
-                    else if ( iTxtFocused == 2 )
-                    {
-                        txt_PswdCurrent2.Focus ( );
-                    }
-                    else if ( iTxtFocused == 3 )
-                    {
-                        txt_PswdCurrent3.Focus ( );
-                    }
-                    else if ( iTxtFocused == 4 )
-                    {
-                        txt_PswdCurrent4.Focus ( );
-                    }
-                    else if ( iTxtFocused == 5 )
-                    {
-                        txt_PswdCurrent5.Focus ( );
-                    }
+                    //if ( iTxtFocused == 1 )
+                    //{
+                    //    txt_PswdCurrent1.Focus ( );
+                    //}
+                    //else if ( iTxtFocused == 2 )
+                    //{
+                    //    txt_PswdCurrent2.Focus ( );
+                    //}
+                    //else if ( iTxtFocused == 3 )
+                    //{
+                    //    txt_PswdCurrent3.Focus ( );
+                    //}
+                    //else if ( iTxtFocused == 4 )
+                    //{
+                    //    txt_PswdCurrent4.Focus ( );
+                    //}
+                    //else if ( iTxtFocused == 5 )
+                    //{
+                    //    txt_PswdCurrent5.Focus ( );
+                    //}
 
-                    _bln_IsPasswordVisible = true;
+                    _bln_IsPasswordVisible_Current = true;
                 }
 
             }
@@ -963,7 +964,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Account
             try
             {
 
-                if ( _bln_IsPasswordVisible )
+                if ( _bln_IsPasswordVisible_New )
                 {
 
                     img_VisibleNew.Source = "img_dating_eye_close.png";
@@ -974,28 +975,28 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Account
                     txt_PswdNew4.IsPassword = true;
                     txt_PswdNew5.IsPassword = true;
 
-                    if ( iTxtFocused == 1 )
-                    {
-                        txt_PswdNew1.Focus ( );
-                    }
-                    else if ( iTxtFocused == 2 )
-                    {
-                        txt_PswdNew2.Focus ( );
-                    }
-                    else if ( iTxtFocused == 3 )
-                    {
-                        txt_PswdNew3.Focus ( );
-                    }
-                    else if ( iTxtFocused == 4 )
-                    {
-                        txt_PswdNew4.Focus ( );
-                    }
-                    else if ( iTxtFocused == 5 )
-                    {
-                        txt_PswdNew5.Focus ( );
-                    }
+                    //if ( iTxtFocused == 1 )
+                    //{
+                    //    txt_PswdNew1.Focus ( );
+                    //}
+                    //else if ( iTxtFocused == 2 )
+                    //{
+                    //    txt_PswdNew2.Focus ( );
+                    //}
+                    //else if ( iTxtFocused == 3 )
+                    //{
+                    //    txt_PswdNew3.Focus ( );
+                    //}
+                    //else if ( iTxtFocused == 4 )
+                    //{
+                    //    txt_PswdNew4.Focus ( );
+                    //}
+                    //else if ( iTxtFocused == 5 )
+                    //{
+                    //    txt_PswdNew5.Focus ( );
+                    //}
 
-                    _bln_IsPasswordVisible = false;
+                    _bln_IsPasswordVisible_New = false;
                 }
                 else
                 {
@@ -1009,28 +1010,28 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Account
                     txt_PswdNew5.IsPassword = false;
 
 
-                    if ( iTxtFocused == 1 )
-                    {
-                        txt_PswdNew1.Focus ( );
-                    }
-                    else if ( iTxtFocused == 2 )
-                    {
-                        txt_PswdNew2.Focus ( );
-                    }
-                    else if ( iTxtFocused == 3 )
-                    {
-                        txt_PswdNew3.Focus ( );
-                    }
-                    else if ( iTxtFocused == 4 )
-                    {
-                        txt_PswdNew4.Focus ( );
-                    }
-                    else if ( iTxtFocused == 5 )
-                    {
-                        txt_PswdNew5.Focus ( );
-                    }
+                    //if ( iTxtFocused == 1 )
+                    //{
+                    //    txt_PswdNew1.Focus ( );
+                    //}
+                    //else if ( iTxtFocused == 2 )
+                    //{
+                    //    txt_PswdNew2.Focus ( );
+                    //}
+                    //else if ( iTxtFocused == 3 )
+                    //{
+                    //    txt_PswdNew3.Focus ( );
+                    //}
+                    //else if ( iTxtFocused == 4 )
+                    //{
+                    //    txt_PswdNew4.Focus ( );
+                    //}
+                    //else if ( iTxtFocused == 5 )
+                    //{
+                    //    txt_PswdNew5.Focus ( );
+                    //}
 
-                    _bln_IsPasswordVisible = true;
+                    _bln_IsPasswordVisible_New = true;
                 }
 
             }
@@ -1144,8 +1145,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Account
 
         }
 
-
-
+     
         protected void txt_PswdNew5_Focussed ( object sender , FocusEventArgs e )
         {
             try

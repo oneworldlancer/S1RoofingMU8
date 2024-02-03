@@ -1,1004 +1,869 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage x:Name="page_CallDashboard"
-			 SizeChanged="page_CallDashboard_SizeChanged"
-			xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             SizeChanged="page_CallDashboard_SizeChanged"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="S1RoofingMU.iSRoofingApp.iSRoofing_Page.Call.Page_Call_Dashboard"
-			 xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-			 xmlns:sroofingHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Header"
-			 xmlns:sroofingFooter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer"
-			 xmlns:logo="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Logo"
-			 xmlns:snackAutoHide="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar"
-			 ios:Page.UseSafeArea="False"
-			 NavigationPage.HasNavigationBar="False"
-			 xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-			 xmlns:arrowBack="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Back"
-			  xmlns:rowHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Header"
-			 xmlns:itmp="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowSelector.Contact.List"
-			 xmlns:roAlphabet="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Alphabet"
-			 xmlns:itmp_Alphabet="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowSelector.Alphabet"
-			 xmlns:vwContactList="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_Page.Contact"
-			 Visual="Material"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:sroofingHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Header"
+             xmlns:sroofingFooter="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_PageTemplate.Footer"
+             xmlns:logo="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Logo"
+             xmlns:snackAutoHide="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.SnackBar"
+             ios:Page.UseSafeArea="False"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:arrowBack="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_UControl.Back"
+             xmlns:rowHeader="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Header"
+             xmlns:itmp="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowSelector.Contact.List"
+             xmlns:roAlphabet="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowModel.Alphabet"
+             xmlns:itmp_Alphabet="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_RowSelector.Alphabet"
+             xmlns:vwContactList="clr-namespace:S1RoofingMU.iSRoofingApp.iSRoofing_Page.Contact"
+             Visual="Material"
              Loaded="page_CallDashboard_Loaded"
              Unloaded="page_CallDashboard_Unloaded">
-
-
     <StackLayout		HorizontalOptions="FillAndExpand"
-						VerticalOptions="FillAndExpand"
-						Padding="0"
-						Spacing="0"
-						Margin="0"
-						BackgroundColor="Black">
-
+                        VerticalOptions="FillAndExpand"
+                        Padding="0"
+                        Spacing="0"
+                        Margin="0"
+                        BackgroundColor="Black">
         <sroofingHeader:SRoofing_PageHeader />
-
         <Grid		HorizontalOptions="FillAndExpand"
-					VerticalOptions="FillAndExpand"
-					Margin="0"
-					Padding="0">
-
-
+                    VerticalOptions="FillAndExpand"
+                    Margin="0"
+                    Padding="0">
             <Frame x:Name="frm_CallSurfaceView"
-				   HorizontalOptions="FillAndExpand"
-				   VerticalOptions="FillAndExpand"
-				   BackgroundColor="Black"
-				   CornerRadius="0"
-			BorderColor="Transparent"	  
-                   
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand"
+                   BackgroundColor="Black"
+                   CornerRadius="0"
+                   BorderColor="Transparent"
                    HasShadow="False"
-				   Margin="0"
-				   Padding="0">
-
-
-
+                   Margin="0"
+                   Padding="0">
                 <Grid  x:Name="ll_ActionVideo"
-					   HorizontalOptions="FillAndExpand"
-					   VerticalOptions="FillAndExpand"
-					   Margin="0"
-					   Padding="0"
-					   >
-
-                    <WebView 
-            x:Name="webViewCall"
-     HorizontalOptions="FillAndExpand"
-VerticalOptions="FillAndExpand" 
-                        />
-
-
-
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand"
+                       Margin="0"
+                       Padding="0">
+                    <WebView x:Name="webViewCall"
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="FillAndExpand" />
                     <!--BorderColor="Transparent"		   CornerRadius="0"
 						   HasShadow="False"-->
                     <Grid         x:Name="grd_CallActionVideo"
-    HorizontalOptions="FillAndExpand"
-						   VerticalOptions="FillAndExpand"
-						   BackgroundColor="Transparent"
-					
-						   Margin="0"
-						   Padding="0">
-
+                                  HorizontalOptions="FillAndExpand"
+                                  VerticalOptions="FillAndExpand"
+                                  BackgroundColor="Transparent"
+                                  Margin="0"
+                                  Padding="0">
                         <Grid		HorizontalOptions="FillAndExpand"
-									VerticalOptions="FillAndExpand"
-									RowDefinitions="100,*,50,50,40">
-
-
-
-
-
+                                    VerticalOptions="FillAndExpand"
+                                    RowDefinitions="100,*,50,50,40">
                             <Grid	HorizontalOptions="FillAndExpand"
-									ColumnDefinitions="50,*,50,*,50,*,50"
-									Grid.Row="2">
-
+                                    ColumnDefinitions="20,*,30,*,30,*,20"
+                                    Grid.Row="2">
                                 <ImageButton  x:Name="imgBtn_CallMute_Video"
-											  HorizontalOptions="Center"
-											  VerticalOptions="Center"
-											  Source="img_call_new_mute.png"
-											  BackgroundColor="Transparent"
-											  Aspect="AspectFit"
-											  Margin="0"
-											  Grid.Column="1"
-											  Clicked="imgBtn_CallMute_Video_Clicked" />
-
+                                              HorizontalOptions="Center"
+                                              VerticalOptions="Center"
+                                              Source="img_call_new_mute.png"
+                                              BackgroundColor="Transparent"
+                                              Aspect="AspectFit"
+                                              Margin="0"
+                                              Grid.Column="1"
+                                              Clicked="imgBtn_CallMute_Video_Clicked" />
                                 <ImageButton  x:Name="imgBtn_CallEndClose_Video"
-											  HorizontalOptions="Center"
-											  VerticalOptions="Center"
-											  Source="img_call_new_close.png"
-											  BackgroundColor="Transparent"
-											  Aspect="AspectFit"
-											  Margin="0"
-											  Grid.Column="3"
-											  Clicked="imgBtn_CallEndClose_Video_Clicked" />
-
+                                              HorizontalOptions="Center"
+                                              VerticalOptions="Center"
+                                              Source="img_call_new_close.png"
+                                              BackgroundColor="Transparent"
+                                              Aspect="AspectFit"
+                                              Margin="0"
+                                              Grid.Column="3"
+                                              Clicked="imgBtn_CallEndClose_Video_Clicked" />
                                 <ImageButton  x:Name="imgBtn_CallCamera_Video"
-											  HorizontalOptions="Center"
-											  VerticalOptions="Center"
-											  Source="img_call_new_video_off.png"
-											  BackgroundColor="Transparent"
-											  Aspect="AspectFit"
-											  Margin="0"
-											  Grid.Column="5"
-											  Clicked="imgBtn_CallCamera_Video_Clicked" />
+                                              HorizontalOptions="Center"
+                                              VerticalOptions="Center"
+                                              Source="img_call_new_video_off.png"
+                                              BackgroundColor="Transparent"
+                                              Aspect="AspectFit"
+                                              Margin="0"
+                                              Grid.Column="5"
+                                              Clicked="imgBtn_CallCamera_Video_Clicked" />
                             </Grid>
-
                             <Grid	HorizontalOptions="FillAndExpand"
-									ColumnDefinitions="50,*,50,*,50,*,50"
-									Grid.Row="3">
-
-                                <Label	HorizontalOptions="Center"
-										VerticalOptions="Center"
-										Padding="0"
-										Text="MUTE"
-										FontSize="Medium"
-										TextColor="White"
-										Margin="0"
-										Grid.Column="1" />
-
-                                <Label		HorizontalOptions="Center"
-											VerticalOptions="Center"
-											Padding="0"
-											Text="END"
-											FontSize="Medium"
-											TextColor="White"
-											Margin="0"
-											Grid.Column="3" />
-
-
-                                <Label		HorizontalOptions="Center"
-											VerticalOptions="Center"
-											Padding="0"
-											Text="VIDEO"
-											FontSize="Medium"
-											TextColor="White"
-											Margin="0"
-											Grid.Column="5" />
-
-
+                                    ColumnDefinitions="20,*,30,*,30,*,20"
+                                    Grid.Row="3">
+                                <Frame 	HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        CornerRadius="5"
+                                        BorderColor="Transparent"
+                                        Margin="0"
+                                        Padding="0"
+                                        BackgroundColor="#40ffffff"
+                                        Grid.Column="1">
+                                    <Label	x:Name="lbl_Title_Mute_Video"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                            Padding="0"
+                                            Text="MUTE"
+                                            FontSize="Medium"
+                                            TextColor="White"
+                                            Margin="0" />
+                                </Frame>
+                                <Frame 	HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        CornerRadius="5"
+                                        BorderColor="Transparent"
+                                        Margin="0"
+                                        Padding="0"
+                                        BackgroundColor="#40ffffff"
+                                        Grid.Column="3">
+                                    <Label		x:Name="lbl_Title_EndClose_Video"
+                                                HorizontalOptions="Center"
+                                                VerticalOptions="Center"
+                                                Padding="0"
+                                                Text="END"
+                                                FontSize="Medium"
+                                                TextColor="White"
+                                                Margin="0" />
+                                </Frame>
+                                <Frame 	HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        CornerRadius="5"
+                                        BorderColor="Transparent"
+                                        Margin="0"
+                                        Padding="0"
+                                        BackgroundColor="#40ffffff"
+                                        Grid.Column="5">
+                                    <Label	x:Name="lbl_Title_Camera_Video"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                            Padding="0"
+                                            Text="VIDEO"
+                                            FontSize="Medium"
+                                            TextColor="White"
+                                            Margin="0" />
+                                </Frame>
                             </Grid>
-
-
                         </Grid>
                     </Grid>
-
-
-
                     <Frame 	HorizontalOptions="Start"
-							VerticalOptions="Start"
-							CornerRadius="5"
-							Margin="10"
-						BorderColor="Transparent"		Padding="5"
-							BackgroundColor="#40ffffff"
-							IsVisible="false">
-
-                        <Label		x:Name="lbl_Timer_Video"               
-                                
-                            HorizontalOptions="FillAndExpand"
-									VerticalOptions="FillAndExpand"
-									HorizontalTextAlignment="Center"
-									VerticalTextAlignment="Start"
-									Padding="5"
-									FontSize="Medium"
-									Text="12:00:00"
-									TextColor="White"
-									Margin="0" />
+                            VerticalOptions="Start"
+                            CornerRadius="5"
+                            Margin="10"
+                            BorderColor="Transparent"
+                            Padding="5"
+                            BackgroundColor="#40ffffff"
+                            IsVisible="false">
+                        <Label		x:Name="lbl_Timer_Video"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Start"
+                                    Padding="5"
+                                    FontSize="Medium"
+                                    Text="12:00:00"
+                                    TextColor="White"
+                                    Margin="0" />
                     </Frame>
-
                     <Frame 	HorizontalOptions="End"
-							VerticalOptions="Start"
-							CornerRadius="0"
-						BorderColor="Transparent"		Margin="0,20,10,0"
-							Padding="0"
-							BackgroundColor="Transparent"
-							IsVisible="false">
-
+                            VerticalOptions="Start"
+                            CornerRadius="0"
+                            BorderColor="Transparent"
+                            Margin="0,20,10,0"
+                            Padding="0"
+                            BackgroundColor="Transparent"
+                            IsVisible="false">
                         <StackLayout		 Padding="5"
-											 Spacing="0"
-											 Margin="0">
-
-
+                                             Spacing="0"
+                                             Margin="0">
                             <ImageButton  x:Name="imgBtn_CallHold_Video"
-										  HorizontalOptions="Center"
-										  VerticalOptions="Center"
-										  WidthRequest="50"
-										  HeightRequest="50"
-										  Source="img_call_new_hold.png"
-										  BackgroundColor="Transparent"
-										  Margin="0"
-										  Clicked="imgBtn_CallHold_Video_Clicked" />
-
-
-
+                                          HorizontalOptions="Center"
+                                          VerticalOptions="Center"
+                                          WidthRequest="50"
+                                          HeightRequest="50"
+                                          Source="img_call_new_hold.png"
+                                          BackgroundColor="Transparent"
+                                          Margin="0"
+                                          Clicked="imgBtn_CallHold_Video_Clicked" />
                             <ImageButton  x:Name="imgBtn_CallSpeaker_Video"
-										  HorizontalOptions="Center"
-										  VerticalOptions="Center"
-										  WidthRequest="50"
-										  HeightRequest="50"
-										  Source="img_call_new_speaker_on.png"
-										  BackgroundColor="Transparent"
-										  Margin="0,30,0,0"
-										  Clicked="imgBtn_CalSpeaker_Video_Clicked" />
-
-
-
+                                          HorizontalOptions="Center"
+                                          VerticalOptions="Center"
+                                          WidthRequest="50"
+                                          HeightRequest="50"
+                                          Source="img_call_new_speaker_on.png"
+                                          BackgroundColor="Transparent"
+                                          Margin="0,30,0,0"
+                                          Clicked="imgBtn_CalSpeaker_Video_Clicked" />
                             <ImageButton  x:Name="imgBtn_CallSwitch_Video"
-										  HorizontalOptions="Center"
-										  VerticalOptions="Center"
-										  WidthRequest="50"
-										  HeightRequest="50"
-										  Source="img_call_new_camera_front.png"
-										  BackgroundColor="Transparent"
-										  Margin="0,30,0,0"
-										  Clicked="imgBtn_CallSwitch_Video_Clicked" />
-
-
+                                          HorizontalOptions="Center"
+                                          VerticalOptions="Center"
+                                          WidthRequest="50"
+                                          HeightRequest="50"
+                                          Source="img_call_new_camera_front.png"
+                                          BackgroundColor="Transparent"
+                                          Margin="0,30,0,0"
+                                          Clicked="imgBtn_CallSwitch_Video_Clicked" />
                         </StackLayout>
                     </Frame>
-
-
                     <Grid  x:Name="grd_ToggleCallActionVideo"
-				   HorizontalOptions="Center"
-				   VerticalOptions="End"
-				   Margin="0"
-				   Padding="0"
-				   WidthRequest="30"
-                           HeightRequest="30"  IsVisible="false">
-
+                           HorizontalOptions="Center"
+                           VerticalOptions="End"
+                           Margin="0"
+                           Padding="0"
+                           WidthRequest="30"
+                           HeightRequest="30"
+                           IsVisible="false">
                         <Frame 	HorizontalOptions="Center"
-					VerticalOptions="Center"
-					CornerRadius="5"
-BorderColor="Transparent"		
-        Margin="0"
-					Padding="0"
-					BackgroundColor="#40ffffff"
-					>
-
-                            <ImageButton x:Name="imgBtn_ToggleCallActionVideo"  
-                                 Source="img_menu_white.png"
-                                 BackgroundColor="Transparent"
-                                 Background="Transparent"
-                                 HorizontalOptions="Center"
-                                 VerticalOptions="Center"
-                                 Clicked="imgBtn_ToggleCallActionVideo_Clicked"	
-                                WidthRequest="30"
-          HeightRequest="30"  />
+                                VerticalOptions="Center"
+                                CornerRadius="5"
+                                BorderColor="Transparent"
+                                Margin="0"
+                                Padding="0"
+                                BackgroundColor="#40ffffff">
+                            <ImageButton x:Name="imgBtn_ToggleCallActionVideo"
+                                         Source="img_menu_white.png"
+                                         BackgroundColor="Transparent"
+                                         Background="Transparent"
+                                         HorizontalOptions="Center"
+                                         VerticalOptions="Center"
+                                         Clicked="imgBtn_ToggleCallActionVideo_Clicked"
+                                         WidthRequest="30"
+                                         HeightRequest="30" />
                         </Frame>
                     </Grid>
                 </Grid>
-
-
             </Frame>
-
             <Grid x:Name="ll_SplashBG"
-				  HorizontalOptions="FillAndExpand"
-				  VerticalOptions="FillAndExpand"
-				  Margin="0"
-				  Padding="0"
-				  IsVisible="true">
-
-
+                  HorizontalOptions="FillAndExpand"
+                  VerticalOptions="FillAndExpand"
+                  Margin="0"
+                  Padding="0"
+                  IsVisible="true">
                 <Image	 x:Name="imgBG_Splash"
-						 HorizontalOptions="FillAndExpand"
-						 VerticalOptions="FillAndExpand"
-						 Source="call_bg.png"
-						 Aspect="Fill"
-						 Margin="0" />
-
-
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         Source="call_bg.png"
+                         Aspect="Fill"
+                         Margin="0" />
                 <Grid  x:Name="ll_Splash"
-					   HorizontalOptions="FillAndExpand"
-					   VerticalOptions="FillAndExpand"
-					   Margin="0"
-					   Padding="0"
-					   IsVisible="true">
-
-
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand"
+                       Margin="0"
+                       Padding="0"
+                       IsVisible="true">
                     <Frame HorizontalOptions="FillAndExpand"
-						   VerticalOptions="FillAndExpand"
-						   BackgroundColor="Transparent"
-					BorderColor="Transparent"		   CornerRadius="0"
-						   HasShadow="False"
-						   Margin="0"
-						   Padding="0">
-
+                           VerticalOptions="FillAndExpand"
+                           BackgroundColor="Transparent"
+                           BorderColor="Transparent"
+                           CornerRadius="0"
+                           HasShadow="False"
+                           Margin="0"
+                           Padding="0">
                         <Grid		HorizontalOptions="FillAndExpand"
-									VerticalOptions="FillAndExpand"
-									RowDefinitions="100,*,50,50,40">
-
+                                    VerticalOptions="FillAndExpand"
+                                    RowDefinitions="100,*,50,50,40">
                             <Grid		HorizontalOptions="CenterAndExpand"
-										VerticalOptions="Start"
-										RowDefinitions="50,auto, 50,*"
-										Grid.Row="1">
-
-                                <Label	HorizontalOptions="Center"
-										VerticalOptions="End"
-										HorizontalTextAlignment="Center"
-										VerticalTextAlignment="End"
-										Padding="0"
-										Text="Calling"
-										FontSize="Medium"
-										TextColor="White"
-										Margin="0"
-										Grid.Row="0"
-										IsVisible="false" />
-
-
+                                        VerticalOptions="Start"
+                                        RowDefinitions="50,auto, 50,*"
+                                        Grid.Row="1">
+                                <Label	x:Name="lbl_Title_Callingx"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="End"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="End"
+                                        Padding="0"
+                                        Text="Calling ..."
+                                        FontSize="Medium"
+                                        TextColor="White"
+                                        Margin="0"
+                                        Grid.Row="0"
+                                        IsVisible="false" />
                                 <Grid  x:Name="grd_AvatarName_Splash"
-									   HorizontalOptions="Center"
-									   VerticalOptions="Start"
-									   WidthRequest="250"
-									   HeightRequest="250"
-									   Padding="0"
-									   Margin="0,50,0,0"
-									   IsClippedToBounds="True"
-									   Grid.Row="1">
-
-
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Start"
+                                       WidthRequest="250"
+                                       HeightRequest="250"
+                                       Padding="0"
+                                       Margin="0,50,0,0"
+                                       IsClippedToBounds="True"
+                                       Grid.Row="1">
                                     <Grid HorizontalOptions="FillAndExpand"
-										  VerticalOptions="FillAndExpand"
-										  IsVisible="false">
-
-
-
+                                          VerticalOptions="FillAndExpand"
+                                          IsVisible="false">
                                         <Frame 	 x:Name="frm_AvatarName_Splash"
-												 HorizontalOptions="FillAndExpand"
-												 VerticalOptions="FillAndExpand"
-												BorderColor="Transparent"	 CornerRadius="125"
-												 BackgroundColor="Transparent"
-												 Padding="0"
-												 IsClippedToBounds="True">
-
+                                                 HorizontalOptions="FillAndExpand"
+                                                 VerticalOptions="FillAndExpand"
+                                                 BorderColor="Transparent"
+                                                 CornerRadius="125"
+                                                 BackgroundColor="Transparent"
+                                                 Padding="0"
+                                                 IsClippedToBounds="True">
                                             <Image x:Name="img_AvatarName_Splash"
-												   Source="me.jpg"
-												   HorizontalOptions="CenterAndExpand"
-												   VerticalOptions="CenterAndExpand"
-												   BackgroundColor="{StaticResource iAppColor_System_Text_TitleColor_Primary}"
-												   Margin="1" />
-
-
-
+                                                   Source="me.jpg"
+                                                   HorizontalOptions="CenterAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                                   BackgroundColor="{StaticResource iAppColor_System_Text_TitleColor_Primary}"
+                                                   Margin="1" />
                                         </Frame>
-
                                         <Image x:Name="img_AvatarNavmeBcG12xxcx"
-											   Source="img_dating_circle_gradient.png"
-											   HorizontalOptions="FillAndExpand"
-											   VerticalOptions="FillAndExpand"
-											   Margin="0" />
-
-
+                                               Source="img_dating_circle_gradient.png"
+                                               HorizontalOptions="FillAndExpand"
+                                               VerticalOptions="FillAndExpand"
+                                               Margin="0" />
                                     </Grid>
-
                                     <Grid HorizontalOptions="FillAndExpand"
-										  VerticalOptions="FillAndExpand"
-										  IsVisible="true">
-
+                                          VerticalOptions="FillAndExpand"
+                                          IsVisible="true">
                                         <Image Source="img_circle_black.png"
-											   HorizontalOptions="FillAndExpand"
-											   VerticalOptions="FillAndExpand"
-											   Margin="2" />
-
+                                               HorizontalOptions="FillAndExpand"
+                                               VerticalOptions="FillAndExpand"
+                                               Margin="2" />
                                         <Label x:Name="lbl_AvatarName_Splash"
-											   HorizontalOptions="FillAndExpand"
-											   VerticalOptions="FillAndExpand"
-											   Text="SH"
-											   VerticalTextAlignment="Center"
-											   HorizontalTextAlignment="Center"
-											   FontSize="50"
-											   TextColor="{StaticResource iAppColor_White}" />
-
+                                               HorizontalOptions="FillAndExpand"
+                                               VerticalOptions="FillAndExpand"
+                                               Text="SH"
+                                               VerticalTextAlignment="Center"
+                                               HorizontalTextAlignment="Center"
+                                               FontSize="50"
+                                               TextColor="{StaticResource iAppColor_White}" />
                                         <Image x:Name="img_AvatarNameBG2madfdvss"
-											   Source="img_dating_circle_gradient.png"
-											   HorizontalOptions="FillAndExpand"
-											   VerticalOptions="FillAndExpand"
-											   Margin="0" />
-
+                                               Source="img_dating_circle_gradient.png"
+                                               HorizontalOptions="FillAndExpand"
+                                               VerticalOptions="FillAndExpand"
+                                               Margin="0" />
                                     </Grid>
-
                                 </Grid>
-
                                 <Label	x:Name="lbl_UserName"
-                                    HorizontalOptions="FillAndExpand"
-											VerticalOptions="FillAndExpand"
-											HorizontalTextAlignment="Center"
-											VerticalTextAlignment="Start"
-											Padding="5"
-											Text="Shaymaa Hafez"
-											FontSize="Medium"
-											TextColor="White"
-											Margin="0"
-											Grid.Row="2" />
-
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="FillAndExpand"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Start"
+                                        Padding="5"
+                                        Text="Shaymaa Hafez"
+                                        FontSize="Medium"
+                                        TextColor="White"
+                                        Margin="0"
+                                        Grid.Row="2" />
                                 <Frame 	HorizontalOptions="CenterAndExpand"
-										VerticalOptions="Start"
-										CornerRadius="5"
-										Margin="10"
-									BorderColor="Transparent"		Padding="5"
-										BackgroundColor="#40ffffff"
-										Grid.Row="3"
-										IsVisible="false">
+                                        VerticalOptions="Start"
+                                        CornerRadius="5"
+                                        Margin="10"
+                                        BorderColor="Transparent"
+                                        Padding="5"
+                                        BackgroundColor="#40ffffff"
+                                        Grid.Row="3"
+                                        IsVisible="false">
                                     <Label		HorizontalOptions="FillAndExpand"
-												VerticalOptions="FillAndExpand"
-												HorizontalTextAlignment="Center"
-												VerticalTextAlignment="Start"
-												Padding="5"
-												FontSize="Medium"
-												Text="Outgoing call ending (12:00:00)"
-												TextColor="White"
-												Margin="0" />
+                                                VerticalOptions="FillAndExpand"
+                                                HorizontalTextAlignment="Center"
+                                                VerticalTextAlignment="Start"
+                                                Padding="5"
+                                                FontSize="Medium"
+                                                Text="Outgoing call ending (12:00:00)"
+                                                TextColor="White"
+                                                Margin="0" />
                                 </Frame>
-
-
-
                             </Grid>
-
-
                         </Grid>
                     </Frame>
-
                 </Grid>
-
-
                 <Grid  x:Name="ll_Drop"
-					   HorizontalOptions="FillAndExpand"
-					   VerticalOptions="FillAndExpand"
-					   Margin="0"
-					   Padding="0"
-					   IsVisible="false"
-					   >
-
-
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand"
+                       Margin="0"
+                       Padding="0"
+                       IsVisible="false">
                     <Frame HorizontalOptions="FillAndExpand"
-						   VerticalOptions="FillAndExpand"
-							BorderColor="Transparent"   BackgroundColor="Transparent"
-						   CornerRadius="0"
-						   HasShadow="False"
-						   Margin="0"
-						   Padding="0">
-
+                           VerticalOptions="FillAndExpand"
+                           BorderColor="Transparent"
+                           BackgroundColor="Transparent"
+                           CornerRadius="0"
+                           HasShadow="False"
+                           Margin="0"
+                           Padding="0">
                         <Grid		HorizontalOptions="FillAndExpand"
-									VerticalOptions="FillAndExpand"
-									RowDefinitions="100,*,50,50,40">
-
+                                    VerticalOptions="FillAndExpand"
+                                    RowDefinitions="100,*,50,50,40">
                             <Grid		HorizontalOptions="CenterAndExpand"
-										VerticalOptions="Start"
-										RowDefinitions="50,auto, 50,*"
-										Grid.Row="1">
-
-                                <Label	HorizontalOptions="Center"
-										VerticalOptions="End"
-										HorizontalTextAlignment="Center"
-										VerticalTextAlignment="End"
-										Padding="0"
-										Text="Calling"
-										FontSize="Medium"
-										TextColor="White"
-										Margin="0"
-										IsVisible="true"
-										Grid.Row="0" />
-
-
+                                        VerticalOptions="Start"
+                                        RowDefinitions="50,auto, 50,*"
+                                        Grid.Row="1">
+                                <Label		x:Name="lbl_Title_Calling"
+                                            HorizontalOptions="Center"
+                                        VerticalOptions="End"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="End"
+                                        Padding="0"
+                                        Text="Calling"
+                                        FontSize="Medium"
+                                        TextColor="White"
+                                        Margin="0"
+                                        IsVisible="true"
+                                        Grid.Row="0" />
                                 <Grid  x:Name="grd_AvatarName_Drop"
-									   HorizontalOptions="Center"
-									   VerticalOptions="Start"
-									   WidthRequest="250"
-									   HeightRequest="250"
-									   Padding="0"
-									   Margin="0,50,0,0"
-									   IsClippedToBounds="True"
-									   Grid.Row="1">
-
-
-                                </Grid>
-
-
-
-
-
-
-
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Start"
+                                       WidthRequest="250"
+                                       HeightRequest="250"
+                                       Padding="0"
+                                       Margin="0,50,0,0"
+                                       IsClippedToBounds="True"
+                                       Grid.Row="1"></Grid>
                             </Grid>
-
-
-
-
                             <ImageButton  x:Name="imgBtn_CallDrop"
-										  HorizontalOptions="Center"
-										  VerticalOptions="Center"
-										  Source="img_call_new_close.png"
-										  BackgroundColor="Transparent"
-										  Aspect="AspectFit"
-										  Margin="0"
-										  Grid.Row="2"
-										  Clicked="imgBtn_CallDrop_Clicked" />
-
-                            <Label	HorizontalOptions="Center"
-									VerticalOptions="Center"
-									Padding="0"
-									Text="DROP"
-									FontSize="Medium"
-									TextColor="White"
-									Margin="0"
-									Grid.Row="3" />
+                                          HorizontalOptions="Center"
+                                          VerticalOptions="Center"
+                                          Source="img_call_new_close.png"
+                                          BackgroundColor="Transparent"
+                                          Aspect="AspectFit"
+                                          Margin="0"
+                                          Grid.Row="2"
+                                          Clicked="imgBtn_CallDrop_Clicked" />
+                            <Frame 	HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    CornerRadius="5"
+                                    BorderColor="Transparent"
+                                    Margin="0"
+                                    Padding="0"
+                                    BackgroundColor="#40ffffff"
+                                    Grid.Row="3">
+                                <Label	x:Name="lbl_Title_Drop"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        Padding="0"
+                                        Text="DROP"
+                                        FontSize="Medium"
+                                        TextColor="White"
+                                        Margin="0" />
+                            </Frame>
                         </Grid>
                     </Frame>
-
                 </Grid>
-
-
-
-
                 <Grid  x:Name="ll_ActionVoice"
-					   HorizontalOptions="FillAndExpand"
-					   VerticalOptions="FillAndExpand"
-					   Margin="0"
-					   Padding="0"
-					   IsVisible="false">
-
-
-
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand"
+                       Margin="0"
+                       Padding="0"
+                       IsVisible="false">
                     <Frame HorizontalOptions="FillAndExpand"
-						   VerticalOptions="FillAndExpand"
-						   BackgroundColor="Transparent"
-						BorderColor="Transparent"	   CornerRadius="0"
-						   HasShadow="False"
-						   Margin="0"
-						   Padding="0">
-
+                           VerticalOptions="FillAndExpand"
+                           BackgroundColor="Transparent"
+                           BorderColor="Transparent"
+                           CornerRadius="0"
+                           HasShadow="False"
+                           Margin="0"
+                           Padding="0">
                         <Grid		HorizontalOptions="FillAndExpand"
-									VerticalOptions="FillAndExpand"
-									RowDefinitions="100,*,50,50,40">
-
+                                    VerticalOptions="FillAndExpand"
+                                    RowDefinitions="100,*,50,50,40">
                             <Grid		HorizontalOptions="CenterAndExpand"
-										VerticalOptions="Start"
-										RowDefinitions="50,auto, 50,*"
-										Grid.Row="1">
-
+                                        VerticalOptions="Start"
+                                        RowDefinitions="50,auto, 50,*"
+                                        Grid.Row="1">
                                 <Label	HorizontalOptions="Center"
-										VerticalOptions="End"
-										HorizontalTextAlignment="Center"
-										VerticalTextAlignment="End"
-										Padding="0"
-										Text="Calling"
-										FontSize="Medium"
-										TextColor="White"
-										Margin="0"
-										IsVisible="false"
-										Grid.Row="0" />
-
-
+                                        VerticalOptions="End"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="End"
+                                        Padding="0"
+                                        Text="Calling"
+                                        FontSize="Medium"
+                                        TextColor="White"
+                                        Margin="0"
+                                        IsVisible="false"
+                                        Grid.Row="0" />
                                 <Grid  x:Name="grd_AvatarName_ActionVoice"
-									   HorizontalOptions="Center"
-									   VerticalOptions="Start"
-									   WidthRequest="250"
-									   HeightRequest="250"
-									   Padding="0"
-									   Margin="0,50,0,0"
-									   IsClippedToBounds="True"
-									   Grid.Row="1">
-
-
-
-                                </Grid>
-
-
-
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Start"
+                                       WidthRequest="250"
+                                       HeightRequest="250"
+                                       Padding="0"
+                                       Margin="0,50,0,0"
+                                       IsClippedToBounds="True"
+                                       Grid.Row="1"></Grid>
                             </Grid>
-
-
-
-
-
-
                             <Grid	HorizontalOptions="FillAndExpand"
-									ColumnDefinitions="50,*,50,*,50,*,50"
-									Grid.Row="2">
-
+                                    ColumnDefinitions="20,*,30,*,30,*,20"
+                                    Grid.Row="2">
                                 <ImageButton  x:Name="imgBtn_CallMute_Voice"
-											  HorizontalOptions="Center"
-											  VerticalOptions="Center"
-											  Source="img_call_new_mute.png"
-											  BackgroundColor="Transparent"
-											  Aspect="AspectFit"
-											  Margin="0"
-											  Grid.Column="1"
-											  Clicked="imgBtn_CallMute_Voice_Clicked" />
-
+                                              HorizontalOptions="Center"
+                                              VerticalOptions="Center"
+                                              Source="img_call_new_mute.png"
+                                              BackgroundColor="Transparent"
+                                              Aspect="AspectFit"
+                                              Margin="0"
+                                              Grid.Column="1"
+                                              Clicked="imgBtn_CallMute_Voice_Clicked" />
                                 <ImageButton  x:Name="imgBtn_CallEndClose_Voice"
-											  HorizontalOptions="Center"
-											  VerticalOptions="Center"
-											  Source="img_call_new_close.png"
-											  BackgroundColor="Transparent"
-											  Aspect="AspectFit"
-											  Margin="0"
-											  Grid.Column="3"
-											  Clicked="imgBtn_CallEndClose_Voice_Clicked" />
-
+                                              HorizontalOptions="Center"
+                                              VerticalOptions="Center"
+                                              Source="img_call_new_close.png"
+                                              BackgroundColor="Transparent"
+                                              Aspect="AspectFit"
+                                              Margin="0"
+                                              Grid.Column="3"
+                                              Clicked="imgBtn_CallEndClose_Voice_Clicked" />
                                 <ImageButton  x:Name="imgBtn_CallCamera_Voice"
-											  HorizontalOptions="Center"
-											  VerticalOptions="Center"
-											  Source="img_call_new_video_off.png"
-											  BackgroundColor="Transparent"
-											  Aspect="AspectFit"
-											  Margin="0"
-											  Grid.Column="5"
-											  Clicked="imgBtn_CallCamera_Voice_Clicked" />
+                                              HorizontalOptions="Center"
+                                              VerticalOptions="Center"
+                                              Source="img_call_new_video_off.png"
+                                              BackgroundColor="Transparent"
+                                              Aspect="AspectFit"
+                                              Margin="0"
+                                              Grid.Column="5"
+                                              Clicked="imgBtn_CallCamera_Voice_Clicked" />
                             </Grid>
-
                             <Grid	HorizontalOptions="FillAndExpand"
-									ColumnDefinitions="50,*,50,*,50,*,50"
-									Grid.Row="3">
-
-                                <Label	HorizontalOptions="Center"
-										VerticalOptions="Center"
-										Padding="0"
-										Text="MUTE"
-										FontSize="Medium"
-										TextColor="White"
-										Margin="0"
-										Grid.Column="1" />
-
-                                <Label		HorizontalOptions="Center"
-											VerticalOptions="Center"
-											Padding="0"
-											Text="END"
-											FontSize="Medium"
-											TextColor="White"
-											Margin="0"
-											Grid.Column="3" />
-
-
-                                <Label		HorizontalOptions="Center"
-											VerticalOptions="Center"
-											Padding="0"
-											Text="VIDEO"
-											FontSize="Medium"
-											TextColor="White"
-											Margin="0"
-											Grid.Column="5" />
-
-
+                                    ColumnDefinitions="20,*,30,*,30,*,20"
+                                    Grid.Row="3">
+                                <Frame 	HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        CornerRadius="5"
+                                        BorderColor="Transparent"
+                                        Margin="0"
+                                        Padding="0"
+                                        BackgroundColor="#40ffffff"
+                                        Grid.Column="1">
+                                    <Label	x:Name="lbl_Title_Mute_Voice"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                            Padding="0"
+                                            Text="MUTE"
+                                            FontSize="Medium"
+                                            TextColor="White"
+                                            Margin="0" />
+                                </Frame>
+                                <Frame 	HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        CornerRadius="5"
+                                        BorderColor="Transparent"
+                                        Margin="0"
+                                        Padding="0"
+                                        BackgroundColor="#40ffffff"
+                                        Grid.Column="3">
+                                    <Label			x:Name="lbl_Title_EndClose_Voice"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center"
+                                                    Padding="0"
+                                                    Text="END"
+                                                    FontSize="Medium"
+                                                    TextColor="White"
+                                                    Margin="0" />
+                                </Frame>
+                                <Frame 	HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        CornerRadius="5"
+                                        BorderColor="Transparent"
+                                        Margin="0"
+                                        Padding="0"
+                                        BackgroundColor="#40ffffff"
+                                        Grid.Column="5">
+                                    <Label		x:Name="lbl_Title_Camera_Voice"
+                                                HorizontalOptions="Center"
+                                                VerticalOptions="Center"
+                                                Padding="0"
+                                                Text="VIDEO"
+                                                FontSize="Medium"
+                                                TextColor="White"
+                                                Margin="0" />
+                                </Frame>
                             </Grid>
-
-
                         </Grid>
                     </Frame>
-
-
-
                     <Frame 	HorizontalOptions="Start"
-							VerticalOptions="Start"
-							CornerRadius="5"
-					BorderColor="Transparent"		
+                            VerticalOptions="Start"
+                            CornerRadius="5"
+                            BorderColor="Transparent"
                             Margin="10"
-							Padding="5"
-							BackgroundColor="#40ffffff"
-							IsVisible="false">
-
-                        <Label	x:Name="lbl_Timer_Voice"                 
+                            Padding="5"
+                            BackgroundColor="#40ffffff"
+                            IsVisible="false">
+                        <Label	x:Name="lbl_Timer_Voice"
                                 HorizontalOptions="FillAndExpand"
-									VerticalOptions="FillAndExpand"
-									HorizontalTextAlignment="Center"
-									VerticalTextAlignment="Start"
-									Padding="5"
-									FontSize="Medium"
-									Text="12:00:00"
-									TextColor="White"
-									Margin="0" />
+                                VerticalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Start"
+                                Padding="5"
+                                FontSize="Medium"
+                                Text="12:00:00"
+                                TextColor="White"
+                                Margin="0" />
                     </Frame>
-
                     <Frame 	HorizontalOptions="End"
-							VerticalOptions="Start"
-							CornerRadius="0"
-							Margin="0,20,10,0"
-					BorderColor="Transparent"			Padding="0"
-							BackgroundColor="Transparent"
-							IsVisible="false">
-
+                            VerticalOptions="Start"
+                            CornerRadius="0"
+                            Margin="0,20,10,0"
+                            BorderColor="Transparent"
+                            Padding="0"
+                            BackgroundColor="Transparent"
+                            IsVisible="false">
                         <StackLayout		 Padding="5"
-											 Spacing="0"
-											 Margin="0">
-
-
+                                             Spacing="0"
+                                             Margin="0">
                             <ImageButton  x:Name="imgBtn_CallHold_Voice"
-										  HorizontalOptions="Center"
-										  VerticalOptions="Center"
-										  WidthRequest="50"
-										  HeightRequest="50"
-										  Source="img_call_new_hold.png"
-										  BackgroundColor="Transparent"
-										  Margin="0"
-										  Clicked="imgBtn_CallHold_Voice_Clicked" />
-
-
-
+                                          HorizontalOptions="Center"
+                                          VerticalOptions="Center"
+                                          WidthRequest="50"
+                                          HeightRequest="50"
+                                          Source="img_call_new_hold.png"
+                                          BackgroundColor="Transparent"
+                                          Margin="0"
+                                          Clicked="imgBtn_CallHold_Voice_Clicked" />
                             <ImageButton  x:Name="imgBtn_CallSpeaker_Voice"
-										  HorizontalOptions="Center"
-										  VerticalOptions="Center"
-										  WidthRequest="50"
-										  HeightRequest="50"
-										  Source="img_call_new_speaker_on.png"
-										  BackgroundColor="Transparent"
-										  Margin="0,30,0,0"
-										  Clicked="imgBtn_CalSpeaker_Voice_Clicked" />
-
-
+                                          HorizontalOptions="Center"
+                                          VerticalOptions="Center"
+                                          WidthRequest="50"
+                                          HeightRequest="50"
+                                          Source="img_call_new_speaker_on.png"
+                                          BackgroundColor="Transparent"
+                                          Margin="0,30,0,0"
+                                          Clicked="imgBtn_CalSpeaker_Voice_Clicked" />
                         </StackLayout>
                     </Frame>
-
-
                 </Grid>
-
-
-
                 <Grid  x:Name="ll_Ring"
-					   HorizontalOptions="FillAndExpand"
-					   VerticalOptions="FillAndExpand"
-					   Margin="0"
-					   Padding="0"
-					   IsVisible="false"
-					   >
-
-
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand"
+                       Margin="0"
+                       Padding="0"
+                       IsVisible="false">
                     <Frame HorizontalOptions="FillAndExpand"
-						   VerticalOptions="FillAndExpand"
-						   BackgroundColor="Transparent"
-						   CornerRadius="0"
-					BorderColor="Transparent"		   HasShadow="False"
-						   Margin="0"
-						   Padding="0">
-
+                           VerticalOptions="FillAndExpand"
+                           BackgroundColor="Transparent"
+                           CornerRadius="0"
+                           BorderColor="Transparent"
+                           HasShadow="False"
+                           Margin="0"
+                           Padding="0">
                         <Grid		HorizontalOptions="FillAndExpand"
-									VerticalOptions="FillAndExpand"
-									RowDefinitions="100,*,50,50,40">
-
+                                    VerticalOptions="FillAndExpand"
+                                    RowDefinitions="100,*,50,50,40">
                             <Grid		HorizontalOptions="CenterAndExpand"
-										VerticalOptions="Start"
-										RowDefinitions="50,auto, 50,*"
-										Grid.Row="1">
-
-                                <Label	HorizontalOptions="Center"
-										VerticalOptions="End"
-										HorizontalTextAlignment="Center"
-										VerticalTextAlignment="End"
-										Padding="0"
-										Text="Calling"
-										FontSize="Medium"
-										TextColor="White"
-										Margin="0"
-										IsVisible="true"
-										Grid.Row="0" />
-
-
+                                        VerticalOptions="Start"
+                                        RowDefinitions="50,auto, 50,*"
+                                        Grid.Row="1">
+                                <Label	x:Name="lbl_Title_Ringing"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="End"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="End"
+                                        Padding="0"
+                                        Text="Ringing ..."
+                                        FontSize="Medium"
+                                        TextColor="White"
+                                        Margin="0"
+                                        IsVisible="true"
+                                        Grid.Row="0" />
                                 <Grid  x:Name="grd_AvatarName_Ring"
-									   HorizontalOptions="Center"
-									   VerticalOptions="Start"
-									   WidthRequest="250"
-									   HeightRequest="250"
-									   Padding="0"
-									   Margin="0,50,0,0"
-									   IsClippedToBounds="True"
-									   Grid.Row="1">
-
-
-
-                                </Grid>
-
-
-
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Start"
+                                       WidthRequest="250"
+                                       HeightRequest="250"
+                                       Padding="0"
+                                       Margin="0,50,0,0"
+                                       IsClippedToBounds="True"
+                                       Grid.Row="1"></Grid>
                             </Grid>
-
-
-
-
                             <Grid	HorizontalOptions="FillAndExpand"
-									ColumnDefinitions="50,*,50,*,50"
-									Grid.Row="2">
-
+                                    ColumnDefinitions="50,*,50,*,50"
+                                    Grid.Row="2">
                                 <ImageButton  x:Name="imgBtn_CallDecline"
-											  HorizontalOptions="Center"
-											  VerticalOptions="Center"
-											  Source="img_call_new_close.png"
-											  BackgroundColor="Transparent"
-											  Aspect="AspectFit"
-											  Margin="0"
-											  Grid.Column="1"
-											  Clicked="imgBtn_CallDecline_Clicked" />
-
+                                              HorizontalOptions="Center"
+                                              VerticalOptions="Center"
+                                              Source="img_call_new_close.png"
+                                              BackgroundColor="Transparent"
+                                              Aspect="AspectFit"
+                                              Margin="0"
+                                              Grid.Column="1"
+                                              Clicked="imgBtn_CallDecline_Clicked" />
                                 <ImageButton  x:Name="imgBtn_CallAnswer"
-											  HorizontalOptions="Center"
-											  VerticalOptions="Center"
-											  Source="img_call_new_ring.png"
-											  BackgroundColor="Transparent"
-											  Aspect="AspectFit"
-											  Margin="0"
-											  Grid.Column="3"
-											  Clicked="imgBtn_CallAnswer_Clicked" />
+                                              HorizontalOptions="Center"
+                                              VerticalOptions="Center"
+                                              Source="img_call_new_ring.png"
+                                              BackgroundColor="Transparent"
+                                              Aspect="AspectFit"
+                                              Margin="0"
+                                              Grid.Column="3"
+                                              Clicked="imgBtn_CallAnswer_Clicked" />
                             </Grid>
-
                             <Grid	HorizontalOptions="FillAndExpand"
-									ColumnDefinitions="50,*,50,*,50"
-									Grid.Row="3">
-
-                                <Label	HorizontalOptions="Center"
-										VerticalOptions="Center"
-										Padding="0"
-										Text="DECLINE"
-										FontSize="Medium"
-										TextColor="White"
-										Margin="0"
-										Grid.Column="1" />
-
-                                <Label		HorizontalOptions="Center"
-											VerticalOptions="Center"
-											Padding="0"
-											Text="ANSWER"
-											FontSize="Medium"
-											TextColor="White"
-											Margin="0"
-											Grid.Column="3" />
-
-
-                            </Grid>
-
-
-                        </Grid>
-                    </Frame>
-
-                </Grid>
-
-
-
-                <Grid  x:Name="ll_Redial"
-					   HorizontalOptions="FillAndExpand"
-					   VerticalOptions="FillAndExpand"
-					   Margin="0"
-					   Padding="0"
-					   IsVisible="false"
-					   >
-
-
-
-                    <Frame HorizontalOptions="FillAndExpand"
-						   VerticalOptions="FillAndExpand"
-						   BackgroundColor="Transparent"
-						BorderColor="Transparent"	   CornerRadius="0"
-						   HasShadow="False"
-						   Margin="0"
-						   Padding="0">
-
-                        <Grid		HorizontalOptions="FillAndExpand"
-									VerticalOptions="FillAndExpand"
-									RowDefinitions="100,*, 50,50,20">
-
-                            <Grid		HorizontalOptions="CenterAndExpand"
-										VerticalOptions="Start"
-										RowDefinitions="50,auto, 50,*"
-										Grid.Row="1">
-
-
-
-
-                                <Grid  x:Name="grd_AvatarName_Redial"
-									   HorizontalOptions="Center"
-									   VerticalOptions="Start"
-									   WidthRequest="250"
-									   HeightRequest="250"
-									   Padding="0"
-									   Margin="0,50,0,0"
-									   IsClippedToBounds="True"
-									   Grid.Row="1">
-
-
-
-                                </Grid>
-
-
-
-                                <Frame 	HorizontalOptions="CenterAndExpand"
-										VerticalOptions="Start"
-										CornerRadius="5"
-								BorderColor="Transparent"			Margin="10"
-										Padding="5"
-										BackgroundColor="#40ffffff"
-										Grid.Row="3"
-										IsVisible="true">
-                                    <Label	 x:Name="lbl_CallMessageText"
-											 HorizontalOptions="FillAndExpand"
-											 VerticalOptions="FillAndExpand"
-											 HorizontalTextAlignment="Center"
-											 VerticalTextAlignment="Start"
-											 Padding="5"
-											 FontSize="Medium"
-											 Text="Outgoing call ending (12:00:00)"
-											 TextColor="White"
-											 Margin="0" />
+                                    ColumnDefinitions="50,*,50,*,50"
+                                    Grid.Row="3">
+                                <Frame 	HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        CornerRadius="5"
+                                        BorderColor="Transparent"
+                                        Margin="0"
+                                        Padding="0"
+                                        BackgroundColor="#40ffffff"
+                                        Grid.Column="1">
+                                    <Label x:Name="lbl_Title_Decline"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           Padding="0"
+                                           Text="DECLINE"
+                                           FontSize="Medium"
+                                           TextColor="White"
+                                           Margin="0" />
                                 </Frame>
-
-
-
+                                <Frame 	HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        CornerRadius="5"
+                                        BorderColor="Transparent"
+                                        Margin="0"
+                                        Padding="0"
+                                        BackgroundColor="#40ffffff"
+                                        Grid.Column="3">
+                                    <Label	x:Name="lbl_Title_Answer"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                            Padding="0"
+                                            Text="ANSWER"
+                                            FontSize="Medium"
+                                            TextColor="White"
+                                            Margin="0" />
+                                </Frame>
                             </Grid>
-
-
-
-                            <Grid	HorizontalOptions="FillAndExpand"
-									ColumnDefinitions="50,*,50,*,50"
-									Grid.Row="2">
-
-                                <ImageButton  x:Name="imgBtn_CallCancel"
-											  HorizontalOptions="Center"
-											  VerticalOptions="Center"
-											  Source="img_call_new_close.png"
-											  BackgroundColor="Transparent"
-											  Aspect="AspectFit"
-											  Margin="0"
-											  Grid.Column="1"
-											  Clicked="imgBtn_CallCancel_Clicked" />
-
-                                <ImageButton  x:Name="imgBtn_CallRedial"
-											  HorizontalOptions="Center"
-											  VerticalOptions="Center"
-											  Source="img_call_new_ring.png"
-											  BackgroundColor="Transparent"
-											  Aspect="AspectFit"
-											  Margin="0"
-											  Grid.Column="3"
-											  Clicked="imgBtn_CallRedial_Clicked" />
-                            </Grid>
-
-                            <Grid	HorizontalOptions="FillAndExpand"
-									ColumnDefinitions="50,*,50,*,50"
-									Grid.Row="3">
-
-                                <Label	HorizontalOptions="Center"
-										VerticalOptions="Center"
-										Padding="0"
-										Text="CANCEL"
-										FontSize="Medium"
-										TextColor="White"
-										Margin="0"
-										Grid.Column="1" />
-
-                                <Label		HorizontalOptions="Center"
-											VerticalOptions="Center"
-											Padding="0"
-											Text="CALL"
-											FontSize="Medium"
-											TextColor="White"
-											Margin="0"
-											Grid.Column="3" />
-
-
-                            </Grid>
-
-
                         </Grid>
                     </Frame>
-
                 </Grid>
-
-
+                <Grid  x:Name="ll_Redial"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand"
+                       Margin="0"
+                       Padding="0"
+                       IsVisible="false">
+                    <Frame HorizontalOptions="FillAndExpand"
+                           VerticalOptions="FillAndExpand"
+                           BackgroundColor="Transparent"
+                           BorderColor="Transparent"
+                           CornerRadius="0"
+                           HasShadow="False"
+                           Margin="0"
+                           Padding="0">
+                        <Grid		HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    RowDefinitions="100,*, 50,50,20">
+                            <Grid		HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="Start"
+                                        RowDefinitions="50,auto, 50,*"
+                                        Grid.Row="1">
+                                <Grid  x:Name="grd_AvatarName_Redial"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Start"
+                                       WidthRequest="250"
+                                       HeightRequest="250"
+                                       Padding="0"
+                                       Margin="0,50,0,0"
+                                       IsClippedToBounds="True"
+                                       Grid.Row="1"></Grid>
+                                <Frame 	HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="Start"
+                                        CornerRadius="5"
+                                        BorderColor="Transparent"
+                                        Margin="10"
+                                        Padding="5"
+                                        BackgroundColor="#40ffffff"
+                                        Grid.Row="3"
+                                        IsVisible="true">
+                                    <Label	 x:Name="lbl_CallMessageText"
+                                             HorizontalOptions="FillAndExpand"
+                                             VerticalOptions="FillAndExpand"
+                                             HorizontalTextAlignment="Center"
+                                             VerticalTextAlignment="Start"
+                                             Padding="5"
+                                             FontSize="Medium"
+                                             Text="Outgoing call ending (12:00:00)"
+                                             TextColor="White"
+                                             Margin="0" />
+                                </Frame>
+                            </Grid>
+                            <Grid	HorizontalOptions="FillAndExpand"
+                                    ColumnDefinitions="50,*,50,*,50"
+                                    Grid.Row="2">
+                                <ImageButton  x:Name="imgBtn_CallCancel"
+                                              HorizontalOptions="Center"
+                                              VerticalOptions="Center"
+                                              Source="img_call_new_close.png"
+                                              BackgroundColor="Transparent"
+                                              Aspect="AspectFit"
+                                              Margin="0"
+                                              Grid.Column="1"
+                                              Clicked="imgBtn_CallCancel_Clicked" />
+                                <ImageButton  x:Name="imgBtn_CallRedial"
+                                              HorizontalOptions="Center"
+                                              VerticalOptions="Center"
+                                              Source="img_call_new_ring.png"
+                                              BackgroundColor="Transparent"
+                                              Aspect="AspectFit"
+                                              Margin="0"
+                                              Grid.Column="3"
+                                              Clicked="imgBtn_CallRedial_Clicked" />
+                            </Grid>
+                            <Grid	HorizontalOptions="FillAndExpand"
+                                    ColumnDefinitions="50,*,50,*,50"
+                                    Grid.Row="3">
+                                <Frame 	HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        CornerRadius="5"
+                                        BorderColor="Transparent"
+                                        Margin="0"
+                                        Padding="0"
+                                        BackgroundColor="#40ffffff"
+                                        Grid.Column="1">
+                                    <Label	x:Name="lbl_Title_Cancel"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                            Padding="0"
+                                            Text="CANCEL"
+                                            FontSize="Medium"
+                                            TextColor="White"
+                                            Margin="0" />
+                                </Frame>
+                                <Frame 	HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        CornerRadius="5"
+                                        BorderColor="Transparent"
+                                        Margin="0"
+                                        Padding="0"
+                                        BackgroundColor="#40ffffff"
+                                        Grid.Column="3">
+                                    <Label	 x:Name="lbl_Title_Redial"
+                                             HorizontalOptions="Center"
+                                             VerticalOptions="Center"
+                                             Padding="0"
+                                             Text="CALL"
+                                             FontSize="Medium"
+                                             TextColor="White"
+                                             Margin="0" />
+                                </Frame>
+                            </Grid>
+                        </Grid>
+                    </Frame>
+                </Grid>
             </Grid>
-
-            <Frame 	x:Name="frm_TimerText"	HorizontalOptions="Start"
-					VerticalOptions="Start"
-					CornerRadius="5"
-					Margin="10"
-				BorderColor="Transparent"		Padding="5"
-					BackgroundColor="#40ffffff"
-					IsVisible="false">
-
-                <Label		x:Name="lbl_TimerText"               
-               
-           HorizontalOptions="FillAndExpand"
-							VerticalOptions="FillAndExpand"
-							HorizontalTextAlignment="Center"
-							VerticalTextAlignment="Start"
-							Padding="5"
-							FontSize="Medium"
-							Text="00:00:00"
-							TextColor="White"
-							Margin="0" />
+            <Frame 	x:Name="frm_TimerText"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Start"
+                    CornerRadius="5"
+                    Margin="10"
+                    BorderColor="Transparent"
+                    Padding="5"
+                    BackgroundColor="#40ffffff"
+                    IsVisible="false">
+                <Label		x:Name="lbl_TimerText"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Start"
+                            Padding="5"
+                            FontSize="Medium"
+                            Text="00:00:00"
+                            TextColor="White"
+                            Margin="0" />
             </Frame>
-
         </Grid>
         <sroofingFooter:SRoofing_PageFooter />
-
     </StackLayout>
 </ContentPage>

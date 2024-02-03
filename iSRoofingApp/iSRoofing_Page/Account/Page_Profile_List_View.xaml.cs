@@ -732,6 +732,7 @@ public partial class Page_Profile_List_View : ContentView
 
 
                  lbl_AvatarName_Splash.Text=((Page_Account_Dashboard)Parent.BindingContext)._iOwnerModel.AvatarName;
+                 lbl_UserName.Text=((Page_Account_Dashboard)Parent.BindingContext)._iOwnerModel.FullName;
                  lbl_MobileNumber.Text=((Page_Account_Dashboard)Parent.BindingContext)._iOwnerModel.MobileNumberE164;
                  lbl_EmailAddress.Text=((Page_Account_Dashboard)Parent.BindingContext)._iOwnerModel.EmailAddress;
              });

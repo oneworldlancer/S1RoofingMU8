@@ -83,23 +83,6 @@
                                    HeightRequest="60"
                                    ColumnDefinitions="*,1,*">
                                 <!--     Text="{Binding iLng_Chats}"-->
-                                <HorizontalStackLayout HorizontalOptions="CenterAndExpand"
-                                                       VerticalOptions="FillAndExpand"
-                                                       Spacing="0"
-                                                       Margin="0"
-                                                       Padding="0"
-                                                       Grid.Row="0"
-                                                       Grid.Column="0">
-                                
-                                    <!--<Image   x:Name="img_TabAccount"
-                                             Source="loading.gif"
-                                             WidthRequest="30"
-                                             HeightRequest="30"
-                                             HorizontalOptions="Center"
-                                             VerticalOptions="Center"
-                                             IsAnimationPlaying="True" 
-                                             Margin="0,0,10,0"
-                                             Opacity="0"/>-->
                                   
                                     <Label   x:Name="lbl_TabAccount"
                                              HorizontalOptions="Center"
@@ -110,16 +93,36 @@
                                              FontAttributes="Bold"
                                              HorizontalTextAlignment="Center"
                                              VerticalTextAlignment="Center"
-                                             Text="CHATS">
+                                             Text="CHATS"     Grid.Row="0"
+                                                       Grid.Column="0">
                                       
-                                        <!--<Label.GestureRecognizers>
+                                        <Label.GestureRecognizers>
                                         <TapGestureRecognizer	Tapped="lbl_TabAccount_Tapped" />
-                                    </Label.GestureRecognizers>-->
-                                    </Label>
+                                    </Label.GestureRecognizers>
+                                    </Label>  
+                                
+                                <!--<HorizontalStackLayout HorizontalOptions="CenterAndExpand"
+                                                       VerticalOptions="FillAndExpand"
+                                                       Spacing="0"
+                                                       Margin="0"
+                                                       Padding="0"
+                                                       Grid.Row="0"
+                                                       Grid.Column="0">
+                                
+                                    --><!--<Image   x:Name="img_TabAccount"
+                                             Source="loading.gif"
+                                             WidthRequest="30"
+                                             HeightRequest="30"
+                                             HorizontalOptions="Center"
+                                             VerticalOptions="Center"
+                                             IsAnimationPlaying="True" 
+                                             Margin="0,0,10,0"
+                                             Opacity="0"/>--><!--
+                             
                                     <HorizontalStackLayout.GestureRecognizers>
                                         <TapGestureRecognizer	Tapped="lbl_TabAccount_Tapped" />
                                     </HorizontalStackLayout.GestureRecognizers>
-                                </HorizontalStackLayout>
+                                </HorizontalStackLayout>-->
                              
                                 
                                 <!--<Label   x:Name="lbl_TabAccount"
@@ -150,16 +153,7 @@
                                        Grid.Row="0"
                                        Grid.Column="1"></Label>
                               
-                                <HorizontalStackLayout HorizontalOptions="CenterAndExpand"
-                                                       VerticalOptions="FillAndExpand"
-                                                       Spacing="0"
-                                                       Margin="0"
-                                                       Padding="0"
-                                                    
-                                                       Grid.Row="0"
-                                        Grid.Column="2">
-                                 
-                                         <Label  x:Name="lbl_TabSetting"
+                                  <Label  x:Name="lbl_TabSetting"
                                         HorizontalOptions="FillAndExpand"
                                         VerticalOptions="FillAndExpand"
                                         FontSize="Header"
@@ -168,15 +162,27 @@
                                         FontAttributes="Bold"
                                         HorizontalTextAlignment="Center"
                                         VerticalTextAlignment="Center"
-                                        Text="CALLS"        >  
+                                        Text="CALLS"     Grid.Row="0"
+                                        Grid.Column="2"     >  
                                           
                                                   
-                                    <!--<Label.GestureRecognizers>
+                                    <Label.GestureRecognizers>
                                         <TapGestureRecognizer	Tapped="lbl_TabSetting_Tapped" />
-                                    </Label.GestureRecognizers>-->
-                                </Label>
+                                    </Label.GestureRecognizers>
+                                </Label> 
+                             
+                                <!--<HorizontalStackLayout HorizontalOptions="CenterAndExpand"
+                                                       VerticalOptions="FillAndExpand"
+                                                       Spacing="0"
+                                                       Margin="0"
+                                                       Padding="0"
+                                                    
+                                                       Grid.Row="0"
+                                        Grid.Column="2">
+                                 
+                                     
                                     
-                                    <!--<Image   x:Name="img_TabSetting"
+                                    --><!--<Image   x:Name="img_TabSetting"
                                              Source="loading.gif"
                                              WidthRequest="30"
                                              HeightRequest="30"
@@ -184,13 +190,13 @@
                                              VerticalOptions="Center"
                                              IsAnimationPlaying="True"
                                              Margin="10,0,0,0" 
-                                             Opacity="0"/>-->
+                                             Opacity="0"/>--><!--
                              
                                   
                                     <HorizontalStackLayout.GestureRecognizers>
                                         <TapGestureRecognizer	Tapped="lbl_TabSetting_Tapped" />
                                     </HorizontalStackLayout.GestureRecognizers>
-                                </HorizontalStackLayout>
+                                </HorizontalStackLayout>-->
                              
                             </Grid>
                             <StackLayout HorizontalOptions="FillAndExpand"

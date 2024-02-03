@@ -513,8 +513,8 @@
                                      BackgroundColor="Transparent"   
                                             VerticalOptions="FillAndExpand"
                                             EmptyView=""
-                                            Margin="0,0,0,20"
-                                        
+                                            Margin="0,10,0,20"
+                                            
                                             ItemTemplate="{StaticResource Chat_MessageDataTemplateSelector}">
 
 

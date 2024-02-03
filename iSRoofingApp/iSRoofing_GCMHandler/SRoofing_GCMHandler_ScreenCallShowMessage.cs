@@ -28,7 +28,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-
+using Microsoft.Maui.ApplicationModel.Communication;
 using Microsoft.Maui.Controls;
 
 using static System.Net.WebRequestMethods;
@@ -648,26 +648,31 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_GCMHandler
                     // Check is CALL Free
                     //bool _bln_AppCallIsFree = false;
                     bool _bln_AppCallIsFree = true;
-
-
-
-                    ///////////////////////////////////////////
-
-                    // show call popoup
-                    /*
-                     check if call is free available
-
-                    # YES   ,   # NO
-                    (YES)
-                    >>> SHOW CALL POPUP
-
-
-                    (NO)
-                     >>> SEND WEBSOCKET-BUSY
                         
-                    */
+                    //    PhoneCallService.Default.IsCallActive; ;
 
-                    if (!_bln_AppCallIsFree)
+                    //if ( PhoneCallService.Default.IsSupported )
+                    //{ 
+                    
+                    //}
+
+                        ///////////////////////////////////////////
+
+                        // show call popoup
+                        /*
+                         check if call is free available
+
+                        # YES   ,   # NO
+                        (YES)
+                        >>> SHOW CALL POPUP
+
+
+                        (NO)
+                         >>> SEND WEBSOCKET-BUSY
+
+                        */
+
+                        if (!_bln_AppCallIsFree)
                     {
 
                         /* CONNECT-WEBSOCKET */

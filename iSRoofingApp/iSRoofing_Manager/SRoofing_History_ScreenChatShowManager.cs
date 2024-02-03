@@ -38,10 +38,10 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Manager
         //}
 
         // UserProfile_Get_Owner_Profile_ByAccountTypeWS
-        public static async Task<ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager>> SRoofing_ScreenChatShow_Get_List_All_Chat_ByOwnerUserTokenIDWS(
-           Application context,
-                SRoofingUserOwnerModelManager iOwnerModel,
-                    SRoofingLanguageTranslateModel iLanguageModel)
+        public static async Task<ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager>> SRoofing_ScreenChatShow_Get_List_All_Chat_ByOwnerUserTokenIDWS (
+           Application context ,
+                SRoofingUserOwnerModelManager iOwnerModel ,
+                    SRoofingLanguageTranslateModel iLanguageModel )
         {
 
             try
@@ -51,27 +51,27 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Manager
 
 
                 //ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager> arr_ItemListWS = new ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager>();
-                ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager> arr_ItemList = new ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager>();
+                ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager> arr_ItemList = new ObservableCollection<SRoofingScreenChatShowHistoryMessageModelManager> ( );
 
 
-                arr_ItemList=await SRoofing_ScreenChatShowMessageWS
-                    .SRoofing_ScreenChatShow_Get_List_All_Chat_ByOwnerUserTokenIDWSAsync(
-                                                           iOwnerModel,
+                arr_ItemList = await SRoofing_ScreenChatShowMessageWS
+                    .SRoofing_ScreenChatShow_Get_List_All_Chat_ByOwnerUserTokenIDWSAsync (
+                                                           iOwnerModel ,
 
-                                                           App.iPlatformOS,
-                                    App.iDatabaseServerTokenID,
-                    Preferences.Get("DeviceGlobalID", "0"),//DeviceGlobalIDWS
-                    App.iAccountType,
+                                                           App.iPlatformOS ,
+                                    App.iDatabaseServerTokenID ,
+                    Preferences.Get ( "DeviceGlobalID" , "0" ) ,//DeviceGlobalIDWS
+                    App.iAccountType ,
 
-                               iOwnerModel.OwnerUserTokenID,
-                                    iOwnerModel.OwnerMobileNumberTokenID,
-                                                             "0", "0",
-                                        DateTime.Now.Day.ToString(),
-                                               DateTime.Now.Month.ToString(),
-                                       DateTime.Now.Year.ToString(),
-                                "1"  );
+                               iOwnerModel.OwnerUserTokenID ,
+                                    iOwnerModel.OwnerMobileNumberTokenID ,
+                                                             "0" , "0" ,
+                                        DateTime.Now.Day.ToString ( ) ,
+                                               DateTime.Now.Month.ToString ( ) ,
+                                       DateTime.Now.Year.ToString ( ) ,
+                                "1" );
 
-                if (arr_ItemList != null)
+                if ( arr_ItemList != null )
                 {
                     //await SRoofingSync_History_ScreenChatShowManager
                     //                         .Sync_History_ScreenChatShow_Set_ChatList (
@@ -80,10 +80,10 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Manager
                     //                       iOwnerModel ,
                     //                      arr_ItemList );
 
-  
-                    await App.Database.Initialize_DataAsync_HistoryChat_MessageModel(
-                                   iOwnerModel, iLanguageModel,
-                         arr_ItemList);
+
+                    await App.Database.Initialize_DataAsync_HistoryChat_MessageModel (
+                                   iOwnerModel , iLanguageModel ,
+                         arr_ItemList );
 
 
 
@@ -105,10 +105,10 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Manager
 
 
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
 
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return null;
             }
         }

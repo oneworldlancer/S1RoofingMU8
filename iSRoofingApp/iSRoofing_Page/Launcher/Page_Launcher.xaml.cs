@@ -41,18 +41,24 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Launcher
     {
         bool _bln_IsInitialized_Page_Launcher_Dashboard = false;
         bool _blnIsInitialized_BroadcastReceiver = false;
-        public Page_Launcher()
+        public Page_Launcher ( )
         {
 
-            InitializeComponent();
+            InitializeComponent ( );
 
+            //_ = Task.Run ( async ( ) =>
+            //        {
+
+            //            await SRoofing_LanguageManager.Initilalize_LanguageList_ByLanguageCode ( "ar" );
+
+            //        } ).ConfigureAwait ( false );
 
             //MyASMXWebService proxy = new MyASMXWebService();
             //proxy.Url = "web service url";
             //proxy.HelloWorld();
 
 
-            ///
+            ///              
 
             //////MySoapClient.EndpointConfiguration endpoint = new MySoapClient.EndpointConfiguration();
             //////MySoapClient myService = new MySoapClient(endpoint, myURL);
@@ -186,18 +192,18 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Launcher
 
 
 
-                if (!_blnIsInitialized_BroadcastReceiver)
+                if ( !_blnIsInitialized_BroadcastReceiver )
                 {
 
                     _blnIsInitialized_BroadcastReceiver = true;
 
-                    MessagingCenter.Subscribe<App, Type>(App.Current, "Page_Load", async (snd, arg) =>
+                    MessagingCenter.Subscribe<App , Type> ( App.Current , "Page_Load" , async ( snd , arg ) =>
                     {
 
                         try
                         {
 
-                            if (arg == typeof(Page_Launcher))
+                            if ( arg == typeof ( Page_Launcher ) )
                             {
 
                                 //////////             List<SRoofingScreenChatShowHistoryMessageModelManager> arr = await App.Database.getAllAsync_HistoryChat ( );
@@ -205,32 +211,32 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Launcher
                                 //////////SRoofing_DebugManager.Debug_ShowSystemMessage ( "arr-Count== " + arr.Count.ToString ( ) );
                                 //get the value by `arg`
 
-                                SRoofing_DebugManager.Debug_ShowSystemMessage("Page_Load == " + arg.ToString());
+                                SRoofing_DebugManager.Debug_ShowSystemMessage ( "Page_Load == " + arg.ToString ( ) );
 
                                 //await Task.Delay ( 10000 );
 
-                                if (!_bln_IsInitialized_Page_Launcher_Dashboard)
+                                if ( !_bln_IsInitialized_Page_Launcher_Dashboard )
                                 {
                                     _bln_IsInitialized_Page_Launcher_Dashboard = true;
 
-                                    _ = Task.Run(async () =>
+                                    _ = Task.Run ( async ( ) =>
                              {
 
 
-                                 bool bln_IsFirstRun = Preferences.Get("app_IsFirstRun", true);
+                                 bool bln_IsFirstRun = Preferences.Get ( "app_IsFirstRun" , true );
 
-                                 if (bln_IsFirstRun == true)
+                                 if ( bln_IsFirstRun == true )
                                  {
-                                     await Initilalize();
+                                     await Initilalize ( );
 
-                                     await SimulateStartup();
+                                     await SimulateStartup ( );
                                  }
                                  else
                                  {
-                                     await SimulateStartup();
+                                     await SimulateStartup ( );
                                  }
 
-                             });
+                             } );
 
                                     //////Task.Run ( async ( ) =>
                                     ////// {
@@ -244,19 +250,19 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Launcher
 
 
                         }
-                        catch (Exception ex)
+                        catch ( Exception ex )
                         {
-                            SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                            SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                             return;
 
                         }
 
-                    });
+                    } );
 
 
                 }
 
-                Task.Run(async () =>
+                Task.Run ( async ( ) =>
                {
 
 
@@ -314,13 +320,13 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Launcher
                    //  await Xamarin.Essentials.Launcher.OpenAsync ( new OpenFileRequest { File = new ReadOnlyFile ( "/storage/emulated/0/Download/MyPic.jpeg" ) } );
                    ////////////////////await Xamarin.Essentials.Launcher.OpenAsync(new OpenFileRequest { File = new ReadOnlyFile("/storage/emulated/0/Download/vid.mp4") });
 
-               }).Wait();
+               } ).Wait ( );
 
 
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
             }
 
@@ -337,9 +343,9 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Launcher
         //    }
 
 
-        protected override void OnAppearing()
+        protected override void OnAppearing ( )
         {
-            base.OnAppearing();
+            base.OnAppearing ( );
 
             try
             {
@@ -349,9 +355,9 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Launcher
                 //    await SimulateStartup ( );
                 //} ).Wait ( );
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
 
             }
@@ -363,20 +369,20 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Launcher
 
 
         //public static List<string> myList { get; set; }
-        public static async Task Initilalize()
+        public static async Task Initilalize ( )
         {
 
             try
             {
 
-                await Initilalize_ByDevice();
+                await Initilalize_ByDevice ( );
 
-                await Initilalize_ByVersion();
+                await Initilalize_ByVersion ( );
 
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
 
                 return;
             }
@@ -384,13 +390,13 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Launcher
         }
 
 
-        public static async Task Initilalize_ByDevice()
+        public static async Task Initilalize_ByDevice ( )
         {
 
             try
             {
 
-                await Task.Delay(0);
+                await Task.Delay ( 0 );
                 //if ( DeviceInfo.Current.Platform.ToString() == Device.Android )
                 //{
                 //    // Android specific code
@@ -404,152 +410,152 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Launcher
                 //    // UWP specific code
                 //}
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
             }
 
         }
 
 
-        public static async Task Initilalize_ByVersion()
+        public static async Task Initilalize_ByVersion ( )
         {
 
             try
             {
 
-                await Task.Delay(0);
+                await Task.Delay ( 0 );
 
-                if (VersionTracking.IsFirstLaunchEver)
+                if ( VersionTracking.IsFirstLaunchEver )
                 {
 
                     // Display pop-up alert for first launch
-                    SRoofing_DebugManager.Debug_ShowSystemMessage("Initilalize_ByVersion == IsFirstLaunchEver");
+                    SRoofing_DebugManager.Debug_ShowSystemMessage ( "Initilalize_ByVersion == IsFirstLaunchEver" );
                     //	SRoofing_DebugManager.Debug_ShowSystemMessage("Initilalize_ByVersion == IsFirstLaunchEver");
-                    Initilalize_FirstRun();
+                    Initilalize_FirstRun ( );
 
                 }
-                else if (VersionTracking.IsFirstLaunchForCurrentVersion)
+                else if ( VersionTracking.IsFirstLaunchForCurrentVersion )
                 {
                     // Display update notification for current version (1.0.0)
-                    SRoofing_DebugManager.Debug_ShowSystemMessage("Initilalize_ByVersion == IsFirstLaunchForCurrentVersion");
+                    SRoofing_DebugManager.Debug_ShowSystemMessage ( "Initilalize_ByVersion == IsFirstLaunchForCurrentVersion" );
                     //	SRoofing_DebugManager.Debug_ShowSystemMessage("Initilalize_ByVersion == IsFirstLaunchForCurrentVersion");
                 }
-                else if (VersionTracking.IsFirstLaunchForCurrentBuild)
+                else if ( VersionTracking.IsFirstLaunchForCurrentBuild )
                 {
                     // Display update notification for current build number (2)
-                    SRoofing_DebugManager.Debug_ShowSystemMessage("Initilalize_ByVersion == IsFirstLaunchForCurrentBuild");
+                    SRoofing_DebugManager.Debug_ShowSystemMessage ( "Initilalize_ByVersion == IsFirstLaunchForCurrentBuild" );
                     //	SRoofing_DebugManager.Debug_ShowSystemMessage("Initilalize_ByVersion == IsFirstLaunchForCurrentBuild");
                 }
                 else
                 {
-                    SRoofing_DebugManager.Debug_ShowSystemMessage("Initilalize_ByVersion == CurrentBuild:" + VersionTracking.CurrentBuild + "  CurrentVersion: " + VersionTracking.CurrentVersion);
+                    SRoofing_DebugManager.Debug_ShowSystemMessage ( "Initilalize_ByVersion == CurrentBuild:" + VersionTracking.CurrentBuild + "  CurrentVersion: " + VersionTracking.CurrentVersion );
                     //	SRoofing_DebugManager.Debug_ShowSystemMessage();
                 }
             }
 
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
             }
 
         }
 
 
-        public static void Initilalize_FirstRun()
+        public static void Initilalize_FirstRun ( )
         {
 
             try
             {
 
-                SRoofing_DebugManager.Debug_ShowSystemMessage("Initilalize_FirstRun()");
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( "Initilalize_FirstRun()" );
 
                 //////Preferences.Set (  "app_IsFirstRun" , true );
 
 
                 ////////////Preferences.Set("user_IsLogin", false);
 
-                Task.Run(async () =>
+                Task.Run ( async ( ) =>
                 {
 
-                    await Initialize_Globals();
+                    await Initialize_Globals ( );
 
-                    await Initilalize_CountryList();
+                    await Initilalize_CountryList ( );
 
-                    await Initilalize_Speech_CountryList();
+                    await Initilalize_Speech_CountryList ( );
 
 
-                    await Initilalize_Sound_List();
+                    await Initilalize_Sound_List ( );
 
-                    await Initialize_AlphabetList();
+                    await Initialize_AlphabetList ( );
 
-                    await Initialize_BackgroundImageList();
+                    await Initialize_BackgroundImageList ( );
 
                     //////////await Initialize_EmotionList ( );
 
-                }).Wait();
+                } ).Wait ( );
 
 
-                Task.Run(async () =>
+                Task.Run ( async ( ) =>
                 {
-                    SRoofingScreenChatShowMessageModelManager x = new SRoofingScreenChatShowMessageModelManager()
+                    SRoofingScreenChatShowMessageModelManager x = new SRoofingScreenChatShowMessageModelManager ( )
                     {
 
-                        InviteOwnerUserID = "0",
+                        InviteOwnerUserID = "0" ,
                         InviteOwnerMobileNumberID = "0"
                     };
 
-                    await App.Database.saveDataAsync(x);
+                    await App.Database.saveDataAsync ( x );
 
-                    SRoofingScreenChatShowHistoryMessageModelManager x1 = new SRoofingScreenChatShowHistoryMessageModelManager()
+                    SRoofingScreenChatShowHistoryMessageModelManager x1 = new SRoofingScreenChatShowHistoryMessageModelManager ( )
                     {
 
-                        InviteOwnerUserID = "0",
+                        InviteOwnerUserID = "0" ,
                         InviteOwnerMobileNumberID = "0"
                     };
 
-                    await App.Database.saveDataAsync_HistoryChat_MessageModel(x1);
+                    await App.Database.saveDataAsync_HistoryChat_MessageModel ( x1 );
 
-                    SRoofingScreenCallShowHistoryMessageModelManager x2 = new SRoofingScreenCallShowHistoryMessageModelManager()
+                    SRoofingScreenCallShowHistoryMessageModelManager x2 = new SRoofingScreenCallShowHistoryMessageModelManager ( )
                     {
 
-                        InviteOwnerUserID = "0",
+                        InviteOwnerUserID = "0" ,
                         InviteOwnerMobileNumberID = "0"
                     };
 
-                    await App.Database.saveDataAsync_HistoryCall_MessageModel(x2);
+                    await App.Database.saveDataAsync_HistoryCall_MessageModel ( x2 );
 
-                }).Wait();
+                } ).Wait ( );
 
 
 
-                MainThread.BeginInvokeOnMainThread(async () =>
+                MainThread.BeginInvokeOnMainThread ( async ( ) =>
                 {
 
                     // Code to run on the main thread
 
-                    await Initialize_ApplicationUtility();
+                    await Initialize_ApplicationUtility ( );
 
-                });
+                } );
 
 
-                Preferences.Set("app_IsFirstRun", false);
+                Preferences.Set ( "app_IsFirstRun" , false );
 
-                SRoofing_DebugManager.Debug_ShowSystemMessage("Page_Launcher-Initilalize_FirstRun");
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( "Page_Launcher-Initilalize_FirstRun" );
 
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 // 	SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return;
             }
 
         }
 
-        public static async Task Initialize_ApplicationUtility()
+        public static async Task Initialize_ApplicationUtility ( )
         {
 
             try
@@ -571,63 +577,63 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Launcher
 
                 // Screen density
                 var density = mainDisplayInfo.Density;
-                int ScreenWidth = (int)(width / density); // device independent pixels
-                                                          //  int   ScreenHeight = (int)(height / density); // device independent pixels
+                int ScreenWidth = ( int ) ( width / density ); // device independent pixels
+                                                               //  int   ScreenHeight = (int)(height / density); // device independent pixels
 
-                int ScreenHeight = (int)(height / density); // device independent pixels
+                int ScreenHeight = ( int ) ( height / density ); // device independent pixels
 
-                SRoofingApplicationUtilityModelManager iApplicationUtilityModel = new SRoofingApplicationUtilityModelManager()
+                SRoofingApplicationUtilityModelManager iApplicationUtilityModel = new SRoofingApplicationUtilityModelManager ( )
                 {
 
 
-                    Screen_WidthPixel = (int)ScreenWidth,
-                    Screen_HeightPixel = (int)ScreenHeight,
+                    Screen_WidthPixel = ( int ) ScreenWidth ,
+                    Screen_HeightPixel = ( int ) ScreenHeight ,
 
 
-                    Portrait_ScreenWidthPixel = (int)ScreenWidth,
-                    Portrait_ScreenHeightPixel = (int)ScreenHeight,
+                    Portrait_ScreenWidthPixel = ( int ) ScreenWidth ,
+                    Portrait_ScreenHeightPixel = ( int ) ScreenHeight ,
 
 
 
-                    Landscape_ScreenWidthPixel = (int)ScreenHeight,
-                    Landscape_ScreenHeightPixel = (int)ScreenWidth,
+                    Landscape_ScreenWidthPixel = ( int ) ScreenHeight ,
+                    Landscape_ScreenHeightPixel = ( int ) ScreenWidth ,
 
                     //Convert.ToInt32 
-                    iScreenChatShow_iMedia_Width = (int)((ScreenWidth / 10) * 7),
-                    iScreenChatShow_iMedia_Height = (int)((ScreenWidth / 10) * 7),
+                    iScreenChatShow_iMedia_Width = ( int ) ( ( ScreenWidth / 10 ) * 7 ) ,
+                    iScreenChatShow_iMedia_Height = ( int ) ( ( ScreenWidth / 10 ) * 7 ) ,
 
 
-                    Window_Popup_Width = (int)((ScreenWidth - 100)),
-                    Window_Popup_Height =(int)(((ScreenWidth - 100) * 3) / 4),
+                    Window_Popup_Width = ( int ) ( ( ScreenWidth - 100 ) ) ,
+                    Window_Popup_Height = ( int ) ( ( ( ScreenWidth - 100 ) * 3 ) / 4 ) ,
 
-                    iYouTube_iMedia_Width = (int)((ScreenWidth - 100)),
-                    iYouTube_iMedia_Height = (int)(((ScreenWidth - 100) * 3) / 4),
+                    iYouTube_iMedia_Width = ( int ) ( ( ScreenWidth - 100 ) ) ,
+                    iYouTube_iMedia_Height = ( int ) ( ( ( ScreenWidth - 100 ) * 3 ) / 4 ) ,
 
 
-                    iGallery_iMedia_Width = (int)((ScreenWidth - 100)),
-                    iGallery_iMedia_Height = (int)(((ScreenWidth - 100) * 3) / 4),
+                    iGallery_iMedia_Width = ( int ) ( ( ScreenWidth - 100 ) ) ,
+                    iGallery_iMedia_Height = ( int ) ( ( ( ScreenWidth - 100 ) * 3 ) / 4 ) ,
 
                     //iScreenChatShow_iMedia_Width =  ( ( ScreenWidth / 2 ) ) ,
                     //iScreenChatShow_iMedia_Height =  ( ( ScreenWidth / 2 ) ) ,
 
 
 
-                    iProfile_Avatar_Width = (int)(ScreenWidth / 3),
-                    iProfile_Avatar_Height = (int)(ScreenWidth / 3),
+                    iProfile_Avatar_Width = ( int ) ( ScreenWidth / 3 ) ,
+                    iProfile_Avatar_Height = ( int ) ( ScreenWidth / 3 ) ,
 
 
                 };
 
                 //  _iApplicationUtilityModel = iApplicationUtilityModel;
 
-                await SRoofingSync_ApplicationUtility_Manager.Sync_Speech_Set_ApplicationUtility_ByAccountType(
-                        App.Current,
-                        iApplicationUtilityModel);
-                SRoofing_DebugManager.Debug_ShowSystemMessage("Page_Launcher-Initialize_ApplicationUtility");
+                await SRoofingSync_ApplicationUtility_Manager.Sync_Speech_Set_ApplicationUtility_ByAccountType (
+                        App.Current ,
+                        iApplicationUtilityModel );
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( "Page_Launcher-Initialize_ApplicationUtility" );
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
             }
 
@@ -635,42 +641,42 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Launcher
         }
 
 
-        public static async Task Initialize_AlphabetList()
+        public static async Task Initialize_AlphabetList ( )
         {
 
             try
             {
-                ObservableCollection<SRoofingKeyValueModelManager> arr_AlphabetList_Initialize = new ObservableCollection<SRoofingKeyValueModelManager>();
+                ObservableCollection<SRoofingKeyValueModelManager> arr_AlphabetList_Initialize = new ObservableCollection<SRoofingKeyValueModelManager> ( );
                 SRoofingKeyValueModelManager iItem_Initialize;
 
                 //arr_AlphabetList = new ObservableCollection<SRoofingKeyValueModelManager> ( );
 
-                char[ ] alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
+                char[] alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray ( );
 
-                for (int i = 0; i < alpha.Length; i++)
+                for ( int i = 0 ; i < alpha.Length ; i++ )
                 {
 
 
-                    iItem_Initialize = new SRoofingKeyValueModelManager();
+                    iItem_Initialize = new SRoofingKeyValueModelManager ( );
                     iItem_Initialize.ItemIndex = i;
-                    iItem_Initialize.ItemText = alpha[i].ToString().ToUpper();
-                    iItem_Initialize.ItemValue = alpha[i].ToString().ToUpper();
+                    iItem_Initialize.ItemText = alpha[ i ].ToString ( ).ToUpper ( );
+                    iItem_Initialize.ItemValue = alpha[ i ].ToString ( ).ToUpper ( );
                     iItem_Initialize.ItemCode = "disable";
 
-                    arr_AlphabetList_Initialize.Add(iItem_Initialize);
+                    arr_AlphabetList_Initialize.Add ( iItem_Initialize );
 
                 }
 
                 await SRoofingSync_UserContactManager
-                       .Sync_User_Category_Set_Alphabet_Initialize_List_ByOwnerUserTokenID(
-                           App.Current,
-                                         arr_AlphabetList_Initialize);
+                       .Sync_User_Category_Set_Alphabet_Initialize_List_ByOwnerUserTokenID (
+                           App.Current ,
+                                         arr_AlphabetList_Initialize );
 
-                SRoofing_DebugManager.Debug_ShowSystemMessage("Page_Launcher-Initialize_AlphabetList");
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( "Page_Launcher-Initialize_AlphabetList" );
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
             }
 
@@ -680,7 +686,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Launcher
 
 
 
-        public static async Task Initialize_BackgroundImageList()
+        public static async Task Initialize_BackgroundImageList ( )
         {
 
             try
@@ -702,31 +708,31 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Launcher
 
                 // Screen density
                 var density = mainDisplayInfo.Density;
-                int ScreenWidth = (int)(width / density); // device independent pixels
+                int ScreenWidth = ( int ) ( width / density ); // device independent pixels
 
 
-                int iGallery_iMedia_Width = (int)((ScreenWidth - 100));
-                int iGallery_iMedia_Height = (int)(((ScreenWidth - 100) * 3) / 4);
+                int iGallery_iMedia_Width = ( int ) ( ( ScreenWidth - 100 ) );
+                int iGallery_iMedia_Height = ( int ) ( ( ( ScreenWidth - 100 ) * 3 ) / 4 );
 
 
 
-                ObservableCollection<SRoofingKeyValueModelManager> arr_BackgroundImage_System_Chat_LightList = new ObservableCollection<SRoofingKeyValueModelManager>();
+                ObservableCollection<SRoofingKeyValueModelManager> arr_BackgroundImage_System_Chat_LightList = new ObservableCollection<SRoofingKeyValueModelManager> ( );
 
                 SRoofingKeyValueModelManager iItem_Initialize;
 
 
                 // LIGHT
-                for (int i = 0; i < 11; i++)
+                for ( int i = 0 ; i < 11 ; i++ )
                 {
 
-                    arr_BackgroundImage_System_Chat_LightList.Add(
+                    arr_BackgroundImage_System_Chat_LightList.Add (
                                       new SRoofingKeyValueModelManager
                                       {
 
-                                          ItemValue="bglight"+ i.ToString() +".png",
+                                          ItemValue = "bglight" + i.ToString ( ) + ".png" ,
                                           //ItemValue="bgdark5.png",
-                                          ItemWidth=  iGallery_iMedia_Width,
-                                          ItemHeight=  iGallery_iMedia_Height
+                                          ItemWidth = iGallery_iMedia_Width ,
+                                          ItemHeight = iGallery_iMedia_Height
                                       }
 
                                       );
@@ -734,28 +740,28 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Launcher
                 }
 
                 await SRoofingSync_ImageBackground_Manager
-               .Sync_ImageBackground_Set_System_Chat_LightList(
-                   App.Current,
-                                 arr_BackgroundImage_System_Chat_LightList);
+               .Sync_ImageBackground_Set_System_Chat_LightList (
+                   App.Current ,
+                                 arr_BackgroundImage_System_Chat_LightList );
 
 
 
                 // DARK
 
 
-                ObservableCollection<SRoofingKeyValueModelManager> arr_BackgroundImage_System_Chat_DarkList = new ObservableCollection<SRoofingKeyValueModelManager>();
+                ObservableCollection<SRoofingKeyValueModelManager> arr_BackgroundImage_System_Chat_DarkList = new ObservableCollection<SRoofingKeyValueModelManager> ( );
 
-                for (int i = 0; i < 11; i++)
+                for ( int i = 0 ; i < 11 ; i++ )
                 {
 
-                    arr_BackgroundImage_System_Chat_DarkList.Add(
+                    arr_BackgroundImage_System_Chat_DarkList.Add (
                                       new SRoofingKeyValueModelManager
                                       {
 
-                                          ItemValue="bgdark"+ i.ToString() +".png",
+                                          ItemValue = "bgdark" + i.ToString ( ) + ".png" ,
                                           //ItemValue="bgdark5.png",
-                                          ItemWidth=  iGallery_iMedia_Width,
-                                          ItemHeight=  iGallery_iMedia_Height
+                                          ItemWidth = iGallery_iMedia_Width ,
+                                          ItemHeight = iGallery_iMedia_Height
                                       }
 
                                       );
@@ -765,16 +771,16 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Launcher
 
 
                 await SRoofingSync_ImageBackground_Manager
-               .Sync_ImageBackground_Set_System_Chat_DarkList(
-                   App.Current,
-                                 arr_BackgroundImage_System_Chat_DarkList);
+               .Sync_ImageBackground_Set_System_Chat_DarkList (
+                   App.Current ,
+                                 arr_BackgroundImage_System_Chat_DarkList );
 
 
-                SRoofing_DebugManager.Debug_ShowSystemMessage("Page_Launcher-Initialize_AlphabetList");
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( "Page_Launcher-Initialize_AlphabetList" );
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
             }
 
@@ -794,33 +800,33 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Launcher
 
 
 
-        public static async Task Initialize_EmotionList()
+        public static async Task Initialize_EmotionList ( )
         {
 
             try
             {
 
-                ObservableCollection<string> arr_UserEmotionList = new ObservableCollection<string>();
+                ObservableCollection<string> arr_UserEmotionList = new ObservableCollection<string> ( );
 
 
 
-                for (int i = 1; i <= 37; i++)
+                for ( int i = 1 ; i <= 37 ; i++ )
                 {
                     //  arr_UserEmotionList.Add ( "emo" + i.ToString ( ) + ".png" );
-                    arr_UserEmotionList.Add("emo" + i.ToString());
+                    arr_UserEmotionList.Add ( "emo" + i.ToString ( ) );
                 }
 
 
                 await SRoofingSync_Emotion_Manager
-                       .Sync_Emotion_Set_List_All(
-                           App.Current,
-                                         arr_UserEmotionList);
+                       .Sync_Emotion_Set_List_All (
+                           App.Current ,
+                                         arr_UserEmotionList );
 
-                SRoofing_DebugManager.Debug_ShowSystemMessage("Page_Launcher-Initialize_EmotionList");
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( "Page_Launcher-Initialize_EmotionList" );
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
             }
 
@@ -829,21 +835,21 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Launcher
 
 
 
-        public static async Task Initilalize_CountryList()
+        public static async Task Initilalize_CountryList ( )
         {
 
             try
             {
 
-                await iSRoofing_Manager.SRoofing_CountryManager.Initilalize_CountryList();
+                await iSRoofing_Manager.SRoofing_CountryManager.Initilalize_CountryList ( );
 
-                SRoofing_DebugManager.Debug_ShowSystemMessage("Initilalize_CountryList()");
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( "Initilalize_CountryList()" );
 
-                SRoofing_DebugManager.Debug_ShowSystemMessage("Page_Launcher-Initilalize_CountryList");
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( "Page_Launcher-Initilalize_CountryList" );
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
             }
 
@@ -853,20 +859,20 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Launcher
 
 
 
-        public static async Task Initilalize_Speech_CountryList()
+        public static async Task Initilalize_Speech_CountryList ( )
         {
 
             try
             {
 
-                await iSRoofing_Manager.SRoofing_SpeechManager.Initilalize_Speech_CountryList();
+                await iSRoofing_Manager.SRoofing_SpeechManager.Initilalize_Speech_CountryList ( );
 
-                SRoofing_DebugManager.Debug_ShowSystemMessage("Initilalize_Speech_CountryList()");
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( "Initilalize_Speech_CountryList()" );
 
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
             }
 
@@ -875,57 +881,57 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Launcher
 
 
 
-        public static async Task Initilalize_Sound_List()
+        public static async Task Initilalize_Sound_List ( )
         {
 
             try
             {
 
-                await iSRoofing_Manager.SRoofing_SoundManager.Initilalize_Sound_List();
+                await iSRoofing_Manager.SRoofing_SoundManager.Initilalize_Sound_List ( );
 
-                SRoofing_DebugManager.Debug_ShowSystemMessage("Initilalize_Sound_List()");
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( "Initilalize_Sound_List()" );
 
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
             }
 
         }
 
 
-        public static async Task Initialize_Globals()
+        public static async Task Initialize_Globals ( )
         {
 
             try
             {
 
-                var objService = App.Current.MainPage.Handler.MauiContext.Services.GetService<iSRoofing_DependencyService_DeviceModel>();
+                var objService = App.Current.MainPage.Handler.MauiContext.Services.GetService<iSRoofing_DependencyService_DeviceModel> ( );
 
-                if (objService != null)
+                if ( objService != null )
                 {
 
-                    Preferences.Set("DeviceGlobalID", objService.GetGlobalDeviceID());
+                    Preferences.Set ( "DeviceGlobalID" , objService.GetGlobalDeviceID ( ) );
 
-                    SRoofing_DebugManager.Debug_ShowSystemMessage("DeviceGlobalID  == "
-                        + Preferences.Get("DeviceGlobalID", "0"));
+                    SRoofing_DebugManager.Debug_ShowSystemMessage ( "DeviceGlobalID  == "
+                        + Preferences.Get ( "DeviceGlobalID" , "0" ) );
 
                 }
 
-                Preferences.Set("PlatformOS", DeviceInfo.Current.Platform.ToString().ToString().ToLower());
-                SRoofing_DebugManager.Debug_ShowSystemMessage("PlatformOS  == "
-                + Preferences.Get("PlatformOS", "0"));
+                Preferences.Set ( "PlatformOS" , DeviceInfo.Current.Platform.ToString ( ).ToString ( ).ToLower ( ) );
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( "PlatformOS  == "
+                + Preferences.Get ( "PlatformOS" , "0" ) );
 
 
                 //  App.Current. UIDevice.CurrentDevice.IdentifierForVendor.AsString(), "0");  
-                SRoofing_DebugManager.Debug_ShowSystemMessage("Page_Launcher-Initialize_Globals");
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( "Page_Launcher-Initialize_Globals" );
 
 
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 //	SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
                 return;
             }
@@ -957,13 +963,13 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Launcher
         // SRoofingLogisticsOwnerModelManager _iOwnerModel;
 
 
-        public static SRoofingLanguageTranslateModel _iLanguageModel { get; set; } = new SRoofingLanguageTranslateModel();
+        public static SRoofingLanguageTranslateModel _iLanguageModel { get; set; } = new SRoofingLanguageTranslateModel ( );
 
 
 
 
 
-        async Task SimulateStartup()
+        async Task SimulateStartup ( )
         {
 
             //TODO SRoofing
@@ -972,22 +978,22 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Launcher
 
                 //await Task.Delay(3000);
 
-                if (Preferences.Get("user_IsLogin", false))
+                if ( Preferences.Get ( "user_IsLogin" , false ) )
 
                 {
 
-                    _iLanguageModel = await SRoofingSync_Language_Manager.Sync_Language_Get_LanguageList_All(App.Current);
+                    _iLanguageModel = await SRoofingSync_Language_Manager.Sync_Language_Get_LanguageList_All ( App.Current );
 
 
-                    MainThread.BeginInvokeOnMainThread(async () =>
+                    MainThread.BeginInvokeOnMainThread ( async ( ) =>
                     {
 
                         // Code to run on the main thread
 
 
-                        Navigation.InsertPageBefore(new Page_Landing_Dashboard(_iLanguageModel), this);
+                        Navigation.InsertPageBefore ( new Page_Landing_Dashboard ( _iLanguageModel ) , this );
 
-                        await Navigation.PopToRootAsync();
+                        await Navigation.PopToRootAsync ( );
 
 
 
@@ -996,20 +1002,20 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Launcher
 
                         ////////////////////await Navigation.PopToRootAsync();
 
-                    });
+                    } );
 
                 }
                 else
                 {
 
-                    MainThread.BeginInvokeOnMainThread(async () =>
+                    MainThread.BeginInvokeOnMainThread ( async ( ) =>
                     {
 
                         // Code to run on the main thread
 
-                        Navigation.InsertPageBefore(new Page_Language(), this);
+                        Navigation.InsertPageBefore ( new Page_Language ( ) , this );
 
-                        await Navigation.PopToRootAsync();
+                        await Navigation.PopToRootAsync ( );
 
 
                         //await SRoofing_Page_OpenerManager
@@ -1018,7 +1024,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Launcher
                         //                             new Page_Language());
 
 
-                    });
+                    } );
 
 
 
@@ -1107,9 +1113,9 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Launcher
 
 
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
 
 
@@ -1118,7 +1124,7 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Launcher
 
         }
 
-        private async void page_Launcher_Loaded(object sender, EventArgs e)
+        private async void page_Launcher_Loaded ( object sender , EventArgs e )
         {
 
             try
@@ -1127,29 +1133,29 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Launcher
                 //await Initialize_BackgroundImageList();
 
                 // Custom logic
-                SRoofing_DebugManager.Debug_ShowSystemMessage("*** CreateWindow *** == " + "page_Launcher_Loaded");
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( "*** CreateWindow *** == " + "page_Launcher_Loaded" );
 
-                if (!_bln_IsInitialized_Page_Launcher_Dashboard)
+                if ( !_bln_IsInitialized_Page_Launcher_Dashboard )
                 {
                     _bln_IsInitialized_Page_Launcher_Dashboard = true;
 
-                    _ = Task.Run(async () =>
+                    _ = Task.Run ( async ( ) =>
                     {
 
-                                              bool bln_IsFirstRun = Preferences.Get("app_IsFirstRun", true);
+                        bool bln_IsFirstRun = Preferences.Get ( "app_IsFirstRun" , true );
 
-                        if (bln_IsFirstRun == true)
+                        if ( bln_IsFirstRun == true )
                         {
-                            await Initilalize();
+                            await Initilalize ( );
 
-                            await SimulateStartup();
+                            await SimulateStartup ( );
                         }
                         else
                         {
-                            await SimulateStartup();
+                            await SimulateStartup ( );
                         }
 
-                    });
+                    } );
 
                     //////Task.Run ( async ( ) =>
                     ////// {
@@ -1161,9 +1167,9 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Page.Launcher
 
 
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
 
             }

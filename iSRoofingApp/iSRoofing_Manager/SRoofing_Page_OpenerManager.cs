@@ -19,37 +19,37 @@ namespace S1RoofingMU.iSRoofingApp.iSRoofing_Manager
         #region Page_Opener
 
 
-        public static async Task Page_Opener_WithChecker(
+        public static async Task Page_Opener_WithChecker (
 
-            INavigation Navigation,
-            Type iPageType,
-            ContentPage iPageConstructor,
-            bool blnIsTimeDelay,
-            bool blnIsAnimated)
+            INavigation Navigation ,
+            Type iPageType ,
+            ContentPage iPageConstructor ,
+            bool blnIsTimeDelay ,
+            bool blnIsAnimated )
         {
 
             try
             {
 
-                MainThread.BeginInvokeOnMainThread(async () =>
+                MainThread.BeginInvokeOnMainThread ( async ( ) =>
         {
             // Code to run on the main thread
 
-            if (Navigation.NavigationStack.Count == 0 ||
-Navigation.NavigationStack.Last().GetType() != (iPageType))
+            if ( Navigation.NavigationStack.Count == 0 ||
+Navigation.NavigationStack.Last ( ).GetType ( ) != ( iPageType ) )
 
             {
                 //
                 //                    if ( Navigation.NavigationStack.Count == 0 ||
                 //Navigation.NavigationStack.Last ( ).GetType ( ) != typeof ( iPageConstructor ) )
                 //                    {
-                await Navigation.PushAsync(iPageConstructor, true);
+                await Navigation.PushAsync ( iPageConstructor , true );
 
                 //  await Navigation.PushAsync ( new CustomerPage ( ) , true );
             }
 
 
-        });
+        } );
 
 
 
@@ -86,9 +86,9 @@ Navigation.NavigationStack.Last().GetType() != (iPageType))
                 //         }
 
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
             }
 
@@ -98,24 +98,24 @@ Navigation.NavigationStack.Last().GetType() != (iPageType))
 
 
 
-        public static async Task Page_Opener(
+        public static async Task Page_Opener (
 
-            INavigation Navigation,
-            ContentPage iPageConstructor,
-            bool blnIsTimeDelay,
-            bool blnIsAnimated)
+            INavigation Navigation ,
+            ContentPage iPageConstructor ,
+            bool blnIsTimeDelay ,
+            bool blnIsAnimated )
         {
 
             try
             {
 
-                MainThread.BeginInvokeOnMainThread(async () =>
+                MainThread.BeginInvokeOnMainThread ( async ( ) =>
         {
             // Code to run on the main thread
-            await Navigation.PushAsync(iPageConstructor, true);
+            await Navigation.PushAsync ( iPageConstructor , true );
 
 
-        });
+        } );
 
 
 
@@ -137,9 +137,9 @@ Navigation.NavigationStack.Last().GetType() != (iPageType))
                 //         }
 
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
             }
 
@@ -148,24 +148,24 @@ Navigation.NavigationStack.Last().GetType() != (iPageType))
 
 
 
-        public static async Task Page_ModalOpener(
+        public static async Task Page_ModalOpener (
 
-            INavigation Navigation,
-            ContentPage iPageConstructor,
-            bool blnIsTimeDelay,
-            bool blnIsAnimated)
+            INavigation Navigation ,
+            ContentPage iPageConstructor ,
+            bool blnIsTimeDelay ,
+            bool blnIsAnimated )
         {
 
             try
             {
 
-                MainThread.BeginInvokeOnMainThread(async () =>
+                MainThread.BeginInvokeOnMainThread ( async ( ) =>
         {
             // Code to run on the main thread
 
-            await Navigation.PushModalAsync(iPageConstructor, false);
+            await Navigation.PushModalAsync ( iPageConstructor , false );
 
-        });
+        } );
 
 
                 //await Navigation.PopToRootAsync();
@@ -186,9 +186,9 @@ Navigation.NavigationStack.Last().GetType() != (iPageType))
                 //         }
 
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
             }
 
@@ -197,15 +197,15 @@ Navigation.NavigationStack.Last().GetType() != (iPageType))
 
 
 
-        public static async Task Page_Reset_Stack(
+        public static async Task Page_Reset_Stack (
 
-            INavigation Navigation,
-            ContentPage iPageConstructor)
+            INavigation Navigation ,
+            ContentPage iPageConstructor )
         {
 
             try
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
+                MainThread.BeginInvokeOnMainThread ( async ( ) =>
                   {
                       // Code to run on the main thread
 
@@ -220,25 +220,25 @@ Navigation.NavigationStack.Last().GetType() != (iPageType))
 
                       ////////////////await Navigation.PopToRootAsync ( );
 
-                      var existingPages = Navigation.NavigationStack.ToList();
-                      foreach (var page in existingPages)
+                      var existingPages = Navigation.NavigationStack.ToList ( );
+                      foreach ( var page in existingPages )
                       {
-                          if (page != null)
+                          if ( page != null )
                           {
-                              Navigation.RemovePage(page);
+                              Navigation.RemovePage ( page );
                           }
                       }
 
 
-                      await Navigation.PushAsync(iPageConstructor, true);
+                      await Navigation.PushAsync ( iPageConstructor , true );
 
-                  });
+                  } );
 
 
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                SRoofing_DebugManager.Debug_ShowSystemMessage(ex.Message.ToString());
+                SRoofing_DebugManager.Debug_ShowSystemMessage ( ex.Message.ToString ( ) );
                 return;
             }
 
